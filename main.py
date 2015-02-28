@@ -24,6 +24,7 @@ socketIO = SocketIO(server, port)
 
 game = gameModule.Game()
 ai = gameModule.AI(game, socketIO)
+game.setAI(ai)
 
 #TODO: throw these in a dictionary of lambda functions or something, maybe a class?
 def onConnected(message):
@@ -40,7 +41,7 @@ def onStart(message):
 socketIO.on('start', onStart)
 
 def onAwaiting(message):
-    ai.makeCommand()
+    ai.run()
 socketIO.on('awaiting', onAwaiting)
 
 def onIgnoring(message):
