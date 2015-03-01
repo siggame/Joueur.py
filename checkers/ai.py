@@ -20,23 +20,18 @@ class AI(GeneratedAI):
             for y in range(game.boardHeight):
                 self.checkersMap[x][y] = None
 
-        print("checker move id", game.checkerMovedID)
         self.myCheckers = []
         self.forceChecker = False
         self.cantMove = False
         for checker in game.checkers:
             self.checkersMap[checker.x][checker.y] = checker
             if checker.ownerID is self.playerID:
-                print("checker is mine", checker.id)
                 self.myCheckers.append(checker)
                 if checker.id is game.checkerMovedID:
-                    print(" -> checker is moved too!")
                     if game.checkerMovedJumped:
                         self.forceChecker = checker
-                        print("   -> forcing to use it")
                     else:
                         self.cantMove = True
-                        print("   -> cant move")
 
 
     # this is called every time the server talls you that you can send a command. Once you send a command any you send will be disregarded, so return upon doing so
@@ -48,7 +43,6 @@ class AI(GeneratedAI):
         checkers = self.myCheckers
 
         if self.forceChecker is not False:
-            print("forcing me to use checker", self.forceChecker.id)
             checkers = [ self.forceChecker ]
 
         shuffle(checkers)
@@ -77,11 +71,11 @@ class AI(GeneratedAI):
 
                 if self.forceChecker is not False: # then we must jump
                     if neighbor['requires jump']:
-                        return self.move(checker, neighbor['x'], neighbor['y'])
+                        return self.move(checker, x=neighbor['x'], y=neighbor['y'])
                 else:
                     jumpingChecker = self.checkersMap[neighbor['x']][neighbor['y']]
                     if jumpingChecker is None: # there's no checker there, so it's valid!
-                        return self.move(checker, neighbor['x'], neighbor['y'])
+                        return self.move(checker, x=neighbor['x'], y=neighbor['y'])
                     elif jumpingChecker.ownerID is not checker.ownerID: #there is one to jump so let's try to jump it
                         if not neighbor['requires jump']: # then we have not already jumped to get here, so let's try to jump it
                             dx = neighbor['x'] - checker.x

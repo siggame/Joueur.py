@@ -1,4 +1,5 @@
 # NOTE: this file should not be modified by competitors
+import json
 idKey = "#"
 
 # @class BaseAI: the basic AI functions that are the same between games
@@ -34,14 +35,12 @@ class BaseAI:
         self.close()
 
     #intended to be called by the BaseGameAI class
-    def sendCommand(self, command, *args):
-        parameters = ""
+    def sendCommand(self, command, **kwargs):
+        data = {'command': command}
 
-        for arg in args:
-            parameter = str(arg)
-            if type(arg) is dict and arg["id"] > -1:
-                parameter = idKey + str(arg["id"])
-            parameters += " " + parameter
-        
-        print("AI sending", command, "::",  parameters)
-        self.socket.emit("command", command + parameters)
+        for key, value in kwargs.items():
+            if isinstance(value, dict) and hasattr(value, "id") and value["id"] > -1:
+                value = idKey + str(value["id"]) # TODO: get idKey from server
+            data[key] = value
+
+        self.socket.emit("command", json.dumps(data))

@@ -5,7 +5,7 @@ idKey = "#"
 # @class BaseCheckersAI: the base interface to command the Checkers game.
 class GeneratedAI(BaseAI):
 	def move(self, checker, x, y):
-		return self.sendCommand("move", idKey + str(checker.id), x, y)
+		return self.sendCommand("move", checker=checker, x=x, y=y)
 
-	def done(self):
-		return self.sendCommand("done")
+	def done(self, **kwargs):
+		return self.sendCommand("done", **kwargs)
