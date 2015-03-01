@@ -33,6 +33,8 @@ playerName = args.name or ai.getName()
 def onConnected(message):
     data = json.loads(message)
     print("Connection successful to game '" + data["gameName"] + "' in session '" + str(data["gameSession"]) + "' as player named '" + data["playerName"] + "'.")
+    ai._connected(data)
+    game._connected(data)
 socketIO.on('connected', onConnected)
 
 def onState(message):

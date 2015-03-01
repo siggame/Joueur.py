@@ -1,4 +1,5 @@
 # NOTE: this file should not be modified by competitors
+from dotDict import DotDict
 import json
 idKey = "#"
 
@@ -10,6 +11,10 @@ class BaseAI:
 
     def start(self, data):
         self.playerID = data["playerID"]
+
+    def _connected(self, data):
+        self.playerName = data["playerName"]
+        self._serverConstants = DotDict(data["constants"])
 
 
     # intended to be overridden by the AI class
@@ -40,7 +45,7 @@ class BaseAI:
 
         for key, value in kwargs.items():
             if isinstance(value, dict) and hasattr(value, "id") and value["id"] > -1:
-                value = idKey + str(value["id"]) # TODO: get idKey from server
+                value = self._serverConstants.ID_PREFIX + str(value["id"]) # TODO: get idKey from server
             data[key] = value
 
         self.socket.emit("command", json.dumps(data))
