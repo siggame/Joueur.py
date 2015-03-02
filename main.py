@@ -38,8 +38,12 @@ def onConnected(message):
 socketIO.on('connected', onConnected)
 
 def onState(message):
-    game.updateState(json.loads(message))
+    game.setState(json.loads(message))
 socketIO.on('state', onState)
+
+def onDelta(message):
+    game.applyDeltaState(json.loads(message))
+socketIO.on('delta', onDelta)
 
 def onStart(message):
     ai.start(json.loads(message))

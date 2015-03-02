@@ -1,7 +1,6 @@
 # NOTE: this file should not be modified by competitors
-from dotDict import DotDict
+from easydict import EasyDict
 import json
-idKey = "#"
 
 # @class BaseAI: the basic AI functions that are the same between games
 class BaseAI:
@@ -14,7 +13,12 @@ class BaseAI:
 
     def _connected(self, data):
         self.playerName = data["playerName"]
-        self._serverConstants = DotDict(data["constants"])
+        self._serverConstants = EasyDict(data["constants"])
+
+
+    # intended to be overridden by the AI class
+    def gameUpdated(self):
+        pass
 
 
     # intended to be overridden by the AI class
@@ -45,7 +49,7 @@ class BaseAI:
 
         for key, value in kwargs.items():
             if isinstance(value, dict) and hasattr(value, "id") and value["id"] > -1:
-                value = self._serverConstants.ID_PREFIX + str(value["id"]) # TODO: get idKey from server
+                value = self._serverConstants.ID_PREFIX + str(value["id"])
             data[key] = value
 
         self.socket.emit("command", json.dumps(data))
