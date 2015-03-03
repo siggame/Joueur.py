@@ -43,13 +43,23 @@ class BaseAI:
     def over(self):
         self.close()
 
-    #intended to be called by the BaseGameAI class
+    #intended to be called by the GeneratedAI class to perform game commands.
     def sendCommand(self, command, **kwargs):
-        data = {'command': command}
+        data = kwargs
 
-        for key, value in kwargs.items():
-            if isinstance(value, dict) and hasattr(value, "id") and value["id"] > -1:
-                value = self._serverConstants.ID_PREFIX + str(value["id"])
-            data[key] = value
+        self._formatCommandData(data)
+        data['command'] = command
 
         self.socket.emit("command", json.dumps(data))
+
+    # recursively formats command data, transforming game objects to simple id holders.
+    # @param data: dict/list of data for format. DO NOT HAVE CYCLES IN IT (cycles in game objects are fine) 
+    def _formatCommandData(self, data):
+        for key in data:
+            value = data[key]
+            if isinstance(value, dict) and 'id' in value and value['id'] > -1:
+                data[key] =  {'id': value['id']}
+            elif isinstance(value, dict) or isinstance(value, list):
+                self._formatCommandData(value)
+
+
