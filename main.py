@@ -15,62 +15,62 @@ parser.add_argument('--session', action='store', dest='session', help='(optional
 
 args = parser.parse_args()
 
-serverSplit = args.server.split(":")
-server = serverSplit[0]
-port = int(args.port or (len(serverSplit) == 2 and serverSplit[1]) or 3000)
-gameName = args.game
+split = args.server.split(":")
+server = split[0]
+port = int(args.port or (len(split) == 2 and split[1]) or 3000)
+game_name = args.game
 
-gameModule = importlib.import_module(gameName) # should load Game and AI to load based on the game selected in args
+module = importlib.import_module(game_name) # should load Game and AI to load based on the game selected in args
 
-socketIO = SocketIO(server, port, wait_for_connection=False)
+socket = SocketIO(server, port, wait_for_connection=False)
 
-game = gameModule.Game()
-ai = gameModule.AI(game, socketIO)
-game.setAI(ai)
-playerName = args.name or ai.getName()
+game = module.Game()
+ai = module.AI(game, socket)
+game.set_ai(ai)
+player_name = args.name or ai.get_name() or "Python Player"
 
 #TODO: throw these in a dictionary of lambda functions or something, maybe a class?
-def onConnected(message):
+def on_connected(message):
     data = json.loads(message)
-    print("Connection successful to game '" + data["gameName"] + "' in session '" + str(data["gameSession"]) + "' as player named '" + data["playerName"] + "'.")
-    ai._connected(data)
-    game._connected(data)
-socketIO.on('connected', onConnected)
+    print("Connection successful to game '" + data["gameName"] + "' in session '" + str(data["gameSession"]) + "'.")
+    ai.connected(data)
+    game.connected(data)
+socket.on('connected', on_connected)
 
-def onState(message):
-    game.setState(json.loads(message))
-socketIO.on('state', onState)
+def on_state(message):
+    game.set_state(json.loads(message))
+socket.on('state', on_state)
 
-def onDelta(message):
-    game.applyDeltaState(json.loads(message))
-socketIO.on('delta', onDelta)
+def on_delta(message):
+    game.apply_delta_state(json.loads(message))
+socket.on('delta', on_delta)
 
-def onStart(message):
+def on_start(message):
     ai.start(json.loads(message))
-socketIO.on('start', onStart)
+socket.on('start', on_start)
 
-def onAwaiting(message):
+def on_awaiting(message):
     ai.run()
-socketIO.on('awaiting', onAwaiting)
+socket.on('awaiting', on_awaiting)
 
-def onIgnoring(message):
+def on_ignoring(message):
     ai.ignoring()
-socketIO.on('ignoring', onIgnoring)
+socket.on('ignoring', on_ignoring)
 
-def onOver(message):
+def on_over(message):
     ai.over()
-    socketIO.disconnect()
+    socket.disconnect()
     sys.exit()
-socketIO.on('over', onOver)
+socket.on('over', on_over)
 
-def onDisconnect(message):
+def on_disconnect(message):
     print("Disconnected from server...")
     sys.exit()
-socketIO.on('disconnect', onDisconnect)
+socket.on('disconnect', on_disconnect)
 
-socketIO.emit('play', json.dumps({
-    'playerName': args.name or ai.getName() or "Python Player",
-    'gameName': gameName,
+socket.emit('play', json.dumps({
+    'playerName': player_name,
+    'gameName': game_name,
     'gameSession': args.session or "*"
 }))
-socketIO.wait()
+socket.wait()

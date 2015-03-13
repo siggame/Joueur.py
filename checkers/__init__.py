@@ -1,4 +1,4 @@
-from checkers.generatedGame import GeneratedGame
-from checkers.game import Game
-from checkers.generatedAI import GeneratedAI
-from checkers.ai import AI
+import Checkers.generated
+from Checkers.checker import Checker
+from Checkers.game import Game
+from Checkers.ai import AI
