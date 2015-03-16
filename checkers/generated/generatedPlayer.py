@@ -10,4 +10,4 @@ class GeneratedPlayer(GameObject):
 
 
     def end_turn(self):
-        return self._ai.send_command(self, "endTurn")
+        return self._game.send_command(self, "endTurn")

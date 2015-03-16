@@ -4,10 +4,12 @@ from gameObject import GameObject
 
 # @class BaseGame: the basics of any game, basically state management. Do not modify
 class BaseGame:
-    def __init__(self):
+    def __init__(self, session):
         self._got_initial_state = False
         self._ai = None
         self._game_object_classes = []
+
+        self.session = session
 
         self.game_objects = {}
         self.players = []
@@ -17,9 +19,16 @@ class BaseGame:
     def set_ai(self, ai):
         self._ai = ai
 
+    def set_client(self, client):
+        self.client = client
+
+    def send_command(self, *args, **kwargs):
+        return self.client.send_command(*args, **kwargs)
 
     def connected(self, data):
         self._server_constants = EasyDict(data['constants'])
+        self.session = str(data["gameSession"])
+        self.name = str(data['gameName'])
 
 
     def get_game_object(self, id):

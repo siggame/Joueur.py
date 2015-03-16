@@ -11,7 +11,7 @@ class GeneratedChecker(GameObject):
         self.kinged = False
 
     def move(self, x, y):
-        return self._ai.send_command(self, "move",
+        return self._game.send_command(self, "move",
             x=x,
             y=y
         )

@@ -7,6 +7,8 @@ class GeneratedGame(BaseGame):
     def __init__(self, *args, **kwargs):
         BaseGame.__init__(self, *args, **kwargs)
 
+        self.name = "Checkers"
+
         self.board_width = 0
         self.board_height = 0
         self.checker_moved = None
