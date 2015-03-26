@@ -1,6 +1,5 @@
 # NOTE: this file should not be modified by competitors
 from easydict import EasyDict
-from gameObject import GameObject
 import json
 
 # @class BaseAI: the basic AI functions that are the same between games

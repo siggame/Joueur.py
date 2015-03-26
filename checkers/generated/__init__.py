@@ -1,3 +1,0 @@
-from Checkers.generated.generatedChecker import GeneratedChecker
-from Checkers.generated.generatedGame import GeneratedGame
-from Checkers.generated.generatedPlayer import GeneratedPlayer

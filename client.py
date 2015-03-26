@@ -30,6 +30,7 @@ class Client():
         print("Connection successful to game '" + self.game.name + "' in session '" + self.game.session + "'.")
 
     def on_delta(self, message):
+        print("got delta", message)
         self.game.apply_delta_state(json.loads(message))
 
     def on_start(self, message):
@@ -66,4 +67,3 @@ class Client():
         data = serialize(data)
 
         self.socket.emit("command", json.dumps(data))
-

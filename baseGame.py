@@ -1,26 +1,31 @@
 from easydict import EasyDict
 from utilities import camel_case_converter
-from gameObject import GameObject
+from baseGameObject import BaseGameObject
 
 # @class BaseGame: the basics of any game, basically state management. Do not modify
 class BaseGame:
     def __init__(self, session):
-        self._got_initial_state = False
-        self._ai = None
-        self._game_object_classes = []
-
         self.session = session
-
+        self.client = None
         self.game_objects = {}
         self.players = []
         self.current_players = []
 
+        self._got_initial_state = False
+        self._game_object_classes = []
 
-    def set_ai(self, ai):
-        self._ai = ai
+
+    def __contains__(self, key):
+        return hasattr(self, key)
+
+    def __getitem__(self, key):
+        return getattr(self, key)
 
     def set_client(self, client):
         self.client = client
+
+    def set_ai(self, ai):
+        self.ai = ai
 
     def send_command(self, *args, **kwargs):
         return self.client.send_command(*args, **kwargs)
@@ -43,7 +48,7 @@ class BaseGame:
 
 
     def apply_delta_state(self, delta):
-        initial_state = True if not self._got_initial_state else False
+        not_got_initial_state = bool(not self._got_initial_state)
         self._got_initial_state = True
 
         if 'gameObjects' in delta:
@@ -51,11 +56,11 @@ class BaseGame:
 
         self._merge_delta(self, delta)
 
-        if initial_state:
-            self._ai.connect_player()
-            self._ai.game_initialized()
+        if not_got_initial_state:
+            self.ai.connect_player()
+            self.ai.game_initialized()
 
-        self._ai.game_updated()
+        self.ai.game_updated()
 
 
     def _init_game_objects(self, game_objects):
@@ -63,7 +68,8 @@ class BaseGame:
             id = str(id)
             if not id in self.game_objects: # then we need to create it
                 obj['game'] = self
-                obj['ai'] = self._ai
+                obj['ai'] = self.ai
+                obj['client'] = self.client
                 self.game_objects[id] = self._game_object_classes[obj['gameObjectName']](obj)
 
 
@@ -98,7 +104,7 @@ class BaseGame:
                     del state[state_key]
             elif isinstance(d, dict) and len(d) == 1 and 'id' in d: # then this is a shallow reference to a game object
                 value = self.get_game_object(d['id'])
-            elif (isinstance(d, dict) or isinstance(d, list)) and key_in_state and (isinstance(state[state_key], dict) or isinstance(state[state_key], list) or isinstance(state[state_key], GameObject)):
+            elif (isinstance(d, dict) or isinstance(d, list)) and key_in_state and (isinstance(state[state_key], dict) or isinstance(state[state_key], list) or isinstance(state[state_key], BaseGameObject)):
                 value = None
                 self._merge_delta(state[state_key], d)
 
@@ -107,12 +113,3 @@ class BaseGame:
                     state[state_key] = value
                 else:
                     setattr(state, state_key, value)
-
-
-    def __contains__(self, key):
-        return hasattr(self, key)
-
-    def __getitem__(self, key):
-        return getattr(self, key)
-
-
