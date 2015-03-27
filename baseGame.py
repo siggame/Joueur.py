@@ -12,7 +12,7 @@ class BaseGame:
         self.current_players = []
 
         self._got_initial_state = False
-        self._game_object_classes = []
+        self._game_object_classes = {}
 
 
     def __contains__(self, key):
@@ -27,9 +27,6 @@ class BaseGame:
     def set_ai(self, ai):
         self.ai = ai
 
-    def send_command(self, *args, **kwargs):
-        return self.client.send_command(*args, **kwargs)
-
     def connected(self, data):
         self._server_constants = EasyDict(data['constants'])
         self.session = str(data["gameSession"])
@@ -41,14 +38,8 @@ class BaseGame:
         if id in self.game_objects:
             return self.game_objects[id]
 
-
-    def set_state(self, state):
-        print("ERROR: show only get delta now...")
-        pass # should only get deltas now...
-
-
     def apply_delta_state(self, delta):
-        not_got_initial_state = bool(not self._got_initial_state)
+        not_got_initial_state = not self._got_initial_state
         self._got_initial_state = True
 
         if 'gameObjects' in delta:

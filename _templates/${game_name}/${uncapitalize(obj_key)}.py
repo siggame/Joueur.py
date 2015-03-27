@@ -23,7 +23,7 @@ from ${game_name}.${uncapitalize(game_obj_key)} import ${game_obj_key}
 # @class ${obj_key}: ${obj['description']}
 class ${obj_key}(${", ".join(parent_classes)}):
     #${'#'} initializes a ${obj_key} with basic logic as provided by the Creer code generator
-    # @param dict data: initialization data
+    # @param <dict> data: initialization data
     def __init__(self, data):
 % for parent_class in reversed(parent_classes):
         ${parent_class}.__init__(self, data)

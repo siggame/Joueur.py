@@ -13,7 +13,7 @@ class Client():
         self.game.set_client(self)
         self.game.set_ai(self.ai)
 
-        print("connecting to:", self.server, self.port)
+        print("connecting to:", self.server, ":", self.port)
         self.socket = SocketIO(self.server, self.port, wait_for_connection=False)
         self.socket.on('connected', self.on_connected)
         self.socket.on('delta', self.on_delta)
@@ -23,6 +23,27 @@ class Client():
         self.socket.on('over', self.on_over)
         self.socket.on('disconnect', self.on_disconnect)
 
+
+    def ready(self, player_name):
+        self.socket.emit('play', json.dumps({
+            'playerName': player_name or self.ai.get_name() or "Python Player",
+            'gameName': self.game.name,
+            'gameSession': self.game.session or "*"
+        }))
+        self.socket.wait()
+
+    def send_command(self, caller, command, **kwargs):
+        data = kwargs
+
+        data['command'] = command
+        data['caller'] = caller
+        data = serialize(data)
+
+        self.socket.emit("command", json.dumps(data))
+
+
+    # On Command functions #
+
     def on_connected(self, message):
         data = json.loads(message)
         self.ai.connected(data)
@@ -30,7 +51,6 @@ class Client():
         print("Connection successful to game '" + self.game.name + "' in session '" + self.game.session + "'.")
 
     def on_delta(self, message):
-        print("got delta", message)
         self.game.apply_delta_state(json.loads(message))
 
     def on_start(self, message):
@@ -50,20 +70,3 @@ class Client():
     def on_disconnect(self, message):
         print("Disconnected from server...")
         sys.exit()
-
-    def ready(self, player_name):
-        self.socket.emit('play', json.dumps({
-            'playerName': player_name or self.ai.get_name() or "Python Player",
-            'gameName': self.game.name,
-            'gameSession': self.game.session or "*"
-        }))
-        self.socket.wait()
-
-    def send_command(self, caller, command, **kwargs):
-        data = kwargs
-
-        data['command'] = command
-        data['caller'] = caller
-        data = serialize(data)
-
-        self.socket.emit("command", json.dumps(data))
