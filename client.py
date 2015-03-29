@@ -26,6 +26,7 @@ class Client():
 
     def ready(self, player_name):
         self.socket.emit('play', json.dumps({
+            'clientType': 'Python',
             'playerName': player_name or self.ai.get_name() or "Python Player",
             'gameName': self.game.name,
             'gameSession': self.game.session or "*"
