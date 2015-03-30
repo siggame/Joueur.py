@@ -2,7 +2,7 @@ from easydict import EasyDict
 from utilities import camel_case_converter
 from baseGameObject import BaseGameObject
 
-# @class BaseGame: the basics of any game, basically state management. Do not modify
+# @class BaseGame: the basics of any game, basically state management. Competitiors do not modify
 class BaseGame:
     def __init__(self, session):
         self.session = session
@@ -14,10 +14,11 @@ class BaseGame:
         self._got_initial_state = False
         self._game_object_classes = {}
 
-
+    # needed for recursive delta merge
     def __contains__(self, key):
         return hasattr(self, key)
 
+    # needed for recursive delta merge
     def __getitem__(self, key):
         return getattr(self, key)
 
@@ -32,12 +33,13 @@ class BaseGame:
         self.session = str(data["gameSession"])
         self.name = str(data['gameName'])
 
-
+    # @returns BaseGameObject with the given id
     def get_game_object(self, id):
         id = str(id)
         if id in self.game_objects:
             return self.game_objects[id]
 
+    ## applies a delta state (change in state information) to this game
     def apply_delta_state(self, delta):
         not_got_initial_state = not self._got_initial_state
         self._got_initial_state = True
@@ -53,7 +55,7 @@ class BaseGame:
 
         self.ai.game_updated()
 
-
+    ## game objects can be refences in the delta states for cycles, they will all point to the game objects here.
     def _init_game_objects(self, game_objects):
         for id, obj in game_objects.items():
             id = str(id)
@@ -63,7 +65,7 @@ class BaseGame:
                 obj['client'] = self.client
                 self.game_objects[id] = self._game_object_classes[obj['gameObjectName']](obj)
 
-
+    ## recursively merges delta changes to the game.
     def _merge_delta(self, state, delta):
         delta_length = -1
         if self._server_constants.DELTA_ARRAY_LENGTH in delta:

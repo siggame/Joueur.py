@@ -3,6 +3,7 @@ import sys
 import json
 from serializer import serialize
 
+## @class Client: talks to the server recieving game information and sending commands to execute. Clients perform no game logic
 class Client():
     def __init__(self, game, ai, server='localhost', port=3000):
         self.server = server
@@ -23,7 +24,7 @@ class Client():
         self.socket.on('over', self.on_over)
         self.socket.on('disconnect', self.on_disconnect)
 
-
+    ## tells the server this player is ready to play a game
     def ready(self, player_name):
         self.socket.emit('play', json.dumps({
             'clientType': 'Python',
@@ -33,6 +34,7 @@ class Client():
         }))
         self.socket.wait()
 
+    ## sends a command on behalf of a caller game object to the server
     def send_command(self, caller, command, **kwargs):
         data = kwargs
 
