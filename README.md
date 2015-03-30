@@ -3,7 +3,7 @@ A simple python game client for the Cadre framework to connect to [Cerveau](http
 
 ![{Cadre}](http://i.imgur.com/17wwI3f.png)
 
-All inspiration taken from [MS&T's SIG-GAME framework](https://github.com/siggame), and most of the terminology is assuming some familiarity with it as this is a spiritual successor to it.
+All inspiration taken from [MST's SIG-GAME framework](https://github.com/siggame), and most of the terminology is assuming some familiarity with it as this is a spiritual successor to it.
 
 ## Features
 
@@ -30,4 +30,4 @@ That's it. Make sure there is a server at `-s`. It defaults to localhost if not 
 
 ## Other notes
 
-This is a polished proof-of-concept part of the Cadre framework. There are plently of bugs and issues present. The purpose at this time is not to be perfect, but to show that this framework is robust and meets all the needs of MS&T's ACM SIG-GAME.
+This is a polished proof-of-concept part of the Cadre framework. There are plently of bugs and issues present. The purpose at this time is not to be perfect, but to show that this framework is robust and meets all the needs of MST's ACM SIG-GAME.
