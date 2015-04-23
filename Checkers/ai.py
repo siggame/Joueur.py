@@ -46,7 +46,7 @@ class AI(BaseAI):
 
         shuffle(checkers)
 
-        y_direction = 1 if self.player.id == 0 else -1 # the first player (id == 0) moves down, the second (id == 1) moves up, we need to know that so unkinged peices don't try to move in illegal directions
+        y_direction = 1 if self.player.id == "0" else -1 # the first player (id == 0) moves down, the second (id == 1) moves up, we need to know that so unkinged peices don't try to move in illegal directions
 
         for checker in checkers:
             neighbors = [ # valid move directions for all peices moving in the direction of their player's y (y_direction)

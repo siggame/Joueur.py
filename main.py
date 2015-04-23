@@ -24,3 +24,5 @@ ai = module.AI(game)
 client = Client(game, ai, server, port)
 
 client.ready(args.name)
+
+client.run() # should infinite loop to check socket to play the game
