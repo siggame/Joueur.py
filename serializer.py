@@ -13,3 +13,9 @@ def serialize(data):
             serialized[key] = value
 
     return serialized
+
+def is_game_object_reference(d):
+    return (isinstance(d, dict) and len(d) == 1 and 'id' in d)
+
+def is_object(obj):
+    return (isinstance(obj, dict) or isinstance(obj, list)) or isinstance(obj, BaseGameObject)

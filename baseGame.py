@@ -1,6 +1,6 @@
 from easydict import EasyDict
 from utilities import camel_case_converter
-from baseGameObject import BaseGameObject
+from serializer import is_game_object_reference, is_object
 
 # @class BaseGame: the basics of any game, basically state management. Competitiors do not modify
 class BaseGame:
@@ -60,10 +60,11 @@ class BaseGame:
         for id, obj in game_objects.items():
             id = str(id)
             if not id in self.game_objects: # then we need to create it
-                obj['game'] = self
-                obj['ai'] = self.ai
-                obj['client'] = self.client
-                self.game_objects[id] = self._game_object_classes[obj['gameObjectName']](obj)
+                self.game_objects[id] = self._game_object_classes[obj['gameObjectName']]({
+                    "game": self,
+                    "ai": self.ai,
+                    "client": self.client
+                })
 
     ## recursively merges delta changes to the game.
     def _merge_delta(self, state, delta):
@@ -95,11 +96,16 @@ class BaseGame:
                 value = None
                 if key_in_state:
                     del state[state_key]
-            elif isinstance(d, dict) and len(d) == 1 and 'id' in d: # then this is a shallow reference to a game object
+            elif is_game_object_reference(d): # then this is a shallow reference to a game object
                 value = self.get_game_object(d['id'])
-            elif (isinstance(d, dict) or isinstance(d, list)) and key_in_state and (isinstance(state[state_key], dict) or isinstance(state[state_key], list) or isinstance(state[state_key], BaseGameObject)):
+            elif is_object(d) and key_in_state and is_object(state[state_key]):
                 value = None
                 self._merge_delta(state[state_key], d)
+            elif not key_in_state and is_object(d):
+                if isinstance(d, dict):
+                    state[state_key] = [] if d in self._server_constants.DELTA_ARRAY_LENGTH else {}
+                    value = None
+                    self._merge_delta(state[state_key], d)
 
             if value != None:
                 if isinstance(state_key, int) or isinstance(state, dict):
