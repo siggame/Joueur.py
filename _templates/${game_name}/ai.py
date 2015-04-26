@@ -9,21 +9,39 @@ class AI(BaseAI):
         return "${game_name} Python Player"
 
     # this is called once the game starts and your AI knows its player.id and game. You can initialize your AI here.
-    def game_initialized(self):
+    def start(self):
         pass
 
-        # this is called when the game's state updates, so if you are tracking anything you can update it here.
+        # this is called every time the game's state updates, so if you are tracking anything you can update it here.
     def game_updated(self):
         pass
 
-    # this is called every time the server tells you that you can send a command. Once you send a command you must return. This is where most of your game logic will probably go
-    def run(self):
+    # this is called when the game ends, you can clean up your data and dump files here if need be
+    # @param {boolean} won == true means you won, won == false means you lost
+    # @param {string} reason you won or lost
+    def end(self, won, reason):
         pass
 
-    # this is called when the server is no longer taking game commands from you, normally when you turn ends and another players begins.
-    def ignoring(self):
-        pass
 
-    # this is called when the game closes (ends), you can clean up your data and dump files here if need be
-    def close(self):
-        pass
+    #${"##"} Response Functions: functions you must fill out to send data to the game server to actually play the game! #${"##"}
+
+% for function_name, function_parms in ai['functions'].items():
+<%
+    argument_string = ""
+    argument_names = ['self']
+    if 'arguments' in function_parms:
+        for arg_parms in function_parms['arguments']:
+            argument_names.append(camel_case_to_underscore(arg_parms['name']))
+
+    argument_string = ", ".join(argument_names)
+%>    #${'#'} ${function_parms['description']}
+% if 'arguments' in function_parms:
+% for arg_parms in function_parms['arguments']:
+    # @param <${arg_parms['type']}> ${arg_parms['name']}: ${arg_parms['description']}
+% endfor
+% endif
+    # @returns <${function_parms['return']['type']}> ${function_parms['return']['description']}
+    def ${camel_case_to_underscore(function_name)}(${argument_string}):
+        # Put your game logic here for ${function_name}
+
+% endfor

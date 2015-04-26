@@ -1,10 +1,7 @@
 # @class BaseGameObject: the base class that every game object within a game inherit from for Python manipulation that would be redundant via Creer
 class BaseGameObject:
-    def __init__(self, data):
-        self.game = data['game']
-        self.ai = data['ai']
-        self.client = data['client']
-
+    def __init__(self):
+        pass
 
     def __contains__(self, key):
         return hasattr(self, key)

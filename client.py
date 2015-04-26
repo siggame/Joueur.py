@@ -3,117 +3,143 @@ import sys
 import json
 import time
 from serializer import serialize
-
 EOT_CHAR = chr(4)
 
 ## @class Client: talks to the server recieving game information and sending commands to execute. Clients perform no game logic
 class Client():
-    def __init__(self, game, ai, server='localhost', port=3000):
-        self.server = server
-        self.port = port if port > 0 else 3000
-        self.ai = ai
+    def __init__(self, game, ai, server='localhost', port=3000, requested_session="*", print_io=False):
         self.game = game
-        self.buffer_size = 1024
+        self.ai = ai
+        self.server = server
+        self.port = port
+        self._requested_session = requested_session
 
-        self.game.set_client(self)
-        self.game.set_ai(self.ai)
+        self._print_io = print_io
+        self._got_initial_state = False
 
-        print("connecting to:", self.server, ":", self.port)
+        self._isRunning = False
+        self._buffer_size = 1024
+        self._timeout_time = 1.0
+
+        print("connecting to:", self.server + ":" + str(self.port))
+
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) # stupid Windows
         self.socket.connect((self.server, self.port))
 
 
-
-    ## loops to check the socket for incoming data and runs it when it gets.
-    def run(self):
-        self.running = True
-
-        buffer = ""
-        try:
-            while self.running:
-                self.socket.settimeout(1.0) # so the blocking on recv doesn't hang forever and other system interupts (e.g. keyboard) can be handled
-                recieved = ""
-                try:
-                    recieved = self.socket.recv(self.buffer_size).decode("utf-8")
-                except socket.timeout:
-                    pass
-
-                if not recieved:
-                    continue
-
-                split = (buffer + recieved).split(EOT_CHAR)
-                buffer = split.pop() # the last item will either be "" if the last char was an EOT_CHAR, or a partial data we need to buffer anyways
-
-                for json_str in split:
-                    self.recieve_data(json.loads(json_str))
-        except (KeyboardInterrupt, SystemExit):
-            pass
-
-        self.disconnect()
-
     ## disconnects from the server and ends the program
     def disconnect(self):
         print("Disconnected from server...")
-        self.running = False
+        self._isRunning = False
         self.socket.close()
         sys.exit()
 
-    ## called via the client run loop when data is recieved
-    def recieve_data(self, data):
-        my_function = getattr(self, "on_" + data['event'])
-        my_function(data['data'] if 'data' in data else None)
-
-
-    ## sends the server an event via socket
-    def send_event(self, event, data):
-        self.socket.send((json.dumps(
-            {
-                'sentTime': int(time.time()),
-                'event': event,
-                'data': data
-            }) + EOT_CHAR).encode('utf-8')
-        )
-
     ## tells the server this player is ready to play a game
     def ready(self, player_name):
-        self.send_event('play', {
+        self.send('play', {
             'clientType': 'Python',
             'playerName': player_name or self.ai.get_name() or "Python Player",
             'gameName': self.game.name,
-            'gameSession': self.game.session or "*"
+            'gameSession': self._requested_session
         })
 
-    ## sends a command on behalf of a caller game object to the server
-    def send_command(self, caller, command, **kwargs):
-        data = kwargs
+        self.run()
 
-        data['command'] = command
-        data['caller'] = caller
-        data = serialize(data)
+    ## loops to check the socket for incoming data and runs it when it gets.
+    def run(self):
+        self._isRunning = True
 
-        self.send_event("command", data)
+        buffer = ""
+        try:
+            while self._isRunning:
+                self.socket.settimeout(self._timeout_time) # so the blocking on recv doesn't hang forever and other system interupts (e.g. keyboard) can be handled
+                sent = ""
+                try:
+                    sent = self.socket.recv(self._buffer_size).decode("utf-8")
+                except socket.timeout:
+                    pass
+
+                if not sent:
+                    continue
+                elif self._print_io:
+                    print("FROM SERVER <--", sent)
+
+                split = (buffer + sent).split(EOT_CHAR)
+                buffer = split.pop() # the last item will either be "" if the last char was an EOT_CHAR, or a partial data we need to buffer anyways
+
+                for json_str in split:
+                    self._sent_data(json.loads(json_str))
+        except (KeyboardInterrupt, SystemExit):
+            pass
+        self.disconnect()
+
+        ## called via the client run loop when data is sent
+    def _sent_data(self, data):
+        my_function = getattr(self, "_sent_" + data['event'])
+        my_function(data['data'] if 'data' in data else None)
 
 
-    # On Command functions #
+    def _send_raw(self, string):
+        if self._print_io:
+            print("TO SERVER -->", string)
+        self.socket.send(string)
 
-    def on_playing(self, data):
-        self.ai.connected(data)
-        self.game.connected(data)
-        print("Connection successful to game '" + self.game.name + "' in session '" + self.game.session + "'.")
+     ## sends the server an event via socket
+    def send(self, event, data):
+        self._send_raw(
+            (json.dumps({
+                'sentTime': int(time.time()),
+                'event': event,
+                'data': serialize(data)
+            })
+            + EOT_CHAR).encode('utf-8')
+        )
 
-    def on_delta(self, data):
+
+
+    #-- Socket sent data functions --#
+
+    def _sent_lobbied(self, data):
+        self.game.set_constants(data['constants'])
+        print("Connection successful to game '" + data['gameName'] + "' in session '" + str(data['gameSession']) + "'.")
+
+    def _sent_start(self, data):
+        self._player_id = data['playerID']
+
+    def _sent_request(self, data):
+        response = self.ai.respond_to(data['request'], data['args'])
+
+        if response == None:
+            print("no response return to: '" + data['request'] + "', erroring out")
+            self.disconnect()
+        else:
+            self.send("response", {
+                'response': data['request'],
+                'data': response
+            })
+
+    def _sent_delta(self, data):
         self.game.apply_delta_state(data)
 
-    def on_start(self, data):
-        self.ai.start(data)
+        if not self._got_initial_state:
+            self._got_initial_state = True
 
-    def on_awaiting(self, data):
-        self.ai.run()
+            self.ai.set_player(self.game.get_game_object(self._player_id))
+            self.ai.start()
 
-    def on_ignoring(self, data):
-        self.ai.ignoring()
+        self.ai.game_updated()
 
-    def on_over(self, data):
-        self.ai.over()
+    def _sent_invalid(self, data):
+        self.ai.invalid(data)
+        print("recieved invalid data", data)
+        self.disconnect()
+
+    def _sent_over(self, data):
+        won = self.ai.player.won
+        reason = self.ai.player.reason_won if self.ai.player.won else self.ai.player.reason_lost
+
+        print("Game is over.", "I Won!" if won else "I Lost :(", "because: " + reason)
+
+        self.ai.end(won, reason)
         self.disconnect()

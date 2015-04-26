@@ -4,14 +4,7 @@ from serializer import is_game_object_reference, is_object
 
 # @class BaseGame: the basics of any game, basically state management. Competitiors do not modify
 class BaseGame:
-    def __init__(self, session):
-        self.session = session
-        self.client = None
-        self.game_objects = {}
-        self.players = []
-        self.current_players = []
-
-        self._got_initial_state = False
+    def __init__(self):
         self._game_object_classes = {}
 
     # needed for recursive delta merge
@@ -22,49 +15,26 @@ class BaseGame:
     def __getitem__(self, key):
         return getattr(self, key)
 
-    def set_client(self, client):
-        self.client = client
-
-    def set_ai(self, ai):
-        self.ai = ai
-
-    def connected(self, data):
-        self._server_constants = EasyDict(data['constants'])
-        self.session = str(data["gameSession"])
-        self.name = str(data['gameName'])
+    def set_constants(self, constants):
+        self._server_constants = EasyDict(constants)
 
     # @returns BaseGameObject with the given id
     def get_game_object(self, id):
-        id = str(id)
         if id in self.game_objects:
             return self.game_objects[id]
 
     ## applies a delta state (change in state information) to this game
     def apply_delta_state(self, delta):
-        not_got_initial_state = not self._got_initial_state
-        self._got_initial_state = True
-
         if 'gameObjects' in delta:
             self._init_game_objects(delta['gameObjects'])
 
         self._merge_delta(self, delta)
 
-        if not_got_initial_state:
-            self.ai.connect_player()
-            self.ai.game_initialized()
-
-        self.ai.game_updated()
-
     ## game objects can be refences in the delta states for cycles, they will all point to the game objects here.
     def _init_game_objects(self, game_objects):
         for id, obj in game_objects.items():
-            id = str(id)
             if not id in self.game_objects: # then we need to create it
-                self.game_objects[id] = self._game_object_classes[obj['gameObjectName']]({
-                    "game": self,
-                    "ai": self.ai,
-                    "client": self.client
-                })
+                self.game_objects[id] = self._game_object_classes[obj['gameObjectName']]()
 
     ## recursively merges delta changes to the game.
     def _merge_delta(self, state, delta):

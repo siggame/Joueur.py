@@ -1,6 +1,7 @@
 # ${header}
 # This is a simple class to represent the ${obj_key} object in the game. You can extend it by adding utility functions here in this file.
 <% parent_classes = obj['parentClasses'] %>
+from utilities import make_command
 % if len(parent_classes) > 0:
 % for parent_class in parent_classes:
 from ${game_name}.${uncapitalize(parent_class)} import ${parent_class}
@@ -22,38 +23,40 @@ from ${game_name}.${uncapitalize(game_obj_key)} import ${game_obj_key}
 
 # @class ${obj_key}: ${obj['description']}
 class ${obj_key}(${", ".join(parent_classes)}):
-    #${'#'} initializes a ${obj_key} with basic logic as provided by the Creer code generator
-    # @param <dict> data: initialization data
-    def __init__(self, data):
+    # initializes a ${obj_key} with basic logic as provided by the Creer code generator
+    def __init__(self):
 % for parent_class in reversed(parent_classes):
-        ${parent_class}.__init__(self, data)
+        ${parent_class}.__init__(self)
 % endfor
+
+
+        # The following values should get overridden when delta states are merged, but we set them here as a reference for you to see what variables this class has.
 
 % for attr_name, attr_parms in obj['attributes'].items():
 <%
     attr_default = attr_parms["default"] if 'default' in attr_parms else None
     attr_type = attr_parms["type"]
-    attr_cast = ""
 
-    if attr_type == "string":
-        attr_default = '"' + (attr_default if attr_default != None else '') + '"'
-        attr_cast = "str"
-    elif attr_type == "array":
-        attr_default = '[]'
-    elif attr_type == "int":
-        attr_default = attr_default or 0
-        attr_cast = "int"
-    elif attr_type == "float":
-        attr_default = attr_default or 0
-        attr_cast = "float"
-    elif attr_type == "dictionary":
-        attr_default = '{}'
-    elif attr_type == "boolean":
-        attr_default = 'False'
-        attr_cast = "bool"
+    if attr_default == None:
+        if attr_type == "string":
+            attr_default = '""'
+        elif attr_type == "array":
+            attr_default = '[]'
+        elif attr_type == "int":
+            attr_default = attr_default or 0
+        elif attr_type == "float":
+            attr_default = attr_default or 0
+        elif attr_type == "dictionary":
+            attr_default = '{}'
+        elif attr_type == "boolean":
+            attr_default = 'False'
+        else:
+            attr_default = "None"
     else:
-        attr_default = "None"
-%>        self.${camel_case_to_underscore(attr_name)} = ${attr_cast}(data['${attr_name}'] if '${attr_name}' in data else ${attr_default})
+        if attr_type == "string":
+            attr_default = '"' + attr_default + '"'
+%>        # ${attr_parms['description']}
+        self.${camel_case_to_underscore(attr_name)} = ${attr_default}
 % endfor
 
 % if obj_key == "Game":
@@ -88,5 +91,5 @@ class ${obj_key}(${", ".join(parent_classes)}):
 % endfor
 % endif
     def ${camel_case_to_underscore(function_name)}(self${argument_string}):
-        return self.client.send_command(self, '${function_name}'${kwargs_string})
+        return make_command(self, '${function_name}'${kwargs_string})
 % endfor

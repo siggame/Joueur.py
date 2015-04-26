@@ -1,5 +1,6 @@
 # NOTE: this file should not be modified by competitors
 from easydict import EasyDict
+from utilities import camel_case_converter
 import json
 
 # @class BaseAI: the basic AI functions that are the same between games
@@ -7,42 +8,30 @@ class BaseAI:
     def __init__(self, game):
         self.game = game
 
-    def start(self, data):
-        self.player_id = data["playerID"]
-        self.player_name = data["playerName"]
-
-    def connected(self, data):
-        self._server_constants = EasyDict(data["constants"])
-
-
-    def connect_player(self):
-        self.player = self.game.get_game_object(self.player_id)
-
+    def set_player(self, player):
+        self.player = player
 
     # intended to be overridden by the AI class
-    def game_initialized(self):
+    def start(self):
         pass
-
 
     # intended to be overridden by the AI class
     def game_updated(self):
         pass
 
+    # intended to be overridden by the AI class
+    def respond_to(self, request, arguments):
+        callback = getattr(self, camel_case_converter(request))
 
-    #intended to be overridden by the AI class
-    def run(self):
+        if callback != None:
+            return callback(*arguments)
+        else:
+            raise Exception("AI has no function '" + request + "' to respond with")
+
+    # called when we (the client) send some invalid response to the server. It should be echoed back here
+    def invalid(self, data):
         pass
 
-
-    #intended to be overridden by the AI class
-    def ignoring(self):
+    # intended to be overridden by the AI class
+    def end(self):
         pass
-
-
-    #intended to be overridden by the AI class
-    def close(self):
-        pass
-
-
-    def over(self):
-        self.close()
