@@ -7,13 +7,13 @@ EOT_CHAR = chr(4)
 
 ## @class Client: talks to the server recieving game information and sending commands to execute. Clients perform no game logic
 class Client():
-    def __init__(self, game, ai, server='localhost', port=3000, requested_session="*", print_io=False):
+    def __init__(self, game, ai, server='localhost', port=3000, requested_session="*", player_name=None, print_io=False):
         self.game = game
         self.ai = ai
         self.server = server
         self.port = port
         self._requested_session = requested_session
-
+        self._player_name = player_name
         self._print_io = print_io
         self._got_initial_state = False
 
@@ -36,10 +36,10 @@ class Client():
         sys.exit()
 
     ## tells the server this player is ready to play a game
-    def ready(self, player_name):
+    def ready(self):
         self.send('play', {
             'clientType': 'Python',
-            'playerName': player_name or self.ai.get_name() or "Python Player",
+            'playerName': self._player_name or self.ai.get_name() or "Python Player",
             'gameName': self.game.name,
             'gameSession': self._requested_session
         })
