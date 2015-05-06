@@ -4,7 +4,7 @@ from serializer import is_game_object_reference, is_object
 
 # @class BaseGame: the basics of any game, basically state management. Competitiors do not modify
 class BaseGame:
-    def __init__(self):
+    def __init__(self, data=None):
         self._game_object_classes = {}
 
     # needed for recursive delta merge
@@ -14,6 +14,9 @@ class BaseGame:
     # needed for recursive delta merge
     def __getitem__(self, key):
         return getattr(self, key)
+
+    def set_client(self, client):
+        self._client = client
 
     def set_constants(self, constants):
         self._server_constants = EasyDict(constants)
@@ -34,7 +37,9 @@ class BaseGame:
     def _init_game_objects(self, game_objects):
         for id, obj in game_objects.items():
             if not id in self.game_objects: # then we need to create it
-                self.game_objects[id] = self._game_object_classes[obj['gameObjectName']]()
+                self.game_objects[id] = self._game_object_classes[obj['gameObjectName']]({
+                    'client': self._client
+                })
 
     ## recursively merges delta changes to the game.
     def _merge_delta(self, state, delta):

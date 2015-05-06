@@ -1,0 +1,63 @@
+<%
+if not 'py' in shared:
+    shared['py'] = {}
+
+    def py_default(base_type, default=None):
+        if default == None:
+            if base_type == "string":
+                return '""'
+            elif base_type == "array":
+                return '[]'
+            elif base_type == "dictionary":
+                return '{}'
+            elif base_type == "int" or base_type == "float":
+                return '0'
+            elif base_type == "boolean":
+                return 'False'
+            else:
+                return 'None'
+        else:
+            if base_type == "string":
+                return '"' + default + '"'
+            elif base_type == "boolean":
+                return str(default).capitalize()
+    shared['py']['default'] = py_default
+
+    def py_type(base_type):
+        if base_type == "string":
+            return "str"
+        elif base_type == "array":
+            return 'list'
+        elif base_type == "dictionary":
+            return "dict"
+        elif base_type == "boolean":
+            return "bool"
+        elif base_type == "null":
+            return "None"
+        else:
+            return base_type
+    shared['py']['type'] = py_type
+
+
+    def py_cast(base_type):
+        if base_type == "string":
+            return "str"
+        elif base_type == "int":
+            return "int"
+        elif base_type == "float":
+            return "float"
+        elif base_type == "boolean":
+            return "bool"
+        else:
+            return ""
+    shared['py']['cast'] = py_cast
+
+
+    def py_kwargs(argument_names):
+        k = [""]
+        for name in argument_names:
+            k.append(name + "=" + name)
+        return ", ".join(k)
+    shared['py']['kwargs'] = py_kwargs
+
+%>
