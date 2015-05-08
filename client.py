@@ -74,6 +74,9 @@ class Client():
 
     ## loops to check the socket for incoming data and ends once some events get found
     def wait_for_events(self):
+        if len(self._events_stack) > 0:
+            return # as we already have events to handle, no need to wait for more
+
         try:
             while True:
                 sent = ""
