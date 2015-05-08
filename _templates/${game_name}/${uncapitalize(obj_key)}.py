@@ -18,7 +18,9 @@ else:
 % for game_obj_key, game_obj in game_objs.items():
 from ${game_name}.${uncapitalize(game_obj_key)} import ${game_obj_key}
 % endfor
+
 % endif
+${merge("# ", "imports", "# you can add addtional require(s) here")}
 
 class ${obj_key}(${", ".join(parent_classes)}):
     """ The class representing the ${obj_key} in the ${game_name} game.
@@ -53,8 +55,8 @@ class ${obj_key}(${", ".join(parent_classes)}):
 % endfor
         }
 % endif
-
 % for function_name, function_parms in obj['functions'].items():
+
 
     def ${camel_case_to_underscore(function_name)}(self${", ".join([""] + function_parms['argument_names'])}):
         """ ${function_parms['description']}
@@ -73,3 +75,6 @@ class ${obj_key}(${", ".join(parent_classes)}):
         """
         return self._run_on_server('${function_name}'${shared['py']['kwargs'](function_parms['argument_names'])})
 % endfor
+
+
+${merge("# ", "functions", "# if you want to add any client side logic (such as state checking functions) this is where you can add them")}
