@@ -1,4 +1,4 @@
-from easydict import EasyDict
+from base_game_object import BaseGameObject
 from utilities import camel_case_converter
 from serializer import is_game_object_reference, is_object
 
@@ -15,11 +15,10 @@ class BaseGame:
     def __getitem__(self, key):
         return getattr(self, key)
 
-    def set_client(self, client):
-        self._client = client
-
     def set_constants(self, constants):
-        self._server_constants = EasyDict(constants)
+        self._server_constants = constants
+        self._DELTA_REMOVED = constants['DELTA_REMOVED']
+        self._DELTA_LIST_LENGTH = constants['DELTA_ARRAY_LENGTH']
 
     # @returns BaseGameObject with the given id
     def get_game_object(self, id):
@@ -37,16 +36,14 @@ class BaseGame:
     def _init_game_objects(self, game_objects):
         for id, obj in game_objects.items():
             if not id in self.game_objects: # then we need to create it
-                self.game_objects[id] = self._game_object_classes[obj['gameObjectName']]({
-                    'client': self._client
-                })
+                self.game_objects[id] = self._game_object_classes[obj['gameObjectName']]()
 
     ## recursively merges delta changes to the game.
     def _merge_delta(self, state, delta):
         delta_length = -1
-        if self._server_constants.DELTA_ARRAY_LENGTH in delta:
-            delta_length = delta[self._server_constants.DELTA_ARRAY_LENGTH]
-            del delta[self._server_constants.DELTA_ARRAY_LENGTH] # we don't want to copy this key/value over to the state, it was just to signify it is an array
+        if self._DELTA_LIST_LENGTH in delta:
+            delta_length = delta[self._DELTA_LIST_LENGTH]
+            del delta[self._DELTA_LIST_LENGTH] # we don't want to copy this key/value over to the state, it was just to signify it is an array
 
         if delta_length > -1: # then this part in the state is an array
             while len(state) > delta_length: # remove elements off the array to make it's size correct.
@@ -63,11 +60,12 @@ class BaseGame:
                 state_key = int(key)
                 key_in_state = state_key < len(state)
             else:
-                state_key = camel_case_converter(state_key)
+                if isinstance(state, BaseGame) or isinstance(state, BaseGameObject):
+                    state_key = "_" + camel_case_converter(state_key)
                 key_in_state = state_key in state
 
             value = d
-            if d == self._server_constants.DELTA_REMOVED:
+            if d == self._DELTA_REMOVED:
                 value = None
                 if key_in_state:
                     del state[state_key]
@@ -78,7 +76,7 @@ class BaseGame:
                 self._merge_delta(state[state_key], d)
             elif not key_in_state and is_object(d):
                 if isinstance(d, dict):
-                    state[state_key] = [] if d in self._server_constants.DELTA_ARRAY_LENGTH else {}
+                    state[state_key] = [] if d in self._DELTA_LIST_LENGTH else {}
                     value = None
                     self._merge_delta(state[state_key], d)
 

@@ -19,7 +19,7 @@ class BaseAI:
         pass
 
     # intended to be overridden by the AI class
-    def do_order(self, order, arguments):
+    def _do_order(self, order, arguments):
         callback = getattr(self, camel_case_converter(order))
 
         if callback != None:

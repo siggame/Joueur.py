@@ -3,24 +3,24 @@
 <%include file="functions.noCreer" /><% parent_classes = obj['parentClasses'] %>
 % if len(parent_classes) > 0:
 % for parent_class in parent_classes:
-from ${game_name}.${uncapitalize(parent_class)} import ${parent_class}
+from games.${underscore(game_name)}.${underscore(parent_class)} import ${parent_class}
 % endfor
 % else:
 <% if obj_key == "Game":
     parent_classes = [ 'BaseGame' ]
 else:
     parent_classes = [ 'BaseGameObject' ]
-%>from ${uncapitalize(parent_classes[0])} import ${parent_classes[0]}
+%>from ${underscore(parent_classes[0])} import ${parent_classes[0]}
 % endif
 
 % if obj_key == "Game":
 # import game objects
-% for game_obj_key, game_obj in game_objs.items():
-from ${game_name}.${uncapitalize(game_obj_key)} import ${game_obj_key}
+% for game_obj_key in sort_dict_keys(game_objs):
+from games.${underscore(game_name)}.${underscore(game_obj_key)} import ${game_obj_key}
 % endfor
 
 % endif
-${merge("# ", "imports", "# you can add addtional require(s) here")}
+${merge("# ", "imports", "# you can add addtional import(s) here")}
 
 class ${obj_key}(${", ".join(parent_classes)}):
     """ The class representing the ${obj_key} in the ${game_name} game.
@@ -28,21 +28,17 @@ class ${obj_key}(${", ".join(parent_classes)}):
     ${obj['description']}
     """
 
-    def __init__(self, data):
+    def __init__(self):
         """ initializes a ${obj_key} with basic logic as provided by the Creer code generator
-
-        Args:
-            data (dict): initialization data
         """
 % for parent_class in reversed(parent_classes):
-        ${parent_class}.__init__(self, data)
+        ${parent_class}.__init__(self)
 % endfor
 
-        # The following values should get overridden when delta states are merged, but we set them here as a reference for you to see what variables this class has.
-
-% for attr_name, attr_parms in obj['attributes'].items():
-        # ${attr_parms['description']}
-        self.${camel_case_to_underscore(attr_name)} = ${shared['py']['default'](attr_parms['type'], attr_parms['default'])}
+        # private attributes to hold the properties so they appear read only
+% for attr_name in obj['attribute_names']:
+<% attr_parms = obj['attributes'][attr_name]
+%>        self._${underscore(attr_name)} = ${shared['py']['default'](attr_parms['type'], attr_parms['default'])}
 % endfor
 
 % if obj_key == "Game":
@@ -55,22 +51,33 @@ class ${obj_key}(${", ".join(parent_classes)}):
 % endfor
         }
 % endif
-% for function_name, function_parms in obj['functions'].items():
 
+% for attr_name in obj['attribute_names']:
+<% attr_parms = obj['attributes'][attr_name] %>
+    @property
+    def ${underscore(attr_name)}(self):
+        """${attr_parms['description']}
+        """
+        return self._${underscore(attr_name)}
 
-    def ${camel_case_to_underscore(function_name)}(self${", ".join([""] + function_parms['argument_names'])}):
+% endfor
+% for function_name in obj['function_names']:
+<% function_parms = obj['functions'][function_name]
+%>
+
+    def ${underscore(function_name)}(self${", ".join([""] + function_parms['argument_names'])}):
         """ ${function_parms['description']}
 % if len(function_parms['arguments']) > 0:
 
         Args:
 % for arg_parms in function_parms['arguments']:
-            ${camel_case_to_underscore(arg_parms['name'])} (${shared['py']['type'](arg_parms['type'])}): ${arg_parms['description']}
+            ${underscore(arg_parms['name'])} (${shared['py']['type'](arg_parms['type'])}): ${arg_parms['description']}
 % endfor
 % endif
 % if function_parms['returns']:
 
         Returns:
-            ${shared['py']['type'](function_parms['returns']['type'])}: ${shared['py']['type'](function_parms['returns']['description'])}
+            ${shared['py']['type'](function_parms['returns']['type'])}: ${function_parms['returns']['description']}
 % endif
         """
         return self._run_on_server('${function_name}'${shared['py']['kwargs'](function_parms['argument_names'])})

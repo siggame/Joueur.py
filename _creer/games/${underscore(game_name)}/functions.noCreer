@@ -2,11 +2,12 @@
 if not 'py' in shared:
     shared['py'] = {}
 
-    def py_default(base_type, default=None):
+    def py_default(type_obj, default=None):
+        base_type = type_obj['name']
         if default == None:
             if base_type == "string":
                 return '""'
-            elif base_type == "array":
+            elif base_type == "list":
                 return '[]'
             elif base_type == "dictionary":
                 return '{}'
@@ -23,10 +24,11 @@ if not 'py' in shared:
                 return str(default).capitalize()
     shared['py']['default'] = py_default
 
-    def py_type(base_type):
+    def py_type(type_obj):
+        base_type = type_obj['name']
         if base_type == "string":
             return "str"
-        elif base_type == "array":
+        elif base_type == "list":
             return 'list'
         elif base_type == "dictionary":
             return "dict"
@@ -39,7 +41,8 @@ if not 'py' in shared:
     shared['py']['type'] = py_type
 
 
-    def py_cast(base_type):
+    def py_cast(type_obj):
+        base_type = type_obj['name']
         if base_type == "string":
             return "str"
         elif base_type == "int":

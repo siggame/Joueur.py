@@ -1,7 +1,7 @@
 # ${header}
 # This is where you build your AI for the ${game_name} game.
 <%include file="functions.noCreer" />
-from baseAI import BaseAI
+from base_ai import BaseAI
 
 ${merge("# ", "imports", "# you can add addtional import(s) here")}
 
@@ -42,22 +42,23 @@ ${merge("        # ", "game-updated", "        # replace with your game updated 
             reason (str): the reason why you won or lost
         """
 ${merge("        # ", "end", "        # replace with your end logic")}
-% for function_name, function_parms in ai['functions'].items():
+% for function_name in ai['function_names']:
+<% function_parms = ai['functions'][function_name]
+%>
 
-
-    def ${camel_case_to_underscore(function_name)}(self${", ".join([""] + function_parms['argument_names'])}):
+    def ${underscore(function_name)}(self${", ".join([""] + function_parms['argument_names'])}):
         """ ${function_parms['description']}
 % if len(function_parms['arguments']) > 0:
 
         Args:
 % for arg_parms in function_parms['arguments']:
-            ${camel_case_to_underscore(arg_parms['name'])} (${shared['py']['type'](arg_parms['type'])}): ${arg_parms['description']}
+            ${underscore(arg_parms['name'])} (${shared['py']['type'](arg_parms['type'])}): ${arg_parms['description']}
 % endfor
 % endif
 % if function_parms['returns']:
 
         Returns:
-            ${shared['py']['type'](function_parms['returns']['type'])}: ${shared['py']['type'](function_parms['returns']['description'])}
+            ${shared['py']['type'](function_parms['returns']['type'])}: ${function_parms['returns']['description']}
 % endif
         """
 ${merge("        # ", function_name,
