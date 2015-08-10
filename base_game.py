@@ -1,10 +1,12 @@
+from delta_mergeable import DeltaMergeable
 from base_game_object import BaseGameObject
 from utilities import camel_case_converter
 from serializer import is_game_object_reference, is_object
 
 # @class BaseGame: the basics of any game, basically state management. Competitiors do not modify
-class BaseGame:
-    def __init__(self, data=None):
+class BaseGame(DeltaMergeable):
+    def __init__(self):
+        DeltaMergeable.__init__(self)
         self._game_object_classes = {}
 
     # needed for recursive delta merge
@@ -60,7 +62,7 @@ class BaseGame:
                 state_key = int(key)
                 key_in_state = state_key < len(state)
             else:
-                if isinstance(state, BaseGame) or isinstance(state, BaseGameObject):
+                if isinstance(state, DeltaMergeable):
                     state_key = "_" + camel_case_converter(state_key)
                 key_in_state = state_key in state
 

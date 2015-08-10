@@ -1,15 +1,6 @@
-import client
+from delta_mergeable import DeltaMergeable
 
 # @class BaseGameObject: the base class that every game object within a game inherit from for Python manipulation that would be redundant via Creer
-class BaseGameObject:
+class BaseGameObject(DeltaMergeable):
     def __init__(self):
-        pass
-
-    def _run_on_server(self, function_name, **kwargs):
-        return client.run_on_server(self, function_name, kwargs)
-
-    def __contains__(self, key):
-        return hasattr(self, key)
-
-    def __getitem__(self, key):
-        return getattr(self, key)
+        DeltaMergeable.__init__(self)
