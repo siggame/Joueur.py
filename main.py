@@ -1,6 +1,7 @@
 import argparse
 import importlib
 import client
+from game_manager import GameManager
 from utilities import camel_case_converter
 
 parser = argparse.ArgumentParser(description='Runs the python client with options. Must provide a game name to play on the server.')
@@ -21,7 +22,9 @@ module = importlib.import_module("games." + camel_case_converter(args.game)) # s
 
 game = module.Game()
 ai = module.AI(game)
-client.setup(game, ai, args.server, args.port, print_io=args.print_io)
+manager = GameManager(game)
+
+client.setup(game, ai, manager, args.server, args.port, print_io=args.print_io)
 
 client.send("play", {
     'gameName': game.name,
@@ -34,7 +37,7 @@ lobby_data = client.wait_for_event("lobbied")
 
 print("In Lobby for game '" + lobby_data['gameName'] + "' in session '" + lobby_data['gameSession'] + "'")
 
-game.set_constants(lobby_data['constants'])
+manager.set_constants(lobby_data['constants'])
 
 start_data = client.wait_for_event("start")
 

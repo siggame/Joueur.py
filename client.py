@@ -3,6 +3,7 @@ import sys
 import json
 import time
 from serializer import serialize, deserialize 
+from game_manager import GameManager
 EOT_CHAR = chr(4)
 
 class _Client:
@@ -11,11 +12,12 @@ class _Client:
 _client = _Client()
 
 ## Client: A singlton module that talks to the server receiving game information and sending commands to execute. Clients perform no game logic
-def setup(game, ai, server='localhost', port=3000, print_io=False):
+def setup(game, ai, manager, server='localhost', port=3000, print_io=False):
     _client.game = game
     _client.ai = ai
     _client.server = server
     _client.port = port
+    _client.manager = manager
 
     _client._print_io = print_io
     _client._received_buffer = ""
@@ -114,7 +116,7 @@ def _auto_handle(event, data=None):
     return my_function(data)
 
 def _auto_handle_delta(data):
-    _client.game.apply_delta_state(data)
+    _client.manager.apply_delta_state(data)
 
     if _client.ai.player: # then the AI is ready for updates
         _client.ai.game_updated()
