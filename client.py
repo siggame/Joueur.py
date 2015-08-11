@@ -1,8 +1,10 @@
-import socket
+import socket, errno
 import sys
 import json
 import time
-from serializer import serialize, deserialize 
+from serializer import serialize, deserialize
+from error_code import ErrorCode
+from error_code import handle_error as handle_error_exit
 from game_manager import GameManager
 EOT_CHAR = chr(4)
 
@@ -27,10 +29,13 @@ def setup(game, ai, manager, server='localhost', port=3000, print_io=False):
 
     print("connecting to:", _client.server + ":" + str(_client.port))
 
-    _client.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    _client.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) # stupid Windows
-    _client.socket.settimeout(_client._timeout_time) # so the blocking on recv doesn't hang forever and other system interupts (e.g. keyboard) can be handled
-    _client.socket.connect((_client.server, _client.port))
+    try:
+        _client.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        _client.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) # stupid Windows
+        _client.socket.settimeout(_client._timeout_time) # so the blocking on recv doesn't hang forever and other system interupts (e.g. keyboard) can be handled
+        _client.socket.connect((_client.server, _client.port))
+    except socket.error as e:
+        handle_error_exit(ErrorCode.could_not_connect, e, "Could not connect to " + _client.server + ":" + _client.port)
 
 
 def _send_raw(string):
@@ -49,13 +54,14 @@ def send(event, data):
         + EOT_CHAR).encode('utf-8')
     )
 
-## disconnects from the server and ends the program
-def disconnect():
-    print("Disconnected from server...")
+def handle_error(*arg, **kwargs):
+    disconnect()
+    handle_error_exit(*args, **kwargs)
+
+def disconnect(exit_code=None):
     _client.socket.close()
-    sys.exit()
-
-
+    if exit_code != None:
+        sys.exit(exit_code)
 
 def run_on_server(caller, function_name, args=None):
     send("run", {
@@ -85,11 +91,13 @@ def wait_for_events():
 
     try:
         while True:
-            sent = ""
+            sent = None
             try:
                 sent = _client.socket.recv(_client._buffer_size).decode("utf-8")
             except socket.timeout:
-                pass
+                pass # timed out so keyboard/system interupts can be handled, hence the while true loop above
+            except socket.error as e:
+                handle_error(ErrorCode.cannot_read_socket, e, "Error reading socket while waiting for events")
 
             if not sent:
                 continue
@@ -100,31 +108,40 @@ def wait_for_events():
             _client._received_buffer = split.pop() # the last item will either be "" if the last char was an EOT_CHAR, or a partial data we need to buffer anyways
 
             for json_str in reversed(split):
-                _client._events_stack.append(json.loads(json_str))
+                try:
+                    parsed = json.loads(json_str)
+                except ValueError as e:
+                    handle_error(ErrorCode.malformed_json, e, "Could not parse json '" + json_str + "'")
+
+                _client._events_stack.append(parsed)
 
             if len(_client._events_stack) > 0:
                 return
     except (KeyboardInterrupt, SystemExit):
-        disconnect()
-
-
+        disconnect(1)
 
     ## called via the client run loop when data is sent
 def _auto_handle(event, data=None):
     g = globals() # the current module, e.g. the Client module that acts as a singleton
-    my_function = g["_auto_handle_" + event]
-    return my_function(data)
+    auto_handle_function = g["_auto_handle_" + event]
+
+    if auto_handle_function:
+        return auto_handle_function(data)
+    else:
+        handle_error(ErrorCode.unknown_event_from_server, message=("Could not auto handle event '" + event + "'."))
 
 def _auto_handle_delta(data):
-    _client.manager.apply_delta_state(data)
+    try:
+        _client.manager.apply_delta_state(data)
+    except:
+        handle_error(ErrorCode.delta_merge_failure, sys.exc_info()[0], "Error merging delta")
 
     if _client.ai.player: # then the AI is ready for updates
         _client.ai.game_updated()
 
 def _auto_handle_invalid(data):
     _client.ai.invalid(data)
-    print("received invalid data", data)
-    disconnect()
+    handle_error(ErrorCode.invalid_event, message="Got invalid data: '" + data + "'")
 
 def _auto_handle_over(data):
     won = _client.ai.player.won
@@ -133,4 +150,5 @@ def _auto_handle_over(data):
     print("Game is over.", "I Won!" if won else "I Lost :(", "because: " + reason)
 
     _client.ai.end(won, reason)
-    disconnect()
+    disconnect(0)
+

@@ -1,6 +1,7 @@
 import argparse
 import importlib
 import client
+from error_code import ErrorCode, handle_error
 from game_manager import GameManager
 from utilities import camel_case_converter
 
@@ -18,13 +19,17 @@ split_server = args.server.split(":")
 args.server = split_server[0]
 args.port = int((len(split_server) == 2 and split[1])) or args.port
 
-module = importlib.import_module("games." + camel_case_converter(args.game)) # should load Game and AI to load based on the game selected in args
+module_str = "games." + camel_case_converter(args.game)
+try:
+    module = importlib.import_module(module_str) # should load Game and AI to load based on the game selected in args
+except ImportError as e:
+    handle_error(ErrorCode.game_not_found, e, "Could not find game module: '" + module_str + "'")
 
 game = module.Game()
 ai = module.AI(game)
 manager = GameManager(game)
 
-client.setup(game, ai, manager, args.server, args.port, print_io=args.print_io)
+client.setup(game, ai, manager, args.server, int(args.port), print_io=args.print_io)
 
 client.send("play", {
     'gameName': game.name,

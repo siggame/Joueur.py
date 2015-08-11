@@ -1,5 +1,8 @@
 # NOTE: this file should not be modified by competitors
 from utilities import camel_case_converter
+from error_code import ErrorCode
+import sys
+import client
 
 # @class BaseAI: the basic AI functions that are the same between games
 class BaseAI:
@@ -23,9 +26,12 @@ class BaseAI:
         callback = getattr(self, camel_case_converter(order))
 
         if callback != None:
-            return callback(*arguments)
+            try:
+                return callback(*arguments)
+            except:
+                client.handle_error(ErrorCode.ai_errored, sys.exc_info()[0], "AI caused exception while trying to execute order '" + order + "'.")
         else:
-            raise Exception("AI has no function '" + order + "' to respond with")
+            client.handle_error(ErrorCode.reflection_failed, message="AI has no function '" + order + "' to respond with")
 
     # called when we (the client) send some invalid response to the server. It should be echoed back here
     def invalid(self, data):
