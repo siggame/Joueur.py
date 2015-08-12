@@ -54,9 +54,9 @@ def send(event, data):
         + EOT_CHAR).encode('utf-8')
     )
 
-def handle_error(*arg, **kwargs):
+def handle_error(code, e=None, message=None):
     disconnect()
-    handle_error_exit(*args, **kwargs)
+    handle_error_exit(code, e, message)
 
 def disconnect(exit_code=None):
     _client.socket.close()

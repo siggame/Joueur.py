@@ -18,6 +18,9 @@ class ErrorCode(Enum):
     ai_errored = 42
 
 def handle_error(code, e=None, message=None):
+    if isinstance(e, SystemExit): # we accidentally caught a system exit exception, just re-throw it essentially
+        sys.exit(e.code)
+
     sys.stderr.write("Error: " + code.name + "\n---\n")
 
     if message:
