@@ -73,13 +73,16 @@ def run_on_server(caller, function_name, args=None):
     ran_data = wait_for_event("ran")
     return deserialize(ran_data, _client.game)
 
+def play():
+    wait_for_event(None)
+
 def wait_for_event(event):
     while True:
         wait_for_events()
 
         while len(_client._events_stack) > 0:
             sent = _client._events_stack.pop()
-            if sent['event'] == event:
+            if event != None and sent['event'] == event:
                 return sent['data']
             else:
                 _auto_handle(sent['event'], sent['data'] if 'data' in sent else None)
@@ -138,6 +141,17 @@ def _auto_handle_delta(data):
 
     if _client.ai.player: # then the AI is ready for updates
         _client.ai.game_updated()
+
+def _auto_handle_order(data):
+    try:
+        returned = _client.ai._do_order(data['order'], data['args'])
+    except:
+        handle_error(ErrorCode.ai_errored, sys.exc_info()[0], "AI errored executing order '" + data['order'] + "'.")
+
+    send("finished", {
+        'finished': data['order'],
+        'returned': returned
+    })
 
 def _auto_handle_invalid(data):
     _client.ai.invalid(data)

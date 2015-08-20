@@ -49,16 +49,10 @@ start_data = client.wait_for_event("start")
 print("Game starting")
 
 ai.set_player(game.get_game_object(start_data['playerID']))
-ai.start()
-ai.game_updated()
+try:
+    ai.start()
+    ai.game_updated()
+except:
+    client.handle_error(ErrorCode.ai_errored, sys.exc_info()[0], "AI errored during game initialization")
 
-while True:
-    data = client.wait_for_event("order") # the client will decide when to os.exit
-
-    returned = ai._do_order(data['order'], data['args'])
-
-    client.send("finished", {
-        'finished': data['order'],
-        'returned': returned
-    })
-
+client.play()
