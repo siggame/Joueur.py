@@ -18,11 +18,18 @@ if not 'py' in shared:
             else:
                 return 'None'
         else:
-            if base_type == "string":
-                return '"' + default + '"'
-            elif base_type == "boolean":
-                return str(default).capitalize()
+            return py_value(type_obj, default)
     shared['py']['default'] = py_default
+
+    def py_value(type_obj, default):
+        base_type = type_obj['name']
+        if base_type == "string":
+            return '"' + default + '"'
+        elif base_type == "boolean":
+            return str(default).capitalize()
+        elif base_type == "int" or base_type == "float":
+            return str(default)
+    shared['py']['value'] = py_value
 
     def py_type(type_obj):
         base_type = type_obj['name']
@@ -39,7 +46,6 @@ if not 'py' in shared:
         else:
             return base_type
     shared['py']['type'] = py_type
-
 
     def py_cast(type_obj):
         base_type = type_obj['name']
@@ -62,5 +68,18 @@ if not 'py' in shared:
             k.append(name + "=" + name)
         return ", ".join(k)
     shared['py']['kwargs'] = py_kwargs
+
+    def py_args(arguments):
+        to_join = [ "" ]
+        for argument in arguments:
+            arg_str = argument['name']
+            if argument['optional']:
+                default_value = py_value(argument['type'], argument['default'])
+                if default_value == None:
+                    default_value = "None"
+                arg_str += "=" + default_value
+            to_join.append(arg_str)
+        return ", ".join(to_join)
+    shared['py']['args'] = py_args
 
 %>

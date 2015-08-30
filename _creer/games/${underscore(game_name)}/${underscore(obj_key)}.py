@@ -65,13 +65,13 @@ class ${obj_key}(${", ".join(parent_classes)}):
 <% function_parms = obj['functions'][function_name]
 %>
 
-    def ${underscore(function_name)}(self${", ".join([""] + function_parms['argument_names'])}):
+    def ${underscore(function_name)}(self${shared['py']['args'](function_parms['arguments'])}):
         """ ${function_parms['description']}
 % if len(function_parms['arguments']) > 0:
 
         Args:
 % for arg_parms in function_parms['arguments']:
-            ${underscore(arg_parms['name'])} (${shared['py']['type'](arg_parms['type'])}): ${arg_parms['description']}
+            ${underscore(arg_parms['name'])} (${"Optional[" if arg_parms['optional'] else ""}${shared['py']['type'](arg_parms['type'])}${"]" if arg_parms['optional'] else ""}): ${arg_parms['description']}
 % endfor
 % endif
 % if function_parms['returns']:
