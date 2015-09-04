@@ -4,7 +4,7 @@ import json
 import time
 from serializer import serialize, deserialize
 from error_code import ErrorCode
-from error_code import handle_error as handle_error_exit
+from error_code import handle_error
 from game_manager import GameManager
 EOT_CHAR = chr(4)
 
@@ -54,12 +54,9 @@ def send(event, data):
         + EOT_CHAR).encode('utf-8')
     )
 
-def handle_error(code, e=None, message=None):
-    disconnect()
-    handle_error_exit(code, e, message)
-
 def disconnect(exit_code=None):
-    _client.socket.close()
+    if _client.socket:
+        _client.socket.close()
     if exit_code != None:
         sys.exit(exit_code)
 
@@ -163,6 +160,10 @@ def _auto_handle_over(data):
 
     print("Game is over.", "I Won!" if won else "I Lost :(", "because: " + reason)
 
-    _client.ai.end(won, reason)
+    try:
+        _client.ai.end(won, reason)
+    except:
+        handle_error(ErrorCode.ai_errored, sys.exc_info()[0], "AI errored during end.")
+
     disconnect(0)
 

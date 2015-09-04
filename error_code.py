@@ -1,6 +1,7 @@
 from enum import Enum
 import traceback
 import sys
+import client
 
 class ErrorCode(Enum):
     none = 0
@@ -18,8 +19,10 @@ class ErrorCode(Enum):
     ai_errored = 42
 
 def handle_error(code, e=None, message=None):
-    if isinstance(e, SystemExit): # we accidentally caught a system exit exception, just re-throw it essentially
+    if isinstance(e, SystemExit) or isinstance(e, KeyboardInterrupt): # we accidentally caught an exit exception, just re-throw it till it gets to the end of the runtime stack
         sys.exit(e.code)
+
+    client.disconnect()
 
     sys.stderr.write("Error: " + code.name + "\n---\n")
 

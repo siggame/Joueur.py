@@ -53,6 +53,6 @@ try:
     ai.start()
     ai.game_updated()
 except:
-    client.handle_error(ErrorCode.ai_errored, sys.exc_info()[0], "AI errored during game initialization")
+    handle_error(ErrorCode.ai_errored, sys.exc_info()[0], "AI errored during game initialization")
 
 client.play()
