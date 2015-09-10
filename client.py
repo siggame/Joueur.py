@@ -151,8 +151,14 @@ def _auto_handle_order(data):
     })
 
 def _auto_handle_invalid(data):
-    _client.ai.invalid(data)
+    try:
+        _client.ai.invalid(data)
+    except:
+        pass # do nothing, this is an error handling function anyways
     handle_error(ErrorCode.invalid_event, message="Got invalid data: '" + data + "'")
+
+def _auto_handle_unauthenticated(data):
+    handle_error(ErrorCode.unauthenticated, message="Could not log into server.")
 
 def _auto_handle_over(data):
     won = _client.ai.player.won

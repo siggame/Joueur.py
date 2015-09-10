@@ -16,6 +16,7 @@ class ErrorCode(Enum):
     invalid_event = 28
     game_not_found = 29
     malformed_json = 30
+    unauthenticated = 31
     ai_errored = 42
 
 def handle_error(code, e=None, message=None):
