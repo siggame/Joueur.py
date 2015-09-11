@@ -35,4 +35,4 @@ def handle_error(code, e=None, message=None):
 
     traceback.print_stack()
     print("---")
-    sys.exit(code.value)
+    os._exit(code.value)

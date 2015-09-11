@@ -1,5 +1,6 @@
 import socket, errno
 import sys
+import os
 import json
 import time
 from serializer import serialize, deserialize
@@ -57,8 +58,6 @@ def send(event, data):
 def disconnect(exit_code=None):
     if _client.socket:
         _client.socket.close()
-    if exit_code != None:
-        sys.exit(exit_code)
 
 def run_on_server(caller, function_name, args=None):
     send("run", {
@@ -118,7 +117,7 @@ def wait_for_events():
             if len(_client._events_stack) > 0:
                 return
     except (KeyboardInterrupt, SystemExit):
-        disconnect(1)
+        disconnect()
 
     ## called via the client run loop when data is sent
 def _auto_handle(event, data=None):
@@ -134,19 +133,20 @@ def _auto_handle_delta(data):
     try:
         _client.manager.apply_delta_state(data)
     except:
-        handle_error(ErrorCode.delta_merge_failure, sys.exc_info()[0], "Error merging delta")
+        handle_error(ErrorCode.delta_merge_failure, sys.exc_info(), "Error merging delta")
 
     if _client.ai.player: # then the AI is ready for updates
         _client.ai.game_updated()
 
 def _auto_handle_order(data):
     try:
-        returned = _client.ai._do_order(data['order'], data['args'])
+        returned = _client.ai._do_order(data['name'], data['args'])
     except:
-        handle_error(ErrorCode.ai_errored, sys.exc_info()[0], "AI errored executing order '" + data['order'] + "'.")
+        print("esc info", type(sys.exc_info()))
+        handle_error(ErrorCode.ai_errored, sys.exc_info(), "AI errored executing order '" + data['name'] + "'.")
 
     send("finished", {
-        'finished': data['order'],
+        'orderIndex': data['index'],
         'returned': returned
     })
 
@@ -169,7 +169,8 @@ def _auto_handle_over(data):
     try:
         _client.ai.end(won, reason)
     except:
-        handle_error(ErrorCode.ai_errored, sys.exc_info()[0], "AI errored during end.")
+        handle_error(ErrorCode.ai_errored, sys.exc_info(), "AI errored during end.")
 
-    disconnect(0)
+    disconnect()
+    os._exit(0)
 
