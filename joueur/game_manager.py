@@ -1,7 +1,7 @@
-from delta_mergeable import DeltaMergeable
-from base_game_object import BaseGameObject
-from utilities import camel_case_converter
-from serializer import is_game_object_reference, is_object
+from joueur.delta_mergeable import DeltaMergeable
+from joueur.base_game_object import BaseGameObject
+from joueur.utilities import camel_case_converter
+from joueur.serializer import is_game_object_reference, is_object
 
 # @class GameManager: managed the game and it's game objects including unserializing deltas
 class GameManager():
@@ -12,7 +12,7 @@ class GameManager():
     def set_constants(self, constants):
         self._server_constants = constants
         self._DELTA_REMOVED = constants['DELTA_REMOVED']
-        self._DELTA_LIST_LENGTH = constants['DELTA_ARRAY_LENGTH']
+        self._DELTA_LIST_LENGTH = constants['DELTA_LIST_LENGTH']
 
     ## applies a delta state (change in state information) to this game
     def apply_delta_state(self, delta):

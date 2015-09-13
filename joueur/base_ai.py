@@ -1,8 +1,7 @@
 # NOTE: this file should not be modified by competitors
-from utilities import camel_case_converter
-from error_code import ErrorCode, handle_error
+from joueur.utilities import camel_case_converter
+from joueur.error_code import ErrorCode, handle_error
 import sys
-import client
 
 # @class BaseAI: the basic AI functions that are the same between games
 class BaseAI:

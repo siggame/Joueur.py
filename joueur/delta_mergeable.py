@@ -1,4 +1,4 @@
-import client
+import joueur.client
 
 # @class DeltaMergeable: a game or game object that needs to be delta merged
 class DeltaMergeable():
@@ -6,7 +6,7 @@ class DeltaMergeable():
         pass
 
     def _run_on_server(self, function_name, **kwargs):
-        return client.run_on_server(self, function_name, kwargs)
+        return joueur.client.run_on_server(self, function_name, kwargs)
 
     def __contains__(self, key):
         return hasattr(self, key)

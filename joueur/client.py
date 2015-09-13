@@ -3,10 +3,9 @@ import sys
 import os
 import json
 import time
-from serializer import serialize, deserialize
-from error_code import ErrorCode
-from error_code import handle_error
-from game_manager import GameManager
+from joueur.serializer import serialize, deserialize
+from joueur.error_code import ErrorCode, handle_error
+from joueur.game_manager import GameManager
 EOT_CHAR = chr(4)
 
 class _Client:

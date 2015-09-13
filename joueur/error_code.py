@@ -1,7 +1,8 @@
 from enum import Enum
 import traceback
 import sys
-import client
+import joueur.client
+import os
 
 class ErrorCode(Enum):
     none = 0
@@ -23,7 +24,7 @@ def handle_error(code, e=None, message=None):
     if isinstance(e, SystemExit) or isinstance(e, KeyboardInterrupt): # we accidentally caught an exit exception, just re-throw it till it gets to the end of the runtime stack
         sys.exit(e.code)
 
-    client.disconnect()
+    joueur.client.disconnect()
 
     sys.stderr.write("Error: " + code.name + "\n---\n")
 

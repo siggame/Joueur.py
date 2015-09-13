@@ -1,4 +1,4 @@
-from delta_mergeable import DeltaMergeable
+from joueur.delta_mergeable import DeltaMergeable
 
 # @class BaseGame: the basics of any game
 class BaseGame(DeltaMergeable):

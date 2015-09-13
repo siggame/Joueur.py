@@ -1,7 +1,7 @@
 # ${header}
 # This is where you build your AI for the ${game_name} game.
 <%include file="functions.noCreer" />
-from base_ai import BaseAI
+from joueur.base_ai import BaseAI
 
 ${merge("# ", "imports", "# you can add addtional import(s) here")}
 

@@ -1,5 +1,5 @@
 # Serializer: functions to serialize and unserialize json communication strings
-from base_game_object import BaseGameObject
+from joueur.base_game_object import BaseGameObject
 
 def is_game_object_reference(d):
     return (isinstance(d, dict) and len(d) == 1 and 'id' in d)

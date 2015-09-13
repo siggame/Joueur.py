@@ -10,7 +10,7 @@ from games.${underscore(game_name)}.${underscore(parent_class)} import ${parent_
     parent_classes = [ 'BaseGame' ]
 else:
     parent_classes = [ 'BaseGameObject' ]
-%>from ${underscore(parent_classes[0])} import ${parent_classes[0]}
+%>from joueur.${underscore(parent_classes[0])} import ${parent_classes[0]}
 % endif
 
 % if obj_key == "Game":
