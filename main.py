@@ -8,6 +8,7 @@ parser.add_argument('-p, --port', action='store', dest='port', default=3000, hel
 parser.add_argument('-n, --name', action='store', dest='name', help='the name you want to use as your AI\'s player name. This over-rides the name you set in your code')
 parser.add_argument('-w, --password', action='store', dest='password', default=None, help='the password required for authentication on official servers')
 parser.add_argument('-r, --session', action='store', dest='session', default='*', help='the requested game session you want to play on the server')
+parser.add_argument('--gameSettings', action='store', dest='game_settings', default=None, help='Any settings for the game server to force. Must be url parms formatted (key=value&otherKey=otherValue)')
 parser.add_argument('--printIO', action='store_true', dest='print_io', help='(debugging) print IO through the TCP socket to the terminal')
 
 run(parser.parse_args())

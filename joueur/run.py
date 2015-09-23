@@ -26,7 +26,8 @@ def run(args):
         'password': args.password,
         'requestedSession': args.session,
         'clientType': "Python",
-        'playerName': args.name or ai.get_name() or "Python Player"
+        'playerName': args.name or ai.get_name() or "Python Player",
+        'gameSettings': args.game_settings
     })
 
     lobby_data = joueur.client.wait_for_event("lobbied")
