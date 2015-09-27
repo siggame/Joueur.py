@@ -14,7 +14,7 @@ class ErrorCode(Enum):
     reflection_failed = 25
     unknown_event_from_server = 26
     server_timeout = 27
-    invalid_event = 28
+    fatal_event = 28
     game_not_found = 29
     malformed_json = 30
     unauthenticated = 31

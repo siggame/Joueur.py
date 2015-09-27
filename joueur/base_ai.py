@@ -33,7 +33,7 @@ class BaseAI:
             handle_error(ErrorCode.reflection_failed, message="AI has no function '" + order + "' to respond with")
 
     # called when we (the client) send some invalid response to the server. It should be echoed back here
-    def invalid(self, data):
+    def invalid(self, message, data=None):
         pass
 
     # intended to be overridden by the AI class

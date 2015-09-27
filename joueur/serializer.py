@@ -21,6 +21,9 @@ def serialize(data):
     return serialized
 
 def deserialize(data, game):
+    if not isinstance(data, (list, dict, BaseGameObject)):
+        return data
+
     if is_game_object_reference(data):
         return game.get_game_object(data['id'])
 
