@@ -20,8 +20,22 @@ All inspiration taken from [MST's SIG-GAME framework](https://github.com/siggame
 
 ## How to Run
 
+You just need python 3.
+
+### Windows
+
+On Windows you'll need some version of Python 3. As of this version [3.4.3](https://www.python.org/downloads/release/python-343/) worked fine. Install that and ensure that python us set up in your Environmental Variables as 'python', then
+
 ```
-python main.py GAME_NAME -s SERVER -p PORT -n PLAYER_NAME
+python main.py GAME_NAME -s SERVER -p PORT
+```
+
+### Linux
+
+For Linux and recent version of python3 should work. The normal 'python' usually refers to Python 2.7.X, so make sure you have the python**3** installed, then:
+
+```
+./run GAME_GAME -s SERVER -p PORT
 ```
 
 or `python main.py --help` for help on how to run.
