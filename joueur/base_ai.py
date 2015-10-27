@@ -34,6 +34,7 @@ class BaseAI:
 
     # called when we (the client) send some invalid response to the server. It should be echoed back here
     def invalid(self, message, data=None):
+        print("Invalid:", message)
         pass
 
     # intended to be overridden by the AI class
