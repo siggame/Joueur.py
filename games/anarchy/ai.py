@@ -63,35 +63,45 @@ class AI(BaseAI):
         # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # Put your game logic here for runTurn
 
-        # try to use my first warehouse to ignite the enemy's first building
+        # get my first warehouse
         first_warehouse = self.player.warehouses[0]
         if self.can_be_bribed(first_warehouse) and self.player.bribes_remaining > 0:
+            # select the enemy's first building as the target
             target = self.player.other_player.buildings[0]
+            # bribe my first warehouse to ignite the enemy's first building
             first_warehouse.ignite(target)
 
-        # try to use my first fire department to extinguish my first warehouse
+        # get my first fire department
         first_fire_department = self.player.fire_departments[0]
         if self.can_be_bribed(first_fire_department) and self.player.bribes_remaining > 0:
-            target = self.player.warehouses[0]
+            # select my first building
+            target = self.player.buildings[0]
+            # bribe my first fire department to extinguish my first building
             first_fire_department.extinguish(target)
 
-        # try to use my first police station to raid the first warehouse the other player owns
-        first_police_station = self.player.police_departments[0]
-        if self.can_be_bribed(first_police_station) and self.player.bribes_remaining > 0:
+        # get my first police department
+        first_police_department = self.player.police_departments[0]
+        if self.can_be_bribed(first_police_department) and self.player.bribes_remaining > 0:
+            # select the enemy's first warehouse as the target
             target = self.player.other_player.warehouses[0]
-            first_police_station.raid(target)
+            # bribe my first police station to raid the first warehouse the other player owns
+            first_police_department.raid(target)
 
-        # try to use my first weather station to intensify or deintensify the wind
+        # get my first weather station
         first_weather_station = self.player.weather_stations[0]
         if self.can_be_bribed(first_weather_station) and self.player.bribes_remaining > 0:
+            # make sure the weather forecast is not already at maximum intensity
             if self.game.next_forecast.intensity < self.game.max_forecast_intensity:
+                # bribe my first weather station to intensify the wind
                 first_weather_station.intensify()
             else:
+                # bribe my first weather station to deintensify the wind
                 first_weather_station.intensify(True)
 
-        # try to use my second weather station to rotate the wind counter-clockwise
+        # get my second weather station
         second_weather_station = self.player.weather_stations[1]
         if self.can_be_bribed(second_weather_station) and self.player.bribes_remaining > 0:
+            # bribe my second weather station to rotate the wind counter-clockwise
             second_weather_station.rotate(True)
 
         return True
@@ -104,6 +114,7 @@ class AI(BaseAI):
             bool: determines whether the building can be bribed. True for yes, False for no
         """
 
+        # building can only be bribed if health is greater than 0, it hasn't already been bribed, and you own it
         return (building.health > 0 and not building.bribed and building.owner == self.game.current_player)
 
 
