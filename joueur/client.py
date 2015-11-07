@@ -169,6 +169,9 @@ def _auto_handle_over(data):
     except:
         handle_error(ErrorCode.ai_errored, sys.exc_info(), "AI errored during end.")
 
+    if 'message' in data:
+        print(data['message'])
+
     disconnect()
     os._exit(0)
 
