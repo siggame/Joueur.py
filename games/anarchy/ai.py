@@ -72,7 +72,7 @@ class AI(BaseAI):
         # try to use my first fire department to extinguish my first warehouse
         first_fire_department = self.player.fire_departments[0]
         if self.can_be_bribed(first_fire_department) and self.player.bribes_remaining > 0:
-            target = self.player.buildings[0]
+            target = self.player.warehouses[0]
             first_fire_department.extinguish(target)
 
         # try to use my first police station to raid the first warehouse the other player owns
