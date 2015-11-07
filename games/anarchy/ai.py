@@ -19,7 +19,7 @@ class AI(BaseAI):
             str: the name you want your player to have
         """
         # <<-- Creer-Merge: get-name -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        return "Anarchy Python Player" # REPLACE THIS WITH YOUR TEAM NAME
+        return "Anarchy Python ShellAI" # REPLACE THIS WITH YOUR TEAM NAME
         # <<-- /Creer-Merge: get-name -->>
 
 
@@ -62,8 +62,50 @@ class AI(BaseAI):
         """
         # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # Put your game logic here for runTurn
+
+        # try to use my first warehouse to ignite the enemy's first building
+        first_warehouse = self.player.warehouses[0]
+        if self.can_be_bribed(first_warehouse) and self.player.bribes_remaining > 0:
+            target = self.player.other_player.buildings[0]
+            first_warehouse.ignite(target)
+
+        # try to use my first fire department to extinguish my first warehouse
+        first_fire_department = self.player.fire_departments[0]
+        if self.can_be_bribed(first_fire_department) and self.player.bribes_remaining > 0:
+            target = self.player.buildings[0]
+            first_fire_department.extinguish(target)
+
+        # try to use my first police station to raid the first warehouse the other player owns
+        first_police_station = self.player.police_departments[0]
+        if self.can_be_bribed(first_police_station) and self.player.bribes_remaining > 0:
+            target = self.player.other_player.warehouses[0]
+            first_police_station.raid(target)
+
+        # try to use my first weather station to intensify or deintensify the wind
+        first_weather_station = self.player.weather_stations[0]
+        if self.can_be_bribed(first_weather_station) and self.player.bribes_remaining > 0:
+            if self.game.next_forecast.intensity < self.game.max_forecast_intensity:
+                first_weather_station.intensify()
+            else:
+                first_weather_station.intensify(True)
+
+        # try to use my second weather station to rotate the wind counter-clockwise
+        second_weather_station = self.player.weather_stations[1]
+        if self.can_be_bribed(second_weather_station) and self.player.bribes_remaining > 0:
+            second_weather_station.rotate(True)
+
         return True
         # <<-- /Creer-Merge: runTurn -->>
+
+    def can_be_bribed(self, building):
+        """ This is an example of a utility function you could create.
+
+        Returns:
+            bool: determines whether the building can be bribed. True for yes, False for no
+        """
+
+        return (building.health > 0 and not building.bribed and building.owner == self.game.current_player)
+
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
