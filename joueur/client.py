@@ -35,7 +35,7 @@ def setup(game, ai, manager, server='localhost', port=3000, print_io=False):
         _client.socket.settimeout(_client._timeout_time) # so the blocking on recv doesn't hang forever and other system interupts (e.g. keyboard) can be handled
         _client.socket.connect((_client.server, _client.port))
     except socket.error as e:
-        handle_error_exit(ErrorCode.could_not_connect, e, "Could not connect to " + _client.server + ":" + _client.port)
+        handle_error(ErrorCode.could_not_connect, e, "Could not connect to " + _client.server + ":" + str(_client.port))
 
 
 def _send_raw(string):
