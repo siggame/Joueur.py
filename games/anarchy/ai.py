@@ -68,16 +68,20 @@ class AI(BaseAI):
         if self.can_be_bribed(first_warehouse) and self.player.bribes_remaining > 0:
             # select the enemy's first building as the target
             target = self.player.other_player.buildings[0]
-            # bribe my first warehouse to ignite the enemy's first building
-            first_warehouse.ignite(target)
+            # make sure the target isn't a headquarters which can't be ignited directly
+            if not target.is_headquarters:
+                # bribe my first warehouse to ignite the enemy's first building
+                first_warehouse.ignite(target)
 
         # get my first fire department
         first_fire_department = self.player.fire_departments[0]
         if self.can_be_bribed(first_fire_department) and self.player.bribes_remaining > 0:
             # select my first building
             target = self.player.buildings[0]
-            # bribe my first fire department to extinguish my first building
-            first_fire_department.extinguish(target)
+            # make sure the target isn't a headquarters which can't be extinguished directly
+            if not target.is_headquarters:
+                # bribe my first fire department to extinguish my first building
+                first_fire_department.extinguish(target)
 
         # get my first police department
         first_police_department = self.player.police_departments[0]
