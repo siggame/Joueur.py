@@ -105,8 +105,8 @@ class AI(BaseAI):
         # get my second weather station
         second_weather_station = self.player.weather_stations[1]
         if self.can_be_bribed(second_weather_station) and self.player.bribes_remaining > 0:
-            # bribe my second weather station to rotate the wind counter-clockwise
-            second_weather_station.rotate(True)
+            # bribe my second weather station to rotate the wind clockwise
+            second_weather_station.rotate()
 
         return True
         # <<-- /Creer-Merge: runTurn -->>
