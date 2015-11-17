@@ -34,6 +34,6 @@ def handle_error(code, e=None, message=None):
     if e:
         sys.stderr.write(str(e) + "\n---\n")
 
-    traceback.print_stack()
+    traceback.print_exc()
     print("---")
     os._exit(code.value)
