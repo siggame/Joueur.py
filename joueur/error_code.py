@@ -2,6 +2,7 @@ from enum import Enum
 import traceback
 import sys
 import joueur.client
+import joueur.ansi_color_coder as color
 import os
 
 class ErrorCode(Enum):
@@ -26,14 +27,18 @@ def handle_error(code, e=None, message=None):
 
     joueur.client.disconnect()
 
-    sys.stderr.write("Error: " + code.name + "\n---\n")
+    sys.stderr.write(color.text("red") + "---\nError: " + code.name + "\n---")
 
     if message:
-        sys.stderr.write(message + "\n---\n")
+        sys.stderr.write("\n" + message + "\n---")
 
     if e:
-        sys.stderr.write(str(e) + "\n---\n")
 
-    traceback.print_exc()
-    print("---")
+        sys.stderr.write("\n" + str(e) + "\n---\n")
+
+        traceback.print_exc()
+
+        sys.stderr.write("---")
+
+    sys.stderr.write("\n" + color.reset())
     os._exit(code.value)

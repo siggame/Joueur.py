@@ -1,8 +1,10 @@
-import importlib
+import importlib.util
 import joueur.client
+import sys
 from joueur.error_code import ErrorCode, handle_error
 from joueur.game_manager import GameManager
 from joueur.utilities import camel_case_converter
+import joueur.ansi_color_coder as color
 
 def run(args):
     split_server = args.server.split(":")
@@ -10,13 +12,21 @@ def run(args):
     args.port = int((len(split_server) == 2 and split[1])) or args.port
 
     module_str = "games." + camel_case_converter(args.game)
+
+    spec = importlib.util.find_spec(module_str)
+    if spec is None:
+        handle_error(ErrorCode.game_not_found, None, "Could not find the module for game '{}'.".format(args.game))
+
     try:
         module = importlib.import_module(module_str) # should load Game and AI to load based on the game selected in args
     except ImportError as e:
-        handle_error(ErrorCode.game_not_found, e, "Could not find game module: '" + module_str + "'")
+        handle_error(ErrorCode.reflection_failed, e, "Could not import game module: '{}'.".format(module_str))
 
     game = module.Game()
-    ai = module.AI(game)
+    try:
+        ai = module.AI(game)
+    except:
+        handle_error(ErrorCode.ai_errored, sys.exc_info()[0], "Could not initialize AI class. Probably a syntax error in your AI.")
     manager = GameManager(game)
 
     joueur.client.setup(game, ai, manager, args.server, int(args.port), print_io=args.print_io)
@@ -32,13 +42,13 @@ def run(args):
 
     lobby_data = joueur.client.wait_for_event("lobbied")
 
-    print("In Lobby for game '" + lobby_data['gameName'] + "' in session '" + lobby_data['gameSession'] + "'")
+    print(color.text("cyan") + "In lobby for game '" + lobby_data['gameName'] + "' in session '" + lobby_data['gameSession'] + "'." + color.reset())
 
     manager.set_constants(lobby_data['constants'])
 
     start_data = joueur.client.wait_for_event("start")
 
-    print("Game starting")
+    print(color.text("green") + "Game is starting." + color.reset())
 
     ai.set_player(game.get_game_object(start_data['playerID']))
     try:

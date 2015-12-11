@@ -1,6 +1,7 @@
 # NOTE: this file should not be modified by competitors
 from joueur.utilities import camel_case_converter
 from joueur.error_code import ErrorCode, handle_error
+import joueur.ansi_color_coder as color
 import sys
 
 # @class BaseAI: the basic AI functions that are the same between games
@@ -33,9 +34,8 @@ class BaseAI:
             handle_error(ErrorCode.reflection_failed, message="AI has no function '" + order + "' to respond with")
 
     # called when we (the client) send some invalid response to the server. It should be echoed back here
-    def invalid(self, message, data=None):
-        print("Invalid:", message)
-        pass
+    def invalid(self, message):
+        print(color.text("yellow") + "Invalid: " + message + color.reset())
 
     # intended to be overridden by the AI class
     def end(self):

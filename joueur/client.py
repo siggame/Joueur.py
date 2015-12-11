@@ -6,10 +6,12 @@ import time
 from joueur.serializer import serialize, deserialize
 from joueur.error_code import ErrorCode, handle_error
 from joueur.game_manager import GameManager
+import joueur.ansi_color_coder as color
+
 EOT_CHAR = chr(4)
 
 class _Client:
-    pass
+    socket = None
 
 _client = _Client()
 
@@ -27,7 +29,7 @@ def setup(game, ai, manager, server='localhost', port=3000, print_io=False):
     _client._buffer_size = 1024
     _client._timeout_time = 1.0
 
-    print("connecting to:", _client.server + ":" + str(_client.port))
+    print(color.text("cyan") + "Connecting to:", _client.server + ":" + str(_client.port) + color.reset())
 
     try:
         _client.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -151,7 +153,7 @@ def _auto_handle_order(data):
 
 def _auto_handle_invalid(data):
     try:
-        _client.ai.invalid(data['message'], data['data'] if 'data' in data else None)
+        _client.ai.invalid(data['message'])
     except:
         handle_error(ErrorCode.ai_errored, sys.exc_info(), "AI errored while handling invalid data.")
 
@@ -162,7 +164,7 @@ def _auto_handle_over(data):
     won = _client.ai.player.won
     reason = _client.ai.player.reason_won if _client.ai.player.won else _client.ai.player.reason_lost
 
-    print("Game is over.", "I Won!" if won else "I Lost :(", "because: " + reason)
+    print(color.text("green") + "Game is over.", "I Won!" if won else "I Lost :(", "because: " + reason + color.reset())
 
     try:
         _client.ai.end(won, reason)
@@ -170,7 +172,7 @@ def _auto_handle_over(data):
         handle_error(ErrorCode.ai_errored, sys.exc_info(), "AI errored during end.")
 
     if 'message' in data:
-        print(data['message'])
+        print(color.text("cyan") + data['message'] + color.rest())
 
     disconnect()
     os._exit(0)
