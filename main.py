@@ -6,7 +6,7 @@ parser.add_argument('game', action='store', help='the name of the game you want 
 parser.add_argument('-s, --server', action='store', dest='server', default='localhost', help='the url to the server you want to connect to e.g. locahost:3000')
 parser.add_argument('-p, --port', action='store', dest='port', default=3000, help='the port to connect to on the server. Can be defined on the server arg via server:port')
 parser.add_argument('-n, --name', action='store', dest='name', help='the name you want to use as your AI\'s player name. This over-rides the name you set in your code')
-parser.add_argument('-i, --index', action='store', dest='index', help='the player number you want to be, with 1 being the first player')
+parser.add_argument('-i, --index', action='store', dest='index', help='the player number you want to be, with 0 being the first player')
 parser.add_argument('-w, --password', action='store', dest='password', default=None, help='the password required for authentication on official servers')
 parser.add_argument('-r, --session', action='store', dest='session', default='*', help='the requested game session you want to play on the server')
 parser.add_argument('--gameSettings', action='store', dest='game_settings', default=None, help='Any settings for the game server to force. Must be url parms formatted (key=value&otherKey=otherValue)')
