@@ -37,6 +37,7 @@ def run(args):
         'requestedSession': args.session,
         'clientType': "Python",
         'playerName': args.name or ai.get_name() or "Python Player",
+        'playerIndex': args.index,
         'gameSettings': args.game_settings
     })
 
