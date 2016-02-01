@@ -49,20 +49,41 @@ for name in only_files:
     :inherited-members:
     :show-inheritance:"""))
 
+# convert the readme from md to rst
+subprocess.call(["pandoc --from=markdown --to=rst --output=readme.rst ../README.md"], shell=True)
+
+with open("readme.rst", "r") as f:
+    readme_rst = f.read()
+
+# create the conf file for sphinx
+with open("_conf.py", "r") as f:
+    conf = f.read()
+
+conf = conf.replace("###GAME_NAME###", game_name)
+
+with open("./conf.py", "w+") as f:
+    f.write(conf)
+
 with open("./index.rst", "w+") as f:
     f.truncate()
     f.write("""
-Welcome to the {game_name} Python 3 Client documentation!
-=========================================================
+{readme_rst}
 
-Your AI:
+Code
+====
+
+The following links document the specifc classes you will interact with.
+
+Your AI
+-------
 
 .. toctree::
    :maxdepth: 2
 
    temp/ai.rst
 
-Game Classes:
+Game Classes
+------------
 
 .. toctree::
    :maxdepth: 2
@@ -73,15 +94,14 @@ Game Classes:
 {game_classes}
 
 
-Indices and tables
-==================
+Indices
+=======
 
-* :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 """.format(
     game_name=game_name,
     lower_game_name=lower_game_name,
+    readme_rst=readme_rst,
     game_classes="\n".join(
         "   temp/{}.rst".format(game_class) for game_class in sorted(game_classes)
     )
@@ -92,3 +112,5 @@ subprocess.call(["sphinx-build -b html ./ ./output"], shell=True)
 # cleanup files we made
 shutil.rmtree(game_rst_path)
 os.remove("./index.rst")
+os.remove("./readme.rst")
+os.remove("./conf.py")

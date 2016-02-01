@@ -49,7 +49,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Python 3 Client'
+project = '###GAME_NAME### Python 3 Client'
 copyright = '2016, SIG-GAME'
 author = 'SIG-GAME'
 
@@ -225,7 +225,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'Python3Client.tex', 'Python 3 Client Documentation',
+  (master_doc, 'Python3Client.tex', '###GAME_NAME### Python 3 Client Documentation',
    'SIG-GAME', 'manual'),
 ]
 
@@ -255,7 +255,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'python3client', 'Python 3 Client Documentation',
+    (master_doc, 'python3client', '###GAME_NAME### Python 3 Client Documentation',
      [author], 1)
 ]
 
@@ -269,7 +269,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'Python3Client', 'Python 3 Client Documentation',
+  (master_doc, 'Python3Client', '###GAME_NAME### Python 3 Client Documentation',
    author, 'Python3Client', 'One line description of project.',
    'Miscellaneous'),
 ]
