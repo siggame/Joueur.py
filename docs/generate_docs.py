@@ -19,7 +19,7 @@ game_path = "../games/" + lower_game_name
 only_files = [f for f in os.listdir(game_path) if os.path.isfile(os.path.join(game_path, f))]
 game_classes = []
 
-game_rst_path = "./temp"
+game_rst_path = "./classes"
 if os.path.isdir(game_rst_path):
     shutil.rmtree(game_rst_path)
 os.makedirs(game_rst_path)
@@ -69,41 +69,25 @@ with open("./index.rst", "w+") as f:
     f.write("""
 {readme_rst}
 
-Code
-====
-
-The following links document the specifc classes you will interact with.
-
-Your AI
--------
-
-.. toctree::
-   :maxdepth: 2
-
-   temp/ai.rst
-
-Game Classes
-------------
-
-.. toctree::
-   :maxdepth: 2
-
-   temp/game.rst
-   temp/game_object.rst
-   temp/player.rst
-{game_classes}
-
-
-Indices
+Classes
 =======
 
-* :ref:`search`
+.. toctree::
+   :maxdepth: 2
+   :caption: These are all the classes you will interact with to built your AI.
+
+   classes/ai.rst
+   classes/game.rst
+   classes/game_object.rst
+   classes/player.rst
+{game_classes}
+
 """.format(
     game_name=game_name,
     lower_game_name=lower_game_name,
     readme_rst=readme_rst,
     game_classes="\n".join(
-        "   temp/{}.rst".format(game_class) for game_class in sorted(game_classes)
+        "   classes/{}.rst".format(game_class) for game_class in sorted(game_classes)
     )
 ))
 
