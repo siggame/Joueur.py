@@ -22,6 +22,6 @@ On Windows you'll need some version of Python 3. As of this version [3.4.3](http
 python main.py Chess -s r99acm.device.mst.edu -r MyOwnGameSession
 ```
 
-#### Make
+## Make
 
 There is a `Makefile` provided, but it is empty as python is an intepreted language. If you want to add `make` steps feel free to, but you may want to check with an Arena dev to ensure the Arena has the packages you need to use in `make`.
