@@ -3,6 +3,7 @@ import os.path
 import shutil
 import subprocess
 import argparse
+import re
 
 parser = argparse.ArgumentParser(description='Runs the python 3 client doc generation script.')
 parser.add_argument('game', action='store', help='the name of the game you want to document. Must exist in ../games/')
@@ -11,6 +12,9 @@ args = parser.parse_args()
 
 game_name = args.game[0].upper() + args.game[1:]
 lower_game_name = game_name[0].lower() + game_name[1:]
+
+if os.path.isdir("./output"):
+    shutil.rmtree("./output")
 
 def camelcase(word):
     return ''.join(x.capitalize() or '_' for x in word.split('_'))
@@ -42,10 +46,13 @@ for name in only_files:
 {0}
 ========
 
-.. autoclass:: games.{1}.{0}
-    :members:{2}
+.. currentmodule:: games.{1}.{2}
 
-""".format(cc, lower_game_name, "" if not_inherit else """
+.. automodule:: games.{1}.{2}
+    :members:
+    :undoc-members:{3}
+
+""".format(cc, lower_game_name, name, "" if not_inherit else """
     :inherited-members:
     :show-inheritance:"""))
 

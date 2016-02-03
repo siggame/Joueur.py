@@ -12,7 +12,7 @@ This client has been tested and confirmed to work on the Campus rc##xcs213 Linux
 ./testRun MyOwnGameSession
 ```
 
-For Linux a recent version of `python3` should work. It has been tested on 3.4.3 extensively, but sould work with >= 3.2. The normal 'python' usually refers to Python 2.7.X, so make sure you have the python**3** installed.
+For Linux a recent version of `python3` should work. It has been tested on 3.4.3 extensively, but should work with >= 3.2. The normal 'python' usually refers to Python 2.7.X, so make sure you have the python**3** installed.
 
 ### Windows
 
