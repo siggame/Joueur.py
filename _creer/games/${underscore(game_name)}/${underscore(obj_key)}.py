@@ -23,14 +23,13 @@ from games.${underscore(game_name)}.${underscore(game_obj_key)} import ${game_ob
 ${merge("# ", "imports", "# you can add addtional import(s) here")}
 
 class ${obj_key}(${", ".join(parent_classes)}):
-    """ The class representing the ${obj_key} in the ${game_name} game.
+    """The class representing the ${obj_key} in the ${game_name} game.
 
     ${obj['description']}
     """
 
     def __init__(self):
-        """ initializes a ${obj_key} with basic logic as provided by the Creer code generator
-        """
+        """Initializes a ${obj_key} with basic logic as provided by the Creer code generator."""
 % for parent_class in reversed(parent_classes):
         ${parent_class}.__init__(self)
 % endfor
@@ -57,6 +56,8 @@ class ${obj_key}(${", ".join(parent_classes)}):
     @property
     def ${underscore(attr_name)}(self):
         """${attr_parms['description']}
+
+        :rtype: ${shared['py']['type'](attr_parms['type'])}
         """
         return self._${underscore(attr_name)}
 

@@ -7,11 +7,27 @@ import sys
 # @class BaseAI: the basic AI functions that are the same between games
 class BaseAI:
     def __init__(self, game):
-        self.game = game
-        self.player = None
+        self._game = game
+        self._player = None
 
     def set_player(self, player):
-        self.player = player
+        self._player = player
+
+    @property
+    def game(self):
+        """The reference to the Game instance this AI is playing.
+
+        :rtype: Game
+        """
+        return self._game
+
+    @property
+    def player(self):
+        """Player: The reference to the Player this AI controls in the Game.
+
+        :rtype: Player
+        """
+        return self._player
 
     # intended to be overridden by the AI class
     def start(self):
@@ -33,7 +49,8 @@ class BaseAI:
         else:
             handle_error(ErrorCode.reflection_failed, message="AI has no function '" + order + "' to respond with")
 
-    # called when we (the client) send some invalid response to the server. It should be echoed back here
+    # This is called when this AI sends some invalid command to the server. The message explaining why it is invaluid will be automatically printed to the screen via this function.
+    #   You can manually inherit this method, but because the only data you get about the invalid event is a human readable message, printing it to the terminal should be enough to not expose it to all except the curious.
     def invalid(self, message):
         print(color.text("yellow") + "Invalid: " + message + color.reset())
 

@@ -31,30 +31,35 @@ os.makedirs(game_rst_path)
 for name in only_files:
     name = os.path.splitext(name)[0]
     cc = camelcase(name)
-    not_inherit = (name == "ai" or name == "game" or name == "game_object")
+    not_inherit = (name == "game" or name == "game_object")
 
     if name == "__init__":
         continue
     elif name == "ai":
         cc = "AI"
 
-    if not not_inherit and name != "player":
+    if not not_inherit and name != "player" and name != "ai":
         game_classes.append(name)
 
     with open(game_rst_path + "/" + name + ".rst", "w+") as f:
         f.write("""
-{0}
-========
+{cc}
+{cc_underline}
 
-.. currentmodule:: games.{1}.{2}
+.. currentmodule:: games.{lower_game_name}.{name}
 
-.. automodule:: games.{1}.{2}
-    :members:
-    :undoc-members:{3}
+.. automodule:: games.{lower_game_name}.{name}
+    :members:{extra_rest}
 
-""".format(cc, lower_game_name, name, "" if not_inherit else """
+""".format(
+    cc=cc,
+    cc_underline = '=' * len(cc),
+    lower_game_name=lower_game_name,
+    name=name,
+    extra_rest="" if not_inherit else """
     :inherited-members:
-    :show-inheritance:"""))
+    :show-inheritance:"""
+))
 
 # convert the readme from md to rst
 subprocess.call(["pandoc --from=markdown --to=rst --output=readme.rst ../README.md"], shell=True)

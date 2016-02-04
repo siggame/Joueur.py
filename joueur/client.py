@@ -4,7 +4,10 @@ import os
 import json
 import time
 from joueur.serializer import serialize, deserialize
-from joueur.error_code import ErrorCode, handle_error
+#from joueur.error_code import ErrorCode, handle_error
+ErrorCode = {}
+def handle_error():
+    pass
 from joueur.game_manager import GameManager
 import joueur.ansi_color_coder as color
 
