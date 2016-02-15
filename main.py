@@ -1,3 +1,6 @@
+# Please do not modify this file.
+# Instead have a look in `README.md` for how to start writing you AI.
+
 import argparse
 from joueur.run import run
 

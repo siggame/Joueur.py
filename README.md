@@ -25,3 +25,7 @@ python3 main.py GAME_NAME -s r99acm.device.mst.edu -r MyOwnGameSession
 ## Make
 
 There is a `Makefile` provided, but it is empty as python is an intepreted language. If you want to add `make` steps feel free to, but you may want to check with an Arena dev to ensure the Arena has the packages you need to use in `make`.
+
+## Other Notes
+
+It is possible that on your Missouri S&T S-Drive this client will not run properly. This is not a fault with the client, but rather the school's S-Drive implimentation changing some file permissions during run time. We cannot control this. Instead, we recommend cloning your repo outside the S-Drive and use an SCP program like [WinSCP](https://winscp.net/eng/download.php) to edit the files in Windows using whatever IDE you want if you want to code in Windows, but compile in Linux.
