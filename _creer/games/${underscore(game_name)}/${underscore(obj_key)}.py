@@ -44,7 +44,7 @@ class ${obj_key}(${", ".join(parent_classes)}):
         self.name = "${game_name}"
 
         self._game_object_classes = {<% c = len(game_objs) %>
-% for game_obj_key, game_obj in game_objs.items():
+% for game_obj_key in sort_dict_keys(game_objs):
 <% c -= 1
 %>            '${game_obj_key}': ${game_obj_key}${',' if c != 0 else ''}
 % endfor
