@@ -19,7 +19,7 @@ For Linux a recent version of `python3` should work. It has been tested on 3.4.3
 On Windows you'll need some version of Python 3. As of this version [3.4.3](https://www.python.org/downloads/release/python-343/) worked fine. Install that and ensure that python is set up in your Environmental Variables as 'python3', then
 
 ```
-python main.py Chess -s r99acm.device.mst.edu -r MyOwnGameSession
+python3 main.py Chess -s r99acm.device.mst.edu -r MyOwnGameSession
 ```
 
 ## Make
