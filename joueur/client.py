@@ -4,7 +4,7 @@ import os
 import json
 import time
 from joueur.serializer import serialize, deserialize
-from joueur.error_code import ErrorCode, handle_error
+import joueur.error_code as error_code
 from joueur.game_manager import GameManager
 import joueur.ansi_color_coder as color
 
@@ -37,7 +37,7 @@ def setup(game, ai, manager, server='localhost', port=3000, print_io=False):
         _client.socket.settimeout(_client._timeout_time) # so the blocking on recv doesn't hang forever and other system interupts (e.g. keyboard) can be handled
         _client.socket.connect((_client.server, _client.port))
     except socket.error as e:
-        handle_error(ErrorCode.could_not_connect, e, "Could not connect to " + _client.server + ":" + str(_client.port))
+        error_code.handle_error(error_code.COULD_NOT_CONNECT, e, "Could not connect to " + _client.server + ":" + str(_client.port))
 
 
 def _send_raw(string):
@@ -97,7 +97,7 @@ def wait_for_events():
             except socket.timeout:
                 pass # timed out so keyboard/system interupts can be handled, hence the while true loop above
             except socket.error as e:
-                handle_error(ErrorCode.cannot_read_socket, e, "Error reading socket while waiting for events")
+                error_code.handle_error(error_code.CANNOT_READ_SOCKET, e, "Error reading socket while waiting for events")
 
             if not sent:
                 continue
@@ -111,7 +111,7 @@ def wait_for_events():
                 try:
                     parsed = json.loads(json_str)
                 except ValueError as e:
-                    handle_error(ErrorCode.malformed_json, e, "Could not parse json '" + json_str + "'")
+                    error_code.handle_error(error_code.MALFORMED_JSON, e, "Could not parse json '" + json_str + "'")
 
                 _client._events_stack.append(parsed)
 
@@ -128,13 +128,13 @@ def _auto_handle(event, data=None):
     if auto_handle_function:
         return auto_handle_function(data)
     else:
-        handle_error(ErrorCode.unknown_event_from_server, message=("Could not auto handle event '" + event + "'."))
+        error_code.handle_error(error_code.UNKNOWN_EVENT_FROM_SERVER, message=("Could not auto handle event '" + event + "'."))
 
 def _auto_handle_delta(data):
     try:
         _client.manager.apply_delta_state(data)
     except:
-        handle_error(ErrorCode.delta_merge_failure, sys.exc_info(), "Error merging delta")
+        error_code.handle_error(error_code.DELTA_MERGE_FAILURE, sys.exc_info(), "Error merging delta")
 
     if _client.ai.player: # then the AI is ready for updates
         _client.ai.game_updated()
@@ -144,7 +144,7 @@ def _auto_handle_order(data):
         returned = _client.ai._do_order(data['name'], data['args'])
     except:
         print("esc info", type(sys.exc_info()))
-        handle_error(ErrorCode.ai_errored, sys.exc_info(), "AI errored executing order '" + data['name'] + "'.")
+        error_code.handle_error(error_code.AI_ERRORED, sys.exc_info(), "AI errored executing order '" + data['name'] + "'.")
 
     send("finished", {
         'orderIndex': data['index'],
@@ -155,10 +155,10 @@ def _auto_handle_invalid(data):
     try:
         _client.ai.invalid(data['message'])
     except:
-        handle_error(ErrorCode.ai_errored, sys.exc_info(), "AI errored while handling invalid data.")
+        error_code.handle_error(error_code.AI_ERRORED, sys.exc_info(), "AI errored while handling invalid data.")
 
 def _auto_handle_fatal(data):
-    handle_error(ErrorCode.fatal_event, message="Got a fatal event from the server: " + data['message'])
+    error_code.handle_error(error_code.FATAL_EVENT, message="Got a fatal event from the server: " + data['message'])
 
 def _auto_handle_over(data):
     won = _client.ai.player.won
@@ -169,10 +169,10 @@ def _auto_handle_over(data):
     try:
         _client.ai.end(won, reason)
     except:
-        handle_error(ErrorCode.ai_errored, sys.exc_info(), "AI errored during end.")
+        error_code.handle_error(error_code.AI_ERRORED, sys.exc_info(), "AI errored during end.")
 
     if 'message' in data:
-        print(color.text("cyan") + data['message'] + color.rest())
+        print(color.text("cyan") + data['message'] + color.reset())
 
     disconnect()
     os._exit(0)

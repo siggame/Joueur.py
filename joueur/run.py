@@ -1,7 +1,7 @@
 import importlib.util
 import joueur.client
 import sys
-from joueur.error_code import ErrorCode, handle_error
+import joueur.error_code as error_code
 from joueur.game_manager import GameManager
 from joueur.utilities import camel_case_converter
 import joueur.ansi_color_coder as color
@@ -15,18 +15,18 @@ def run(args):
 
     spec = importlib.util.find_spec(module_str)
     if spec is None:
-        handle_error(ErrorCode.game_not_found, None, "Could not find the module for game '{}'.".format(args.game))
+        error_code.handle_error(error_code.GAME_NOT_FOUND, None, "Could not find the module for game '{}'.".format(args.game))
 
     try:
         module = importlib.import_module(module_str) # should load Game and AI to load based on the game selected in args
     except ImportError as e:
-        handle_error(ErrorCode.reflection_failed, e, "Could not import game module: '{}'.".format(module_str))
+        error_code.handle_error(error_code.REFLECTION_FAILED, e, "Could not import game module: '{}'.".format(module_str))
 
     game = module.Game()
     try:
         ai = module.AI(game)
     except:
-        handle_error(ErrorCode.ai_errored, sys.exc_info()[0], "Could not initialize AI class. Probably a syntax error in your AI.")
+        error_code.handle_error(error_code.AI_ERRORED, sys.exc_info()[0], "Could not initialize AI class. Probably a syntax error in your AI.")
     manager = GameManager(game)
 
     joueur.client.setup(game, ai, manager, args.server, int(args.port), print_io=args.print_io)
@@ -37,6 +37,7 @@ def run(args):
         'requestedSession': args.session,
         'clientType': "Python",
         'playerName': args.name or ai.get_name() or "Python Player",
+        'playerIndex': args.index,
         'gameSettings': args.game_settings
     })
 
@@ -55,6 +56,6 @@ def run(args):
         ai.start()
         ai.game_updated()
     except:
-        handle_error(ErrorCode.ai_errored, sys.exc_info()[0], "AI errored during game initialization")
+        error_code.handle_error(error_code.AI_ERRORED, sys.exc_info()[0], "AI errored during game initialization")
 
     joueur.client.play()

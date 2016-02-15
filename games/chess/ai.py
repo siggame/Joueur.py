@@ -4,15 +4,14 @@ from joueur.base_ai import BaseAI
 import random
 
 class AI(BaseAI):
-    """ the basic AI functions that are the same between games
-    """
+    """ The basic AI functions that are the same between games. """
 
 
     def get_name(self):
-        """ this is the name you send to the server to play as.
+        """ This is the name you send to the server so your AI will control the player named this string.
 
         Returns
-            str: the name you want your player to have
+            str: The name of your Player.
         """
 
         return "Chess Python Player" # REPLACE THIS WITH YOUR TEAM NAME
@@ -20,7 +19,7 @@ class AI(BaseAI):
 
 
     def start(self):
-        """ this is called once the game starts and your AI knows its player.id and game. You can initialize your AI here.
+        """ This is called once the game starts and your AI knows its playerID and game. You can initialize your AI here.
         """
 
         # replace with your start logic
@@ -29,7 +28,7 @@ class AI(BaseAI):
 
 
     def game_updated(self):
-        """ this is called every time the game's state updates, so if you are tracking anything you can update it here.
+        """ This is called every time the game's state updates, so if you are tracking anything you can update it here.
         """
 
         # replace with your game updated logic
@@ -38,11 +37,11 @@ class AI(BaseAI):
 
 
     def end(self, won, reason):
-        """ this is called when the game ends, you can clean up your data and dump files here if need be
+        """ This is called when the game ends, you can clean up your data and dump files here if need be.
 
         Args:
-            won (bool): won == true means you won, won == false means you lost
-            reason (str): the reason why you won or lost
+            won (bool): True means you won, False means you lost.
+            reason (str): The human readable string explaining why you won or lost.
         """
 
         # replace with your end logic
@@ -50,10 +49,10 @@ class AI(BaseAI):
 
 
     def run_turn(self):
-        """ This is called every time the AI is asked to respond with a command during their turn
+        """ This is called every time it is this AI.player's turn.
 
         Returns:
-            bool: represents if you want to end your turn. true means end the turn, false means to keep your turn going and re-call runTurn()
+            bool: Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.
         """
 
         # Here is where you'll want to code your AI.
@@ -100,7 +99,7 @@ class AI(BaseAI):
 
         # 2) print the opponent's last move to the console
         if len(self.game.moves) > 0:
-            print("Opponent's Last Move: '" + self.game.moves[-1] + "'")
+            print("Opponent's Last Move: '" + self.game.moves[-1].san + "'")
 
         # 3) print how much time remaining this AI has to calculate moves
         print("Time Remaining: " + str(self.player.time_remaining) + " ns")
