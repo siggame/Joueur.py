@@ -64,31 +64,31 @@ class AI(BaseAI):
         #    4) makes a random (and probably invalid) move.
 
         # 1) print the board to the console
-        for f in range(9, -2, -1): # iterate through the file in reverse order
+        for r in range(9, -2, -1): # iterate through the range in reverse order
             output = ""
-            if f == 9 or f == 0: # then the top or bottom of the board
+            if r == 9 or r == 0: # then the top or bottom of the board
                 output = "   +------------------------+"
-            elif f == -1: # then show the ranks
+            elif r == -1: # then show the ranks
                 output = "     a  b  c  d  e  f  g  h"
             else: # board
-                output = " " + str(f) + " |"
-                # fill in all the ranks with pieces at the current rank
-                for rankOffset in range(0, 8):
-                    r = chr(ord("a") + rankOffset) # start at a, with with rank offset increasing the char
-                    currentPiece = None
+                output = " " + str(r) + " |"
+                # fill in all the ranks with pieces at the current file
+                for file_offset in range(0, 8):
+                    f = chr(ord("a") + file_offset) # start at a, with with rank offset increasing the char
+                    current_piece = None
                     for piece in self.game.pieces:
-                        if piece.rank == r and piece.file == f: # then we found the piece at (rank, file)
-                            currentPiece = piece
+                        if piece.file == f and piece.rank == r: # then we found the piece at (file, rank)
+                            current_piece = piece
                             break
 
                     code = "." # default "no piece"
-                    if currentPiece:
-                        code = currentPiece.type[0] # the code will be the first character of their type, e.g. 'Q' for "Queen"
+                    if current_piece:
+                        code = current_piece.type[0] # the code will be the first character of their type, e.g. 'Q' for "Queen"
 
-                        if currentPiece.type == "Knight": # 'K' is for "King", we use 'N' for "Knights"
+                        if current_piece.type == "Knight": # 'K' is for "King", we use 'N' for "Knights"
                             code = "N"
 
-                        if currentPiece.owner.id == "1": # the second player (black) is lower case. Otherwise it's upppercase already
+                        if current_piece.owner.id == "1": # the second player (black) is lower case. Otherwise it's upppercase already
                             code = code.lower()
 
                     output += " " + code + " "
@@ -105,9 +105,9 @@ class AI(BaseAI):
         print("Time Remaining: " + str(self.player.time_remaining) + " ns")
 
         # 4) make a random (and probably invalid) move.
-        randomPiece = random.choice(self.player.pieces)
-        randomRank = chr(ord("a") + random.randrange(8))
-        randomFile = random.randrange(8) + 1
-        randomPiece.move(randomRank, randomFile)
+        random_piece = random.choice(self.player.pieces)
+        random_file = chr(ord("a") + random.randrange(8))
+        random_rank = random.randrange(8) + 1
+        random_piece.move(random_file, random_rank)
 
         return True # to signify we are done with our turn.
