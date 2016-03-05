@@ -74,7 +74,7 @@ class AI(BaseAI):
                 output = " " + str(r) + " |"
                 # fill in all the ranks with pieces at the current file
                 for file_offset in range(0, 8):
-                    f = chr(ord("a") + file_offset) # start at a, with with rank offset increasing the char
+                    f = chr(ord("a") + file_offset) # start at a, with with file offset increasing the char
                     current_piece = None
                     for piece in self.game.pieces:
                         if piece.file == f and piece.rank == r: # then we found the piece at (file, rank)
