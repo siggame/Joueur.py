@@ -72,7 +72,7 @@ class AI(BaseAI):
                 output = "     a  b  c  d  e  f  g  h"
             else: # board
                 output = " " + str(r) + " |"
-                # fill in all the ranks with pieces at the current file
+                # fill in all the files with pieces at the current rank
                 for file_offset in range(0, 8):
                     f = chr(ord("a") + file_offset) # start at a, with with file offset increasing the char
                     current_piece = None
