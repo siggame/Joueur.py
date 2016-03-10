@@ -10,18 +10,15 @@ import joueur.ansi_color_coder as color
 
 EOT_CHAR = chr(4)
 
+# Client: A singlton module that talks to the server receiving game information and sending commands to execute. Clients perform no game logic
 class _Client:
     socket = None
 
 _client = _Client()
 
-## Client: A singlton module that talks to the server receiving game information and sending commands to execute. Clients perform no game logic
-def setup(game, ai, manager, server='localhost', port=3000, print_io=False):
-    _client.game = game
-    _client.ai = ai
+def connect(server='localhost', port=3000, print_io=False):
     _client.server = server
-    _client.port = port
-    _client.manager = manager
+    _client.port = int(port)
 
     _client._print_io = print_io
     _client._received_buffer = ""
@@ -39,10 +36,14 @@ def setup(game, ai, manager, server='localhost', port=3000, print_io=False):
     except socket.error as e:
         error_code.handle_error(error_code.COULD_NOT_CONNECT, e, "Could not connect to " + _client.server + ":" + str(_client.port))
 
+def setup(game, ai, manager):
+    _client.game = game
+    _client.ai = ai
+    _client.manager = manager
 
 def _send_raw(string):
     if _client._print_io:
-        print("TO SERVER -->", string)
+        print(color.text("magenta") + "TO SERVER --> " + str(string) + color.reset())
     _client.socket.send(string)
 
  ## sends the server an event via socket
@@ -102,7 +103,7 @@ def wait_for_events():
             if not sent:
                 continue
             elif _client._print_io:
-                print("FROM SERVER <--", sent)
+                print(color.text("magenta") + "FROM SERVER <-- " + str(sent) + color.reset())
 
             split = (_client._received_buffer + sent).split(EOT_CHAR)
             _client._received_buffer = split.pop() # the last item will either be "" if the last char was an EOT_CHAR, or a partial data we need to buffer anyways
