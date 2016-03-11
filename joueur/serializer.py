@@ -8,6 +8,9 @@ def is_object(obj):
     return (isinstance(obj, dict) or isinstance(obj, list)) or isinstance(obj, BaseGameObject)
 
 def serialize(data):
+    if not isinstance(data, (list, dict, BaseGameObject)):
+        return data
+
     if isinstance(data, BaseGameObject):
         return {'id': data.id}
 
