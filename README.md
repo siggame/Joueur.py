@@ -1,4 +1,4 @@
-# GAME_NAME Python 3 Client
+# Spiders Python 3 Client
 
 This is the root of you AI. Stay out of the joueur/ folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in `games/game_name/`, with your very own AI living in `games/game_name/ai.py` for you to make smarter.
 
@@ -19,7 +19,7 @@ For Linux a recent version of `python3` should work. It has been tested on 3.4.3
 On Windows you'll need some version of Python 3. As of this version [3.4.3](https://www.python.org/downloads/release/python-343/) worked fine. Install that and ensure that python is set up in your Environmental Variables as 'python3', then
 
 ```
-python3 main.py GAME_NAME -s r99acm.device.mst.edu -r MyOwnGameSession
+python3 main.py Spiders -s r99acm.device.mst.edu -r MyOwnGameSession
 ```
 
 ## Make
