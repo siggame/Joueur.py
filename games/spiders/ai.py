@@ -57,11 +57,11 @@ class AI(BaseAI):
             if choice == 1: # try to consume a spiderling
                 if len(brood_mother.nest.spiders) > 1:
                     otherSpider = random.choice(spider.nest.spiders)
-                    #if otherSpider != brood_mother:
-                        #print("BroodMother #" + brood_mother.id +
-                        #      " consuming " + otherSpider.game_object_name +
-                        #      " #" + otherSpider.id)
-                        #brood_mother.consume(otherSpider)
+                    if otherSpider != brood_mother:
+                        print("BroodMother #" + brood_mother.id +
+                              " consuming " + otherSpider.game_object_name +
+                              " #" + otherSpider.id)
+                        brood_mother.consume(otherSpider)
             else: # try to spawn a Spiderling
                 if brood_mother.eggs > 0:
                     # get a random spiderling type to spawn a new
