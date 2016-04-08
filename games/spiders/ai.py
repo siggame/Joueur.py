@@ -73,7 +73,7 @@ class AI(BaseAI):
         else: # it is a Spiderling
             spiderling = spider
 
-            if spiderling.busy in [False, ""]:
+            if spiderling.busy == "":
                 choice = random.randint(0, 2)
 
                 if choice == 0: # try to move somewhere
