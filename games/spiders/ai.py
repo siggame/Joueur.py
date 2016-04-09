@@ -81,6 +81,7 @@ class AI(BaseAI):
                         web = random.choice(spiderling.nest.webs)
                         print("Spiderling " + spiderling.game_object_name +
                               " #" + spiderling.id + " moving on Web #" + web.id)
+                        spiderling.move(web)
                 elif choice == 1: # try to attack something
                     if len(spiderling.nest.spiders) > 1:
                         otherSpider = random.choice(spiderling.nest.spiders)
