@@ -4,7 +4,9 @@
 from games.spiders.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add addtional import(s) here
+
+import math
+
 # <<-- /Creer-Merge: imports -->>
 
 class Nest(GameObject):
@@ -63,5 +65,16 @@ class Nest(GameObject):
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-    # if you want to add any client side logic (such as state checking functions) this is where you can add them
+
+    def distance_to(self, nest):
+        """ Calculates the distance from this Nest to another Nest.
+
+        Args:
+            nest (Nest): The nest to calculate the distance to
+
+        Returns:
+            float: The euclidean distance between the two Nests
+        """
+        return math.sqrt( math.pow(nest.x - self.x, 2) + math.pow(nest.y - self.y, 2) )
+
     # <<-- /Creer-Merge: functions -->>
