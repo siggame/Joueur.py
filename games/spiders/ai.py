@@ -119,4 +119,4 @@ class AI(BaseAI):
                                 print("Weaver #" + weaver.id +
                                       " weakening Web #" + web.id)
                                 weaver.weaken(web)
-        return True
+        return True # To signify that we are done with our turn
