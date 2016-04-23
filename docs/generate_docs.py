@@ -61,8 +61,17 @@ for name in only_files:
     :show-inheritance:"""
 ))
 
+# replace GAME_NAME in README.md with the actual game name
+with open("../README.md", "r") as f:
+    readme = f.read()
+
+readme = readme.replace("GAME_NAME", game_name).replace("game_name", lower_game_name)
+
+with open("README.md", "w+") as f:
+    f.write(readme)
+
 # convert the readme from md to rst
-subprocess.call(["pandoc --from=markdown --to=rst --output=readme.rst ../README.md"], shell=True)
+subprocess.call(["pandoc --from=markdown --to=rst --output=readme.rst README.md"], shell=True)
 
 with open("readme.rst", "r") as f:
     readme_rst = f.read()
@@ -108,5 +117,6 @@ subprocess.call(["sphinx-build -b html ./ ./output"], shell=True)
 # cleanup files we made
 shutil.rmtree(game_rst_path)
 os.remove("./index.rst")
+os.remove("./README.md")
 os.remove("./readme.rst")
 os.remove("./conf.py")
