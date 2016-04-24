@@ -80,10 +80,11 @@ def wait_for_event(event):
 
         while len(_client._events_stack) > 0:
             sent = _client._events_stack.pop()
+            data = sent['data'] if 'data' in sent else None
             if event != None and sent['event'] == event:
-                return sent['data']
+                return data
             else:
-                _auto_handle(sent['event'], sent['data'] if 'data' in sent else None)
+                _auto_handle(sent['event'], data)
 
 ## loops to check the socket for incoming data and ends once some events get found
 def wait_for_events():
