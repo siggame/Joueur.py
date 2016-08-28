@@ -30,11 +30,13 @@ def deserialize(data, game):
     if is_game_object_reference(data):
         return game.get_game_object(data['id'])
 
-    deserialized = {}
-    for key in data:
-        value = data[key]
+    # else if we got here it's a list or dict
+    deserialized = [None] * len(data) if isinstance(data, list) else {}
+    seq_iter = data.items if isinstance(data, dict) else enumerate(data)
+    for key, value in seq_iter:
         if is_object(value):
             deserialized[key] = deserialize(value, game)
         else:
             deserialized[key] = value
+
     return deserialized

@@ -142,8 +142,9 @@ def _auto_handle_delta(data):
         _client.ai.game_updated()
 
 def _auto_handle_order(data):
+    args = deserialize(data['args'], _client.game)
     try:
-        returned = _client.ai._do_order(data['name'], data['args'])
+        returned = _client.ai._do_order(data['name'], args)
     except:
         print("esc info", type(sys.exc_info()))
         error_code.handle_error(error_code.AI_ERRORED, sys.exc_info(), "AI errored executing order '" + data['name'] + "'.")

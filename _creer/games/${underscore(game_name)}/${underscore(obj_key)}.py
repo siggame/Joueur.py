@@ -1,4 +1,3 @@
-# ${header}
 # This is a simple class to represent the ${obj_key} object in the game. You can extend it by adding utility functions here in this file.
 <%include file="functions.noCreer" /><% parent_classes = obj['parentClasses'] %>
 % if len(parent_classes) > 0:
