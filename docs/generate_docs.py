@@ -4,6 +4,13 @@ import shutil
 import subprocess
 import argparse
 import re
+import sys
+
+def run(*args, **kwargs):
+    error_code = subprocess.call(*args, **kwargs)
+    if error_code != 0: # an error happened
+        sys.exit(error_code)
+
 
 parser = argparse.ArgumentParser(description='Runs the python 3 client doc generation script.')
 parser.add_argument('game', action='store', help='the name of the game you want to document. Must exist in ../games/')
@@ -71,7 +78,7 @@ with open("README.md", "w+") as f:
     f.write(readme)
 
 # convert the readme from md to rst
-subprocess.call(["pandoc --from=markdown --to=rst --output=readme.rst README.md"], shell=True)
+run(["pandoc --from=markdown --to=rst --output=readme.rst README.md"], shell=True)
 
 with open("readme.rst", "r") as f:
     readme_rst = f.read()
@@ -112,7 +119,7 @@ Classes
     )
 ))
 
-subprocess.call(["sphinx-build -b html ./ ./output"], shell=True)
+run(["sphinx-build -b html ./ ./output"], shell=True)
 
 # cleanup files we made
 shutil.rmtree(game_rst_path)
