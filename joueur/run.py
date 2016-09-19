@@ -11,11 +11,16 @@ def run(args):
     args.server = split_server[0]
     args.port = int((len(split_server) == 2 and split[1])) or args.port
 
-    module_str = "games." + camel_case_converter(args.game)
+    joueur.client.connect(args.server, args.port, args.print_io)
+
+    joueur.client.send("alias", args.game)
+    game_name = joueur.client.wait_for_event("named")
+
+    module_str = "games." + camel_case_converter(game_name)
 
     spec = importlib.util.find_spec(module_str)
     if spec is None:
-        error_code.handle_error(error_code.GAME_NOT_FOUND, None, "Could not find the module for game '{}'.".format(args.game))
+        error_code.handle_error(error_code.GAME_NOT_FOUND, None, "Could not find the module for game '{}'.".format(game_name))
 
     try:
         module = importlib.import_module(module_str) # should load Game and AI to load based on the game selected in args
@@ -29,10 +34,10 @@ def run(args):
         error_code.handle_error(error_code.AI_ERRORED, sys.exc_info()[0], "Could not initialize AI class. Probably a syntax error in your AI.")
     manager = GameManager(game)
 
-    joueur.client.setup(game, ai, manager, args.server, int(args.port), print_io=args.print_io)
+    joueur.client.setup(game, ai, manager)
 
     joueur.client.send("play", {
-        'gameName': game.name,
+        'gameName': game_name,
         'password': args.password,
         'requestedSession': args.session,
         'clientType': "Python",

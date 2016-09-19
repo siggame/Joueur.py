@@ -10,18 +10,15 @@ import joueur.ansi_color_coder as color
 
 EOT_CHAR = chr(4)
 
+# Client: A singlton module that talks to the server receiving game information and sending commands to execute. Clients perform no game logic
 class _Client:
     socket = None
 
 _client = _Client()
 
-## Client: A singlton module that talks to the server receiving game information and sending commands to execute. Clients perform no game logic
-def setup(game, ai, manager, server='localhost', port=3000, print_io=False):
-    _client.game = game
-    _client.ai = ai
+def connect(server='localhost', port=3000, print_io=False):
     _client.server = server
-    _client.port = port
-    _client.manager = manager
+    _client.port = int(port)
 
     _client._print_io = print_io
     _client._received_buffer = ""
@@ -39,10 +36,14 @@ def setup(game, ai, manager, server='localhost', port=3000, print_io=False):
     except socket.error as e:
         error_code.handle_error(error_code.COULD_NOT_CONNECT, e, "Could not connect to " + _client.server + ":" + str(_client.port))
 
+def setup(game, ai, manager):
+    _client.game = game
+    _client.ai = ai
+    _client.manager = manager
 
 def _send_raw(string):
     if _client._print_io:
-        print("TO SERVER -->", string)
+        print(color.text("magenta") + "TO SERVER --> " + str(string) + color.reset())
     _client.socket.send(string)
 
  ## sends the server an event via socket
@@ -79,10 +80,11 @@ def wait_for_event(event):
 
         while len(_client._events_stack) > 0:
             sent = _client._events_stack.pop()
+            data = sent['data'] if 'data' in sent else None
             if event != None and sent['event'] == event:
-                return sent['data']
+                return data
             else:
-                _auto_handle(sent['event'], sent['data'] if 'data' in sent else None)
+                _auto_handle(sent['event'], data)
 
 ## loops to check the socket for incoming data and ends once some events get found
 def wait_for_events():
@@ -102,7 +104,7 @@ def wait_for_events():
             if not sent:
                 continue
             elif _client._print_io:
-                print("FROM SERVER <--", sent)
+                print(color.text("magenta") + "FROM SERVER <-- " + str(sent) + color.reset())
 
             split = (_client._received_buffer + sent).split(EOT_CHAR)
             _client._received_buffer = split.pop() # the last item will either be "" if the last char was an EOT_CHAR, or a partial data we need to buffer anyways
@@ -140,8 +142,9 @@ def _auto_handle_delta(data):
         _client.ai.game_updated()
 
 def _auto_handle_order(data):
+    args = deserialize(data['args'], _client.game)
     try:
-        returned = _client.ai._do_order(data['name'], data['args'])
+        returned = _client.ai._do_order(data['name'], args)
     except:
         print("esc info", type(sys.exc_info()))
         error_code.handle_error(error_code.AI_ERRORED, sys.exc_info(), "AI errored executing order '" + data['name'] + "'.")
