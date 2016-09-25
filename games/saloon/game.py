@@ -32,11 +32,14 @@ class Game(BaseGame):
         self._furnishings = []
         self._game_objects = {}
         self._jobs = []
+        self._map_height = 0
+        self._map_width = 0
         self._max_cowboys = 0
         self._max_turns = 100
         self._players = []
         self._rowdyness_to_siesta = 0
         self._session = ""
+        self._tiles = []
 
         self.name = "Saloon"
 
@@ -114,6 +117,24 @@ class Game(BaseGame):
 
 
     @property
+    def map_height(self):
+        """The number of Tiles in the map along the y (vertical) axis.
+
+        :rtype: int
+        """
+        return self._map_height
+
+
+    @property
+    def map_width(self):
+        """The number of Tiles in the map along the x (horizontal) axis.
+
+        :rtype: int
+        """
+        return self._map_width
+
+
+    @property
     def max_cowboys(self):
         """The maximum number of Cowboys a Player can bring into the saloon.
 
@@ -156,6 +177,15 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._session
+
+
+    @property
+    def tiles(self):
+        """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
+
+        :rtype: list[Tile]
+        """
+        return self._tiles
 
 
 

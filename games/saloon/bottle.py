@@ -26,7 +26,7 @@ class Bottle(GameObject):
 
     @property
     def drunk_direction(self):
-        """The direction any Cowboys hit by this will move, can be 'North', 'East', 'South', 'West'.
+        """The direction any Cowboys hit by this will move, can be 'North', 'East', 'South', or 'West'.
 
         :rtype: str
         """
@@ -53,7 +53,7 @@ class Bottle(GameObject):
 
     @property
     def next_location(self):
-        """The Tile this Bottle will fly to next turn, if it does not impact anything on it's path.
+        """The Tile this Bottle will fly to next turn, if it does not impact anything on its path between the two.
 
         :rtype: Tile
         """
