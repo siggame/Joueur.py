@@ -25,6 +25,7 @@ class Game(BaseGame):
         # private attributes to hold the properties so they appear read only
         self._current_player = None
         self._current_turn = 0
+        self._fen = ""
         self._game_objects = {}
         self._max_turns = 100
         self._moves = []
@@ -59,6 +60,15 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._current_turn
+
+
+    @property
+    def fen(self):
+        """Forsyth–Edwards Notation, a notation that describes the game board.
+
+        :rtype: str
+        """
+        return self._fen
 
 
     @property
