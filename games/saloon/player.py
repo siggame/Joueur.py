@@ -141,17 +141,14 @@ class Player(GameObject):
 
 
 
-    def returns(self):
-        """ The Cowboy that was previously a 'Young Gun', and has now been promoted to a different job if successful, null otherwise.
-        """
-        return self._run_on_server('returns')
-
-
     def send_in(self, job):
         """ Sends in the Young Gun to the nearest Tile into the Saloon, and promotes them to a new job.
 
         Args:
             job (str): The job you want the Young Gun being brought in to be called in to do, changing their job to it.
+
+        Returns:
+            Cowboy: The Cowboy that was previously a 'Young Gun', and has now been promoted to a different job if successful, null otherwise.
         """
         return self._run_on_server('sendIn', job=job)
 
