@@ -39,6 +39,7 @@ class Game(BaseGame):
         self._players = []
         self._rowdyness_to_siesta = 0
         self._session = ""
+        self._siesta_length = 0
         self._tiles = []
 
         self.name = "Saloon"
@@ -177,6 +178,15 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._session
+
+
+    @property
+    def siesta_length(self):
+        """How long siestas are for a player's team.
+
+        :rtype: int
+        """
+        return self._siesta_length
 
 
     @property

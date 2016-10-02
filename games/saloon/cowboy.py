@@ -25,9 +25,9 @@ class Cowboy(GameObject):
         self._is_drunk = False
         self._job = ""
         self._owner = None
-        self._siesta = 0
         self._tile = None
         self._tolerance = 0
+        self._turns_busy = 0
 
 
 
@@ -104,15 +104,6 @@ class Cowboy(GameObject):
 
 
     @property
-    def siesta(self):
-        """How many turns this unit has remaining for their siesta. 0 means they are awake, and can act.
-
-        :rtype: int
-        """
-        return self._siesta
-
-
-    @property
     def tile(self):
         """The Tile that this Cowboy is located on.
 
@@ -128,6 +119,15 @@ class Cowboy(GameObject):
         :rtype: int
         """
         return self._tolerance
+
+
+    @property
+    def turns_busy(self):
+        """How many turns this unit has remaining before it is no longer busy and can `act()` or `play()` again.
+
+        :rtype: int
+        """
+        return self._turns_busy
 
 
 

@@ -17,27 +17,27 @@ class Tile(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
-        self._bottles = []
+        self._bottle = None
         self._cowboy = None
         self._furnishing = None
         self._has_hazard = False
         self._is_wall = False
-        self._tile_above = None
-        self._tile_below = None
-        self._tile_left = None
-        self._tile_right = None
+        self._tile_east = None
+        self._tile_north = None
+        self._tile_south = None
+        self._tile_west = None
         self._x = 0
         self._y = 0
 
 
 
     @property
-    def bottles(self):
-        """All the beer Bottles currently flying over this Tile.
+    def bottle(self):
+        """The beer Bottle currently flying over this Tile.
 
-        :rtype: list[Bottle]
+        :rtype: Bottle
         """
-        return self._bottles
+        return self._bottle
 
 
     @property
@@ -77,39 +77,39 @@ class Tile(GameObject):
 
 
     @property
-    def tile_above(self):
-        """The Tile above this one (x, y-1). Null if out of bounds of the map.
+    def tile_east(self):
+        """The Tile to the 'East' of this one (x+1, y). Null if out of bounds of the map.
 
         :rtype: Tile
         """
-        return self._tile_above
+        return self._tile_east
 
 
     @property
-    def tile_below(self):
-        """The Tile below this one (x, y+1). Null if out of bounds of the map.
+    def tile_north(self):
+        """The Tile to the 'North' of this one (x, y-1). Null if out of bounds of the map.
 
         :rtype: Tile
         """
-        return self._tile_below
+        return self._tile_north
 
 
     @property
-    def tile_left(self):
-        """The Tile to the left of this one (x-1, y). Null if out of bounds of the map.
+    def tile_south(self):
+        """The Tile to the 'South' of this one (x, y+1). Null if out of bounds of the map.
 
         :rtype: Tile
         """
-        return self._tile_left
+        return self._tile_south
 
 
     @property
-    def tile_right(self):
-        """The Tile to the right of this one (x+1, y). Null if out of bounds of the map.
+    def tile_west(self):
+        """The Tile to the 'West' of this one (x-1, y). Null if out of bounds of the map.
 
         :rtype: Tile
         """
-        return self._tile_right
+        return self._tile_west
 
 
     @property

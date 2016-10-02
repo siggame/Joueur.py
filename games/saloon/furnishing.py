@@ -18,6 +18,7 @@ class Furnishing(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._health = 0
+        self._is_destroyed = False
         self._is_piano = False
         self._tile = None
 
@@ -30,6 +31,15 @@ class Furnishing(GameObject):
         :rtype: int
         """
         return self._health
+
+
+    @property
+    def is_destroyed(self):
+        """If this Furnishing has been destroyed, and has been removed from the game.
+
+        :rtype: bool
+        """
+        return self._is_destroyed
 
 
     @property

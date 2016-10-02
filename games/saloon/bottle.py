@@ -17,11 +17,20 @@ class Bottle(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
+        self._direction = None
         self._drunk_direction = ""
         self._is_destroyed = False
-        self._location = None
-        self._next_location = None
+        self._tile = None
 
+
+
+    @property
+    def direction(self):
+        """The Direction this Bottle is flying and will move to between turns, can be 'North', 'East', 'South', or 'West'.
+
+        :rtype: Tile
+        """
+        return self._direction
 
 
     @property
@@ -43,21 +52,12 @@ class Bottle(GameObject):
 
 
     @property
-    def location(self):
+    def tile(self):
         """The Tile this bottle is currently flying over.
 
         :rtype: Tile
         """
-        return self._location
-
-
-    @property
-    def next_location(self):
-        """The Tile this Bottle will fly to next turn, if it does not impact anything on its path between the two.
-
-        :rtype: Tile
-        """
-        return self._next_location
+        return self._tile
 
 
 

@@ -27,8 +27,10 @@ class Player(GameObject):
         self._reason_won = ""
         self._rowdyness = 0
         self._score = 0
+        self._siesta = 0
         self._time_remaining = 0
         self._won = False
+        self._young_gun = None
 
 
 
@@ -123,6 +125,15 @@ class Player(GameObject):
 
 
     @property
+    def siesta(self):
+        """0 when not having a team siesta. When greater than 0 represents how many turns left for the team siesta to complete.
+
+        :rtype: int
+        """
+        return self._siesta
+
+
+    @property
     def time_remaining(self):
         """The amount of time (in ns) remaining for this AI to send commands.
 
@@ -138,6 +149,15 @@ class Player(GameObject):
         :rtype: bool
         """
         return self._won
+
+
+    @property
+    def young_gun(self):
+        """The only 'Yong Gun' Cowboy this player owns, or null if they called in their young gun during their turn.
+
+        :rtype: Cowboy
+        """
+        return self._young_gun
 
 
 
