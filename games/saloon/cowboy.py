@@ -17,7 +17,7 @@ class Cowboy(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
-        self._can_move = 0
+        self._can_move = False
         self._drunk_direction = ""
         self._focus = 0
         self._health = 0
@@ -35,7 +35,7 @@ class Cowboy(GameObject):
     def can_move(self):
         """If the Cowboy can be moved this turn via its owner.
 
-        :rtype: int
+        :rtype: bool
         """
         return self._can_move
 
