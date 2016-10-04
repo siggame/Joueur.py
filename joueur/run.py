@@ -9,7 +9,7 @@ import joueur.ansi_color_coder as color
 def run(args):
     split_server = args.server.split(":")
     args.server = split_server[0]
-    args.port = int((len(split_server) == 2 and split[1])) or args.port
+    args.port = int((len(split_server) == 2 and split_server[1])) or args.port
 
     joueur.client.connect(args.server, args.port, args.print_io)
 
