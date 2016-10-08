@@ -27,6 +27,13 @@ class GameManager():
             if not id in self.game._game_objects: # then we need to create it
                 self.game._game_objects[id] = self._game_object_classes[obj['gameObjectName']]()
 
+    ## Correctly apply a single change to a member of a list, dict, or object
+    def _set_member(self, state, state_key, value):
+        if isinstance(state_key, int) or isinstance(state, dict):
+            state[state_key] = value
+        else:
+            setattr(state, state_key, value)
+
     ## recursively merges delta changes to the game.
     def _merge_delta(self, state, delta):
         delta_length = -1
@@ -53,24 +60,17 @@ class GameManager():
                     state_key = "_" + camel_case_converter(state_key)
                 key_in_state = state_key in state
 
-            value = d
             if d == self._DELTA_REMOVED:
-                value = None
                 if key_in_state:
                     del state[state_key]
             elif is_game_object_reference(d): # then this is a shallow reference to a game object
-                value = self.game.get_game_object(d['id'])
+                referenced_object = self.game.get_game_object(d['id'])
+                self._set_member(state, state_key, referenced_object)
             elif is_object(d) and key_in_state and is_object(state[state_key]):
-                value = None
                 self._merge_delta(state[state_key], d)
             elif not key_in_state and is_object(d):
                 if isinstance(d, dict):
                     state[state_key] = [] if d in self._DELTA_LIST_LENGTH else {}
-                    value = None
                     self._merge_delta(state[state_key], d)
-
-            if value != None:
-                if isinstance(state_key, int) or isinstance(state, dict):
-                    state[state_key] = value
-                else:
-                    setattr(state, state_key, value)
+            else:
+                self._set_member(state, state_key, d)
