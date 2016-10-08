@@ -24,7 +24,7 @@ ${merge("# ", "imports", "# you can add addtional import(s) here")}
 class ${obj_key}(${", ".join(parent_classes)}):
     """The class representing the ${obj_key} in the ${game_name} game.
 
-    ${obj['description']}
+    ${shared['py']['format_description'](obj['description'])}
     """
 
     def __init__(self):
@@ -54,7 +54,7 @@ class ${obj_key}(${", ".join(parent_classes)}):
 <% attr_parms = obj['attributes'][attr_name] %>
     @property
     def ${underscore(attr_name)}(self):
-        """${attr_parms['description']}
+        """${shared['py']['format_description'](attr_parms['description'])}
 
         :rtype: ${shared['py']['type'](attr_parms['type'])}
         """
@@ -66,18 +66,18 @@ class ${obj_key}(${", ".join(parent_classes)}):
 %>
 
     def ${underscore(function_name)}(self${shared['py']['args'](function_parms['arguments'])}):
-        """ ${function_parms['description']}
+        """ ${shared['py']['format_description'](function_parms['description'])}
 % if len(function_parms['arguments']) > 0:
 
         Args:
 % for arg_parms in function_parms['arguments']:
-            ${underscore(arg_parms['name'])} (${"Optional[" if arg_parms['optional'] else ""}${shared['py']['type'](arg_parms['type'])}${"]" if arg_parms['optional'] else ""}): ${arg_parms['description']}
+            ${underscore(arg_parms['name'])} (${"Optional[" if arg_parms['optional'] else ""}${shared['py']['type'](arg_parms['type'])}${"]" if arg_parms['optional'] else ""}): ${shared['py']['format_description'](arg_parms['description'])}
 % endfor
 % endif
 % if function_parms['returns']:
 
         Returns:
-            ${shared['py']['type'](function_parms['returns']['type'])}: ${function_parms['returns']['description']}
+            ${shared['py']['type'](function_parms['returns']['type'])}: ${shared['py']['format_description'](function_parms['returns']['description'])}
 % endif
         """
         return self._run_on_server('${function_name}'${shared['py']['kwargs'](function_parms['argument_names'])})
