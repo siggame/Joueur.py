@@ -45,18 +45,18 @@ ${merge("        # ", "end", "        # replace with your end logic")}
 %>
 
     def ${underscore(function_name)}(self${", ".join([""] + function_parms['argument_names'])}):
-        """ ${function_parms['description']}
+        """ ${shared['py']['format_description'](function_parms['description'])}
 % if len(function_parms['arguments']) > 0:
 
         Args:
 % for arg_parms in function_parms['arguments']:
-            ${underscore(arg_parms['name'])} (${shared['py']['type'](arg_parms['type'])}): ${arg_parms['description']}
+            ${underscore(arg_parms['name'])} (${shared['py']['type'](arg_parms['type'])}): ${shared['py']['format_description'](arg_parms['description'])}
 % endfor
 % endif
 % if function_parms['returns']:
 
         Returns:
-            ${shared['py']['type'](function_parms['returns']['type'])}: ${function_parms['returns']['description']}
+            ${shared['py']['type'](function_parms['returns']['type'])}: ${shared['py']['format_description'](function_parms['returns']['description'])}
 % endif
         """
 ${merge("        # ", function_name,

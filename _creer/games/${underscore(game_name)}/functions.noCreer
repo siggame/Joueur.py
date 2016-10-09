@@ -82,4 +82,13 @@ if not 'py' in shared:
         return ", ".join(to_join)
     shared['py']['args'] = py_args
 
+    def py_format_description(description):
+        return description \
+            .replace("null", "None") \
+            .replace("Null", "None") \
+            .replace("true", "True") \
+            .replace("false", "False") \
+            .replace("dictionary", "dict")
+    shared['py']['format_description'] = py_format_description
+
 %>
