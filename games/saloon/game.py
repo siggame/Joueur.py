@@ -1,4 +1,8 @@
-# This is a simple class to represent the Game object in the game. You can extend it by adding utility functions here in this file.
+# Game: Use cowboys to have a good time and play some music on a Piano, while brawling with enemy Coyboys.
+
+# DO NOT MODIFY THIS FILE
+# Never try to directly create an instance of this class, or modify its member variables.
+# Instead, you should only be reading its variables and calling its functions.
 
 from joueur.base_game import BaseGame
 
@@ -9,6 +13,7 @@ from games.saloon.furnishing import Furnishing
 from games.saloon.game_object import GameObject
 from games.saloon.player import Player
 from games.saloon.tile import Tile
+from games.saloon.young_gun import YoungGun
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 # you can add addtional import(s) here
@@ -34,7 +39,7 @@ class Game(BaseGame):
         self._jobs = []
         self._map_height = 0
         self._map_width = 0
-        self._max_cowboys = 0
+        self._max_cowboys_per_job = 0
         self._max_turns = 100
         self._players = []
         self._rowdyness_to_siesta = 0
@@ -50,7 +55,8 @@ class Game(BaseGame):
             'Furnishing': Furnishing,
             'GameObject': GameObject,
             'Player': Player,
-            'Tile': Tile
+            'Tile': Tile,
+            'YoungGun': YoungGun
         }
 
 
@@ -110,7 +116,7 @@ class Game(BaseGame):
 
     @property
     def jobs(self):
-        """All the jobs that Cowboys can be assigned within the saloon.
+        """All the jobs that Cowboys can be called in with.
 
         :rtype: list[str]
         """
@@ -136,12 +142,12 @@ class Game(BaseGame):
 
 
     @property
-    def max_cowboys(self):
-        """The maximum number of Cowboys a Player can bring into the saloon.
+    def max_cowboys_per_job(self):
+        """The maximum number of Cowboys a Player can bring into the saloon of each specific job.
 
         :rtype: int
         """
-        return self._max_cowboys
+        return self._max_cowboys_per_job
 
 
     @property

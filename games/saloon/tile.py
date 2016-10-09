@@ -1,4 +1,8 @@
-# This is a simple class to represent the Tile object in the game. You can extend it by adding utility functions here in this file.
+# Tile: A Tile in the game that makes up the 2D map grid.
+
+# DO NOT MODIFY THIS FILE
+# Never try to directly create an instance of this class, or modify its member variables.
+# Instead, you should only be reading its variables and calling its functions.
 
 from games.saloon.game_object import GameObject
 
@@ -21,13 +25,14 @@ class Tile(GameObject):
         self._cowboy = None
         self._furnishing = None
         self._has_hazard = False
-        self._is_wall = False
+        self._is_balcony = False
         self._tile_east = None
         self._tile_north = None
         self._tile_south = None
         self._tile_west = None
         self._x = 0
         self._y = 0
+        self._young_gun = None
 
 
 
@@ -42,7 +47,7 @@ class Tile(GameObject):
 
     @property
     def cowboy(self):
-        """The Cowboy that is on this Tile, or null if empty.
+        """The Cowboy that is on this Tile, None otherwise.
 
         :rtype: Cowboy
         """
@@ -51,7 +56,7 @@ class Tile(GameObject):
 
     @property
     def furnishing(self):
-        """The furnishing that is on this Tile, or null if empty.
+        """The furnishing that is on this Tile, None otherwise.
 
         :rtype: Furnishing
         """
@@ -68,17 +73,17 @@ class Tile(GameObject):
 
 
     @property
-    def is_wall(self):
-        """If this Tile is a wall of the Saloon, and can never be pathed through.
+    def is_balcony(self):
+        """If this Tile is a balcony of the Saloon that YoungGuns walk around on, and can never be pathed through by Cowboys.
 
         :rtype: bool
         """
-        return self._is_wall
+        return self._is_balcony
 
 
     @property
     def tile_east(self):
-        """The Tile to the 'East' of this one (x+1, y). Null if out of bounds of the map.
+        """The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
 
         :rtype: Tile
         """
@@ -87,7 +92,7 @@ class Tile(GameObject):
 
     @property
     def tile_north(self):
-        """The Tile to the 'North' of this one (x, y-1). Null if out of bounds of the map.
+        """The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
 
         :rtype: Tile
         """
@@ -96,7 +101,7 @@ class Tile(GameObject):
 
     @property
     def tile_south(self):
-        """The Tile to the 'South' of this one (x, y+1). Null if out of bounds of the map.
+        """The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
 
         :rtype: Tile
         """
@@ -105,7 +110,7 @@ class Tile(GameObject):
 
     @property
     def tile_west(self):
-        """The Tile to the 'West' of this one (x-1, y). Null if out of bounds of the map.
+        """The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
 
         :rtype: Tile
         """
@@ -128,6 +133,15 @@ class Tile(GameObject):
         :rtype: int
         """
         return self._y
+
+
+    @property
+    def young_gun(self):
+        """The YoungGun on this tile, None otherwise.
+
+        :rtype: YoungGun
+        """
+        return self._young_gun
 
 
 

@@ -1,4 +1,8 @@
-# This is a simple class to represent the Bottle object in the game. You can extend it by adding utility functions here in this file.
+# Bottle: A bottle thrown by a bartender at a Tile.
+
+# DO NOT MODIFY THIS FILE
+# Never try to directly create an instance of this class, or modify its member variables.
+# Instead, you should only be reading its variables and calling its functions.
 
 from games.saloon.game_object import GameObject
 

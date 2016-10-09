@@ -1,4 +1,8 @@
-# This is a simple class to represent the Cowboy object in the game. You can extend it by adding utility functions here in this file.
+# Cowboy: A person on the map that can move around and interact within the saloon.
+
+# DO NOT MODIFY THIS FILE
+# Never try to directly create an instance of this class, or modify its member variables.
+# Instead, you should only be reading its variables and calling its functions.
 
 from games.saloon.game_object import GameObject
 
@@ -139,7 +143,7 @@ class Cowboy(GameObject):
             drunk_direction (Optional[str]): The direction the bottle will cause drunk cowboys to be in, can be 'North', 'East', 'South', or 'West'.
 
         Returns:
-            bool: True if the act worked, false otherwise.
+            bool: True if the act worked, False otherwise.
         """
         return self._run_on_server('act', tile=tile, drunkDirection=drunkDirection)
 
@@ -151,7 +155,7 @@ class Cowboy(GameObject):
             tile (Tile): The Tile you want to move this Cowboy to.
 
         Returns:
-            bool: True if the move worked, false otherwise.
+            bool: True if the move worked, False otherwise.
         """
         return self._run_on_server('move', tile=tile)
 
@@ -163,7 +167,7 @@ class Cowboy(GameObject):
             piano (Furnishing): The Furnishing that is a piano you want to play.
 
         Returns:
-            bool: True if the play worked, false otherwise.
+            bool: True if the play worked, False otherwise.
         """
         return self._run_on_server('play', piano=piano)
 
