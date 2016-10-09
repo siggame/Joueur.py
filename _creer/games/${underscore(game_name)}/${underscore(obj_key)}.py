@@ -1,5 +1,9 @@
-# This is a simple class to represent the ${obj_key} object in the game. You can extend it by adding utility functions here in this file.
-<%include file="functions.noCreer" /><% parent_classes = obj['parentClasses'] %>
+<%include file="functions.noCreer" /># ${obj_key}: ${shared['py']['format_description'](obj['description'])}
+
+# DO NOT MODIFY THIS FILE
+# Never try to directly create an instance of this class, or modify its member variables.
+# Instead, you should only be reading its variables and calling its functions.
+<% parent_classes = obj['parentClasses'] %>
 % if len(parent_classes) > 0:
 % for parent_class in parent_classes:
 from games.${underscore(game_name)}.${underscore(parent_class)} import ${parent_class}
