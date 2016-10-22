@@ -1,4 +1,4 @@
-# Game: Use cowboys to have a good time and play some music on a Piano, while brawling with enemy Coyboys.
+# Game: Use cowboys to have a good time and play some music on a Piano, while brawling with enemy Cowboys.
 
 # DO NOT MODIFY THIS FILE
 # Never try to directly create an instance of this class, or modify its member variables.
@@ -22,7 +22,7 @@ from games.saloon.young_gun import YoungGun
 class Game(BaseGame):
     """The class representing the Game in the Saloon game.
 
-    Use cowboys to have a good time and play some music on a Piano, while brawling with enemy Coyboys.
+    Use cowboys to have a good time and play some music on a Piano, while brawling with enemy Cowboys.
     """
 
     def __init__(self):
@@ -31,6 +31,7 @@ class Game(BaseGame):
 
         # private attributes to hold the properties so they appear read only
         self._bottles = []
+        self._brawler_damage = 0
         self._cowboys = []
         self._current_player = None
         self._current_turn = 0
@@ -44,6 +45,7 @@ class Game(BaseGame):
         self._players = []
         self._rowdyness_to_siesta = 0
         self._session = ""
+        self._sharpshooter_damage = 0
         self._siesta_length = 0
         self._tiles = []
 
@@ -67,6 +69,15 @@ class Game(BaseGame):
         :rtype: list[Bottle]
         """
         return self._bottles
+
+
+    @property
+    def brawler_damage(self):
+        """How much damage is applied to neighboring things bit by the Sharpshooter between turns.
+
+        :rtype: int
+        """
+        return self._brawler_damage
 
 
     @property
@@ -184,6 +195,15 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._session
+
+
+    @property
+    def sharpshooter_damage(self):
+        """How much damage is applied to things hit by Sharpshooters when they act.
+
+        :rtype: int
+        """
+        return self._sharpshooter_damage
 
 
     @property

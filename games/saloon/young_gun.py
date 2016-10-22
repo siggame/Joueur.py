@@ -21,10 +21,20 @@ class YoungGun(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
+        self._call_in_tile = None
         self._can_call_in = False
         self._owner = None
         self._tile = None
 
+
+
+    @property
+    def call_in_tile(self):
+        """The Tile that a Cowboy will be called in on if this YoungGun calls in a Cowboy.
+
+        :rtype: Tile
+        """
+        return self._call_in_tile
 
 
     @property
@@ -47,7 +57,7 @@ class YoungGun(GameObject):
 
     @property
     def tile(self):
-        """The Tile this YoungGun is currently on. Cowboys they send in will be on the nearest non-balcony Tile.
+        """The Tile this YoungGun is currently on.
 
         :rtype: Tile
         """
@@ -56,7 +66,7 @@ class YoungGun(GameObject):
 
 
     def call_in(self, job):
-        """ Tells the YoungGun to call in a new Cowbow of the given job to the open Tile nearest to them.
+        """ Tells the YoungGun to call in a new Cowboy of the given job to the open Tile nearest to them.
 
         Args:
             job (str): The job you want the Cowboy being brought to have.

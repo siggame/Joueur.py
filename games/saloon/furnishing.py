@@ -24,6 +24,7 @@ class Furnishing(GameObject):
         self._health = 0
         self._is_destroyed = False
         self._is_piano = False
+        self._is_playing = False
         self._tile = None
 
 
@@ -53,6 +54,15 @@ class Furnishing(GameObject):
         :rtype: bool
         """
         return self._is_piano
+
+
+    @property
+    def is_playing(self):
+        """If this is a piano and a Cowboy is playing it this turn.
+
+        :rtype: bool
+        """
+        return self._is_playing
 
 
     @property
