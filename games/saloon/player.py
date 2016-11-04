@@ -29,7 +29,7 @@ class Player(GameObject):
         self._opponent = None
         self._reason_lost = ""
         self._reason_won = ""
-        self._rowdyness = 0
+        self._rowdiness = 0
         self._score = 0
         self._siesta = 0
         self._time_remaining = 0
@@ -111,12 +111,12 @@ class Player(GameObject):
 
 
     @property
-    def rowdyness(self):
+    def rowdiness(self):
         """How rowdy their team is. When it gets too high their team takes a collective siesta.
 
         :rtype: int
         """
-        return self._rowdyness
+        return self._rowdiness
 
 
     @property

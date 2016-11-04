@@ -30,6 +30,7 @@ class Game(BaseGame):
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
+        self._bartender_cooldown = 0
         self._bottles = []
         self._brawler_damage = 0
         self._cowboys = []
@@ -43,11 +44,12 @@ class Game(BaseGame):
         self._max_cowboys_per_job = 0
         self._max_turns = 100
         self._players = []
-        self._rowdyness_to_siesta = 0
+        self._rowdiness_to_siesta = 0
         self._session = ""
         self._sharpshooter_damage = 0
         self._siesta_length = 0
         self._tiles = []
+        self._turns_drunk = 0
 
         self.name = "Saloon"
 
@@ -60,6 +62,15 @@ class Game(BaseGame):
             'Tile': Tile,
             'YoungGun': YoungGun
         }
+
+
+    @property
+    def bartender_cooldown(self):
+        """How many turns a Bartender will be busy for after throwing a Bottle.
+
+        :rtype: int
+        """
+        return self._bartender_cooldown
 
 
     @property
@@ -180,12 +191,12 @@ class Game(BaseGame):
 
 
     @property
-    def rowdyness_to_siesta(self):
-        """When a player's rowdyness reaches or exceeds this number their Cowboys take a collective siesta.
+    def rowdiness_to_siesta(self):
+        """When a player's rowdiness reaches or exceeds this number their Cowboys take a collective siesta.
 
         :rtype: int
         """
-        return self._rowdyness_to_siesta
+        return self._rowdiness_to_siesta
 
 
     @property
@@ -222,6 +233,15 @@ class Game(BaseGame):
         :rtype: list[Tile]
         """
         return self._tiles
+
+
+    @property
+    def turns_drunk(self):
+        """How many turns a Cowboy will be drunk for if a bottle breaks on it.
+
+        :rtype: int
+        """
+        return self._turns_drunk
 
 
 
