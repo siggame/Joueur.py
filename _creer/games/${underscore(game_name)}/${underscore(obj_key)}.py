@@ -23,7 +23,7 @@ from games.${underscore(game_name)}.${underscore(game_obj_key)} import ${game_ob
 % endfor
 
 % endif
-${merge("# ", "imports", "# you can add addtional import(s) here")}
+${merge("# ", "imports", "# you can add additional import(s) here", optional=True)}
 
 class ${obj_key}(${", ".join(parent_classes)}):
     """The class representing the ${obj_key} in the ${game_name} game.
@@ -88,4 +88,4 @@ class ${obj_key}(${", ".join(parent_classes)}):
 % endfor
 
 
-${merge("    # ", "functions", "    # if you want to add any client side logic (such as state checking functions) this is where you can add them")}
+${merge("    # ", "functions", "    # if you want to add any client side logic (such as state checking functions) this is where you can add them", optional=True)}
