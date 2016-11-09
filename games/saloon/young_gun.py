@@ -6,9 +6,7 @@
 
 from games.saloon.game_object import GameObject
 
-# <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add addtional import(s) here
-# <<-- /Creer-Merge: imports -->>
+
 
 class YoungGun(GameObject):
     """The class representing the YoungGun in the Saloon game.
@@ -75,8 +73,3 @@ class YoungGun(GameObject):
             Cowboy: The new Cowboy that was called in if valid. They will not be added to any `cowboys` lists until the turn ends. None otherwise.
         """
         return self._run_on_server('callIn', job=job)
-
-
-    # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-    # if you want to add any client side logic (such as state checking functions) this is where you can add them
-    # <<-- /Creer-Merge: functions -->>

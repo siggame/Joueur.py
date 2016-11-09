@@ -15,9 +15,7 @@ from games.saloon.player import Player
 from games.saloon.tile import Tile
 from games.saloon.young_gun import YoungGun
 
-# <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add addtional import(s) here
-# <<-- /Creer-Merge: imports -->>
+
 
 class Game(BaseGame):
     """The class representing the Game in the Saloon game.
@@ -242,9 +240,3 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._turns_drunk
-
-
-
-    # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-    # if you want to add any client side logic (such as state checking functions) this is where you can add them
-    # <<-- /Creer-Merge: functions -->>

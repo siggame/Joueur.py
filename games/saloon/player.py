@@ -6,9 +6,7 @@
 
 from games.saloon.game_object import GameObject
 
-# <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add addtional import(s) here
-# <<-- /Creer-Merge: imports -->>
+
 
 class Player(GameObject):
     """The class representing the Player in the Saloon game.
@@ -162,9 +160,3 @@ class Player(GameObject):
         :rtype: YoungGun
         """
         return self._young_gun
-
-
-
-    # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-    # if you want to add any client side logic (such as state checking functions) this is where you can add them
-    # <<-- /Creer-Merge: functions -->>
