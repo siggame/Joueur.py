@@ -2,7 +2,7 @@
 <%include file="functions.noCreer" />
 from joueur.base_ai import BaseAI
 
-${merge("# ", "imports", "# you can add addtional import(s) here")}
+${merge("# ", "imports", "# you can add additional import(s) here", optional=True)}
 
 class AI(BaseAI):
     """ The basic AI functions that are the same between games. """
@@ -67,4 +67,4 @@ ${merge("        # ", function_name,
 % endfor
 
 
-${merge("    # ", "functions", "    # if you need additional functions for your AI you can add them here")}
+${merge("    # ", "functions", "    # if you need additional functions for your AI you can add them here", optional=True)}
