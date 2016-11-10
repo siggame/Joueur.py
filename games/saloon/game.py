@@ -240,3 +240,19 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._turns_drunk
+
+    def get_tile_at(self, x, y):
+        """Gets the Tile at a specified (x, y) position
+
+        Args:
+            x (int): integer between 0 and the mapWidth
+            y (int): integer between 0 and the mapHeight
+
+        Returns:
+            Tile: the Tile at (x, y) or None if out of bounds
+        """
+        if x < 0 or y < 0 or x >= self.map_width or y >= self.map_height:
+            # out of bounds
+            return None
+
+        return self.tiles[x + y * self.mapWidth]

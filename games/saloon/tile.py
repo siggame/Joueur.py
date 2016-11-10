@@ -140,3 +140,40 @@ class Tile(GameObject):
         :rtype: YoungGun
         """
         return self._young_gun
+
+    directions = [ "North", "East", "South", "West" ]
+    """int: The valid directions that tiles can be in, "North", "East", "South", or "West"
+    """
+
+    def get_neighbors(self):
+        """Gets the neighbors of this Tile
+
+        :rtype list[Tile]
+        """
+        neighbors = []
+
+        for direction in Tile.directions:
+            neighbor = getattr(self, "tile_" + direction.lower())
+            if neighbor:
+                neighbors.append(neighbor)
+
+        return neighbors
+
+    def is_pathable(self):
+        """Checks if a Tile is pathable to units
+
+        Returns:
+            bool: True if pathable, False otherwise
+        """
+        return not self.is_balcony and not self.cowboy and not self.furnishing
+
+    def has_neighbor(self, tile):
+        """Checks if this Tile has a specific neighboring Tile
+
+        Args:
+            tile (Tile): tile to check against
+
+        Returns:
+            bool: True if the tile is a neighbor of this Tile, False otherwise
+        """
+        return bool(tile and tile in self.get_neighbors())
