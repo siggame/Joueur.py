@@ -12,7 +12,8 @@ parser.add_argument('-n, --name', action='store', dest='name', help='the name yo
 parser.add_argument('-i, --index', action='store', dest='index', help='the player number you want to be, with 0 being the first player')
 parser.add_argument('-w, --password', action='store', dest='password', default=None, help='the password required for authentication on official servers')
 parser.add_argument('-r, --session', action='store', dest='session', default='*', help='the requested game session you want to play on the server')
-parser.add_argument('--gameSettings', action='store', dest='game_settings', default=None, help='Any settings for the game server to force. Must be url parms formatted (key=value&otherKey=otherValue)')
+parser.add_argument('--gameSettings', action='store', dest='game_settings', default=None, help='Any settings for the game server to force. Must be query string formatted (key=value&otherKey=otherValue)')
+parser.add_argument('--aiSettings', action='store', dest='ai_settings', default=None, help='Any settings for the AI. Delimit pairs by an ampersand (key=value&otherKey=otherValue)')
 parser.add_argument('--printIO', action='store_true', dest='print_io', help='(debugging) print IO through the TCP socket to the terminal')
 
 run(parser.parse_args())

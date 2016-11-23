@@ -9,6 +9,7 @@ class BaseAI:
     def __init__(self, game):
         self._game = game
         self._player = None
+        self._settings = {}
 
     def set_player(self, player):
         self._player = player
@@ -28,6 +29,23 @@ class BaseAI:
         :rtype: Player
         """
         return self._player
+
+    def set_settings(self, ai_settings_str):
+        settings = ai_settings_str.split("&")
+        for pair in settings:
+            kv = pair.split("=")
+            self._settings[kv[0]] = kv[1] if len(kv) == 2 else ""
+
+    def get_setting(self, key):
+        """Gets an AI setting passed to the program via the `--aiSettings` flag. If the flag was set it will be returned as a string value, None otherwise.
+
+        Args:
+            key (str): The key of the setting you wish to get the value for
+
+        Returns:
+            str: A string representing the value set via command line, or None if the key was not set
+        """
+        return self._settings[key] if key in self._settings else None
 
     # intended to be overridden by the AI class
     def start(self):

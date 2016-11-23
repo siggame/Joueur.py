@@ -36,6 +36,8 @@ def run(args):
 
     joueur.client.setup(game, ai, manager)
 
+    ai.set_settings(args.ai_settings)
+
     joueur.client.send("play", {
         'gameName': game_name,
         'password': args.password,
