@@ -1,9 +1,13 @@
-# This is a simple class to represent the Checker object in the game. You can extend it by adding utility functions here in this file.
+# Checker: A checker on the game board.
+
+# DO NOT MODIFY THIS FILE
+# Never try to directly create an instance of this class, or modify its member variables.
+# Instead, you should only be reading its variables and calling its functions.
 
 from games.checkers.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add addtional import(s) here
+# you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
 class Checker(GameObject):
@@ -65,7 +69,7 @@ class Checker(GameObject):
         """ Returns if the checker is owned by your player or not.
 
         Returns:
-            bool: True if it is yours, false if it is not yours.
+            bool: True if it is yours, False if it is not yours.
         """
         return self._run_on_server('isMine')
 
@@ -78,7 +82,7 @@ class Checker(GameObject):
             y (int): The y coordinate to move to.
 
         Returns:
-            Checker: Returns the same checker that moved if the move was successful. null otherwise.
+            Checker: Returns the same checker that moved if the move was successful. None otherwise.
         """
         return self._run_on_server('move', x=x, y=y)
 

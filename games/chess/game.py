@@ -1,4 +1,8 @@
-# This is a simple class to represent the Game object in the game. You can extend it by adding utility functions here in this file.
+# Game: The traditional 8x8 chess board with pieces.
+
+# DO NOT MODIFY THIS FILE
+# Never try to directly create an instance of this class, or modify its member variables.
+# Instead, you should only be reading its variables and calling its functions.
 
 from joueur.base_game import BaseGame
 
@@ -9,7 +13,7 @@ from games.chess.piece import Piece
 from games.chess.player import Player
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add addtional import(s) here
+# you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
 class Game(BaseGame):
@@ -91,7 +95,7 @@ class Game(BaseGame):
 
     @property
     def moves(self):
-        """ The list of Moves that have occured, in order.
+        """The list of Moves that have occurred, in order.
 
         :rtype: list[Move]
         """

@@ -1,9 +1,13 @@
-# This is a simple class to represent the Player object in the game. You can extend it by adding utility functions here in this file.
+# Player: A player in this game. Every AI controls one player.
+
+# DO NOT MODIFY THIS FILE
+# Never try to directly create an instance of this class, or modify its member variables.
+# Instead, you should only be reading its variables and calling its functions.
 
 from games.chess.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add addtional import(s) here
+# you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
 class Player(GameObject):
@@ -53,7 +57,7 @@ class Player(GameObject):
 
     @property
     def in_check(self):
-        """True if this player is currently in check, and must move out of check, false otherwise.
+        """True if this player is currently in check, and must move out of check, False otherwise.
 
         :rtype: bool
         """
@@ -71,7 +75,7 @@ class Player(GameObject):
 
     @property
     def made_move(self):
-        """If the Player has made their move for the turn. true means they can no longer move a Piece this turn.
+        """If the Player has made their move for the turn. True means they can no longer move a Piece this turn.
 
         :rtype: bool
         """
@@ -98,7 +102,7 @@ class Player(GameObject):
 
     @property
     def pieces(self):
-        """All the unpcaptured chess Pieces owned by this player.
+        """All the uncaptured chess Pieces owned by this player.
 
         :rtype: list[Piece]
         """

@@ -1,3 +1,4 @@
+# DO NOT MODIFY THESE IMPORTS
 from games.anarchy.ai import AI
 from games.anarchy.game import Game
 from games.anarchy.building import Building

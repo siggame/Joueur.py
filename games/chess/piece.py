@@ -1,9 +1,13 @@
-# This is a simple class to represent the Piece object in the game. You can extend it by adding utility functions here in this file.
+# Piece: A chess piece.
+
+# DO NOT MODIFY THIS FILE
+# Never try to directly create an instance of this class, or modify its member variables.
+# Instead, you should only be reading its variables and calling its functions.
 
 from games.chess.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add addtional import(s) here
+# you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
 class Piece(GameObject):
@@ -28,7 +32,7 @@ class Piece(GameObject):
 
     @property
     def captured(self):
-        """When the Piece has been captured (removed from the board) this is true. Otherwise false.
+        """When the Piece has been captured (removed from the board) this is True. Otherwise False.
 
         :rtype: bool
         """
@@ -90,7 +94,7 @@ class Piece(GameObject):
             promotion_type (Optional[str]): If this is a Pawn moving to the end of the board then this parameter is what to promote it to. When used must be 'Queen', 'Knight', 'Rook', or 'Bishop'.
 
         Returns:
-            Move: The Move you did if successful, otherwise null if invalid. In addition if your move was invalid you will lose.
+            Move: The Move you did if successful, otherwise None if invalid. In addition if your move was invalid you will lose.
         """
         return self._run_on_server('move', file=file, rank=rank, promotionType=promotionType)
 

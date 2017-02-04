@@ -1,3 +1,4 @@
+# DO NOT MODIFY THESE IMPORTS
 from games.checkers.ai import AI
 from games.checkers.game import Game
 from games.checkers.checker import Checker

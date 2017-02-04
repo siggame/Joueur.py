@@ -1,9 +1,13 @@
-# This is a simple class to represent the Move object in the game. You can extend it by adding utility functions here in this file.
+# Move: Contains all details about a Piece's move in the game.
+
+# DO NOT MODIFY THIS FILE
+# Never try to directly create an instance of this class, or modify its member variables.
+# Instead, you should only be reading its variables and calling its functions.
 
 from games.chess.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add addtional import(s) here
+# you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
 class Move(GameObject):
@@ -30,7 +34,7 @@ class Move(GameObject):
 
     @property
     def captured(self):
-        """The Piece captured by this Move, null if no capture.
+        """The Piece captured by this Move, None if no capture.
 
         :rtype: Piece
         """
@@ -66,7 +70,7 @@ class Move(GameObject):
 
     @property
     def promotion(self):
-        """The Piece type this Move's Piece was promoted to from a Pawn, empty string if no promotion occured.
+        """The Piece type this Move's Piece was promoted to from a Pawn, empty string if no promotion occurred.
 
         :rtype: str
         """

@@ -1,4 +1,8 @@
-# This is a simple class to represent the Game object in the game. You can extend it by adding utility functions here in this file.
+# Game: The simple version of American Checkers. An 8x8 board with 12 checkers on each side that must move diagonally to the opposing side until kinged.
+
+# DO NOT MODIFY THIS FILE
+# Never try to directly create an instance of this class, or modify its member variables.
+# Instead, you should only be reading its variables and calling its functions.
 
 from joueur.base_game import BaseGame
 
@@ -8,7 +12,7 @@ from games.checkers.game_object import GameObject
 from games.checkers.player import Player
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add addtional import(s) here
+# you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
 class Game(BaseGame):

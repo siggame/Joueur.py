@@ -1,3 +1,4 @@
+# DO NOT MODIFY THESE IMPORTS
 from games.saloon.ai import AI
 from games.saloon.game import Game
 from games.saloon.bottle import Bottle

@@ -1,3 +1,4 @@
+# DO NOT MODIFY THESE IMPORTS
 from games.spiders.ai import AI
 from games.spiders.game import Game
 from games.spiders.brood_mother import BroodMother

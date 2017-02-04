@@ -1,9 +1,13 @@
-# This is a simple class to represent the Player object in the game. You can extend it by adding utility functions here in this file.
+# Player: A player in this game. Every AI controls one player.
+
+# DO NOT MODIFY THIS FILE
+# Never try to directly create an instance of this class, or modify its member variables.
+# Instead, you should only be reading its variables and calling its functions.
 
 from games.checkers.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add addtional import(s) here
+# you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
 class Player(GameObject):
@@ -21,7 +25,7 @@ class Player(GameObject):
         self._client_type = ""
         self._lost = False
         self._name = "Anonymous"
-        self._other_player = None
+        self._opponent = None
         self._reason_lost = ""
         self._reason_won = ""
         self._time_remaining = 0
@@ -67,12 +71,12 @@ class Player(GameObject):
 
 
     @property
-    def other_player(self):
+    def opponent(self):
         """This player's opponent in the game.
 
         :rtype: Player
         """
-        return self._other_player
+        return self._opponent
 
 
     @property
