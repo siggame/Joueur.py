@@ -1,5 +1,6 @@
 from joueur.delta_mergeable import DeltaMergeable
 
+
 # @class BaseGame: the basics of any game
 class BaseGame(DeltaMergeable):
     def __init__(self):
@@ -13,4 +14,3 @@ class BaseGame(DeltaMergeable):
         """
         if id in self.game_objects:
             return self.game_objects[id]
-
