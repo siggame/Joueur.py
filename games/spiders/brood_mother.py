@@ -24,8 +24,6 @@ class BroodMother(Spider):
         self._eggs = 0
         self._health = 0
 
-
-
     @property
     def eggs(self):
         """How many eggs the BroodMother has to spawn Spiderlings this turn.
@@ -34,7 +32,6 @@ class BroodMother(Spider):
         """
         return self._eggs
 
-
     @property
     def health(self):
         """How much health this BroodMother has left. When it reaches 0, she dies and her owner loses.
@@ -42,8 +39,6 @@ class BroodMother(Spider):
         :rtype: int
         """
         return self._health
-
-
 
     def consume(self, spiderling):
         """ Consumes a Spiderling of the same owner to regain some eggs to spawn more Spiderlings.
@@ -56,7 +51,6 @@ class BroodMother(Spider):
         """
         return self._run_on_server('consume', spiderling=spiderling)
 
-
     def spawn(self, spiderlingType):
         """ Spawns a new Spiderling on the same Nest as this BroodMother, consuming an egg.
 
@@ -67,7 +61,6 @@ class BroodMother(Spider):
             Spiderling: The newly spwaned Spiderling if successful. None otherwise.
         """
         return self._run_on_server('spawn', spiderlingType=spiderlingType)
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

@@ -26,8 +26,6 @@ class Nest(GameObject):
         self._x = 0
         self._y = 0
 
-
-
     @property
     def spiders(self):
         """All the Spiders currently located on this Nest.
@@ -35,7 +33,6 @@ class Nest(GameObject):
         :rtype: list[Spider]
         """
         return self._spiders
-
 
     @property
     def webs(self):
@@ -45,7 +42,6 @@ class Nest(GameObject):
         """
         return self._webs
 
-
     @property
     def x(self):
         """The X coordinate of the Nest. Used for distance calculations.
@@ -54,7 +50,6 @@ class Nest(GameObject):
         """
         return self._x
 
-
     @property
     def y(self):
         """The Y coordinate of the Nest. Used for distance calculations.
@@ -62,8 +57,6 @@ class Nest(GameObject):
         :rtype: int
         """
         return self._y
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

@@ -33,8 +33,6 @@ class Building(GameObject):
         self._x = 0
         self._y = 0
 
-
-
     @property
     def bribed(self):
         """When True this building has already been bribed this turn and cannot be bribed again this turn.
@@ -42,7 +40,6 @@ class Building(GameObject):
         :rtype: bool
         """
         return self._bribed
-
 
     @property
     def building_east(self):
@@ -52,7 +49,6 @@ class Building(GameObject):
         """
         return self._building_east
 
-
     @property
     def building_north(self):
         """The Building directly to the north of this building, or None if not present.
@@ -60,7 +56,6 @@ class Building(GameObject):
         :rtype: Building
         """
         return self._building_north
-
 
     @property
     def building_south(self):
@@ -70,7 +65,6 @@ class Building(GameObject):
         """
         return self._building_south
 
-
     @property
     def building_west(self):
         """The Building directly to the west of this building, or None if not present.
@@ -78,7 +72,6 @@ class Building(GameObject):
         :rtype: Building
         """
         return self._building_west
-
 
     @property
     def fire(self):
@@ -88,7 +81,6 @@ class Building(GameObject):
         """
         return self._fire
 
-
     @property
     def health(self):
         """How much health this building currently has. When this reaches 0 the Building has been burned down.
@@ -96,7 +88,6 @@ class Building(GameObject):
         :rtype: int
         """
         return self._health
-
 
     @property
     def is_headquarters(self):
@@ -106,7 +97,6 @@ class Building(GameObject):
         """
         return self._is_headquarters
 
-
     @property
     def owner(self):
         """The player that owns this building. If it burns down (health reaches 0) that player gets an additional bribe(s).
@@ -114,7 +104,6 @@ class Building(GameObject):
         :rtype: Player
         """
         return self._owner
-
 
     @property
     def x(self):
@@ -124,7 +113,6 @@ class Building(GameObject):
         """
         return self._x
 
-
     @property
     def y(self):
         """The location of the Building along the y-axis.
@@ -132,8 +120,6 @@ class Building(GameObject):
         :rtype: int
         """
         return self._y
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

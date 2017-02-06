@@ -27,8 +27,6 @@ class Furnishing(GameObject):
         self._is_playing = False
         self._tile = None
 
-
-
     @property
     def health(self):
         """How much health this Furnishing currently has.
@@ -36,7 +34,6 @@ class Furnishing(GameObject):
         :rtype: int
         """
         return self._health
-
 
     @property
     def is_destroyed(self):
@@ -46,7 +43,6 @@ class Furnishing(GameObject):
         """
         return self._is_destroyed
 
-
     @property
     def is_piano(self):
         """True if this Furnishing is a piano and can be played, False otherwise.
@@ -54,7 +50,6 @@ class Furnishing(GameObject):
         :rtype: bool
         """
         return self._is_piano
-
 
     @property
     def is_playing(self):
@@ -64,7 +59,6 @@ class Furnishing(GameObject):
         """
         return self._is_playing
 
-
     @property
     def tile(self):
         """The Tile that this Furnishing is located on.
@@ -72,8 +66,6 @@ class Furnishing(GameObject):
         :rtype: Tile
         """
         return self._tile
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

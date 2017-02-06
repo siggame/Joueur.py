@@ -25,8 +25,6 @@ class Forecast(GameObject):
         self._direction = ""
         self._intensity = 0
 
-
-
     @property
     def controlling_player(self):
         """The Player that can use WeatherStations to control this Forecast when its the nextForecast.
@@ -34,7 +32,6 @@ class Forecast(GameObject):
         :rtype: Player
         """
         return self._controlling_player
-
 
     @property
     def direction(self):
@@ -44,7 +41,6 @@ class Forecast(GameObject):
         """
         return self._direction
 
-
     @property
     def intensity(self):
         """How much of a Building's fire that can be blown in the direction of this Forecast. Fire is duplicated (copied), not moved (transfered).
@@ -52,8 +48,6 @@ class Forecast(GameObject):
         :rtype: int
         """
         return self._intensity
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

@@ -34,8 +34,6 @@ class Tile(GameObject):
         self._y = 0
         self._young_gun = None
 
-
-
     @property
     def bottle(self):
         """The beer Bottle currently flying over this Tile.
@@ -43,7 +41,6 @@ class Tile(GameObject):
         :rtype: Bottle
         """
         return self._bottle
-
 
     @property
     def cowboy(self):
@@ -53,7 +50,6 @@ class Tile(GameObject):
         """
         return self._cowboy
 
-
     @property
     def furnishing(self):
         """The furnishing that is on this Tile, None otherwise.
@@ -61,7 +57,6 @@ class Tile(GameObject):
         :rtype: Furnishing
         """
         return self._furnishing
-
 
     @property
     def has_hazard(self):
@@ -71,7 +66,6 @@ class Tile(GameObject):
         """
         return self._has_hazard
 
-
     @property
     def is_balcony(self):
         """If this Tile is a balcony of the Saloon that YoungGuns walk around on, and can never be pathed through by Cowboys.
@@ -79,7 +73,6 @@ class Tile(GameObject):
         :rtype: bool
         """
         return self._is_balcony
-
 
     @property
     def tile_east(self):
@@ -89,7 +82,6 @@ class Tile(GameObject):
         """
         return self._tile_east
 
-
     @property
     def tile_north(self):
         """The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
@@ -97,7 +89,6 @@ class Tile(GameObject):
         :rtype: Tile
         """
         return self._tile_north
-
 
     @property
     def tile_south(self):
@@ -107,7 +98,6 @@ class Tile(GameObject):
         """
         return self._tile_south
 
-
     @property
     def tile_west(self):
         """The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
@@ -115,7 +105,6 @@ class Tile(GameObject):
         :rtype: Tile
         """
         return self._tile_west
-
 
     @property
     def x(self):
@@ -125,7 +114,6 @@ class Tile(GameObject):
         """
         return self._x
 
-
     @property
     def y(self):
         """The y (vertical) position of this Tile.
@@ -134,7 +122,6 @@ class Tile(GameObject):
         """
         return self._y
 
-
     @property
     def young_gun(self):
         """The YoungGun on this tile, None otherwise.
@@ -142,8 +129,6 @@ class Tile(GameObject):
         :rtype: YoungGun
         """
         return self._young_gun
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

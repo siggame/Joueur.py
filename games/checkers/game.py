@@ -46,7 +46,6 @@ class Game(BaseGame):
             'Player': Player
         }
 
-
     @property
     def board_height(self):
         """The height of the board for the Y component of a checker.
@@ -54,7 +53,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._board_height
-
 
     @property
     def board_width(self):
@@ -64,7 +62,6 @@ class Game(BaseGame):
         """
         return self._board_width
 
-
     @property
     def checker_moved(self):
         """The checker that last moved and must be moved because only one checker can move during each players turn.
@@ -72,7 +69,6 @@ class Game(BaseGame):
         :rtype: Checker
         """
         return self._checker_moved
-
 
     @property
     def checker_moved_jumped(self):
@@ -82,7 +78,6 @@ class Game(BaseGame):
         """
         return self._checker_moved_jumped
 
-
     @property
     def checkers(self):
         """All the checkers currently in the game.
@@ -90,7 +85,6 @@ class Game(BaseGame):
         :rtype: list[Checker]
         """
         return self._checkers
-
 
     @property
     def current_player(self):
@@ -100,7 +94,6 @@ class Game(BaseGame):
         """
         return self._current_player
 
-
     @property
     def current_turn(self):
         """The current turn number, starting at 0 for the first player's turn.
@@ -108,7 +101,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._current_turn
-
 
     @property
     def game_objects(self):
@@ -118,7 +110,6 @@ class Game(BaseGame):
         """
         return self._game_objects
 
-
     @property
     def max_turns(self):
         """The maximum number of turns before the game will automatically end.
@@ -126,7 +117,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._max_turns
-
 
     @property
     def players(self):
@@ -136,7 +126,6 @@ class Game(BaseGame):
         """
         return self._players
 
-
     @property
     def session(self):
         """A unique identifier for the game instance that is being played.
@@ -144,8 +133,6 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._session
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

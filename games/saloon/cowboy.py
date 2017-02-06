@@ -33,8 +33,6 @@ class Cowboy(GameObject):
         self._tolerance = 0
         self._turns_busy = 0
 
-
-
     @property
     def can_move(self):
         """If the Cowboy can be moved this turn via its owner.
@@ -42,7 +40,6 @@ class Cowboy(GameObject):
         :rtype: bool
         """
         return self._can_move
-
 
     @property
     def drunk_direction(self):
@@ -52,7 +49,6 @@ class Cowboy(GameObject):
         """
         return self._drunk_direction
 
-
     @property
     def focus(self):
         """How much focus this Cowboy has. Different Jobs do different things with their Cowboy's focus.
@@ -60,7 +56,6 @@ class Cowboy(GameObject):
         :rtype: int
         """
         return self._focus
-
 
     @property
     def health(self):
@@ -70,7 +65,6 @@ class Cowboy(GameObject):
         """
         return self._health
 
-
     @property
     def is_dead(self):
         """If this Cowboy is dead and has been removed from the game.
@@ -78,7 +72,6 @@ class Cowboy(GameObject):
         :rtype: bool
         """
         return self._is_dead
-
 
     @property
     def is_drunk(self):
@@ -88,7 +81,6 @@ class Cowboy(GameObject):
         """
         return self._is_drunk
 
-
     @property
     def job(self):
         """The job that this Cowboy does, and dictates how they fight and interact within the Saloon.
@@ -96,7 +88,6 @@ class Cowboy(GameObject):
         :rtype: str
         """
         return self._job
-
 
     @property
     def owner(self):
@@ -106,7 +97,6 @@ class Cowboy(GameObject):
         """
         return self._owner
 
-
     @property
     def tile(self):
         """The Tile that this Cowboy is located on.
@@ -114,7 +104,6 @@ class Cowboy(GameObject):
         :rtype: Tile
         """
         return self._tile
-
 
     @property
     def tolerance(self):
@@ -124,7 +113,6 @@ class Cowboy(GameObject):
         """
         return self._tolerance
 
-
     @property
     def turns_busy(self):
         """How many turns this unit has remaining before it is no longer busy and can `act()` or `play()` again.
@@ -132,8 +120,6 @@ class Cowboy(GameObject):
         :rtype: int
         """
         return self._turns_busy
-
-
 
     def act(self, tile, drunkDirection=""):
         """ Does their job's action on a Tile.
@@ -147,7 +133,6 @@ class Cowboy(GameObject):
         """
         return self._run_on_server('act', tile=tile, drunkDirection=drunkDirection)
 
-
     def move(self, tile):
         """ Moves this Cowboy from its current Tile to an adjacent Tile.
 
@@ -159,7 +144,6 @@ class Cowboy(GameObject):
         """
         return self._run_on_server('move', tile=tile)
 
-
     def play(self, piano):
         """ Sits down and plays a piano.
 
@@ -170,7 +154,6 @@ class Cowboy(GameObject):
             bool: True if the play worked, False otherwise.
         """
         return self._run_on_server('play', piano=piano)
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

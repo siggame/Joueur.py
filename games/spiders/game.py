@@ -64,7 +64,6 @@ class Game(BaseGame):
             'Web': Web
         }
 
-
     @property
     def current_player(self):
         """The player whose turn it is currently. That player can send commands. Other players cannot.
@@ -72,7 +71,6 @@ class Game(BaseGame):
         :rtype: Player
         """
         return self._current_player
-
 
     @property
     def current_turn(self):
@@ -82,7 +80,6 @@ class Game(BaseGame):
         """
         return self._current_turn
 
-
     @property
     def cut_speed(self):
         """The speed at which Cutters work to do cut Webs.
@@ -90,7 +87,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._cut_speed
-
 
     @property
     def eggs_scalar(self):
@@ -100,7 +96,6 @@ class Game(BaseGame):
         """
         return self._eggs_scalar
 
-
     @property
     def game_objects(self):
         """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
@@ -108,7 +103,6 @@ class Game(BaseGame):
         :rtype: dict[str, GameObject]
         """
         return self._game_objects
-
 
     @property
     def initial_web_strength(self):
@@ -118,7 +112,6 @@ class Game(BaseGame):
         """
         return self._initial_web_strength
 
-
     @property
     def max_turns(self):
         """The maximum number of turns before the game will automatically end.
@@ -126,7 +119,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._max_turns
-
 
     @property
     def movement_speed(self):
@@ -136,7 +128,6 @@ class Game(BaseGame):
         """
         return self._movement_speed
 
-
     @property
     def nests(self):
         """Every Nest in the game.
@@ -144,7 +135,6 @@ class Game(BaseGame):
         :rtype: list[Nest]
         """
         return self._nests
-
 
     @property
     def players(self):
@@ -154,7 +144,6 @@ class Game(BaseGame):
         """
         return self._players
 
-
     @property
     def session(self):
         """A unique identifier for the game instance that is being played.
@@ -162,7 +151,6 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._session
-
 
     @property
     def spit_speed(self):
@@ -172,7 +160,6 @@ class Game(BaseGame):
         """
         return self._spit_speed
 
-
     @property
     def weave_power(self):
         """How much web strength is added or removed from Webs when they are weaved.
@@ -180,7 +167,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._weave_power
-
 
     @property
     def weave_speed(self):
@@ -190,7 +176,6 @@ class Game(BaseGame):
         """
         return self._weave_speed
 
-
     @property
     def webs(self):
         """Every Web in the game.
@@ -198,8 +183,6 @@ class Game(BaseGame):
         :rtype: list[Web]
         """
         return self._webs
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

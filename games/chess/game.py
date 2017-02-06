@@ -47,7 +47,6 @@ class Game(BaseGame):
             'Player': Player
         }
 
-
     @property
     def current_player(self):
         """The player whose turn it is currently. That player can send commands. Other players cannot.
@@ -55,7 +54,6 @@ class Game(BaseGame):
         :rtype: Player
         """
         return self._current_player
-
 
     @property
     def current_turn(self):
@@ -65,7 +63,6 @@ class Game(BaseGame):
         """
         return self._current_turn
 
-
     @property
     def fen(self):
         """Forsyth–Edwards Notation, a notation that describes the game board.
@@ -73,7 +70,6 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._fen
-
 
     @property
     def game_objects(self):
@@ -83,7 +79,6 @@ class Game(BaseGame):
         """
         return self._game_objects
 
-
     @property
     def max_turns(self):
         """The maximum number of turns before the game will automatically end.
@@ -91,7 +86,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._max_turns
-
 
     @property
     def moves(self):
@@ -101,7 +95,6 @@ class Game(BaseGame):
         """
         return self._moves
 
-
     @property
     def pieces(self):
         """All the uncaptured Pieces in the game.
@@ -109,7 +102,6 @@ class Game(BaseGame):
         :rtype: list[Piece]
         """
         return self._pieces
-
 
     @property
     def players(self):
@@ -119,7 +111,6 @@ class Game(BaseGame):
         """
         return self._players
 
-
     @property
     def session(self):
         """A unique identifier for the game instance that is being played.
@@ -128,7 +119,6 @@ class Game(BaseGame):
         """
         return self._session
 
-
     @property
     def turns_to_draw(self):
         """How many turns until the game ends because no pawn has moved and no Piece has been taken.
@@ -136,8 +126,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._turns_to_draw
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

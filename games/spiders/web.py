@@ -28,8 +28,6 @@ class Web(GameObject):
         self._spiderlings = []
         self._strength = 0
 
-
-
     @property
     def length(self):
         """How long this Web is, i.e., the distance between its nestA and nestB.
@@ -37,7 +35,6 @@ class Web(GameObject):
         :rtype: float
         """
         return self._length
-
 
     @property
     def load(self):
@@ -47,7 +44,6 @@ class Web(GameObject):
         """
         return self._load
 
-
     @property
     def nest_a(self):
         """The first Nest this Web is connected to.
@@ -55,7 +51,6 @@ class Web(GameObject):
         :rtype: Nest
         """
         return self._nest_a
-
 
     @property
     def nest_b(self):
@@ -65,7 +60,6 @@ class Web(GameObject):
         """
         return self._nest_b
 
-
     @property
     def spiderlings(self):
         """All the Spiderlings currently moving along this Web.
@@ -74,7 +68,6 @@ class Web(GameObject):
         """
         return self._spiderlings
 
-
     @property
     def strength(self):
         """How much weight this Web can take before snapping and destroying itself and all the Spiders on it.
@@ -82,8 +75,6 @@ class Web(GameObject):
         :rtype: int
         """
         return self._strength
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

@@ -52,11 +52,11 @@ class ${obj_key}(${", ".join(parent_classes)}):
 %>            '${game_obj_key}': ${game_obj_key}${',' if c != 0 else ''}
 % endfor
         }
-% endif
 
+% endif
 % for attr_name in obj['attribute_names']:
-<% attr_parms = obj['attributes'][attr_name] %>
-    @property
+<% attr_parms = obj['attributes'][attr_name]
+%>    @property
     def ${underscore(attr_name)}(self):
         """${shared['py']['format_description'](attr_parms['description'])}
 
@@ -67,9 +67,7 @@ class ${obj_key}(${", ".join(parent_classes)}):
 % endfor
 % for function_name in obj['function_names']:
 <% function_parms = obj['functions'][function_name]
-%>
-
-    def ${underscore(function_name)}(self${shared['py']['args'](function_parms['arguments'])}):
+%>    def ${underscore(function_name)}(self${shared['py']['args'](function_parms['arguments'])}):
         """ ${shared['py']['format_description'](function_parms['description'])}
 % if len(function_parms['arguments']) > 0:
 
@@ -85,7 +83,6 @@ class ${obj_key}(${", ".join(parent_classes)}):
 % endif
         """
         return self._run_on_server('${function_name}'${shared['py']['kwargs'](function_parms['argument_names'])})
+
 % endfor
-
-
 ${merge("    # ", "functions", "    # if you want to add any client side logic (such as state checking functions) this is where you can add them", optional=True)}

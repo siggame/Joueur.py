@@ -22,9 +22,6 @@ class WeatherStation(Building):
 
         # private attributes to hold the properties so they appear read only
 
-
-
-
     def intensify(self, negative=False):
         """ Bribe the weathermen to intensity the next Forecast by 1 or -1
 
@@ -36,7 +33,6 @@ class WeatherStation(Building):
         """
         return self._run_on_server('intensify', negative=negative)
 
-
     def rotate(self, counterclockwise=False):
         """ Bribe the weathermen to change the direction of the next Forecast by rotating it clockwise or counterclockwise.
 
@@ -47,7 +43,6 @@ class WeatherStation(Building):
             bool: True if the rotation worked, False otherwise.
         """
         return self._run_on_server('rotate', counterclockwise=counterclockwise)
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

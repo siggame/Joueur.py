@@ -25,8 +25,6 @@ class Spider(GameObject):
         self._nest = None
         self._owner = None
 
-
-
     @property
     def is_dead(self):
         """If this Spider is dead and has been removed from the game.
@@ -34,7 +32,6 @@ class Spider(GameObject):
         :rtype: bool
         """
         return self._is_dead
-
 
     @property
     def nest(self):
@@ -44,7 +41,6 @@ class Spider(GameObject):
         """
         return self._nest
 
-
     @property
     def owner(self):
         """The Player that owns this Spider, and can command it.
@@ -52,8 +48,6 @@ class Spider(GameObject):
         :rtype: Player
         """
         return self._owner
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

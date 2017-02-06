@@ -36,8 +36,6 @@ class Player(GameObject):
         self._won = False
         self._young_gun = None
 
-
-
     @property
     def client_type(self):
         """What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
@@ -45,7 +43,6 @@ class Player(GameObject):
         :rtype: str
         """
         return self._client_type
-
 
     @property
     def cowboys(self):
@@ -55,7 +52,6 @@ class Player(GameObject):
         """
         return self._cowboys
 
-
     @property
     def kills(self):
         """How many enemy Cowboys this player's team has killed.
@@ -63,7 +59,6 @@ class Player(GameObject):
         :rtype: int
         """
         return self._kills
-
 
     @property
     def lost(self):
@@ -73,7 +68,6 @@ class Player(GameObject):
         """
         return self._lost
 
-
     @property
     def name(self):
         """The name of the player.
@@ -81,7 +75,6 @@ class Player(GameObject):
         :rtype: str
         """
         return self._name
-
 
     @property
     def opponent(self):
@@ -91,7 +84,6 @@ class Player(GameObject):
         """
         return self._opponent
 
-
     @property
     def reason_lost(self):
         """The reason why the player lost the game.
@@ -99,7 +91,6 @@ class Player(GameObject):
         :rtype: str
         """
         return self._reason_lost
-
 
     @property
     def reason_won(self):
@@ -109,7 +100,6 @@ class Player(GameObject):
         """
         return self._reason_won
 
-
     @property
     def rowdiness(self):
         """How rowdy their team is. When it gets too high their team takes a collective siesta.
@@ -117,7 +107,6 @@ class Player(GameObject):
         :rtype: int
         """
         return self._rowdiness
-
 
     @property
     def score(self):
@@ -127,7 +116,6 @@ class Player(GameObject):
         """
         return self._score
 
-
     @property
     def siesta(self):
         """0 when not having a team siesta. When greater than 0 represents how many turns left for the team siesta to complete.
@@ -135,7 +123,6 @@ class Player(GameObject):
         :rtype: int
         """
         return self._siesta
-
 
     @property
     def time_remaining(self):
@@ -145,7 +132,6 @@ class Player(GameObject):
         """
         return self._time_remaining
 
-
     @property
     def won(self):
         """If the player won the game or not.
@@ -154,7 +140,6 @@ class Player(GameObject):
         """
         return self._won
 
-
     @property
     def young_gun(self):
         """The YoungGun this Player uses to call in new Cowboys.
@@ -162,8 +147,6 @@ class Player(GameObject):
         :rtype: YoungGun
         """
         return self._young_gun
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

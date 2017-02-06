@@ -30,8 +30,6 @@ class Move(GameObject):
         self._to_file = ""
         self._to_rank = 0
 
-
-
     @property
     def captured(self):
         """The Piece captured by this Move, None if no capture.
@@ -39,7 +37,6 @@ class Move(GameObject):
         :rtype: Piece
         """
         return self._captured
-
 
     @property
     def from_file(self):
@@ -49,7 +46,6 @@ class Move(GameObject):
         """
         return self._from_file
 
-
     @property
     def from_rank(self):
         """The rank the Piece moved from.
@@ -57,7 +53,6 @@ class Move(GameObject):
         :rtype: int
         """
         return self._from_rank
-
 
     @property
     def piece(self):
@@ -67,7 +62,6 @@ class Move(GameObject):
         """
         return self._piece
 
-
     @property
     def promotion(self):
         """The Piece type this Move's Piece was promoted to from a Pawn, empty string if no promotion occurred.
@@ -75,7 +69,6 @@ class Move(GameObject):
         :rtype: str
         """
         return self._promotion
-
 
     @property
     def san(self):
@@ -85,7 +78,6 @@ class Move(GameObject):
         """
         return self._san
 
-
     @property
     def to_file(self):
         """The file the Piece moved to.
@@ -94,7 +86,6 @@ class Move(GameObject):
         """
         return self._to_file
 
-
     @property
     def to_rank(self):
         """The rank the Piece moved to.
@@ -102,8 +93,6 @@ class Move(GameObject):
         :rtype: int
         """
         return self._to_rank
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

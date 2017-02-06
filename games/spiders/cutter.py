@@ -23,8 +23,6 @@ class Cutter(Spiderling):
         # private attributes to hold the properties so they appear read only
         self._cutting_web = None
 
-
-
     @property
     def cutting_web(self):
         """The Web that this Cutter is trying to cut. None if not cutting.
@@ -32,8 +30,6 @@ class Cutter(Spiderling):
         :rtype: Web
         """
         return self._cutting_web
-
-
 
     def cut(self, web):
         """ Cuts a web, destroying it, and any Spiderlings on it.
@@ -45,7 +41,6 @@ class Cutter(Spiderling):
             bool: True if the cut was successfully started, False otherwise.
         """
         return self._run_on_server('cut', web=web)
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

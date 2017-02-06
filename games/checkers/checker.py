@@ -26,8 +26,6 @@ class Checker(GameObject):
         self._x = 0
         self._y = 0
 
-
-
     @property
     def kinged(self):
         """If the checker has been kinged and can move backwards.
@@ -35,7 +33,6 @@ class Checker(GameObject):
         :rtype: bool
         """
         return self._kinged
-
 
     @property
     def owner(self):
@@ -45,7 +42,6 @@ class Checker(GameObject):
         """
         return self._owner
 
-
     @property
     def x(self):
         """The x coordinate of the checker.
@@ -53,7 +49,6 @@ class Checker(GameObject):
         :rtype: int
         """
         return self._x
-
 
     @property
     def y(self):
@@ -63,8 +58,6 @@ class Checker(GameObject):
         """
         return self._y
 
-
-
     def is_mine(self):
         """ Returns if the checker is owned by your player or not.
 
@@ -72,7 +65,6 @@ class Checker(GameObject):
             bool: True if it is yours, False if it is not yours.
         """
         return self._run_on_server('isMine')
-
 
     def move(self, x, y):
         """ Moves the checker from its current location to the given (x, y).
@@ -85,7 +77,6 @@ class Checker(GameObject):
             Checker: Returns the same checker that moved if the move was successful. None otherwise.
         """
         return self._run_on_server('move', x=x, y=y)
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

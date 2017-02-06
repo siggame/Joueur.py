@@ -24,8 +24,6 @@ class Warehouse(Building):
         self._exposure = 0
         self._fire_added = 0
 
-
-
     @property
     def exposure(self):
         """How exposed the anarchists in this warehouse are to PoliceDepartments. Raises when bribed to ignite buildings, and drops each turn if not bribed.
@@ -34,7 +32,6 @@ class Warehouse(Building):
         """
         return self._exposure
 
-
     @property
     def fire_added(self):
         """The amount of fire added to buildings when bribed to ignite a building. Headquarters add more fire than normal Warehouses.
@@ -42,8 +39,6 @@ class Warehouse(Building):
         :rtype: int
         """
         return self._fire_added
-
-
 
     def ignite(self, building):
         """ Bribes the Warehouse to light a Building on fire. This adds this building's fireAdded to their fire, and then this building's exposure is increased based on the Manhatten distance between the two buildings.
@@ -55,7 +50,6 @@ class Warehouse(Building):
             int: The exposure added to this Building's exposure. -1 is returned if there was an error.
         """
         return self._run_on_server('ignite', building=building)
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

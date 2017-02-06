@@ -28,8 +28,6 @@ class Piece(GameObject):
         self._rank = 0
         self._type = ""
 
-
-
     @property
     def captured(self):
         """When the Piece has been captured (removed from the board) this is True. Otherwise False.
@@ -37,7 +35,6 @@ class Piece(GameObject):
         :rtype: bool
         """
         return self._captured
-
 
     @property
     def file(self):
@@ -47,7 +44,6 @@ class Piece(GameObject):
         """
         return self._file
 
-
     @property
     def has_moved(self):
         """If the Piece has moved from its starting position.
@@ -55,7 +51,6 @@ class Piece(GameObject):
         :rtype: bool
         """
         return self._has_moved
-
 
     @property
     def owner(self):
@@ -65,7 +60,6 @@ class Piece(GameObject):
         """
         return self._owner
 
-
     @property
     def rank(self):
         """The rank (row) coordinate of the Piece represented as a number [1-8], with 1 starting at the bottom of the board.
@@ -74,7 +68,6 @@ class Piece(GameObject):
         """
         return self._rank
 
-
     @property
     def type(self):
         """The type of chess Piece this is, either: 'King', 'Queen', 'Knight', 'Rook', 'Bishop', or 'Pawn'.
@@ -82,8 +75,6 @@ class Piece(GameObject):
         :rtype: str
         """
         return self._type
-
-
 
     def move(self, file, rank, promotionType=""):
         """ Moves the Piece from its current location to the given rank and file.
@@ -97,7 +88,6 @@ class Piece(GameObject):
             Move: The Move you did if successful, otherwise None if invalid. In addition if your move was invalid you will lose.
         """
         return self._run_on_server('move', file=file, rank=rank, promotionType=promotionType)
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

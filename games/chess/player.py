@@ -35,8 +35,6 @@ class Player(GameObject):
         self._time_remaining = 0
         self._won = False
 
-
-
     @property
     def client_type(self):
         """What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
@@ -44,7 +42,6 @@ class Player(GameObject):
         :rtype: str
         """
         return self._client_type
-
 
     @property
     def color(self):
@@ -54,7 +51,6 @@ class Player(GameObject):
         """
         return self._color
 
-
     @property
     def in_check(self):
         """True if this player is currently in check, and must move out of check, False otherwise.
@@ -62,7 +58,6 @@ class Player(GameObject):
         :rtype: bool
         """
         return self._in_check
-
 
     @property
     def lost(self):
@@ -72,7 +67,6 @@ class Player(GameObject):
         """
         return self._lost
 
-
     @property
     def made_move(self):
         """If the Player has made their move for the turn. True means they can no longer move a Piece this turn.
@@ -80,7 +74,6 @@ class Player(GameObject):
         :rtype: bool
         """
         return self._made_move
-
 
     @property
     def name(self):
@@ -90,7 +83,6 @@ class Player(GameObject):
         """
         return self._name
 
-
     @property
     def opponent(self):
         """This player's opponent in the game.
@@ -98,7 +90,6 @@ class Player(GameObject):
         :rtype: Player
         """
         return self._opponent
-
 
     @property
     def pieces(self):
@@ -108,7 +99,6 @@ class Player(GameObject):
         """
         return self._pieces
 
-
     @property
     def rank_direction(self):
         """The direction your Pieces must go along the rank axis until they reach the other side.
@@ -116,7 +106,6 @@ class Player(GameObject):
         :rtype: int
         """
         return self._rank_direction
-
 
     @property
     def reason_lost(self):
@@ -126,7 +115,6 @@ class Player(GameObject):
         """
         return self._reason_lost
 
-
     @property
     def reason_won(self):
         """The reason why the player won the game.
@@ -134,7 +122,6 @@ class Player(GameObject):
         :rtype: str
         """
         return self._reason_won
-
 
     @property
     def time_remaining(self):
@@ -144,7 +131,6 @@ class Player(GameObject):
         """
         return self._time_remaining
 
-
     @property
     def won(self):
         """If the player won the game or not.
@@ -152,8 +138,6 @@ class Player(GameObject):
         :rtype: bool
         """
         return self._won
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

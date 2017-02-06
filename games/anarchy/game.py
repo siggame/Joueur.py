@@ -60,7 +60,6 @@ class Game(BaseGame):
             'WeatherStation': WeatherStation
         }
 
-
     @property
     def base_bribes_per_turn(self):
         """How many bribes players get at the beginning of their turn, not counting their burned down Buildings.
@@ -68,7 +67,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._base_bribes_per_turn
-
 
     @property
     def buildings(self):
@@ -78,7 +76,6 @@ class Game(BaseGame):
         """
         return self._buildings
 
-
     @property
     def current_forecast(self):
         """The current Forecast, which will be applied at the end of the turn.
@@ -86,7 +83,6 @@ class Game(BaseGame):
         :rtype: Forecast
         """
         return self._current_forecast
-
 
     @property
     def current_player(self):
@@ -96,7 +92,6 @@ class Game(BaseGame):
         """
         return self._current_player
 
-
     @property
     def current_turn(self):
         """The current turn number, starting at 0 for the first player's turn.
@@ -104,7 +99,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._current_turn
-
 
     @property
     def forecasts(self):
@@ -114,7 +108,6 @@ class Game(BaseGame):
         """
         return self._forecasts
 
-
     @property
     def game_objects(self):
         """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
@@ -122,7 +115,6 @@ class Game(BaseGame):
         :rtype: dict[str, GameObject]
         """
         return self._game_objects
-
 
     @property
     def map_height(self):
@@ -132,7 +124,6 @@ class Game(BaseGame):
         """
         return self._map_height
 
-
     @property
     def map_width(self):
         """The width of the entire map along the horizontal (x) axis.
@@ -140,7 +131,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._map_width
-
 
     @property
     def max_fire(self):
@@ -150,7 +140,6 @@ class Game(BaseGame):
         """
         return self._max_fire
 
-
     @property
     def max_forecast_intensity(self):
         """The maximum amount of intensity value for any Forecast.
@@ -158,7 +147,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._max_forecast_intensity
-
 
     @property
     def max_turns(self):
@@ -168,7 +156,6 @@ class Game(BaseGame):
         """
         return self._max_turns
 
-
     @property
     def next_forecast(self):
         """The next Forecast, which will be applied at the end of your opponent's turn. This is also the Forecast WeatherStations can control this turn.
@@ -176,7 +163,6 @@ class Game(BaseGame):
         :rtype: Forecast
         """
         return self._next_forecast
-
 
     @property
     def players(self):
@@ -186,7 +172,6 @@ class Game(BaseGame):
         """
         return self._players
 
-
     @property
     def session(self):
         """A unique identifier for the game instance that is being played.
@@ -194,8 +179,6 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._session
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

@@ -27,8 +27,6 @@ class Spiderling(Spider):
         self._number_of_coworkers = 0
         self._work_remaining = 0
 
-
-
     @property
     def busy(self):
         """When empty string this Spiderling is not busy, and can act. Otherwise a string representing what it is busy with, e.g. 'Moving', 'Attacking'.
@@ -36,7 +34,6 @@ class Spiderling(Spider):
         :rtype: str
         """
         return self._busy
-
 
     @property
     def moving_on_web(self):
@@ -46,7 +43,6 @@ class Spiderling(Spider):
         """
         return self._moving_on_web
 
-
     @property
     def moving_to_nest(self):
         """The Nest this Spiderling is moving to. None if it is not moving.
@@ -54,7 +50,6 @@ class Spiderling(Spider):
         :rtype: Nest
         """
         return self._moving_to_nest
-
 
     @property
     def number_of_coworkers(self):
@@ -64,7 +59,6 @@ class Spiderling(Spider):
         """
         return self._number_of_coworkers
 
-
     @property
     def work_remaining(self):
         """How much work needs to be done for this Spiderling to finish being busy. See docs for the Work forumla.
@@ -72,8 +66,6 @@ class Spiderling(Spider):
         :rtype: float
         """
         return self._work_remaining
-
-
 
     def attack(self, spiderling):
         """ Attacks another Spiderling
@@ -86,7 +78,6 @@ class Spiderling(Spider):
         """
         return self._run_on_server('attack', spiderling=spiderling)
 
-
     def move(self, web):
         """ Starts moving the Spiderling across a Web to another Nest.
 
@@ -97,7 +88,6 @@ class Spiderling(Spider):
             bool: True if the move was successful, False otherwise.
         """
         return self._run_on_server('move', web=web)
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

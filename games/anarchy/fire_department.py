@@ -23,8 +23,6 @@ class FireDepartment(Building):
         # private attributes to hold the properties so they appear read only
         self._fire_extinguished = 0
 
-
-
     @property
     def fire_extinguished(self):
         """The amount of fire removed from a building when bribed to extinguish a building.
@@ -32,8 +30,6 @@ class FireDepartment(Building):
         :rtype: int
         """
         return self._fire_extinguished
-
-
 
     def extinguish(self, building):
         """ Bribes this FireDepartment to extinguish the some of the fire in a building.
@@ -45,7 +41,6 @@ class FireDepartment(Building):
             bool: True if the bribe worked, False otherwise.
         """
         return self._run_on_server('extinguish', building=building)
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

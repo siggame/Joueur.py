@@ -33,8 +33,6 @@ class Player(GameObject):
         self._time_remaining = 0
         self._won = False
 
-
-
     @property
     def brood_mother(self):
         """This player's BroodMother. If it dies they lose the game.
@@ -42,7 +40,6 @@ class Player(GameObject):
         :rtype: BroodMother
         """
         return self._brood_mother
-
 
     @property
     def client_type(self):
@@ -52,7 +49,6 @@ class Player(GameObject):
         """
         return self._client_type
 
-
     @property
     def lost(self):
         """If the player lost the game or not.
@@ -60,7 +56,6 @@ class Player(GameObject):
         :rtype: bool
         """
         return self._lost
-
 
     @property
     def max_spiderlings(self):
@@ -70,7 +65,6 @@ class Player(GameObject):
         """
         return self._max_spiderlings
 
-
     @property
     def name(self):
         """The name of the player.
@@ -78,7 +72,6 @@ class Player(GameObject):
         :rtype: str
         """
         return self._name
-
 
     @property
     def opponent(self):
@@ -88,7 +81,6 @@ class Player(GameObject):
         """
         return self._opponent
 
-
     @property
     def reason_lost(self):
         """The reason why the player lost the game.
@@ -96,7 +88,6 @@ class Player(GameObject):
         :rtype: str
         """
         return self._reason_lost
-
 
     @property
     def reason_won(self):
@@ -106,7 +97,6 @@ class Player(GameObject):
         """
         return self._reason_won
 
-
     @property
     def spiders(self):
         """All the Spiders owned by this player.
@@ -114,7 +104,6 @@ class Player(GameObject):
         :rtype: list[Spider]
         """
         return self._spiders
-
 
     @property
     def time_remaining(self):
@@ -124,7 +113,6 @@ class Player(GameObject):
         """
         return self._time_remaining
 
-
     @property
     def won(self):
         """If the player won the game or not.
@@ -132,8 +120,6 @@ class Player(GameObject):
         :rtype: bool
         """
         return self._won
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

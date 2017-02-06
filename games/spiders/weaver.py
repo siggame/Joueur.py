@@ -24,8 +24,6 @@ class Weaver(Spiderling):
         self._strengthening_web = None
         self._weakening_web = None
 
-
-
     @property
     def strengthening_web(self):
         """The Web that this Weaver is strengthening. None if not strengthening.
@@ -34,7 +32,6 @@ class Weaver(Spiderling):
         """
         return self._strengthening_web
 
-
     @property
     def weakening_web(self):
         """The Web that this Weaver is weakening. None if not weakening.
@@ -42,8 +39,6 @@ class Weaver(Spiderling):
         :rtype: Web
         """
         return self._weakening_web
-
-
 
     def strengthen(self, web):
         """ Weaves more silk into an existing Web to strengthen it.
@@ -56,7 +51,6 @@ class Weaver(Spiderling):
         """
         return self._run_on_server('strengthen', web=web)
 
-
     def weaken(self, web):
         """ Weaves more silk into an existing Web to strengthen it.
 
@@ -67,7 +61,6 @@ class Weaver(Spiderling):
             bool: True if the weaken was successfully started, False otherwise.
         """
         return self._run_on_server('weaken', web=web)
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

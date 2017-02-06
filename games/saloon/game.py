@@ -63,7 +63,6 @@ class Game(BaseGame):
             'YoungGun': YoungGun
         }
 
-
     @property
     def bartender_cooldown(self):
         """How many turns a Bartender will be busy for after throwing a Bottle.
@@ -71,7 +70,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._bartender_cooldown
-
 
     @property
     def bottles(self):
@@ -81,7 +79,6 @@ class Game(BaseGame):
         """
         return self._bottles
 
-
     @property
     def brawler_damage(self):
         """How much damage is applied to neighboring things bit by the Sharpshooter between turns.
@@ -89,7 +86,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._brawler_damage
-
 
     @property
     def cowboys(self):
@@ -99,7 +95,6 @@ class Game(BaseGame):
         """
         return self._cowboys
 
-
     @property
     def current_player(self):
         """The player whose turn it is currently. That player can send commands. Other players cannot.
@@ -107,7 +102,6 @@ class Game(BaseGame):
         :rtype: Player
         """
         return self._current_player
-
 
     @property
     def current_turn(self):
@@ -117,7 +111,6 @@ class Game(BaseGame):
         """
         return self._current_turn
 
-
     @property
     def furnishings(self):
         """Every furnishing in the game.
@@ -125,7 +118,6 @@ class Game(BaseGame):
         :rtype: list[Furnishing]
         """
         return self._furnishings
-
 
     @property
     def game_objects(self):
@@ -135,7 +127,6 @@ class Game(BaseGame):
         """
         return self._game_objects
 
-
     @property
     def jobs(self):
         """All the jobs that Cowboys can be called in with.
@@ -143,7 +134,6 @@ class Game(BaseGame):
         :rtype: list[str]
         """
         return self._jobs
-
 
     @property
     def map_height(self):
@@ -153,7 +143,6 @@ class Game(BaseGame):
         """
         return self._map_height
 
-
     @property
     def map_width(self):
         """The number of Tiles in the map along the x (horizontal) axis.
@@ -161,7 +150,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._map_width
-
 
     @property
     def max_cowboys_per_job(self):
@@ -171,7 +159,6 @@ class Game(BaseGame):
         """
         return self._max_cowboys_per_job
 
-
     @property
     def max_turns(self):
         """The maximum number of turns before the game will automatically end.
@@ -179,7 +166,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._max_turns
-
 
     @property
     def players(self):
@@ -189,7 +175,6 @@ class Game(BaseGame):
         """
         return self._players
 
-
     @property
     def rowdiness_to_siesta(self):
         """When a player's rowdiness reaches or exceeds this number their Cowboys take a collective siesta.
@@ -197,7 +182,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._rowdiness_to_siesta
-
 
     @property
     def session(self):
@@ -207,7 +191,6 @@ class Game(BaseGame):
         """
         return self._session
 
-
     @property
     def sharpshooter_damage(self):
         """How much damage is applied to things hit by Sharpshooters when they act.
@@ -215,7 +198,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._sharpshooter_damage
-
 
     @property
     def siesta_length(self):
@@ -225,7 +207,6 @@ class Game(BaseGame):
         """
         return self._siesta_length
 
-
     @property
     def tiles(self):
         """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
@@ -234,7 +215,6 @@ class Game(BaseGame):
         """
         return self._tiles
 
-
     @property
     def turns_drunk(self):
         """How many turns a Cowboy will be drunk for if a bottle breaks on it.
@@ -242,8 +222,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._turns_drunk
-
-
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them
