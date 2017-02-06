@@ -31,17 +31,22 @@ _background = {
     "default": 49
 }
 
+
 def ansi(num):
     return "\033[{}m".format(num)
+
 
 def style(key="default"):
     return ansi(_style[key])
 
+
 def text(key="default"):
     return ansi(_text[key])
 
+
 def background(key="default"):
     return ansi(_background[key])
+
 
 def reset():
     return ansi(0)

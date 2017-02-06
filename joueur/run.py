@@ -6,6 +6,7 @@ from joueur.game_manager import GameManager
 from joueur.utilities import camel_case_converter
 import joueur.ansi_color_coder as color
 
+
 def run(args):
     split_server = args.server.split(":")
     args.server = split_server[0]
@@ -20,21 +21,38 @@ def run(args):
 
     spec = importlib.util.find_spec(module_str)
     if spec is None:
-        error_code.handle_error(error_code.GAME_NOT_FOUND, None, "Could not find the module for game '{}'.".format(game_name))
+        error_code.handle_error(
+            error_code.GAME_NOT_FOUND,
+            None,
+            'Could not find the module for game "{}".'.format(game_name)
+        )
 
     try:
-        module = importlib.import_module(module_str) # should load Game and AI to load based on the game selected in args
+        # should load Game and AI to load based on the game selected in args
+        module = importlib.import_module(module_str)
     except ImportError as e:
-        error_code.handle_error(error_code.REFLECTION_FAILED, e, "Could not import game module: '{}'.".format(module_str))
+        error_code.handle_error(
+            error_code.REFLECTION_FAILED,
+            e,
+            'Could not import game module: "{}".'.format(module_str)
+        )
 
     game = module.Game()
     try:
         ai = module.AI(game)
     except:
-        error_code.handle_error(error_code.AI_ERRORED, sys.exc_info()[0], "Could not initialize AI class. Probably a syntax error in your AI.")
+        error_code.handle_error(
+            error_code.AI_ERRORED,
+            sys.exc_info()[0],
+            'Could not initialize the AI class. ' +
+            'Probably a syntax error in your AI.'
+        )
+
     manager = GameManager(game)
 
     joueur.client.setup(game, ai, manager)
+
+    ai.set_settings(args.ai_settings)
 
     joueur.client.send("play", {
         'gameName': game_name,
@@ -48,7 +66,13 @@ def run(args):
 
     lobby_data = joueur.client.wait_for_event("lobbied")
 
-    print(color.text("cyan") + "In lobby for game '" + lobby_data['gameName'] + "' in session '" + lobby_data['gameSession'] + "'." + color.reset())
+    print('{}In Lobby for game "{}" in session "{}".{}'.format(
+            color.text("cyan"),
+            lobby_data['gameName'],
+            lobby_data['gameSession'],
+            color.reset()
+        )
+    )
 
     manager.set_constants(lobby_data['constants'])
 
@@ -61,6 +85,10 @@ def run(args):
         ai.start()
         ai.game_updated()
     except:
-        error_code.handle_error(error_code.AI_ERRORED, sys.exc_info()[0], "AI errored during game initialization")
+        error_code.handle_error(
+            error_code.AI_ERRORED,
+            sys.exc_info()[0],
+            'AI errored during game initialization'
+        )
 
     joueur.client.play()

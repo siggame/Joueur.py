@@ -1,4 +1,8 @@
-# This is a simple class to represent the Game object in the game. You can extend it by adding utility functions here in this file.
+# Game: The traditional 8x8 chess board with pieces.
+
+# DO NOT MODIFY THIS FILE
+# Never try to directly create an instance of this class, or modify its member variables.
+# Instead, you should only be reading its variables and calling its functions.
 
 from joueur.base_game import BaseGame
 
@@ -8,9 +12,6 @@ from games.chess.move import Move
 from games.chess.piece import Piece
 from games.chess.player import Player
 
-# <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add addtional import(s) here
-# <<-- /Creer-Merge: imports -->>
 
 class Game(BaseGame):
     """The class representing the Game in the Chess game.
@@ -43,7 +44,6 @@ class Game(BaseGame):
             'Player': Player
         }
 
-
     @property
     def current_player(self):
         """The player whose turn it is currently. That player can send commands. Other players cannot.
@@ -51,7 +51,6 @@ class Game(BaseGame):
         :rtype: Player
         """
         return self._current_player
-
 
     @property
     def current_turn(self):
@@ -61,7 +60,6 @@ class Game(BaseGame):
         """
         return self._current_turn
 
-
     @property
     def fen(self):
         """Forsyth–Edwards Notation, a notation that describes the game board.
@@ -69,7 +67,6 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._fen
-
 
     @property
     def game_objects(self):
@@ -79,7 +76,6 @@ class Game(BaseGame):
         """
         return self._game_objects
 
-
     @property
     def max_turns(self):
         """The maximum number of turns before the game will automatically end.
@@ -88,15 +84,13 @@ class Game(BaseGame):
         """
         return self._max_turns
 
-
     @property
     def moves(self):
-        """ The list of Moves that have occured, in order.
+        """The list of Moves that have occurred, in order.
 
         :rtype: list[Move]
         """
         return self._moves
-
 
     @property
     def pieces(self):
@@ -106,7 +100,6 @@ class Game(BaseGame):
         """
         return self._pieces
 
-
     @property
     def players(self):
         """List of all the players in the game.
@@ -114,7 +107,6 @@ class Game(BaseGame):
         :rtype: list[Player]
         """
         return self._players
-
 
     @property
     def session(self):
@@ -124,7 +116,6 @@ class Game(BaseGame):
         """
         return self._session
 
-
     @property
     def turns_to_draw(self):
         """How many turns until the game ends because no pawn has moved and no Piece has been taken.
@@ -132,9 +123,3 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._turns_to_draw
-
-
-
-    # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-    # if you want to add any client side logic (such as state checking functions) this is where you can add them
-    # <<-- /Creer-Merge: functions -->>
