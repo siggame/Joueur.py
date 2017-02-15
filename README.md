@@ -51,8 +51,7 @@ For a more in depth guide on using vagrant, take a look at [their guide][vagrant
 Using Vagrant with Windows can be a bit of a pain. Here are some tips:
 
 * Use an OpenSSH compatible ssh client. We reccomend [git bash][gitbash] to serve double duty as your git client and ssh client
-
-Note: If you are on Windows you will need to use an OpenSSH compatible ssh client.
+* Launch the terminal of your choice (like Git Bash) as an Adminsitrator to ensure the symbolic links can be created when spinning up your Vagrant virtual machine
 
 ## Other Notes
 
@@ -66,3 +65,4 @@ The only file you should ever modify to create your AI is the `ai.py` file. All 
 [virtualbox]: https://www.virtualbox.org/wiki/Downloads
 [vagrant-guide]: https://www.vagrantup.com/docs/getting-started/up.html
 [virtualbox]: https://www.virtualbox.org/wiki/Downloads
+[gitbash]: https://git-scm.com/downloads
