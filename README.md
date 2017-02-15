@@ -42,7 +42,7 @@ vagrant ssh
 
 From there you will be in a Linux environment that has all the dependencies you'll need to build and run this client.
 
-When the competition is over, or the virtual environment becomes corrupted in some way, simply execute `vagrant destroy` to delete the virtual machiine and its contents.
+When the competition is over, or the virtual environment becomes corrupted in some way, simply execute `vagrant destroy` to delete the virtual machine and its contents.
 
 For a more in depth guide on using vagrant, take a look at [their guide][vagrant-guide]
 
