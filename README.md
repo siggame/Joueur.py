@@ -28,7 +28,7 @@ There is a `Makefile` provided, but it is empty as python is an interpreted lang
 
 ### Vagrant
 
-Install [Vagrant][vagrant] and [Virtualbox][virtualbox] in order to use the Vagrant configuration we provide which satisfies all build dependencies inside of a virtual machine. This will allow for development with your favorite IDE or editor on your host machine while being able to run the client inside the virtual machine. Vagrant will automatically sync the changes you make into the virutal machine that it creates. In order to use vagrant **after installing the aforementioned requirements** simply run from the root of this client:
+Install [Vagrant][vagrant] and [Virtualbox][virtualbox] in order to use the Vagrant configuration we provide which satisfies all build dependencies inside of a virtual machine. This will allow for development with your favorite IDE or editor on your host machine while being able to run the client inside the virtual machine. Vagrant will automatically sync the changes you make into the virtual machine that it creates. In order to use vagrant **after installing the aforementioned requirements** simply run from the root of this client:
 
 ```bash
 vagrant up
@@ -50,8 +50,8 @@ For a more in depth guide on using vagrant, take a look at [their guide][vagrant
 
 Using Vagrant with Windows can be a bit of a pain. Here are some tips:
 
-* Use an OpenSSH compatible ssh client. We reccomend [git bash][gitbash] to serve double duty as your git client and ssh client
-* Launch the terminal of your choice (like Git Bash) as an Adminsitrator to ensure the symbolic links can be created when spinning up your Vagrant virtual machine
+* Use an OpenSSH compatible ssh client. We recommend [Git Bash][gitbash] to serve double duty as your git client and ssh client
+* Launch the terminal of your choice (like Git Bash) as an Administrator to ensure the symbolic links can be created when spinning up your Vagrant virtual machine
 
 ## Other Notes
 
