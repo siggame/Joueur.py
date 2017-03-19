@@ -21,13 +21,22 @@ class Spawner(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
+        self._has_been_harvested = False
         self._health = 0
         self._tile = None
         self._type = ""
 
     @property
+    def has_been_harvested(self):
+        """True if this Spawner has been harvested this turn, and it will not heal at the end of the turn, False otherwise.
+
+        :rtype: bool
+        """
+        return self._has_been_harvested
+
+    @property
     def health(self):
-        """How much of the resource is left.
+        """How much health this spawner has, which is used to calculate how much of its resource can be harvested.
 
         :rtype: int
         """
@@ -35,7 +44,7 @@ class Spawner(GameObject):
 
     @property
     def tile(self):
-        """The tile this resource is on.
+        """The tile this Spawner is on.
 
         :rtype: Tile
         """

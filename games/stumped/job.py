@@ -26,7 +26,7 @@ class Job(GameObject):
         self._chopping = 0
         self._cost = 0
         self._damage = 0
-        self._distracts = 0
+        self._distraction_power = 0
         self._fishing = 0
         self._health = 0
         self._moves = 0
@@ -73,12 +73,12 @@ class Job(GameObject):
         return self._damage
 
     @property
-    def distracts(self):
+    def distraction_power(self):
         """How many turns a beaver attacked by this job is distracted by.
 
         :rtype: int
         """
-        return self._distracts
+        return self._distraction_power
 
     @property
     def fishing(self):
@@ -112,16 +112,16 @@ class Job(GameObject):
         """
         return self._title
 
-    def recruit(self, lodge):
+    def recruit(self, tile):
         """ Recruits a Beaver of this Job to a lodge
 
         Args:
-            lodge (Tile): The Tile that is a lodge owned by you that you wish to spawn the Beaver of this Job on.
+            tile (Tile): The Tile that is a lodge owned by you that you wish to spawn the Beaver of this Job on.
 
         Returns:
             Beaver: The recruited Beaver if successful, None otherwise.
         """
-        return self._run_on_server('recruit', lodge=lodge)
+        return self._run_on_server('recruit', tile=tile)
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

@@ -36,6 +36,7 @@ class Game(BaseGame):
         self._free_beavers_count = 0
         self._game_objects = {}
         self._jobs = []
+        self._lodge_cost_constant = 0
         self._lodges_complete_to_win = 0
         self._map_height = 0
         self._map_width = 0
@@ -43,6 +44,7 @@ class Game(BaseGame):
         self._players = []
         self._session = ""
         self._spawner = []
+        self._spawner_harvest_constant = 0
         self._spawner_types = []
         self._tiles = []
 
@@ -114,6 +116,14 @@ class Game(BaseGame):
         return self._jobs
 
     @property
+    def lodge_cost_constant(self):
+        """Constant number used to calculate what it costs to spawn a new lodge.
+
+        :rtype: float
+        """
+        return self._lodge_cost_constant
+
+    @property
     def lodges_complete_to_win(self):
         """How many lodges must be complete at once to win the game.
 
@@ -168,6 +178,14 @@ class Game(BaseGame):
         :rtype: list[Spawner]
         """
         return self._spawner
+
+    @property
+    def spawner_harvest_constant(self):
+        """Constant number used to calculate how many breanches/fish Beavers harvest from spawners.
+
+        :rtype: float
+        """
+        return self._spawner_harvest_constant
 
     @property
     def spawner_types(self):

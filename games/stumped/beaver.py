@@ -23,13 +23,14 @@ class Beaver(GameObject):
         # private attributes to hold the properties so they appear read only
         self._actions = 0
         self._branches = 0
-        self._distracted = 0
         self._fish = 0
         self._health = 0
         self._job = None
         self._moves = 0
         self._owner = None
+        self._recruited = False
         self._tile = None
+        self._turns_distracted = 0
 
     @property
     def actions(self):
@@ -46,14 +47,6 @@ class Beaver(GameObject):
         :rtype: int
         """
         return self._branches
-
-    @property
-    def distracted(self):
-        """Number of turns this beaver is distracted for (0 means not distracted).
-
-        :rtype: int
-        """
-        return self._distracted
 
     @property
     def fish(self):
@@ -96,6 +89,14 @@ class Beaver(GameObject):
         return self._owner
 
     @property
+    def recruited(self):
+        """True if the Beaver has finished being recruited and can do things, False otherwise.
+
+        :rtype: bool
+        """
+        return self._recruited
+
+    @property
     def tile(self):
         """The tile this beaver is on.
 
@@ -103,16 +104,24 @@ class Beaver(GameObject):
         """
         return self._tile
 
-    def attack(self, tile):
+    @property
+    def turns_distracted(self):
+        """Number of turns this beaver is distracted for (0 means not distracted).
+
+        :rtype: int
+        """
+        return self._turns_distracted
+
+    def attack(self, beaver):
         """ Attacks another adjacent beaver.
 
         Args:
-            tile (Tile): The tile of the beaver you want to attack.
+            beaver (Beaver): The beaver to attack. Must be on an adjacent tile.
 
         Returns:
             bool: True if successfully attacked, False otherwise.
         """
-        return self._run_on_server('attack', tile=tile)
+        return self._run_on_server('attack', beaver=beaver)
 
     def build_lodge(self):
         """ Builds a lodge on the Beavers current tile.
@@ -122,51 +131,53 @@ class Beaver(GameObject):
         """
         return self._run_on_server('buildLodge')
 
-    def drop(self, resource, amount=0):
+    def drop(self, tile, resource, amount=0):
         """ Drops some of the given resource on the beaver's tile. Fish dropped in water disappear instantly, and fish dropped on land die one per tile per turn.
 
         Args:
+            tile (Tile): The Tile to drop branches/fish on. Must be the same Tile that the Beaver is on, or an adjacent one.
             resource (str): The type of resource to drop ('branch' or 'fish').
-            amount (Optional[int]): The amount of the resource to drop, numbers <= 0 will drop all of that type.
+            amount (Optional[int]): The amount of the resource to drop, numbers <= 0 will drop all the resource type.
 
         Returns:
             bool: True if successfully dropped the resource, False otherwise.
         """
-        return self._run_on_server('drop', resource=resource, amount=amount)
+        return self._run_on_server('drop', tile=tile, resource=resource, amount=amount)
 
-    def harvest(self, tile):
+    def harvest(self, spawner):
         """ Harvests the branches or fish from a Spawner on an adjacent tile.
 
         Args:
-            tile (Tile): The tile you want to harvest.
+            spawner (Spawner): The Spawner you want to harvest. Must be on an adjacent tile.
 
         Returns:
             bool: True if successfully harvested, False otherwise.
         """
-        return self._run_on_server('harvest', tile=tile)
+        return self._run_on_server('harvest', spawner=spawner)
 
     def move(self, tile):
         """ Moves this beaver from its current tile to an adjacent tile.
 
         Args:
-            tile (Tile): The tile this beaver should move to. Costs 2 moves normally, 3 if moving upstream, and 1 if moving downstream.
+            tile (Tile): The tile this beaver should move to.
 
         Returns:
             bool: True if the move worked, False otherwise.
         """
         return self._run_on_server('move', tile=tile)
 
-    def pickup(self, resource, amount=0):
+    def pickup(self, tile, resource, amount=0):
         """ Picks up some branches or fish on the beaver's tile.
 
         Args:
+            tile (Tile): The Tile to pickup branches/fish from. Must be the same Tile that the Beaver is on, or an adjacent one.
             resource (str): The type of resource to pickup ('branch' or 'fish').
-            amount (Optional[int]): The amount of the resource to drop, numbers <= 0 will pickup all of that type.
+            amount (Optional[int]): The amount of the resource to drop, numbers <= 0 will pickup all of the resource type.
 
         Returns:
             bool: True if successfully picked up a resource, False otherwise.
         """
-        return self._run_on_server('pickup', resource=resource, amount=amount)
+        return self._run_on_server('pickup', tile=tile, resource=resource, amount=amount)
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them
