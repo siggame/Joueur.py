@@ -23,8 +23,8 @@ class Tile(GameObject):
         # private attributes to hold the properties so they appear read only
         self._beaver = None
         self._branches = 0
-        self._fish = 0
         self._flow_direction = ""
+        self._food = 0
         self._lodge_owner = None
         self._spawner = None
         self._tile_east = None
@@ -37,7 +37,7 @@ class Tile(GameObject):
 
     @property
     def beaver(self):
-        """The beaver on this tile if present, otherwise None.
+        """The Beaver on this Tile if present, otherwise None.
 
         :rtype: Beaver
         """
@@ -45,31 +45,31 @@ class Tile(GameObject):
 
     @property
     def branches(self):
-        """The number of branches dropped on this tile.
+        """The number of branches dropped on this Tile.
 
         :rtype: int
         """
         return self._branches
 
     @property
-    def fish(self):
-        """The number of fish dropped on this tile.
-
-        :rtype: int
-        """
-        return self._fish
-
-    @property
     def flow_direction(self):
-        """The cardinal direction water is flowing on this tile ('North', 'East', 'South', 'West').
+        """The cardinal direction water is flowing on this Tile ('North', 'East', 'South', 'West').
 
         :rtype: str
         """
         return self._flow_direction
 
     @property
+    def food(self):
+        """The number of food dropped on this Tile.
+
+        :rtype: int
+        """
+        return self._food
+
+    @property
     def lodge_owner(self):
-        """The owner of the beaver lodge on this tile, if present, otherwise None.
+        """The owner of the Beaver lodge on this Tile, if present, otherwise None.
 
         :rtype: Player
         """
@@ -77,7 +77,7 @@ class Tile(GameObject):
 
     @property
     def spawner(self):
-        """The resource spawner on this tile if present, otherwise None.
+        """The resource Spawner on this Tile if present, otherwise None.
 
         :rtype: Spawner
         """

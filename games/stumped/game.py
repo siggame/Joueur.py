@@ -30,14 +30,13 @@ class Game(BaseGame):
 
         # private attributes to hold the properties so they appear read only
         self._beavers = []
-        self._branches_to_complete_lodge = 0
         self._current_player = None
         self._current_turn = 0
         self._free_beavers_count = 0
         self._game_objects = {}
         self._jobs = []
         self._lodge_cost_constant = 0
-        self._lodges_complete_to_win = 0
+        self._lodges_to_win = 0
         self._map_height = 0
         self._map_width = 0
         self._max_turns = 100
@@ -68,14 +67,6 @@ class Game(BaseGame):
         return self._beavers
 
     @property
-    def branches_to_complete_lodge(self):
-        """How many branches a lodge must have to be considered complete.
-
-        :rtype: int
-        """
-        return self._branches_to_complete_lodge
-
-    @property
     def current_player(self):
         """The player whose turn it is currently. That player can send commands. Other players cannot.
 
@@ -93,7 +84,7 @@ class Game(BaseGame):
 
     @property
     def free_beavers_count(self):
-        """When a Player has less Beavers than this number, recruiting other Beavers is free.
+        """When a Player has less Beavers than this number, then recruiting other Beavers is free.
 
         :rtype: int
         """
@@ -124,12 +115,12 @@ class Game(BaseGame):
         return self._lodge_cost_constant
 
     @property
-    def lodges_complete_to_win(self):
-        """How many lodges must be complete at once to win the game.
+    def lodges_to_win(self):
+        """How many lodges must be owned by a Player at once to win the game.
 
         :rtype: int
         """
-        return self._lodges_complete_to_win
+        return self._lodges_to_win
 
     @property
     def map_height(self):
@@ -181,7 +172,7 @@ class Game(BaseGame):
 
     @property
     def spawner_harvest_constant(self):
-        """Constant number used to calculate how many breanches/fish Beavers harvest from spawners.
+        """Constant number used to calculate how many breanches/food Beavers harvest from Spawners.
 
         :rtype: float
         """
@@ -189,7 +180,7 @@ class Game(BaseGame):
 
     @property
     def spawner_types(self):
-        """All the types of spawners in the game.
+        """All the types of Spawners in the game.
 
         :rtype: list[str]
         """

@@ -27,14 +27,14 @@ class Job(GameObject):
         self._cost = 0
         self._damage = 0
         self._distraction_power = 0
-        self._fishing = 0
         self._health = 0
         self._moves = 0
+        self._munching = 0
         self._title = ""
 
     @property
     def actions(self):
-        """The number of actions this job can make per turn.
+        """The number of actions this Job can make per turn.
 
         :rtype: int
         """
@@ -42,7 +42,7 @@ class Job(GameObject):
 
     @property
     def carry_limit(self):
-        """How many resources a beaver with this job can hold at once.
+        """How many combined resources a beaver with this Job can hold at once.
 
         :rtype: int
         """
@@ -50,7 +50,7 @@ class Job(GameObject):
 
     @property
     def chopping(self):
-        """Scalar for how many branches this job harvests at once.
+        """Scalar for how many branches this Job harvests at once.
 
         :rtype: int
         """
@@ -58,7 +58,7 @@ class Job(GameObject):
 
     @property
     def cost(self):
-        """How many fish this Job costs to recruit.
+        """How much food this Job costs to recruit.
 
         :rtype: int
         """
@@ -66,7 +66,7 @@ class Job(GameObject):
 
     @property
     def damage(self):
-        """The amount of damage this job does per attack.
+        """The amount of damage this Job does per attack.
 
         :rtype: int
         """
@@ -74,23 +74,15 @@ class Job(GameObject):
 
     @property
     def distraction_power(self):
-        """How many turns a beaver attacked by this job is distracted by.
+        """How many turns a beaver attacked by this Job is distracted by.
 
         :rtype: int
         """
         return self._distraction_power
 
     @property
-    def fishing(self):
-        """Scalar for how many fish this job harvests at once.
-
-        :rtype: int
-        """
-        return self._fishing
-
-    @property
     def health(self):
-        """The amount of starting health this job has.
+        """The amount of starting health this Job has.
 
         :rtype: int
         """
@@ -98,15 +90,23 @@ class Job(GameObject):
 
     @property
     def moves(self):
-        """The number of moves this job can make per turn.
+        """The number of moves this Job can make per turn.
 
         :rtype: int
         """
         return self._moves
 
     @property
+    def munching(self):
+        """Scalar for how much food this Job harvests at once.
+
+        :rtype: int
+        """
+        return self._munching
+
+    @property
     def title(self):
-        """The job title ('builder', 'fisher', etc).
+        """The Job title.
 
         :rtype: str
         """

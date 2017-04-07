@@ -43,7 +43,7 @@ class Player(GameObject):
 
     @property
     def branches_to_build_lodge(self):
-        """How many branches are required to build a lodge for this player.
+        """How many branches are required to build a lodge for this Player.
 
         :rtype: int
         """
@@ -59,7 +59,7 @@ class Player(GameObject):
 
     @property
     def lodges(self):
-        """A list of tiles that contain lodges owned by this player.
+        """A list of Tiles that contain lodges owned by this player.
 
         :rtype: list[Tile]
         """

@@ -1,4 +1,4 @@
-# Spawner: A resource spawner that generates branches or fish.
+# Spawner: A resource spawner that generates branches or food.
 
 # DO NOT MODIFY THIS FILE
 # Never try to directly create an instance of this class, or modify its member variables.
@@ -13,7 +13,7 @@ from games.stumped.game_object import GameObject
 class Spawner(GameObject):
     """The class representing the Spawner in the Stumped game.
 
-    A resource spawner that generates branches or fish.
+    A resource spawner that generates branches or food.
     """
 
     def __init__(self):
@@ -36,7 +36,7 @@ class Spawner(GameObject):
 
     @property
     def health(self):
-        """How much health this spawner has, which is used to calculate how much of its resource can be harvested.
+        """How much health this Spawner has, which is used to calculate how much of its resource can be harvested.
 
         :rtype: int
         """
@@ -44,7 +44,7 @@ class Spawner(GameObject):
 
     @property
     def tile(self):
-        """The tile this Spawner is on.
+        """The Tile this Spawner is on.
 
         :rtype: Tile
         """
@@ -52,7 +52,7 @@ class Spawner(GameObject):
 
     @property
     def type(self):
-        """What type of resource this is ('Fish' or 'Branch').
+        """What type of resource this is ('food' or 'branches').
 
         :rtype: str
         """

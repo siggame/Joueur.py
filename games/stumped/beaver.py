@@ -23,7 +23,7 @@ class Beaver(GameObject):
         # private attributes to hold the properties so they appear read only
         self._actions = 0
         self._branches = 0
-        self._fish = 0
+        self._food = 0
         self._health = 0
         self._job = None
         self._moves = 0
@@ -34,7 +34,7 @@ class Beaver(GameObject):
 
     @property
     def actions(self):
-        """The number of actions remaining for the beaver this turn.
+        """The number of actions remaining for the Beaver this turn.
 
         :rtype: int
         """
@@ -42,23 +42,23 @@ class Beaver(GameObject):
 
     @property
     def branches(self):
-        """The number of branches this beaver is holding.
+        """The amount of branches this Beaver is holding.
 
         :rtype: int
         """
         return self._branches
 
     @property
-    def fish(self):
-        """The number of fish this beaver is holding.
+    def food(self):
+        """The amount of food this Beaver is holding.
 
         :rtype: int
         """
-        return self._fish
+        return self._food
 
     @property
     def health(self):
-        """How much health this beaver has left.
+        """How much health this Beaver has left.
 
         :rtype: int
         """
@@ -66,7 +66,7 @@ class Beaver(GameObject):
 
     @property
     def job(self):
-        """The Job this beaver was recruited to do.
+        """The Job this Beaver was recruited to do.
 
         :rtype: Job
         """
@@ -74,7 +74,7 @@ class Beaver(GameObject):
 
     @property
     def moves(self):
-        """How many moves this beaver has left this turn.
+        """How many moves this Beaver has left this turn.
 
         :rtype: int
         """
@@ -82,7 +82,7 @@ class Beaver(GameObject):
 
     @property
     def owner(self):
-        """The Player that owns and can control this beaver.
+        """The Player that owns and can control this Beaver.
 
         :rtype: Player
         """
@@ -98,7 +98,7 @@ class Beaver(GameObject):
 
     @property
     def tile(self):
-        """The tile this beaver is on.
+        """The Tile this Beaver is on.
 
         :rtype: Tile
         """
@@ -106,7 +106,7 @@ class Beaver(GameObject):
 
     @property
     def turns_distracted(self):
-        """Number of turns this beaver is distracted for (0 means not distracted).
+        """Number of turns this Beaver is distracted for (0 means not distracted).
 
         :rtype: int
         """
@@ -116,7 +116,7 @@ class Beaver(GameObject):
         """ Attacks another adjacent beaver.
 
         Args:
-            beaver (Beaver): The beaver to attack. Must be on an adjacent tile.
+            beaver (Beaver): The Beaver to attack. Must be on an adjacent Tile.
 
         Returns:
             bool: True if successfully attacked, False otherwise.
@@ -124,7 +124,7 @@ class Beaver(GameObject):
         return self._run_on_server('attack', beaver=beaver)
 
     def build_lodge(self):
-        """ Builds a lodge on the Beavers current tile.
+        """ Builds a lodge on the Beavers current Tile.
 
         Returns:
             bool: True if successfully built a lodge, False otherwise.
@@ -132,11 +132,11 @@ class Beaver(GameObject):
         return self._run_on_server('buildLodge')
 
     def drop(self, tile, resource, amount=0):
-        """ Drops some of the given resource on the beaver's tile. Fish dropped in water disappear instantly, and fish dropped on land die one per tile per turn.
+        """ Drops some of the given resource on the beaver's Tile.
 
         Args:
-            tile (Tile): The Tile to drop branches/fish on. Must be the same Tile that the Beaver is on, or an adjacent one.
-            resource (str): The type of resource to drop ('branch' or 'fish').
+            tile (Tile): The Tile to drop branches/food on. Must be the same Tile that the Beaver is on, or an adjacent one.
+            resource (str): The type of resource to drop ('branch' or 'food').
             amount (Optional[int]): The amount of the resource to drop, numbers <= 0 will drop all the resource type.
 
         Returns:
@@ -145,10 +145,10 @@ class Beaver(GameObject):
         return self._run_on_server('drop', tile=tile, resource=resource, amount=amount)
 
     def harvest(self, spawner):
-        """ Harvests the branches or fish from a Spawner on an adjacent tile.
+        """ Harvests the branches or food from a Spawner on an adjacent Tile.
 
         Args:
-            spawner (Spawner): The Spawner you want to harvest. Must be on an adjacent tile.
+            spawner (Spawner): The Spawner you want to harvest. Must be on an adjacent Tile.
 
         Returns:
             bool: True if successfully harvested, False otherwise.
@@ -156,10 +156,10 @@ class Beaver(GameObject):
         return self._run_on_server('harvest', spawner=spawner)
 
     def move(self, tile):
-        """ Moves this beaver from its current tile to an adjacent tile.
+        """ Moves this Beaver from its current Tile to an adjacent Tile.
 
         Args:
-            tile (Tile): The tile this beaver should move to.
+            tile (Tile): The Tile this Beaver should move to.
 
         Returns:
             bool: True if the move worked, False otherwise.
@@ -167,11 +167,11 @@ class Beaver(GameObject):
         return self._run_on_server('move', tile=tile)
 
     def pickup(self, tile, resource, amount=0):
-        """ Picks up some branches or fish on the beaver's tile.
+        """ Picks up some branches or food on the beaver's tile.
 
         Args:
-            tile (Tile): The Tile to pickup branches/fish from. Must be the same Tile that the Beaver is on, or an adjacent one.
-            resource (str): The type of resource to pickup ('branch' or 'fish').
+            tile (Tile): The Tile to pickup branches/food from. Must be the same Tile that the Beaver is on, or an adjacent one.
+            resource (str): The type of resource to pickup ('branch' or 'food').
             amount (Optional[int]): The amount of the resource to drop, numbers <= 0 will pickup all of the resource type.
 
         Returns:
