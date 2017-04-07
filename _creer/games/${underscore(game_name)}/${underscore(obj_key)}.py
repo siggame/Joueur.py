@@ -85,4 +85,58 @@ class ${obj_key}(${", ".join(parent_classes)}):
         return self._run_on_server('${function_name}'${shared['py']['kwargs'](function_parms['argument_names'])})
 
 % endfor
+% if 'Tile' in game_objs:
+% if 'TiledGame' in game['serverParentClasses']: #// then we need to add some client side utility functions
+
+% if obj_key == 'Game':
+    def get_tile_at(self, x, y):
+        """Gets the Tile at a specified (x, y) position
+        Args:
+            x (int): integer between 0 and the mapWidth
+            y (int): integer between 0 and the mapHeight
+        Returns:
+            Tile: the Tile at (x, y) or None if out of bounds
+        """
+        if x < 0 or y < 0 or x >= self.map_width or y >= self.map_height:
+            # out of bounds
+            return None
+
+        return self.tiles[x + y * self.mapWidth]
+% elif obj_key == 'Tile':
+    directions = ["North", "East", "South", "West"]
+    """int: The valid directions that tiles can be in, "North", "East", "South", or "West"
+    """
+
+    def get_neighbors(self):
+        """Gets the neighbors of this Tile
+        :rtype list[Tile]
+        """
+        neighbors = []
+
+        for direction in Tile.directions:
+            neighbor = getattr(self, "tile_" + direction.lower())
+            if neighbor:
+                neighbors.append(neighbor)
+
+        return neighbors
+
+    def is_pathable(self):
+        """Checks if a Tile is pathable to units
+        Returns:
+            bool: True if pathable, False otherwise
+        """
+${merge("        // ", "is_pathable_builtin", "        return false; // DEVELOPER ADD LOGIC HERE")}
+
+    def has_neighbor(self, tile):
+        """Checks if this Tile has a specific neighboring Tile
+        Args:
+            tile (Tile): tile to check against
+        Returns:
+            bool: True if the tile is a neighbor of this Tile, False otherwise
+        """
+        return bool(tile and tile in self.get_neighbors())
+% endif
+% endif
+
+% endif
 ${merge("    # ", "functions", "    # if you want to add any client side logic (such as state checking functions) this is where you can add them", optional=True)}
