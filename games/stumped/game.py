@@ -172,7 +172,7 @@ class Game(BaseGame):
 
     @property
     def spawner_harvest_constant(self):
-        """Constant number used to calculate how many breanches/food Beavers harvest from Spawners.
+        """Constant number used to calculate how many branches/food Beavers harvest from Spawners.
 
         :rtype: float
         """
