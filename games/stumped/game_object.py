@@ -6,9 +6,7 @@
 
 from joueur.base_game_object import BaseGameObject
 
-# <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add additional import(s) here
-# <<-- /Creer-Merge: imports -->>
+
 
 class GameObject(BaseGameObject):
     """The class representing the GameObject in the Stumped game.
@@ -56,7 +54,3 @@ class GameObject(BaseGameObject):
             message (str): A string to add to this GameObject's log. Intended for debugging.
         """
         return self._run_on_server('log', message=message)
-
-    # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-    # if you want to add any client side logic (such as state checking functions) this is where you can add them
-    # <<-- /Creer-Merge: functions -->>

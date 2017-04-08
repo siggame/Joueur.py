@@ -6,9 +6,7 @@
 
 from games.stumped.game_object import GameObject
 
-# <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add additional import(s) here
-# <<-- /Creer-Merge: imports -->>
+
 
 class Beaver(GameObject):
     """The class representing the Beaver in the Stumped game.
@@ -178,7 +176,3 @@ class Beaver(GameObject):
             bool: True if successfully picked up a resource, False otherwise.
         """
         return self._run_on_server('pickup', tile=tile, resource=resource, amount=amount)
-
-    # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-    # if you want to add any client side logic (such as state checking functions) this is where you can add them
-    # <<-- /Creer-Merge: functions -->>

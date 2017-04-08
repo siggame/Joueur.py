@@ -14,9 +14,7 @@ from games.stumped.player import Player
 from games.stumped.spawner import Spawner
 from games.stumped.tile import Tile
 
-# <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add additional import(s) here
-# <<-- /Creer-Merge: imports -->>
+
 
 class Game(BaseGame):
     """The class representing the Game in the Stumped game.
@@ -194,6 +192,17 @@ class Game(BaseGame):
         """
         return self._tiles
 
-    # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-    # if you want to add any client side logic (such as state checking functions) this is where you can add them
-    # <<-- /Creer-Merge: functions -->>
+
+    def get_tile_at(self, x, y):
+        """Gets the Tile at a specified (x, y) position
+        Args:
+            x (int): integer between 0 and the mapWidth
+            y (int): integer between 0 and the mapHeight
+        Returns:
+            Tile: the Tile at (x, y) or None if out of bounds
+        """
+        if x < 0 or y < 0 or x >= self.map_width or y >= self.map_height:
+            # out of bounds
+            return None
+
+        return self.tiles[x + y * self.mapWidth]
