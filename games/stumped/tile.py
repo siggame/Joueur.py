@@ -137,7 +137,6 @@ class Tile(GameObject):
         """
         return self._y
 
-
     directions = ["North", "East", "South", "West"]
     """int: The valid directions that tiles can be in, "North", "East", "South", or "West"
     """
