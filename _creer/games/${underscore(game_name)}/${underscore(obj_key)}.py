@@ -125,7 +125,7 @@ class ${obj_key}(${", ".join(parent_classes)}):
         Returns:
             bool: True if pathable, False otherwise
         """
-${merge("        // ", "is_pathable_builtin", "        return false; // DEVELOPER ADD LOGIC HERE")}
+${merge("        # ", "is_pathable_builtin", "        return false  # DEVELOPER ADD LOGIC HERE")}
 
     def has_neighbor(self, tile):
         """Checks if this Tile has a specific neighboring Tile
