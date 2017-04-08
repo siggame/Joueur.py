@@ -58,6 +58,8 @@ class Spawner(GameObject):
         """
         return self._type
 
+
+
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them
     # <<-- /Creer-Merge: functions -->>
