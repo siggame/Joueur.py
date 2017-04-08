@@ -8,16 +8,22 @@ from random import random
 
 # Simply returns a random element of an array
 def random_element(items):
-	return items[floor(random()*len(items))]
+	if items:
+		return items[floor(random()*len(items))]
+
+	return None
 
 # Simply returns a shuffled copy of an array
 def shuffled(a):
-	for i in range(len(a)-1, -1, -1):
-		j = floor(random() * i)
-		x = a[i - 1]
-		a[i - 1] = a[j]
-		a[j] = x
-	return a
+	if a:
+		for i in range(len(a)-1, -1, -1):
+			j = floor(random() * i)
+			x = a[i - 1]
+			a[i - 1] = a[j]
+			a[j] = x
+		return a
+
+	return None
 
 class AI(BaseAI):
 	""" The basic AI functions that are the same between games. """
@@ -65,8 +71,10 @@ class AI(BaseAI):
 		# First let's do a simple print statement telling us what turn we are on
 		print('My Turn {}'.format(self.game.current_turn))
 
+		beaver = None
 		# 1. get the first beaver to try to do things with
-		beaver = self.player.beavers[0]
+		if len(self.player.beavers) > 0:
+			beaver = self.player.beavers[0]
 
 		# if we have a beaver, and it's not distracted, and it is alive (health greater than 0)
 		if beaver and beaver.turns_distracted == 0 and beaver.health > 0:
@@ -123,7 +131,9 @@ class AI(BaseAI):
 
 				elif action == 'pickup':
 					# make an array of our neighboring tiles + our tile as all can be picked up from
-					pickup_tiles = shuffled(beaver.tile.get_neighbors().append([beaver.tile]))
+					neighbors = beaver.tile.get_neighbors()
+					neighbors.append(beaver.tile)
+					pickup_tiles = shuffled(neighbors)
 
 					# if the beaver can carry more resources, try to pick something up
 					if load < beaver.job.carry_limit:
@@ -141,7 +151,9 @@ class AI(BaseAI):
 
 				elif action == 'drop':
 					# choose a random tile from our neighbors + out tile to drop stuff on
-					drop_tiles = shuffled(beaver.tile.get_neighbors().append([beaver.tile]))
+					neighbors = beaver.tile.get_neighbors()
+					neighbors.append(beaver.tile)
+					drop_tiles = shuffled(neighbors)
 
 					# find a valid tile to drop resources onto
 					tile_to_drop_on = None
@@ -175,6 +187,7 @@ class AI(BaseAI):
 		# now try to spawn a beaver if we have lodges
 
 		# 4. Get a lodge to try to spawn something at
+
 		lodge = random_element(self.player.lodges)
 
 		# if we found a lodge and it has no beaver blocking it
@@ -189,7 +202,7 @@ class AI(BaseAI):
 
 			# if we have less beavers than the freeBeavers count, it is free to spawn
 			#    otherwise if that lodge has enough food on it to cover the job's cost
-			if alive_beavers < this.game.free_beavers_count or lodge.food >= job.cost:
+			if alive_beavers < self.game.free_beavers_count or lodge.food >= job.cost:
 				# then spawn a new beaver of that job!
 				print('Recruiting {} to {}'.format(job, lodge))
 				job.recruit(lodge)
