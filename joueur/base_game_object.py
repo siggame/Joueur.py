@@ -12,3 +12,8 @@ class BaseGameObject(DeltaMergeable):
 
     def __repr__(self):
         return str(self)
+
+    def __hash__(self):
+        # id will always be unique server side anyways,
+        #   so it should be safe to hash on
+        return hash(self.id)
