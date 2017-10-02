@@ -21,7 +21,7 @@ class Job(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
-        self._act_cost = 0
+        self._action_cost = 0
         self._carry_limit = 0
         self._moves = 0
         self._regen_rate = 0
@@ -29,12 +29,12 @@ class Job(GameObject):
         self._upkeep = 0
 
     @property
-    def act_cost(self):
+    def action_cost(self):
         """The amount of energy this Job normally uses to perform its actions.
 
         :rtype: float
         """
-        return self._act_cost
+        return self._action_cost
 
     @property
     def carry_limit(self):
@@ -70,7 +70,7 @@ class Job(GameObject):
 
     @property
     def upkeep(self):
-        """The amount of food per turn this Unit consumes. If there isn't enough food for every Unit, all units become starved and do not consume food.
+        """The amount of food per turn this Unit consumes. If there isn't enough food for every Unit, all Units become starved and do not consume food.
 
         :rtype: int
         """

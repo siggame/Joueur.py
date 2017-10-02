@@ -36,7 +36,7 @@ class Unit(GameObject):
 
     @property
     def acted(self):
-        """Whether this unit has performed its action this turn.
+        """Whether this Unit has performed its action this turn.
 
         :rtype: bool
         """
@@ -44,7 +44,7 @@ class Unit(GameObject):
 
     @property
     def energy(self):
-        """The amount of energy this unit has (from 0.0 to 1.0).
+        """The amount of energy this Unit has (from 0.0 to 100.0).
 
         :rtype: float
         """
@@ -76,7 +76,7 @@ class Unit(GameObject):
 
     @property
     def movement_target(self):
-        """The tile this Unit is moving to. This only applies to neutral fresh humans spawned on the road.
+        """The tile this Unit is moving to. This only applies to neutral fresh humans spawned on the road. Otherwise, the tile this Unit is on.
 
         :rtype: Tile
         """
@@ -92,7 +92,7 @@ class Unit(GameObject):
 
     @property
     def owner(self):
-        """The Player that owns and can control this Unit, or None if the unit is neutral.
+        """The Player that owns and can control this Unit, or None if the Unit is neutral.
 
         :rtype: Player
         """
@@ -100,7 +100,7 @@ class Unit(GameObject):
 
     @property
     def squad(self):
-        """The units in the same squad as this unit. Units in the same squad attack and defend together.
+        """The Units in the same squad as this Unit. Units in the same squad attack and defend together.
 
         :rtype: list[Unit]
         """
@@ -108,7 +108,7 @@ class Unit(GameObject):
 
     @property
     def starving(self):
-        """Whether this unit is starving. Starving units regenerate energy at half the rate they normally would while resting.
+        """Whether this Unit is starving. Starving Units regenerate energy at half the rate they normally would while resting.
 
         :rtype: bool
         """
@@ -124,14 +124,14 @@ class Unit(GameObject):
 
     @property
     def turns_to_die(self):
-        """The number of turns before this Unit dies. This only applies to neutral fresh humans created from combat.
+        """The number of turns before this Unit dies. This only applies to neutral fresh humans created from combat. Otherwise, 0.
 
         :rtype: int
         """
         return self._turns_to_die
 
     def attack(self, tile):
-        """ Attacks an adjacent tile. Costs an action for each unit in this squad. Units in this squad without an action don't participate in combat. Units in the squad cannot move after performing this action.
+        """ Attacks an adjacent Tile. Costs an action for each Unit in this Unit's squad. Units in the squad without an action don't participate in combat. Units in combat cannot move afterwards.
 
         Args:
             tile (Tile): The Tile to attack.
@@ -142,7 +142,7 @@ class Unit(GameObject):
         return self._run_on_server('attack', tile=tile)
 
     def change_job(self, job):
-        """ Changes this Unit's Job. Must be at max energy (1.0) to change Jobs.
+        """ Changes this Unit's Job. Must be at max energy (100.0) to change Jobs.
 
         Args:
             job (Job): The Job to change to.
@@ -153,11 +153,11 @@ class Unit(GameObject):
         return self._run_on_server('changeJob', job=job)
 
     def construct(self, tile, type):
-        """ Constructs a structure on an adjacent Tile.
+        """ Constructs a Structure on an adjacent Tile.
 
         Args:
-            tile (Tile): The Tile to construct the structure on. It must have enough materials on it for a structure to be constructed.
-            type (str): The type of structure to construct on that tile.
+            tile (Tile): The Tile to construct the Structure on. It must have enough materials on it for a Structure to be constructed.
+            type (str): The type of Structure to construct on that Tile.
 
         Returns:
             bool: True if successfully constructed a structure, False otherwise.
@@ -187,12 +187,12 @@ class Unit(GameObject):
         return self._run_on_server('deconstruct', tile=tile)
 
     def drop(self, tile, resource, amount=0):
-        """ Drops some of the given resource on or adjacent to the unit's Tile. Does not count as an action.
+        """ Drops some of the given resource on or adjacent to the Unit's Tile. Does not count as an action.
 
         Args:
             tile (Tile): The Tile to drop materials/food on.
             resource (str): The type of resource to drop ('material' or 'food').
-            amount (Optional[int]): The amount of the resource to drop, numbers <= 0 will drop all of the resource.
+            amount (Optional[int]): The amount of the resource to drop. Amounts <= 0 will drop as much as possible.
 
         Returns:
             bool: True if successfully dropped the resource, False otherwise.
@@ -222,12 +222,12 @@ class Unit(GameObject):
         return self._run_on_server('move', tile=tile)
 
     def pickup(self, tile, resource, amount=0):
-        """ Picks up some materials or food on or adjacent to the unit's tile. Does not count as an action.
+        """ Picks up some materials or food on or adjacent to the Unit's Tile. Does not count as an action.
 
         Args:
             tile (Tile): The Tile to pickup materials/food from.
             resource (str): The type of resource to pickup ('material' or 'food').
-            amount (Optional[int]): The amount of the resource to pickup, numbers <= 0 will pickup all of the resource possible.
+            amount (Optional[int]): The amount of the resource to pickup. Amounts <= 0 will pickup as much as possible.
 
         Returns:
             bool: True if successfully picked up a resource, False otherwise.
@@ -235,7 +235,7 @@ class Unit(GameObject):
         return self._run_on_server('pickup', tile=tile, resource=resource, amount=amount)
 
     def rest(self):
-        """ Regenerates energy. Must be in range of a friendly shelter to rest. Unit cannot move after performing this action.
+        """ Regenerates energy. Must be in range of a friendly shelter to rest. Costs an action. Units cannot move after resting.
 
         Returns:
             bool: True if successfully rested, False otherwise.

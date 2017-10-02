@@ -33,6 +33,7 @@ class Game(BaseGame):
         self._current_player = None
         self._current_turn = 0
         self._game_objects = {}
+        self._harvest_cooldown = 0
         self._jobs = []
         self._map_height = 0
         self._map_width = 0
@@ -57,7 +58,7 @@ class Game(BaseGame):
 
     @property
     def cat_energy_mult(self):
-        """The multiplier for the amount of energy regenerated when resting in a base with the cat overlord.
+        """The multiplier for the amount of energy regenerated when resting in a shelter with the cat overlord.
 
         :rtype: float
         """
@@ -86,6 +87,14 @@ class Game(BaseGame):
         :rtype: dict[str, GameObject]
         """
         return self._game_objects
+
+    @property
+    def harvest_cooldown(self):
+        """The amount of turns it takes for a Tile that was just harvested to grow food again.
+
+        :rtype: int
+        """
+        return self._harvest_cooldown
 
     @property
     def jobs(self):

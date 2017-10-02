@@ -37,7 +37,7 @@ class Structure(GameObject):
 
     @property
     def materials(self):
-        """The number of materials in this Structure.
+        """The number of materials in this Structure. Once this number reaches 0, this Structure is destroyed.
 
         :rtype: int
         """
@@ -53,7 +53,7 @@ class Structure(GameObject):
 
     @property
     def tile(self):
-        """The Tile this structure is on.
+        """The Tile this Structure is on.
 
         :rtype: Tile
         """
@@ -61,7 +61,7 @@ class Structure(GameObject):
 
     @property
     def type(self):
-        """The type of structure this is.
+        """The type of Structure this is ('shelter', 'monument', 'wall', 'road').
 
         :rtype: str
         """

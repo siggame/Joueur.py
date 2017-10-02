@@ -29,6 +29,7 @@ class Tile(GameObject):
         self._tile_north = None
         self._tile_south = None
         self._tile_west = None
+        self._turns_to_harvest = 0
         self._type = ""
         self._unit = None
         self._x = 0
@@ -44,7 +45,7 @@ class Tile(GameObject):
 
     @property
     def harvest_rate(self):
-        """The amount of food that can be harvested from this tile per turn.
+        """The amount of food that can be harvested from this Tile per turn.
 
         :rtype: int
         """
@@ -60,7 +61,7 @@ class Tile(GameObject):
 
     @property
     def structure(self):
-        """The structure on this Tile if present, otherwise None.
+        """The Structure on this Tile if present, otherwise None.
 
         :rtype: str
         """
@@ -97,6 +98,14 @@ class Tile(GameObject):
         :rtype: Tile
         """
         return self._tile_west
+
+    @property
+    def turns_to_harvest(self):
+        """The amount of turns before this resource can be harvested.
+
+        :rtype: int
+        """
+        return self._turns_to_harvest
 
     @property
     def type(self):
