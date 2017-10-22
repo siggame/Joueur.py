@@ -145,7 +145,7 @@ class Unit(GameObject):
         """ Changes this Unit's Job. Must be at max energy (100.0) to change Jobs.
 
         Args:
-            job (Job): The Job to change to.
+            job (str): The name of the Job to change to.
 
         Returns:
             bool: True if successfully changed Jobs, False otherwise.

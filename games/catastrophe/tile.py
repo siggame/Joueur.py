@@ -24,13 +24,12 @@ class Tile(GameObject):
         self._food = 0
         self._harvest_rate = 0
         self._materials = 0
-        self._structure = ""
+        self._structure = None
         self._tile_east = None
         self._tile_north = None
         self._tile_south = None
         self._tile_west = None
         self._turns_to_harvest = 0
-        self._type = ""
         self._unit = None
         self._x = 0
         self._y = 0
@@ -63,7 +62,7 @@ class Tile(GameObject):
     def structure(self):
         """The Structure on this Tile if present, otherwise None.
 
-        :rtype: str
+        :rtype: Structure
         """
         return self._structure
 
@@ -106,14 +105,6 @@ class Tile(GameObject):
         :rtype: int
         """
         return self._turns_to_harvest
-
-    @property
-    def type(self):
-        """What type of Tile this is.
-
-        :rtype: str
-        """
-        return self._type
 
     @property
     def unit(self):
