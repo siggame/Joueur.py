@@ -193,7 +193,7 @@ class AI(BaseAI):
                             print("Unit {} deconstructed a Structure on Tile {}".format(my_unit.id, neighbor.id))
 
                 # See if the builder can build a wall
-                if my_unit.materials >= 75:
+                if my_unit.materials >= self.game.wall_materials:
                     # Loop through the neighboring tiles
                     for neighbor in neighbors:
                         # Check if any of the surrounding tiles are open to build something on
