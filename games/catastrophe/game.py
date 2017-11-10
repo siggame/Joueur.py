@@ -35,15 +35,24 @@ class Game(BaseGame):
         self._game_objects = {}
         self._harvest_cooldown = 0
         self._jobs = []
+        self._lower_harvest_amount = 0
         self._map_height = 0
         self._map_width = 0
         self._max_turns = 100
+        self._monument_cost_mult = 0
+        self._monument_materials = 0
+        self._neutral_materials = 0
         self._players = []
         self._session = ""
+        self._shelter_materials = 0
         self._starving_energy_mult = 0
         self._structures = []
         self._tiles = []
+        self._turns_between_harvests = 0
+        self._turns_to_create_human = 0
+        self._turns_to_lower_harvest = 0
         self._units = []
+        self._wall_materials = 0
 
         self.name = "Catastrophe"
 
@@ -105,6 +114,14 @@ class Game(BaseGame):
         return self._jobs
 
     @property
+    def lower_harvest_amount(self):
+        """The amount that the harvest rate is lowered each season.
+
+        :rtype: int
+        """
+        return self._lower_harvest_amount
+
+    @property
     def map_height(self):
         """The number of Tiles in the map along the y (vertical) axis.
 
@@ -129,6 +146,30 @@ class Game(BaseGame):
         return self._max_turns
 
     @property
+    def monument_cost_mult(self):
+        """The multiplier for the cost of actions when performing them in range of a monument. Does not effect pickup cost.
+
+        :rtype: float
+        """
+        return self._monument_cost_mult
+
+    @property
+    def monument_materials(self):
+        """The number of materials in a monument.
+
+        :rtype: int
+        """
+        return self._monument_materials
+
+    @property
+    def neutral_materials(self):
+        """The number of materials in a neutral Structure.
+
+        :rtype: int
+        """
+        return self._neutral_materials
+
+    @property
     def players(self):
         """List of all the players in the game.
 
@@ -143,6 +184,14 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._session
+
+    @property
+    def shelter_materials(self):
+        """The number of materials in a shelter.
+
+        :rtype: int
+        """
+        return self._shelter_materials
 
     @property
     def starving_energy_mult(self):
@@ -169,12 +218,44 @@ class Game(BaseGame):
         return self._tiles
 
     @property
+    def turns_between_harvests(self):
+        """After a food tile is harvested, the number of turns before it can be harvested again.
+
+        :rtype: int
+        """
+        return self._turns_between_harvests
+
+    @property
+    def turns_to_create_human(self):
+        """The number of turns between fresh humans being spawned on the road.
+
+        :rtype: int
+        """
+        return self._turns_to_create_human
+
+    @property
+    def turns_to_lower_harvest(self):
+        """The number of turns before the harvest rate is lowered (length of each season basically).
+
+        :rtype: int
+        """
+        return self._turns_to_lower_harvest
+
+    @property
     def units(self):
         """Every Unit in the game.
 
         :rtype: list[Unit]
         """
         return self._units
+
+    @property
+    def wall_materials(self):
+        """The number of materials in a wall.
+
+        :rtype: int
+        """
+        return self._wall_materials
 
 
     def get_tile_at(self, x, y):
