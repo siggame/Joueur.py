@@ -92,8 +92,8 @@ class ${obj_key}(${", ".join(parent_classes)}):
     def get_tile_at(self, x, y):
         """Gets the Tile at a specified (x, y) position
         Args:
-            x (int): integer between 0 and the mapWidth
-            y (int): integer between 0 and the mapHeight
+            x (int): integer between 0 and the map_width
+            y (int): integer between 0 and the map_height
         Returns:
             Tile: the Tile at (x, y) or None if out of bounds
         """
@@ -101,7 +101,7 @@ class ${obj_key}(${", ".join(parent_classes)}):
             # out of bounds
             return None
 
-        return self.tiles[x + y * self.mapWidth]
+        return self.tiles[x + y * self.map_width]
 % elif obj_key == 'Tile':
     directions = ["North", "East", "South", "West"]
     """int: The valid directions that tiles can be in, "North", "East", "South", or "West"
@@ -125,7 +125,7 @@ class ${obj_key}(${", ".join(parent_classes)}):
         Returns:
             bool: True if pathable, False otherwise
         """
-${merge("        # ", "is_pathable_builtin", "        return false  # DEVELOPER ADD LOGIC HERE")}
+${merge("        # ", "is_pathable_builtin", "        return False  # DEVELOPER ADD LOGIC HERE")}
 
     def has_neighbor(self, tile):
         """Checks if this Tile has a specific neighboring Tile
