@@ -1,8 +1,5 @@
 FROM siggame/joueur:py-onbuild as build
 
-FROM python:alpine
+FROM siggame/joueur:py-base
 
-COPY --from=build /usr/src/client /client
-WORKDIR /client
-
-ENTRYPOINT ["python", "-u", "main.py", GAME_NAME]
+COPY --from=build --chown=siggame:siggame /usr/src/client /client

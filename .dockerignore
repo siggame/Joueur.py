@@ -14,3 +14,6 @@ Vagrantfile
 run
 testRun
 Dockerfile
+
+*.py[cod]
+__pycache__/
