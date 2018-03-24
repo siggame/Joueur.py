@@ -8,7 +8,7 @@ script:
 
   # run the docs
   - cd docs
-  - pip3 install --user -r requirements.txt
+  - pip3 install -r requirements.txt
   - python3 generate_docs.py Anarchy
   # file to tell GitHub pages not to try to run jekyll stuff (can break urls)
   - touch output/.nojekyll
