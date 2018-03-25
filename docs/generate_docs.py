@@ -35,12 +35,12 @@ if os.path.isdir("./output"):
 def camelcase(word):
     return ''.join(x.capitalize() or '_' for x in word.split('_'))
 
-game_names = [f for f in os.listdir("../games") if os.path.isdir(os.path.join("../games", f))]
+game_names = sorted([f for f in os.listdir("../games") if os.path.isdir(os.path.join("../games", f))])
 
 for game_name in game_names:
     lower_game_name = game_name.lower()
     game_path = os.path.join("../games", game_name)
-    only_files = [f for f in os.listdir(game_path) if os.path.isfile(os.path.join(game_path, f))]
+    only_files = sorted([f for f in os.listdir(game_path) if os.path.isfile(os.path.join(game_path, f))])
     game_classes = []
 
     game_rst_path = os.path.join(temp_path, game_name)
@@ -64,8 +64,7 @@ for game_name in game_names:
                 contents = f.read()
             summary = [s.strip() for s in get_doc_string(contents).splitlines() if s.strip()][-1]
 
-        if not not_inherit and name != "player" and name != "ai":
-            game_classes.append(name)
+        game_classes.append(name)
 
         with open(game_rst_path + "/" + name + ".rst", "w+") as f:
             f.write("""{cc}
@@ -106,10 +105,6 @@ Classes
    :maxdepth: 3
    :name: {upper_game_name}
 
-   ai.rst
-   game.rst
-   game_object.rst
-   player.rst
 {game_classes}
 
 Other Notes
