@@ -37,7 +37,7 @@ class Spider(GameObject):
     def nest(self):
         """The Nest that this Spider is currently on. None when moving on a Web.
 
-        :rtype: Nest
+        :rtype: games.spiders.nest.Nest
         """
         return self._nest
 
@@ -45,7 +45,7 @@ class Spider(GameObject):
     def owner(self):
         """The Player that owns this Spider, and can command it.
 
-        :rtype: Player
+        :rtype: games.spiders.player.Player
         """
         return self._owner
 

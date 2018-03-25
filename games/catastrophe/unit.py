@@ -62,7 +62,7 @@ class Unit(GameObject):
     def job(self):
         """The Job this Unit was recruited to do.
 
-        :rtype: Job
+        :rtype: games.catastrophe.job.Job
         """
         return self._job
 
@@ -78,7 +78,7 @@ class Unit(GameObject):
     def movement_target(self):
         """The tile this Unit is moving to. This only applies to neutral fresh humans spawned on the road. Otherwise, the tile this Unit is on.
 
-        :rtype: Tile
+        :rtype: games.catastrophe.tile.Tile
         """
         return self._movement_target
 
@@ -94,7 +94,7 @@ class Unit(GameObject):
     def owner(self):
         """The Player that owns and can control this Unit, or None if the Unit is neutral.
 
-        :rtype: Player
+        :rtype: games.catastrophe.player.Player
         """
         return self._owner
 
@@ -102,7 +102,7 @@ class Unit(GameObject):
     def squad(self):
         """The Units in the same squad as this Unit. Units in the same squad attack and defend together.
 
-        :rtype: list[Unit]
+        :rtype: list[games.catastrophe.unit.Unit]
         """
         return self._squad
 
@@ -118,7 +118,7 @@ class Unit(GameObject):
     def tile(self):
         """The Tile this Unit is on.
 
-        :rtype: Tile
+        :rtype: games.catastrophe.tile.Tile
         """
         return self._tile
 
@@ -134,7 +134,7 @@ class Unit(GameObject):
         """ Attacks an adjacent Tile. Costs an action for each Unit in this Unit's squad. Units in the squad without an action don't participate in combat. Units in combat cannot move afterwards. Attacking structures will not give materials.
 
         Args:
-            tile (Tile): The Tile to attack.
+            tile (games.catastrophe.tile.Tile): The Tile to attack.
 
         Returns:
             bool: True if successfully attacked, False otherwise.
@@ -156,7 +156,7 @@ class Unit(GameObject):
         """ Constructs a Structure on an adjacent Tile.
 
         Args:
-            tile (Tile): The Tile to construct the Structure on. It must have enough materials on it for a Structure to be constructed.
+            tile (games.catastrophe.tile.Tile): The Tile to construct the Structure on. It must have enough materials on it for a Structure to be constructed.
             type (str): The type of Structure to construct on that Tile.
 
         Returns:
@@ -168,7 +168,7 @@ class Unit(GameObject):
         """ Converts an adjacent Unit to your side.
 
         Args:
-            tile (Tile): The Tile with the Unit to convert.
+            tile (games.catastrophe.tile.Tile): The Tile with the Unit to convert.
 
         Returns:
             bool: True if successfully converted, False otherwise.
@@ -179,7 +179,7 @@ class Unit(GameObject):
         """ Removes materials from an adjacent Tile's Structure. You cannot deconstruct friendly structures (see Unit.attack).
 
         Args:
-            tile (Tile): The Tile to deconstruct. It must have a Structure on it.
+            tile (games.catastrophe.tile.Tile): The Tile to deconstruct. It must have a Structure on it.
 
         Returns:
             bool: True if successfully deconstructed, False otherwise.
@@ -190,7 +190,7 @@ class Unit(GameObject):
         """ Drops some of the given resource on or adjacent to the Unit's Tile. Does not count as an action.
 
         Args:
-            tile (Tile): The Tile to drop materials/food on.
+            tile (games.catastrophe.tile.Tile): The Tile to drop materials/food on.
             resource (str): The type of resource to drop ('material' or 'food').
             amount (Optional[int]): The amount of the resource to drop. Amounts <= 0 will drop as much as possible.
 
@@ -203,7 +203,7 @@ class Unit(GameObject):
         """ Harvests the food on an adjacent Tile.
 
         Args:
-            tile (Tile): The Tile you want to harvest.
+            tile (games.catastrophe.tile.Tile): The Tile you want to harvest.
 
         Returns:
             bool: True if successfully harvested, False otherwise.
@@ -214,7 +214,7 @@ class Unit(GameObject):
         """ Moves this Unit from its current Tile to an adjacent Tile.
 
         Args:
-            tile (Tile): The Tile this Unit should move to.
+            tile (games.catastrophe.tile.Tile): The Tile this Unit should move to.
 
         Returns:
             bool: True if it moved, False otherwise.
@@ -225,7 +225,7 @@ class Unit(GameObject):
         """ Picks up some materials or food on or adjacent to the Unit's Tile. Does not count as an action.
 
         Args:
-            tile (Tile): The Tile to pickup materials/food from.
+            tile (games.catastrophe.tile.Tile): The Tile to pickup materials/food from.
             resource (str): The type of resource to pickup ('material' or 'food').
             amount (Optional[int]): The amount of the resource to pickup. Amounts <= 0 will pickup as much as possible.
 

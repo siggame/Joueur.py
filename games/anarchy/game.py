@@ -72,7 +72,7 @@ class Game(BaseGame):
     def buildings(self):
         """All the buildings in the game.
 
-        :rtype: list[Building]
+        :rtype: list[games.anarchy.building.Building]
         """
         return self._buildings
 
@@ -80,7 +80,7 @@ class Game(BaseGame):
     def current_forecast(self):
         """The current Forecast, which will be applied at the end of the turn.
 
-        :rtype: Forecast
+        :rtype: games.anarchy.forecast.Forecast
         """
         return self._current_forecast
 
@@ -88,7 +88,7 @@ class Game(BaseGame):
     def current_player(self):
         """The player whose turn it is currently. That player can send commands. Other players cannot.
 
-        :rtype: Player
+        :rtype: games.anarchy.player.Player
         """
         return self._current_player
 
@@ -104,7 +104,7 @@ class Game(BaseGame):
     def forecasts(self):
         """All the forecasts in the game, indexed by turn number.
 
-        :rtype: list[Forecast]
+        :rtype: list[games.anarchy.forecast.Forecast]
         """
         return self._forecasts
 
@@ -112,7 +112,7 @@ class Game(BaseGame):
     def game_objects(self):
         """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
 
-        :rtype: dict[str, GameObject]
+        :rtype: dict[str, games.anarchy.game_object.GameObject]
         """
         return self._game_objects
 
@@ -160,7 +160,7 @@ class Game(BaseGame):
     def next_forecast(self):
         """The next Forecast, which will be applied at the end of your opponent's turn. This is also the Forecast WeatherStations can control this turn.
 
-        :rtype: Forecast
+        :rtype: games.anarchy.forecast.Forecast
         """
         return self._next_forecast
 
@@ -168,7 +168,7 @@ class Game(BaseGame):
     def players(self):
         """List of all the players in the game.
 
-        :rtype: list[Player]
+        :rtype: list[games.anarchy.player.Player]
         """
         return self._players
 

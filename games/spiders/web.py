@@ -48,7 +48,7 @@ class Web(GameObject):
     def nest_a(self):
         """The first Nest this Web is connected to.
 
-        :rtype: Nest
+        :rtype: games.spiders.nest.Nest
         """
         return self._nest_a
 
@@ -56,7 +56,7 @@ class Web(GameObject):
     def nest_b(self):
         """The second Nest this Web is connected to.
 
-        :rtype: Nest
+        :rtype: games.spiders.nest.Nest
         """
         return self._nest_b
 
@@ -64,7 +64,7 @@ class Web(GameObject):
     def spiderlings(self):
         """All the Spiderlings currently moving along this Web.
 
-        :rtype: list[Spiderling]
+        :rtype: list[games.spiders.spiderling.Spiderling]
         """
         return self._spiderlings
 

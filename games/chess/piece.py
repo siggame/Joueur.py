@@ -56,7 +56,7 @@ class Piece(GameObject):
     def owner(self):
         """The player that controls this chess Piece.
 
-        :rtype: Player
+        :rtype: games.chess.player.Player
         """
         return self._owner
 
@@ -70,7 +70,7 @@ class Piece(GameObject):
 
     @property
     def type(self):
-        """The type of chess Piece this is, either: 'King', 'Queen', 'Knight', 'Rook', 'Bishop', or 'Pawn'.
+        """The type of chess Piece this is, either 'King, 'Queen', 'Knight', 'Rook', 'Bishop', or 'Pawn'.
 
         :rtype: str
         """
@@ -85,7 +85,7 @@ class Piece(GameObject):
             promotion_type (Optional[str]): If this is a Pawn moving to the end of the board then this parameter is what to promote it to. When used must be 'Queen', 'Knight', 'Rook', or 'Bishop'.
 
         Returns:
-            Move: The Move you did if successful, otherwise None if invalid. In addition if your move was invalid you will lose.
+            games.chess.move.Move: The Move you did if successful, otherwise None if invalid. In addition if your move was invalid you will lose.
         """
         return self._run_on_server('move', file=file, rank=rank, promotionType=promotionType)
 

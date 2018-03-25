@@ -87,7 +87,7 @@ class Player(GameObject):
     def opponent(self):
         """This player's opponent in the game.
 
-        :rtype: Player
+        :rtype: games.chess.player.Player
         """
         return self._opponent
 
@@ -95,13 +95,13 @@ class Player(GameObject):
     def pieces(self):
         """All the uncaptured chess Pieces owned by this player.
 
-        :rtype: list[Piece]
+        :rtype: list[games.chess.piece.Piece]
         """
         return self._pieces
 
     @property
     def rank_direction(self):
-        """The direction your Pieces must go along the rank axis until they reach the other side.
+        """The direction your Pieces must go along the rank axis until they reach the other side. Will be +1 if the Player is 'White', or -1 if the Player is 'Black'.
 
         :rtype: int
         """

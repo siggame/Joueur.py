@@ -46,7 +46,7 @@ class Spawner(GameObject):
     def tile(self):
         """The Tile this Spawner is on.
 
-        :rtype: Tile
+        :rtype: games.stumped.tile.Tile
         """
         return self._tile
 

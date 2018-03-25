@@ -35,7 +35,7 @@ class FireDepartment(Building):
         """ Bribes this FireDepartment to extinguish the some of the fire in a building.
 
         Args:
-            building (Building): The Building you want to extinguish.
+            building (games.anarchy.building.Building): The Building you want to extinguish.
 
         Returns:
             bool: True if the bribe worked, False otherwise.

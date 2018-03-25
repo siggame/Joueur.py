@@ -26,7 +26,7 @@ class PoliceDepartment(Building):
         """ Bribe the police to raid a Warehouse, dealing damage equal based on the Warehouse's current exposure, and then resetting it to 0.
 
         Args:
-            warehouse (Warehouse): The warehouse you want to raid.
+            warehouse (games.anarchy.warehouse.Warehouse): The warehouse you want to raid.
 
         Returns:
             int: The amount of damage dealt to the warehouse, or -1 if there was an error.

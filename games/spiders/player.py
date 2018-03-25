@@ -37,7 +37,7 @@ class Player(GameObject):
     def brood_mother(self):
         """This player's BroodMother. If it dies they lose the game.
 
-        :rtype: BroodMother
+        :rtype: games.spiders.brood_mother.BroodMother
         """
         return self._brood_mother
 
@@ -77,7 +77,7 @@ class Player(GameObject):
     def opponent(self):
         """This player's opponent in the game.
 
-        :rtype: Player
+        :rtype: games.spiders.player.Player
         """
         return self._opponent
 
@@ -101,7 +101,7 @@ class Player(GameObject):
     def spiders(self):
         """All the Spiders owned by this player.
 
-        :rtype: list[Spider]
+        :rtype: list[games.spiders.spider.Spider]
         """
         return self._spiders
 

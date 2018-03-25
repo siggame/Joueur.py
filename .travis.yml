@@ -3,7 +3,7 @@ python: "3.6"
 
 script:
   # pip3 not found in travis... for some reason
-  - sudo apt-get install python3-pip python3-sphinx pandoc
+  - sudo apt-get install python3-pip python3-sphinx
   - make
 
   # run the docs

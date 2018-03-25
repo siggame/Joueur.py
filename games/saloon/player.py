@@ -48,7 +48,7 @@ class Player(GameObject):
     def cowboys(self):
         """Every Cowboy owned by this Player.
 
-        :rtype: list[Cowboy]
+        :rtype: list[games.saloon.cowboy.Cowboy]
         """
         return self._cowboys
 
@@ -80,7 +80,7 @@ class Player(GameObject):
     def opponent(self):
         """This player's opponent in the game.
 
-        :rtype: Player
+        :rtype: games.saloon.player.Player
         """
         return self._opponent
 
@@ -144,9 +144,11 @@ class Player(GameObject):
     def young_gun(self):
         """The YoungGun this Player uses to call in new Cowboys.
 
-        :rtype: YoungGun
+        :rtype: games.saloon.young_gun.YoungGun
         """
         return self._young_gun
+
+
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

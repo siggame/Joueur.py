@@ -34,7 +34,7 @@ class Move(GameObject):
     def captured(self):
         """The Piece captured by this Move, None if no capture.
 
-        :rtype: Piece
+        :rtype: games.chess.piece.Piece
         """
         return self._captured
 
@@ -58,7 +58,7 @@ class Move(GameObject):
     def piece(self):
         """The Piece that was moved.
 
-        :rtype: Piece
+        :rtype: games.chess.piece.Piece
         """
         return self._piece
 
