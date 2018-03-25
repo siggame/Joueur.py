@@ -93,7 +93,7 @@ class Cowboy(GameObject):
     def owner(self):
         """The Player that owns and can control this Cowboy.
 
-        :rtype: Player
+        :rtype: games.saloon.player.Player
         """
         return self._owner
 
@@ -101,7 +101,7 @@ class Cowboy(GameObject):
     def tile(self):
         """The Tile that this Cowboy is located on.
 
-        :rtype: Tile
+        :rtype: games.saloon.tile.Tile
         """
         return self._tile
 
@@ -125,7 +125,7 @@ class Cowboy(GameObject):
         """ Does their job's action on a Tile.
 
         Args:
-            tile (Tile): The Tile you want this Cowboy to act on.
+            tile (games.saloon.tile.Tile): The Tile you want this Cowboy to act on.
             drunk_direction (Optional[str]): The direction the bottle will cause drunk cowboys to be in, can be 'North', 'East', 'South', or 'West'.
 
         Returns:
@@ -137,7 +137,7 @@ class Cowboy(GameObject):
         """ Moves this Cowboy from its current Tile to an adjacent Tile.
 
         Args:
-            tile (Tile): The Tile you want to move this Cowboy to.
+            tile (games.saloon.tile.Tile): The Tile you want to move this Cowboy to.
 
         Returns:
             bool: True if the move worked, False otherwise.
@@ -148,12 +148,14 @@ class Cowboy(GameObject):
         """ Sits down and plays a piano.
 
         Args:
-            piano (Furnishing): The Furnishing that is a piano you want to play.
+            piano (games.saloon.furnishing.Furnishing): The Furnishing that is a piano you want to play.
 
         Returns:
             bool: True if the play worked, False otherwise.
         """
         return self._run_on_server('play', piano=piano)
+
+
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

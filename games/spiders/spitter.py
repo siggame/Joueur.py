@@ -27,7 +27,7 @@ class Spitter(Spiderling):
     def spitting_web_to_nest(self):
         """The Nest that this Spitter is creating a Web to spit at, thus connecting them. None if not spitting.
 
-        :rtype: Nest
+        :rtype: games.spiders.nest.Nest
         """
         return self._spitting_web_to_nest
 
@@ -35,7 +35,7 @@ class Spitter(Spiderling):
         """ Creates and spits a new Web from the Nest the Spitter is on to another Nest, connecting them.
 
         Args:
-            nest (Nest): The Nest you want to spit a Web to, thus connecting that Nest and the one the Spitter is on.
+            nest (games.spiders.nest.Nest): The Nest you want to spit a Web to, thus connecting that Nest and the one the Spitter is on.
 
         Returns:
             bool: True if the spit was successful, False otherwise.

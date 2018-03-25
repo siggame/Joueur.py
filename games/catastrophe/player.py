@@ -39,7 +39,7 @@ class Player(GameObject):
     def cat(self):
         """The overlord cat Unit owned by this Player.
 
-        :rtype: Unit
+        :rtype: games.catastrophe.unit.Unit
         """
         return self._cat
 
@@ -79,7 +79,7 @@ class Player(GameObject):
     def opponent(self):
         """This player's opponent in the game.
 
-        :rtype: Player
+        :rtype: games.catastrophe.player.Player
         """
         return self._opponent
 
@@ -103,7 +103,7 @@ class Player(GameObject):
     def structures(self):
         """Every Structure owned by this Player.
 
-        :rtype: list[Structure]
+        :rtype: list[games.catastrophe.structure.Structure]
         """
         return self._structures
 
@@ -119,7 +119,7 @@ class Player(GameObject):
     def units(self):
         """Every Unit owned by this Player.
 
-        :rtype: list[Unit]
+        :rtype: list[games.catastrophe.unit.Unit]
         """
         return self._units
 

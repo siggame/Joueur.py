@@ -21,7 +21,8 @@ import sphinx_py3doc_enhanced_theme # pip package
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('../..'))
+#sys.path.append('../../')
 
 # -- General configuration ------------------------------------------------
 
@@ -35,6 +36,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.napoleon',
+    'sphinxcontrib.fulltoc',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -52,8 +54,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = '###GAME_NAME### Python 3 Client'
-copyright = '2016, SIG-GAME'
+project = 'Python 3 Joueur Client'
+copyright = '###YEAR###, SIG-GAME'
 author = 'SIG-GAME'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -135,7 +137,7 @@ pygments_style = 'friendly'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#html_title = None
+html_title = 'Python 3 Joueur Client Docs'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -168,7 +170,7 @@ pygments_style = 'friendly'
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-#html_sidebars = {}
+#html_sidebars =  { '**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'], }
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -237,7 +239,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'Python3Client.tex', '###GAME_NAME### Python 3 Client Documentation',
+  (master_doc, 'Python3Client.tex', 'Python 3 Client Documentation',
    'SIG-GAME', 'manual'),
 ]
 
@@ -281,7 +283,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'Python3Client', '###GAME_NAME### Python 3 Client Documentation',
+  (master_doc, 'Python3Client', 'Python 3 Client Documentation',
    author, 'Python3Client', 'One line description of project.',
    'Miscellaneous'),
 ]

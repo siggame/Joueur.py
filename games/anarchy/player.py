@@ -49,7 +49,7 @@ class Player(GameObject):
     def buildings(self):
         """All the buildings owned by this player.
 
-        :rtype: list[Building]
+        :rtype: list[games.anarchy.building.Building]
         """
         return self._buildings
 
@@ -65,7 +65,7 @@ class Player(GameObject):
     def fire_departments(self):
         """All the FireDepartments owned by this player.
 
-        :rtype: list[FireDepartment]
+        :rtype: list[games.anarchy.fire_department.FireDepartment]
         """
         return self._fire_departments
 
@@ -73,7 +73,7 @@ class Player(GameObject):
     def headquarters(self):
         """The Warehouse that serves as this player's headquarters and has extra health. If this gets destroyed they lose.
 
-        :rtype: Warehouse
+        :rtype: games.anarchy.warehouse.Warehouse
         """
         return self._headquarters
 
@@ -97,7 +97,7 @@ class Player(GameObject):
     def opponent(self):
         """This player's opponent in the game.
 
-        :rtype: Player
+        :rtype: games.anarchy.player.Player
         """
         return self._opponent
 
@@ -105,7 +105,7 @@ class Player(GameObject):
     def police_departments(self):
         """All the PoliceDepartments owned by this player.
 
-        :rtype: list[PoliceDepartment]
+        :rtype: list[games.anarchy.police_department.PoliceDepartment]
         """
         return self._police_departments
 
@@ -137,7 +137,7 @@ class Player(GameObject):
     def warehouses(self):
         """All the warehouses owned by this player. Includes the Headquarters.
 
-        :rtype: list[Warehouse]
+        :rtype: list[games.anarchy.warehouse.Warehouse]
         """
         return self._warehouses
 
@@ -145,7 +145,7 @@ class Player(GameObject):
     def weather_stations(self):
         """All the WeatherStations owned by this player.
 
-        :rtype: list[WeatherStation]
+        :rtype: list[games.anarchy.weather_station.WeatherStation]
         """
         return self._weather_stations
 

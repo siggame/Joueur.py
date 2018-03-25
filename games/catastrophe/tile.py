@@ -62,7 +62,7 @@ class Tile(GameObject):
     def structure(self):
         """The Structure on this Tile if present, otherwise None.
 
-        :rtype: Structure
+        :rtype: games.catastrophe.structure.Structure
         """
         return self._structure
 
@@ -70,7 +70,7 @@ class Tile(GameObject):
     def tile_east(self):
         """The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
 
-        :rtype: Tile
+        :rtype: games.catastrophe.tile.Tile
         """
         return self._tile_east
 
@@ -78,7 +78,7 @@ class Tile(GameObject):
     def tile_north(self):
         """The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
 
-        :rtype: Tile
+        :rtype: games.catastrophe.tile.Tile
         """
         return self._tile_north
 
@@ -86,7 +86,7 @@ class Tile(GameObject):
     def tile_south(self):
         """The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
 
-        :rtype: Tile
+        :rtype: games.catastrophe.tile.Tile
         """
         return self._tile_south
 
@@ -94,7 +94,7 @@ class Tile(GameObject):
     def tile_west(self):
         """The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
 
-        :rtype: Tile
+        :rtype: games.catastrophe.tile.Tile
         """
         return self._tile_west
 
@@ -110,7 +110,7 @@ class Tile(GameObject):
     def unit(self):
         """The Unit on this Tile if present, otherwise None.
 
-        :rtype: Unit
+        :rtype: games.catastrophe.unit.Unit
         """
         return self._unit
 
@@ -137,7 +137,8 @@ class Tile(GameObject):
 
     def get_neighbors(self):
         """Gets the neighbors of this Tile
-        :rtype list[Tile]
+
+        :rtype list[games.catastrophe.tile.Tile]
         """
         neighbors = []
 
@@ -150,6 +151,7 @@ class Tile(GameObject):
 
     def is_pathable(self):
         """Checks if a Tile is pathable to units
+
         Returns:
             bool: True if pathable, False otherwise
         """
@@ -160,7 +162,7 @@ class Tile(GameObject):
     def has_neighbor(self, tile):
         """Checks if this Tile has a specific neighboring Tile
         Args:
-            tile (Tile): tile to check against
+            tile (games.catastrophe.tile.Tile): tile to check against
         Returns:
             bool: True if the tile is a neighbor of this Tile, False otherwise
         """

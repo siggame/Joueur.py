@@ -39,7 +39,7 @@ class Spiderling(Spider):
     def moving_on_web(self):
         """The Web this Spiderling is using to move. None if it is not moving.
 
-        :rtype: Web
+        :rtype: games.spiders.web.Web
         """
         return self._moving_on_web
 
@@ -47,7 +47,7 @@ class Spiderling(Spider):
     def moving_to_nest(self):
         """The Nest this Spiderling is moving to. None if it is not moving.
 
-        :rtype: Nest
+        :rtype: games.spiders.nest.Nest
         """
         return self._moving_to_nest
 
@@ -71,7 +71,7 @@ class Spiderling(Spider):
         """ Attacks another Spiderling
 
         Args:
-            spiderling (Spiderling): The Spiderling to attack.
+            spiderling (games.spiders.spiderling.Spiderling): The Spiderling to attack.
 
         Returns:
             bool: True if the attack was successful, False otherwise.
@@ -82,7 +82,7 @@ class Spiderling(Spider):
         """ Starts moving the Spiderling across a Web to another Nest.
 
         Args:
-            web (Web): The Web you want to move across to the other Nest.
+            web (games.spiders.web.Web): The Web you want to move across to the other Nest.
 
         Returns:
             bool: True if the move was successful, False otherwise.

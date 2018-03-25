@@ -30,7 +30,7 @@ class Nest(GameObject):
     def spiders(self):
         """All the Spiders currently located on this Nest.
 
-        :rtype: list[Spider]
+        :rtype: list[games.spiders.spider.Spider]
         """
         return self._spiders
 
@@ -38,7 +38,7 @@ class Nest(GameObject):
     def webs(self):
         """Webs that connect to this Nest.
 
-        :rtype: list[Web]
+        :rtype: list[games.spiders.web.Web]
         """
         return self._webs
 

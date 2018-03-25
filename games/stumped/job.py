@@ -116,10 +116,10 @@ class Job(GameObject):
         """ Recruits a Beaver of this Job to a lodge
 
         Args:
-            tile (Tile): The Tile that is a lodge owned by you that you wish to spawn the Beaver of this Job on.
+            tile (games.stumped.tile.Tile): The Tile that is a lodge owned by you that you wish to spawn the Beaver of this Job on.
 
         Returns:
-            Beaver: The recruited Beaver if successful, None otherwise.
+            games.stumped.beaver.Beaver: The recruited Beaver if successful, None otherwise.
         """
         return self._run_on_server('recruit', tile=tile)
 

@@ -38,7 +38,7 @@ class Checker(GameObject):
     def owner(self):
         """The player that controls this Checker.
 
-        :rtype: Player
+        :rtype: games.checkers.player.Player
         """
         return self._owner
 
@@ -74,7 +74,7 @@ class Checker(GameObject):
             y (int): The y coordinate to move to.
 
         Returns:
-            Checker: Returns the same checker that moved if the move was successful. None otherwise.
+            games.checkers.checker.Checker: Returns the same checker that moved if the move was successful. None otherwise.
         """
         return self._run_on_server('move', x=x, y=y)
 

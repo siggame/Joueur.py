@@ -27,7 +27,7 @@ class Cutter(Spiderling):
     def cutting_web(self):
         """The Web that this Cutter is trying to cut. None if not cutting.
 
-        :rtype: Web
+        :rtype: games.spiders.web.Web
         """
         return self._cutting_web
 
@@ -35,7 +35,7 @@ class Cutter(Spiderling):
         """ Cuts a web, destroying it, and any Spiderlings on it.
 
         Args:
-            web (Web): The web you want to Cut. Must be connected to the Nest this Cutter is currently on.
+            web (games.spiders.web.Web): The web you want to Cut. Must be connected to the Nest this Cutter is currently on.
 
         Returns:
             bool: True if the cut was successfully started, False otherwise.

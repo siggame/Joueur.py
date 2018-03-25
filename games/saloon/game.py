@@ -75,7 +75,7 @@ class Game(BaseGame):
     def bottles(self):
         """All the beer Bottles currently flying across the saloon in the game.
 
-        :rtype: list[Bottle]
+        :rtype: list[games.saloon.bottle.Bottle]
         """
         return self._bottles
 
@@ -91,7 +91,7 @@ class Game(BaseGame):
     def cowboys(self):
         """Every Cowboy in the game.
 
-        :rtype: list[Cowboy]
+        :rtype: list[games.saloon.cowboy.Cowboy]
         """
         return self._cowboys
 
@@ -99,7 +99,7 @@ class Game(BaseGame):
     def current_player(self):
         """The player whose turn it is currently. That player can send commands. Other players cannot.
 
-        :rtype: Player
+        :rtype: games.saloon.player.Player
         """
         return self._current_player
 
@@ -115,7 +115,7 @@ class Game(BaseGame):
     def furnishings(self):
         """Every furnishing in the game.
 
-        :rtype: list[Furnishing]
+        :rtype: list[games.saloon.furnishing.Furnishing]
         """
         return self._furnishings
 
@@ -123,7 +123,7 @@ class Game(BaseGame):
     def game_objects(self):
         """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
 
-        :rtype: dict[str, GameObject]
+        :rtype: dict[str, games.saloon.game_object.GameObject]
         """
         return self._game_objects
 
@@ -171,7 +171,7 @@ class Game(BaseGame):
     def players(self):
         """List of all the players in the game.
 
-        :rtype: list[Player]
+        :rtype: list[games.saloon.player.Player]
         """
         return self._players
 
@@ -211,7 +211,7 @@ class Game(BaseGame):
     def tiles(self):
         """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
 
-        :rtype: list[Tile]
+        :rtype: list[games.saloon.tile.Tile]
         """
         return self._tiles
 
@@ -222,6 +222,21 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._turns_drunk
+
+
+    def get_tile_at(self, x, y):
+        """Gets the Tile at a specified (x, y) position
+        Args:
+            x (int): integer between 0 and the mapWidth
+            y (int): integer between 0 and the mapHeight
+        Returns:
+            games.saloon.tile.Tile: the Tile at (x, y) or None if out of bounds
+        """
+        if x < 0 or y < 0 or x >= self.map_width or y >= self.map_height:
+            # out of bounds
+            return None
+
+        return self.tiles[x + y * self.mapWidth]
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them
