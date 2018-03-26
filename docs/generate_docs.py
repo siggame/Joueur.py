@@ -133,7 +133,7 @@ Its directory structure is similar to most clients (such as this one).
         )
     ))
 
-rst_readme = m2r.parse_from_file("../README.md").replace(".. code-block::", ".. code-block:: bash")
+rst_readme = m2r.parse_from_file("../README.md").replace(".. code-block::\n", ".. code-block:: bash\n")
 
 index = rst_readme.find("How to Run")
 

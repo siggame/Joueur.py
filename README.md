@@ -26,7 +26,7 @@ python3 main.py GAME_NAME -s game.siggame.io -r MyOwnGameSession
 
 ## Make
 
-There is a `Makefile` provided, but it is empty as python is an interpreted language. If you want to add `make` steps feel free to, but you may want to check with an Arena dev to ensure the Arena has the packages you need to use in `make`.
+There is a `Makefile` provided. Although Python is an interpreted language, we have added some useful default steps. By default it installs all pip packges you add to `requirements.txt`, and then runs the Python compiler on all .py files to make sure they are syntactically correct.
 
 ## Other Notes
 
