@@ -117,7 +117,7 @@ class Unit(GameObject):
 
         Args:
             tile (Tile): The Tile to attack.
-            target (str): Whether to attack 'crew', 'ship', or 'port'. Crew deal damage to crew, and ships deal damage to ships and ports. Consumes any remaining moves.
+            target (str): Whether to attack 'crew', 'ship', or 'port'. Crew deal damage to crew, and ships deal damage to ships. Both can attack ports as well. Units cannot attack other units in ports. Consumes any remaining moves.
 
         Returns:
             bool: True if successfully attacked, False otherwise.
@@ -131,7 +131,7 @@ class Unit(GameObject):
             tile (Tile): The Tile to build the Port on.
 
         Returns:
-            bool: True if successfully constructed a Port, False otherwise.
+            bool: True if successfully built a Port, False otherwise.
         """
         return self._run_on_server('build', tile=tile)
 
@@ -139,7 +139,7 @@ class Unit(GameObject):
         """ Buries gold on this Unit's Tile.
 
         Args:
-            amount (int): How much gold this Unit should bury.
+            amount (int): How much gold this Unit should bury. Amounts <= 0 will bury as much as possible.
 
         Returns:
             bool: True if successfully buried, False otherwise.
@@ -147,7 +147,7 @@ class Unit(GameObject):
         return self._run_on_server('bury', amount=amount)
 
     def deposit(self, amount=0):
-        """ Puts gold into an adjacent Port. If that Port is the Player's main port, the gold is added to that Player. If that Port is owned by merchants, adds to the investment.
+        """ Puts gold into an adjacent Port. If that Port is the Player's main port, the gold is added to that Player. If that Port is owned by merchants, it adds to that Port's investment.
 
         Args:
             amount (Optional[int]): The amount of gold to deposit. Amounts <= 0 will deposit all the gold on this Unit.
@@ -179,17 +179,13 @@ class Unit(GameObject):
         """
         return self._run_on_server('move', tile=tile)
 
-    def rest(self, tile, amount=1):
+    def rest(self):
         """ Regenerates this Unit's health. Must be used in range of a port.
 
-        Args:
-            tile (Tile): The Tile to move the crew to.
-            amount (Optional[int]): The number of crew to move onto that Tile. Amount <= 0 will move all the crew to that Tile.
-
         Returns:
-            bool: True if successfully split, False otherwise.
+            bool: True if successfully rested, False otherwise.
         """
-        return self._run_on_server('rest', tile=tile, amount=amount)
+        return self._run_on_server('rest')
 
     def split(self, tile, amount=1, gold=0):
         """ Moves a number of crew from this Unit to the given Tile. This will consume a move from those crew.

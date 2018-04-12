@@ -42,6 +42,9 @@ class Game(BaseGame):
         self._max_interest_distance = 0
         self._max_interest_rate = 0
         self._max_turns = 100
+        self._merchant_crew_cost = 0
+        self._merchant_investment_rate = 0
+        self._merchant_ship_cost = 0
         self._players = []
         self._port_cost = 0
         self._port_health = 0
@@ -156,7 +159,7 @@ class Game(BaseGame):
 
     @property
     def max_interest_distance(self):
-        """The Euclidean distance from a Player port required to reach maxInterestRate.
+        """The Euclidean distance from a Player Port required to reach maxInterestRate.
 
         :rtype: float
         """
@@ -177,6 +180,30 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._max_turns
+
+    @property
+    def merchant_crew_cost(self):
+        """How much gold it costs a merchant Port to create a crew member.
+
+        :rtype: int
+        """
+        return self._merchant_crew_cost
+
+    @property
+    def merchant_investment_rate(self):
+        """How much gold merchant Ports get per turn. They gain (Port.investment * merchantInvestmentRate) gold each turn.
+
+        :rtype: float
+        """
+        return self._merchant_investment_rate
+
+    @property
+    def merchant_ship_cost(self):
+        """How much gold it costs a merchant Port to create a ship.
+
+        :rtype: int
+        """
+        return self._merchant_ship_cost
 
     @property
     def players(self):
