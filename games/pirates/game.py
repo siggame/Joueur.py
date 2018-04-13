@@ -43,9 +43,9 @@ class Game(BaseGame):
         self._max_turns = 100
         self._merchant_gold_rate = 0
         self._merchant_interest_rate = 0
-        self._merchant_ports = []
         self._min_interest_distance = 0
         self._players = []
+        self._ports = []
         self._rest_range = 0
         self._session = ""
         self._ship_cost = 0
@@ -187,14 +187,6 @@ class Game(BaseGame):
         return self._merchant_interest_rate
 
     @property
-    def merchant_ports(self):
-        """Every Port in the game. Merchant ports have owner set to None.
-
-        :rtype: list[Port]
-        """
-        return self._merchant_ports
-
-    @property
     def min_interest_distance(self):
         """The Euclidean distance buried gold must be from the Player's Port to accumulate interest.
 
@@ -209,6 +201,14 @@ class Game(BaseGame):
         :rtype: list[Player]
         """
         return self._players
+
+    @property
+    def ports(self):
+        """Every Port in the game. Merchant ports have owner set to None.
+
+        :rtype: list[Port]
+        """
+        return self._ports
 
     @property
     def rest_range(self):
