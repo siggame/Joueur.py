@@ -28,6 +28,7 @@ class Game(BaseGame):
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
+        self._bury_interest_rate = 0
         self._crew_cost = 0
         self._crew_damage = 0
         self._crew_health = 0
@@ -39,16 +40,12 @@ class Game(BaseGame):
         self._heal_factor = 0
         self._map_height = 0
         self._map_width = 0
-        self._max_interest_distance = 0
-        self._max_interest_rate = 0
         self._max_turns = 100
-        self._merchant_crew_cost = 0
-        self._merchant_investment_rate = 0
-        self._merchant_ship_cost = 0
+        self._merchant_gold_rate = 0
+        self._merchant_interest_rate = 0
+        self._merchant_ports = []
+        self._min_interest_distance = 0
         self._players = []
-        self._port_cost = 0
-        self._port_health = 0
-        self._ports = []
         self._rest_range = 0
         self._session = ""
         self._ship_cost = 0
@@ -68,6 +65,14 @@ class Game(BaseGame):
             'Tile': Tile,
             'Unit': Unit
         }
+
+    @property
+    def bury_interest_rate(self):
+        """The rate buried gold increases each turn.
+
+        :rtype: float
+        """
+        return self._bury_interest_rate
 
     @property
     def crew_cost(self):
@@ -158,22 +163,6 @@ class Game(BaseGame):
         return self._map_width
 
     @property
-    def max_interest_distance(self):
-        """The Euclidean distance from a Player Port required to reach maxInterestRate.
-
-        :rtype: float
-        """
-        return self._max_interest_distance
-
-    @property
-    def max_interest_rate(self):
-        """The maximum rate buried gold can increase over time.
-
-        :rtype: float
-        """
-        return self._max_interest_rate
-
-    @property
     def max_turns(self):
         """The maximum number of turns before the game will automatically end.
 
@@ -182,28 +171,36 @@ class Game(BaseGame):
         return self._max_turns
 
     @property
-    def merchant_crew_cost(self):
-        """How much gold it costs a merchant Port to create a crew member.
-
-        :rtype: int
-        """
-        return self._merchant_crew_cost
-
-    @property
-    def merchant_investment_rate(self):
-        """How much gold merchant Ports get per turn. They gain (Port.investment * merchantInvestmentRate) gold each turn.
+    def merchant_gold_rate(self):
+        """How much gold merchant Ports get each turn.
 
         :rtype: float
         """
-        return self._merchant_investment_rate
+        return self._merchant_gold_rate
 
     @property
-    def merchant_ship_cost(self):
-        """How much gold it costs a merchant Port to create a ship.
+    def merchant_interest_rate(self):
+        """When a merchant ship spawns, the amount of additional gold it has relative to the Port's investment.
 
-        :rtype: int
+        :rtype: float
         """
-        return self._merchant_ship_cost
+        return self._merchant_interest_rate
+
+    @property
+    def merchant_ports(self):
+        """Every Port in the game. Merchant ports have owner set to None.
+
+        :rtype: list[Port]
+        """
+        return self._merchant_ports
+
+    @property
+    def min_interest_distance(self):
+        """The Euclidean distance buried gold must be from the Player's Port to accumulate interest.
+
+        :rtype: float
+        """
+        return self._min_interest_distance
 
     @property
     def players(self):
@@ -212,30 +209,6 @@ class Game(BaseGame):
         :rtype: list[Player]
         """
         return self._players
-
-    @property
-    def port_cost(self):
-        """How much gold it costs to construct a port.
-
-        :rtype: int
-        """
-        return self._port_cost
-
-    @property
-    def port_health(self):
-        """The maximum amount of health a Port can have.
-
-        :rtype: int
-        """
-        return self._port_health
-
-    @property
-    def ports(self):
-        """Every Port in the game.
-
-        :rtype: list[Port]
-        """
-        return self._ports
 
     @property
     def rest_range(self):
@@ -303,7 +276,7 @@ class Game(BaseGame):
 
     @property
     def units(self):
-        """Every Unit in the game.
+        """Every Unit in the game. Merchant units have targetPort set to a port.
 
         :rtype: list[Unit]
         """

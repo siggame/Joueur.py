@@ -21,49 +21,22 @@ class Port(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
-        self._cooldown = False
-        self._destroyable = 0
         self._gold = 0
-        self._health = 0
         self._investment = 0
         self._owner = None
         self._tile = None
 
     @property
-    def cooldown(self):
-        """Whether this Port has created a Unit this turn.
-
-        :rtype: bool
-        """
-        return self._cooldown
-
-    @property
-    def destroyable(self):
-        """Whether this Port can be destroyed.
-
-        :rtype: int
-        """
-        return self._destroyable
-
-    @property
     def gold(self):
-        """(Merchants only) How much gold this Port has accumulated. Once this port can afford to create a ship, it will spend gold to construct one.
+        """For players, how much more gold this Port can spend this turn. For merchants, how much gold this Port has accumulated (it will spawn a ship when the Port can afford one).
 
         :rtype: int
         """
         return self._gold
 
     @property
-    def health(self):
-        """How much health this Port has.
-
-        :rtype: int
-        """
-        return self._health
-
-    @property
     def investment(self):
-        """(Merchants only) How much gold this Port accumulates each turn.
+        """(Merchants only) How much gold was invested into this Port. Investment determines the strength and value of the next ship.
 
         :rtype: int
         """

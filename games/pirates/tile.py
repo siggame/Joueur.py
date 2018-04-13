@@ -21,6 +21,7 @@ class Tile(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
+        self._decoration = False
         self._gold = 0
         self._port = None
         self._tile_east = None
@@ -31,6 +32,14 @@ class Tile(GameObject):
         self._unit = None
         self._x = 0
         self._y = 0
+
+    @property
+    def decoration(self):
+        """(Visualizer only) Whether this tile is deep sea or grassy. This has no effect on gameplay, but feel free to use it if you want.
+
+        :rtype: bool
+        """
+        return self._decoration
 
     @property
     def gold(self):

@@ -27,10 +27,9 @@ class Player(GameObject):
         self._lost = False
         self._name = "Anonymous"
         self._opponent = None
-        self._ports = []
+        self._ports = None
         self._reason_lost = ""
         self._reason_won = ""
-        self._starting_port = None
         self._time_remaining = 0
         self._units = []
         self._won = False
@@ -85,9 +84,9 @@ class Player(GameObject):
 
     @property
     def ports(self):
-        """The ports owned by this Player.
+        """The Port owned by this Player.
 
-        :rtype: list[Port]
+        :rtype: Port
         """
         return self._ports
 
@@ -106,14 +105,6 @@ class Player(GameObject):
         :rtype: str
         """
         return self._reason_won
-
-    @property
-    def starting_port(self):
-        """This Player's starting port.
-
-        :rtype: Port
-        """
-        return self._starting_port
 
     @property
     def time_remaining(self):

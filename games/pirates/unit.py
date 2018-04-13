@@ -29,6 +29,7 @@ class Unit(GameObject):
         self._owner = None
         self._path = []
         self._ship_health = 0
+        self._stun_turns = 0
         self._target_port = None
         self._tile = None
 
@@ -97,6 +98,14 @@ class Unit(GameObject):
         return self._ship_health
 
     @property
+    def stun_turns(self):
+        """(Merchants only) The number of turns this merchant ship won't be able to move. They will still attack. Merchant ships are stunned when they're attacked.
+
+        :rtype: int
+        """
+        return self._stun_turns
+
+    @property
     def target_port(self):
         """(Merchants only) The Port this Unit is moving to.
 
@@ -113,30 +122,19 @@ class Unit(GameObject):
         return self._tile
 
     def attack(self, tile, target):
-        """ Attacks either crew, a ship, or a port on a Tile in range.
+        """ Attacks either the 'crew' or 'ship' on a Tile in range.
 
         Args:
             tile (Tile): The Tile to attack.
-            target (str): Whether to attack 'crew', 'ship', or 'port'. Crew deal damage to crew, and ships deal damage to ships. Both can attack ports as well. Units cannot attack other units in ports. Consumes any remaining moves.
+            target (str): Whether to attack 'crew' or 'ship'. Crew deal damage to crew and ships deal damage to ships. Consumes any remaining moves.
 
         Returns:
             bool: True if successfully attacked, False otherwise.
         """
         return self._run_on_server('attack', tile=tile, target=target)
 
-    def build(self, tile):
-        """ Builds a Port on the given Tile.
-
-        Args:
-            tile (Tile): The Tile to build the Port on.
-
-        Returns:
-            bool: True if successfully built a Port, False otherwise.
-        """
-        return self._run_on_server('build', tile=tile)
-
     def bury(self, amount):
-        """ Buries gold on this Unit's Tile.
+        """ Buries gold on this Unit's Tile. Gold must be a certain distance away for it to get interest (Game.minInterestDistance).
 
         Args:
             amount (int): How much gold this Unit should bury. Amounts <= 0 will bury as much as possible.
@@ -147,7 +145,7 @@ class Unit(GameObject):
         return self._run_on_server('bury', amount=amount)
 
     def deposit(self, amount=0):
-        """ Puts gold into an adjacent Port. If that Port is the Player's main port, the gold is added to that Player. If that Port is owned by merchants, it adds to that Port's investment.
+        """ Puts gold into an adjacent Port. If that Port is the Player's port, the gold is added to that Player. If that Port is owned by merchants, it adds to that Port's investment.
 
         Args:
             amount (Optional[int]): The amount of gold to deposit. Amounts <= 0 will deposit all the gold on this Unit.
@@ -169,7 +167,7 @@ class Unit(GameObject):
         return self._run_on_server('dig', amount=amount)
 
     def move(self, tile):
-        """ Moves this Unit from its current Tile to an adjacent Tile.
+        """ Moves this Unit from its current Tile to an adjacent Tile. If this Unit merges with another one, the other Unit will be destroyed and its tile will be set to None. Make sure to check that your Unit's tile is not None before doing things with it.
 
         Args:
             tile (Tile): The Tile this Unit should move to.
@@ -201,7 +199,7 @@ class Unit(GameObject):
         return self._run_on_server('split', tile=tile, amount=amount, gold=gold)
 
     def withdraw(self, amount=0):
-        """ Takes gold from the Player. You can only withdraw from your main port.
+        """ Takes gold from the Player. You can only withdraw from your own Port.
 
         Args:
             amount (Optional[int]): The amount of gold to withdraw. Amounts <= 0 will withdraw everything.
