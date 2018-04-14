@@ -36,7 +36,7 @@ class Player(GameObject):
     def checkers(self):
         """All the checkers currently in the game owned by this player.
 
-        :rtype: list[Checker]
+        :rtype: list[games.checkers.checker.Checker]
         """
         return self._checkers
 
@@ -68,7 +68,7 @@ class Player(GameObject):
     def opponent(self):
         """This player's opponent in the game.
 
-        :rtype: Player
+        :rtype: games.checkers.player.Player
         """
         return self._opponent
 

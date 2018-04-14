@@ -68,7 +68,7 @@ class Beaver(GameObject):
     def job(self):
         """The Job this Beaver was recruited to do.
 
-        :rtype: Job
+        :rtype: games.stumped.job.Job
         """
         return self._job
 
@@ -84,7 +84,7 @@ class Beaver(GameObject):
     def owner(self):
         """The Player that owns and can control this Beaver.
 
-        :rtype: Player
+        :rtype: games.stumped.player.Player
         """
         return self._owner
 
@@ -100,7 +100,7 @@ class Beaver(GameObject):
     def tile(self):
         """The Tile this Beaver is on.
 
-        :rtype: Tile
+        :rtype: games.stumped.tile.Tile
         """
         return self._tile
 
@@ -116,7 +116,7 @@ class Beaver(GameObject):
         """ Attacks another adjacent beaver.
 
         Args:
-            beaver (Beaver): The Beaver to attack. Must be on an adjacent Tile.
+            beaver (games.stumped.beaver.Beaver): The Beaver to attack. Must be on an adjacent Tile.
 
         Returns:
             bool: True if successfully attacked, False otherwise.
@@ -135,7 +135,7 @@ class Beaver(GameObject):
         """ Drops some of the given resource on the beaver's Tile.
 
         Args:
-            tile (Tile): The Tile to drop branches/food on. Must be the same Tile that the Beaver is on, or an adjacent one.
+            tile (games.stumped.tile.Tile): The Tile to drop branches/food on. Must be the same Tile that the Beaver is on, or an adjacent one.
             resource (str): The type of resource to drop ('branch' or 'food').
             amount (Optional[int]): The amount of the resource to drop, numbers <= 0 will drop all the resource type.
 
@@ -148,7 +148,7 @@ class Beaver(GameObject):
         """ Harvests the branches or food from a Spawner on an adjacent Tile.
 
         Args:
-            spawner (Spawner): The Spawner you want to harvest. Must be on an adjacent Tile.
+            spawner (games.stumped.spawner.Spawner): The Spawner you want to harvest. Must be on an adjacent Tile.
 
         Returns:
             bool: True if successfully harvested, False otherwise.
@@ -159,7 +159,7 @@ class Beaver(GameObject):
         """ Moves this Beaver from its current Tile to an adjacent Tile.
 
         Args:
-            tile (Tile): The Tile this Beaver should move to.
+            tile (games.stumped.tile.Tile): The Tile this Beaver should move to.
 
         Returns:
             bool: True if the move worked, False otherwise.
@@ -170,7 +170,7 @@ class Beaver(GameObject):
         """ Picks up some branches or food on the beaver's tile.
 
         Args:
-            tile (Tile): The Tile to pickup branches/food from. Must be the same Tile that the Beaver is on, or an adjacent one.
+            tile (games.stumped.tile.Tile): The Tile to pickup branches/food from. Must be the same Tile that the Beaver is on, or an adjacent one.
             resource (str): The type of resource to pickup ('branch' or 'food').
             amount (Optional[int]): The amount of the resource to drop, numbers <= 0 will pickup all of the resource type.
 

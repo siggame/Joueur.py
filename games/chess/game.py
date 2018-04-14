@@ -51,7 +51,7 @@ class Game(BaseGame):
     def current_player(self):
         """The player whose turn it is currently. That player can send commands. Other players cannot.
 
-        :rtype: Player
+        :rtype: games.chess.player.Player
         """
         return self._current_player
 
@@ -75,7 +75,7 @@ class Game(BaseGame):
     def game_objects(self):
         """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
 
-        :rtype: dict[str, GameObject]
+        :rtype: dict[str, games.chess.game_object.GameObject]
         """
         return self._game_objects
 
@@ -91,7 +91,7 @@ class Game(BaseGame):
     def moves(self):
         """The list of Moves that have occurred, in order.
 
-        :rtype: list[Move]
+        :rtype: list[games.chess.move.Move]
         """
         return self._moves
 
@@ -99,7 +99,7 @@ class Game(BaseGame):
     def pieces(self):
         """All the uncaptured Pieces in the game.
 
-        :rtype: list[Piece]
+        :rtype: list[games.chess.piece.Piece]
         """
         return self._pieces
 
@@ -107,7 +107,7 @@ class Game(BaseGame):
     def players(self):
         """List of all the players in the game.
 
-        :rtype: list[Player]
+        :rtype: list[games.chess.player.Player]
         """
         return self._players
 

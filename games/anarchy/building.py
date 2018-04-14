@@ -45,7 +45,7 @@ class Building(GameObject):
     def building_east(self):
         """The Building directly to the east of this building, or None if not present.
 
-        :rtype: Building
+        :rtype: games.anarchy.building.Building
         """
         return self._building_east
 
@@ -53,7 +53,7 @@ class Building(GameObject):
     def building_north(self):
         """The Building directly to the north of this building, or None if not present.
 
-        :rtype: Building
+        :rtype: games.anarchy.building.Building
         """
         return self._building_north
 
@@ -61,7 +61,7 @@ class Building(GameObject):
     def building_south(self):
         """The Building directly to the south of this building, or None if not present.
 
-        :rtype: Building
+        :rtype: games.anarchy.building.Building
         """
         return self._building_south
 
@@ -69,7 +69,7 @@ class Building(GameObject):
     def building_west(self):
         """The Building directly to the west of this building, or None if not present.
 
-        :rtype: Building
+        :rtype: games.anarchy.building.Building
         """
         return self._building_west
 
@@ -101,7 +101,7 @@ class Building(GameObject):
     def owner(self):
         """The player that owns this building. If it burns down (health reaches 0) that player gets an additional bribe(s).
 
-        :rtype: Player
+        :rtype: games.anarchy.player.Player
         """
         return self._owner
 

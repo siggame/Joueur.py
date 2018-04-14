@@ -28,7 +28,7 @@ class Weaver(Spiderling):
     def strengthening_web(self):
         """The Web that this Weaver is strengthening. None if not strengthening.
 
-        :rtype: Web
+        :rtype: games.spiders.web.Web
         """
         return self._strengthening_web
 
@@ -36,7 +36,7 @@ class Weaver(Spiderling):
     def weakening_web(self):
         """The Web that this Weaver is weakening. None if not weakening.
 
-        :rtype: Web
+        :rtype: games.spiders.web.Web
         """
         return self._weakening_web
 
@@ -44,7 +44,7 @@ class Weaver(Spiderling):
         """ Weaves more silk into an existing Web to strengthen it.
 
         Args:
-            web (Web): The web you want to strengthen. Must be connected to the Nest this Weaver is currently on.
+            web (games.spiders.web.Web): The web you want to strengthen. Must be connected to the Nest this Weaver is currently on.
 
         Returns:
             bool: True if the strengthen was successfully started, False otherwise.
@@ -55,7 +55,7 @@ class Weaver(Spiderling):
         """ Weaves more silk into an existing Web to strengthen it.
 
         Args:
-            web (Web): The web you want to weaken. Must be connected to the Nest this Weaver is currently on.
+            web (games.spiders.web.Web): The web you want to weaken. Must be connected to the Nest this Weaver is currently on.
 
         Returns:
             bool: True if the weaken was successfully started, False otherwise.

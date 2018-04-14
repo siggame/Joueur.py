@@ -68,7 +68,7 @@ class Game(BaseGame):
     def current_player(self):
         """The player whose turn it is currently. That player can send commands. Other players cannot.
 
-        :rtype: Player
+        :rtype: games.spiders.player.Player
         """
         return self._current_player
 
@@ -100,7 +100,7 @@ class Game(BaseGame):
     def game_objects(self):
         """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
 
-        :rtype: dict[str, GameObject]
+        :rtype: dict[str, games.spiders.game_object.GameObject]
         """
         return self._game_objects
 
@@ -132,7 +132,7 @@ class Game(BaseGame):
     def nests(self):
         """Every Nest in the game.
 
-        :rtype: list[Nest]
+        :rtype: list[games.spiders.nest.Nest]
         """
         return self._nests
 
@@ -140,7 +140,7 @@ class Game(BaseGame):
     def players(self):
         """List of all the players in the game.
 
-        :rtype: list[Player]
+        :rtype: list[games.spiders.player.Player]
         """
         return self._players
 
@@ -180,7 +180,7 @@ class Game(BaseGame):
     def webs(self):
         """Every Web in the game.
 
-        :rtype: list[Web]
+        :rtype: list[games.spiders.web.Web]
         """
         return self._webs
 

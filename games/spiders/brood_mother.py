@@ -44,7 +44,7 @@ class BroodMother(Spider):
         """ Consumes a Spiderling of the same owner to regain some eggs to spawn more Spiderlings.
 
         Args:
-            spiderling (Spiderling): The Spiderling to consume. It must be on the same Nest as this BroodMother.
+            spiderling (games.spiders.spiderling.Spiderling): The Spiderling to consume. It must be on the same Nest as this BroodMother.
 
         Returns:
             bool: True if the Spiderling was consumed. False otherwise.
@@ -58,7 +58,7 @@ class BroodMother(Spider):
             spiderling_type (str): The string name of the Spiderling class you want to Spawn. Must be 'Spitter', 'Weaver', or 'Cutter'.
 
         Returns:
-            Spiderling: The newly spwaned Spiderling if successful. None otherwise.
+            games.spiders.spiderling.Spiderling: The newly spwaned Spiderling if successful. None otherwise.
         """
         return self._run_on_server('spawn', spiderlingType=spiderlingType)
 

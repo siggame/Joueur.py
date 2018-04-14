@@ -43,6 +43,8 @@ if not 'py' in shared:
             return "bool"
         elif base_type == "null":
             return "None"
+        elif type_obj['is_game_object']:
+            return "games.{}.{}.{}".format(underscore(game_name), underscore(base_type), base_type)
         else:
             return base_type
     shared['py']['type'] = py_type

@@ -47,7 +47,7 @@ class Structure(GameObject):
     def owner(self):
         """The owner of this Structure if any, otherwise None.
 
-        :rtype: Player
+        :rtype: games.catastrophe.player.Player
         """
         return self._owner
 
@@ -55,7 +55,7 @@ class Structure(GameObject):
     def tile(self):
         """The Tile this Structure is on.
 
-        :rtype: Tile
+        :rtype: games.catastrophe.tile.Tile
         """
         return self._tile
 

@@ -30,7 +30,7 @@ class YoungGun(GameObject):
     def call_in_tile(self):
         """The Tile that a Cowboy will be called in on if this YoungGun calls in a Cowboy.
 
-        :rtype: Tile
+        :rtype: games.saloon.tile.Tile
         """
         return self._call_in_tile
 
@@ -46,7 +46,7 @@ class YoungGun(GameObject):
     def owner(self):
         """The Player that owns and can control this YoungGun.
 
-        :rtype: Player
+        :rtype: games.saloon.player.Player
         """
         return self._owner
 
@@ -54,7 +54,7 @@ class YoungGun(GameObject):
     def tile(self):
         """The Tile this YoungGun is currently on.
 
-        :rtype: Tile
+        :rtype: games.saloon.tile.Tile
         """
         return self._tile
 
@@ -65,9 +65,11 @@ class YoungGun(GameObject):
             job (str): The job you want the Cowboy being brought to have.
 
         Returns:
-            Cowboy: The new Cowboy that was called in if valid. They will not be added to any `cowboys` lists until the turn ends. None otherwise.
+            games.saloon.cowboy.Cowboy: The new Cowboy that was called in if valid. They will not be added to any `cowboys` lists until the turn ends. None otherwise.
         """
         return self._run_on_server('callIn', job=job)
+
+
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

@@ -1,0 +1,4 @@
+m2r
+sphinx
+sphinx_py3doc_enhanced_theme
+sphinxcontrib-fulltoc

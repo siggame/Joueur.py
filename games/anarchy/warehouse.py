@@ -44,7 +44,7 @@ class Warehouse(Building):
         """ Bribes the Warehouse to light a Building on fire. This adds this building's fireAdded to their fire, and then this building's exposure is increased based on the Manhatten distance between the two buildings.
 
         Args:
-            building (Building): The Building you want to light on fire.
+            building (games.anarchy.building.Building): The Building you want to light on fire.
 
         Returns:
             int: The exposure added to this Building's exposure. -1 is returned if there was an error.

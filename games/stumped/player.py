@@ -37,7 +37,7 @@ class Player(GameObject):
     def beavers(self):
         """The list of Beavers owned by this Player.
 
-        :rtype: list[Beaver]
+        :rtype: list[games.stumped.beaver.Beaver]
         """
         return self._beavers
 
@@ -61,7 +61,7 @@ class Player(GameObject):
     def lodges(self):
         """A list of Tiles that contain lodges owned by this player.
 
-        :rtype: list[Tile]
+        :rtype: list[games.stumped.tile.Tile]
         """
         return self._lodges
 
@@ -85,7 +85,7 @@ class Player(GameObject):
     def opponent(self):
         """This player's opponent in the game.
 
-        :rtype: Player
+        :rtype: games.stumped.player.Player
         """
         return self._opponent
 

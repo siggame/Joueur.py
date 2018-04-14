@@ -95,7 +95,7 @@ class ${obj_key}(${", ".join(parent_classes)}):
             x (int): integer between 0 and the mapWidth
             y (int): integer between 0 and the mapHeight
         Returns:
-            Tile: the Tile at (x, y) or None if out of bounds
+            games.${underscore(game_name)}.tile.Tile: the Tile at (x, y) or None if out of bounds
         """
         if x < 0 or y < 0 or x >= self.map_width or y >= self.map_height:
             # out of bounds
@@ -109,7 +109,8 @@ class ${obj_key}(${", ".join(parent_classes)}):
 
     def get_neighbors(self):
         """Gets the neighbors of this Tile
-        :rtype list[Tile]
+
+        :rtype list[games.${underscore(game_name)}.tile.Tile]
         """
         neighbors = []
 
@@ -122,6 +123,7 @@ class ${obj_key}(${", ".join(parent_classes)}):
 
     def is_pathable(self):
         """Checks if a Tile is pathable to units
+
         Returns:
             bool: True if pathable, False otherwise
         """
@@ -130,7 +132,7 @@ ${merge("        # ", "is_pathable_builtin", "        return false  # DEVELOPER 
     def has_neighbor(self, tile):
         """Checks if this Tile has a specific neighboring Tile
         Args:
-            tile (Tile): tile to check against
+            tile (games.${underscore(game_name)}.tile.Tile): tile to check against
         Returns:
             bool: True if the tile is a neighbor of this Tile, False otherwise
         """

@@ -77,7 +77,7 @@ class Game(BaseGame):
     def current_player(self):
         """The player whose turn it is currently. That player can send commands. Other players cannot.
 
-        :rtype: Player
+        :rtype: games.catastrophe.player.Player
         """
         return self._current_player
 
@@ -93,7 +93,7 @@ class Game(BaseGame):
     def game_objects(self):
         """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
 
-        :rtype: dict[str, GameObject]
+        :rtype: dict[str, games.catastrophe.game_object.GameObject]
         """
         return self._game_objects
 
@@ -109,7 +109,7 @@ class Game(BaseGame):
     def jobs(self):
         """All the Jobs that Units can have in the game.
 
-        :rtype: list[Job]
+        :rtype: list[games.catastrophe.job.Job]
         """
         return self._jobs
 
@@ -173,7 +173,7 @@ class Game(BaseGame):
     def players(self):
         """List of all the players in the game.
 
-        :rtype: list[Player]
+        :rtype: list[games.catastrophe.player.Player]
         """
         return self._players
 
@@ -205,7 +205,7 @@ class Game(BaseGame):
     def structures(self):
         """Every Structure in the game.
 
-        :rtype: list[Structure]
+        :rtype: list[games.catastrophe.structure.Structure]
         """
         return self._structures
 
@@ -213,7 +213,7 @@ class Game(BaseGame):
     def tiles(self):
         """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
 
-        :rtype: list[Tile]
+        :rtype: list[games.catastrophe.tile.Tile]
         """
         return self._tiles
 
@@ -245,7 +245,7 @@ class Game(BaseGame):
     def units(self):
         """Every Unit in the game.
 
-        :rtype: list[Unit]
+        :rtype: list[games.catastrophe.unit.Unit]
         """
         return self._units
 
@@ -264,7 +264,7 @@ class Game(BaseGame):
             x (int): integer between 0 and the mapWidth
             y (int): integer between 0 and the mapHeight
         Returns:
-            Tile: the Tile at (x, y) or None if out of bounds
+            games.catastrophe.tile.Tile: the Tile at (x, y) or None if out of bounds
         """
         if x < 0 or y < 0 or x >= self.map_width or y >= self.map_height:
             # out of bounds

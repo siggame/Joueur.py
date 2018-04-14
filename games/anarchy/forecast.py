@@ -29,7 +29,7 @@ class Forecast(GameObject):
     def controlling_player(self):
         """The Player that can use WeatherStations to control this Forecast when its the nextForecast.
 
-        :rtype: Player
+        :rtype: games.anarchy.player.Player
         """
         return self._controlling_player
 
