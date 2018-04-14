@@ -65,7 +65,7 @@ class Game(BaseGame):
 
     @property
     def fen(self):
-        """Forsyth–Edwards Notation, a notation that describes the game board.
+        """Forsythâ€“Edwards Notation, a notation that describes the game board.
 
         :rtype: str
         """

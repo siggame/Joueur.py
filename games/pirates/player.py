@@ -78,7 +78,7 @@ class Player(GameObject):
     def opponent(self):
         """This player's opponent in the game.
 
-        :rtype: Player
+        :rtype: games.pirates.player.Player
         """
         return self._opponent
 
@@ -86,7 +86,7 @@ class Player(GameObject):
     def port(self):
         """The Port owned by this Player.
 
-        :rtype: Port
+        :rtype: games.pirates.port.Port
         """
         return self._port
 
@@ -118,7 +118,7 @@ class Player(GameObject):
     def units(self):
         """Every Unit owned by this Player.
 
-        :rtype: list[Unit]
+        :rtype: list[games.pirates.unit.Unit]
         """
         return self._units
 
