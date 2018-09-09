@@ -21,9 +21,7 @@ class Machine(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
-        self._input = 0
         self._ore_type = ""
-        self._output = 0
         self._refine_input = 0
         self._refine_output = 0
         self._refine_time = 0
@@ -32,28 +30,12 @@ class Machine(GameObject):
         self._worked = 0
 
     @property
-    def input(self):
-        """The amount of ore that is in the machine. Cannot be higher than the refineInput value.
-
-        :rtype: int
-        """
-        return self._input
-
-    @property
     def ore_type(self):
         """What type of ore the machine takes it, also determins the type of material it outputs.
 
         :rtype: str
         """
         return self._ore_type
-
-    @property
-    def output(self):
-        """The amount of material that is waiting to be collected in the machine.
-
-        :rtype: int
-        """
-        return self._output
 
     @property
     def refine_input(self):
