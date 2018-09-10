@@ -22,7 +22,6 @@ class Player(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._client_type = ""
-        self._generator_tiles = []
         self._heat = 0
         self._intern_spawn = 0
         self._lost = False
@@ -44,14 +43,6 @@ class Player(GameObject):
         :rtype: str
         """
         return self._client_type
-
-    @property
-    def generator_tiles(self):
-        """Every generator tile owned by this Player.
-
-        :rtype: list[games.newtonian.tile.Tile]
-        """
-        return self._generator_tiles
 
     @property
     def heat(self):

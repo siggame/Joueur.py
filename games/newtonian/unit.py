@@ -60,7 +60,7 @@ class Unit(GameObject):
 
     @property
     def health(self):
-        """If a ship is on this Tile, how much health it has remaining.
+        """The remaining health of a unit.
 
         :rtype: int
         """
@@ -152,17 +152,18 @@ class Unit(GameObject):
         """
         return self._run_on_server('attack', tile=tile)
 
-    def drop(self, amount, material):
+    def drop(self, tile, amount, material):
         """ Drops material at the units feat
 
         Args:
+            tile (games.newtonian.tile.Tile): The tile the materials will be dropped on.
             amount (int): The amount of materials to dropped. Amounts <= 0 will drop all the materials on the Unit.
             material (str): The material the unit will drop.
 
         Returns:
             bool: True if successfully deposited, False otherwise.
         """
-        return self._run_on_server('drop', amount=amount, material=material)
+        return self._run_on_server('drop', tile=tile, amount=amount, material=material)
 
     def move(self, tile):
         """ Moves this Unit from its current Tile to an adjacent Tile.
@@ -175,17 +176,18 @@ class Unit(GameObject):
         """
         return self._run_on_server('move', tile=tile)
 
-    def pickup(self, amount, material):
+    def pickup(self, tile, amount, material):
         """ Picks up material at the units feat
 
         Args:
+            tile (games.newtonian.tile.Tile): The tile the materials will be dropped on.
             amount (int): The amount of materials to pick up. Amounts <= 0 will pick up all the materials on the Unit.
             material (str): The material the unit will pick up.
 
         Returns:
             bool: True if successfully deposited, False otherwise.
         """
-        return self._run_on_server('pickup', amount=amount, material=material)
+        return self._run_on_server('pickup', tile=tile, amount=amount, material=material)
 
 
 

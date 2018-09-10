@@ -45,8 +45,10 @@ class Game(BaseGame):
         self._refined_value = 0
         self._session = ""
         self._spawn_time = 0
+        self._stun_time = 0
         self._tiles = []
         self._time_added_per_turn = 0
+        self._time_immune = 0
         self._units = []
 
         self.name = "Newtonian"
@@ -189,6 +191,14 @@ class Game(BaseGame):
         return self._spawn_time
 
     @property
+    def stun_time(self):
+        """How many turns a unit is stunned.
+
+        :rtype: int
+        """
+        return self._stun_time
+
+    @property
     def tiles(self):
         """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
 
@@ -203,6 +213,14 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._time_added_per_turn
+
+    @property
+    def time_immune(self):
+        """How many turns a unit is immune to being stunned.
+
+        :rtype: int
+        """
+        return self._time_immune
 
     @property
     def units(self):
