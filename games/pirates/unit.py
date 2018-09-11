@@ -77,7 +77,7 @@ class Unit(GameObject):
     def owner(self):
         """The Player that owns and can control this Unit, or None if the Unit is neutral.
 
-        :rtype: Player
+        :rtype: games.pirates.player.Player
         """
         return self._owner
 
@@ -85,7 +85,7 @@ class Unit(GameObject):
     def path(self):
         """(Merchants only) The path this Unit will follow. The first element is the Tile this Unit will move to next.
 
-        :rtype: list[Tile]
+        :rtype: list[games.pirates.tile.Tile]
         """
         return self._path
 
@@ -109,7 +109,7 @@ class Unit(GameObject):
     def target_port(self):
         """(Merchants only) The Port this Unit is moving to.
 
-        :rtype: Port
+        :rtype: games.pirates.port.Port
         """
         return self._target_port
 
@@ -117,7 +117,7 @@ class Unit(GameObject):
     def tile(self):
         """The Tile this Unit is on.
 
-        :rtype: Tile
+        :rtype: games.pirates.tile.Tile
         """
         return self._tile
 
@@ -125,7 +125,7 @@ class Unit(GameObject):
         """ Attacks either the 'crew' or 'ship' on a Tile in range.
 
         Args:
-            tile (Tile): The Tile to attack.
+            tile (games.pirates.tile.Tile): The Tile to attack.
             target (str): Whether to attack 'crew' or 'ship'. Crew deal damage to crew and ships deal damage to ships. Consumes any remaining moves.
 
         Returns:
@@ -170,7 +170,7 @@ class Unit(GameObject):
         """ Moves this Unit from its current Tile to an adjacent Tile. If this Unit merges with another one, the other Unit will be destroyed and its tile will be set to None. Make sure to check that your Unit's tile is not None before doing things with it.
 
         Args:
-            tile (Tile): The Tile this Unit should move to.
+            tile (games.pirates.tile.Tile): The Tile this Unit should move to.
 
         Returns:
             bool: True if it moved, False otherwise.
@@ -189,7 +189,7 @@ class Unit(GameObject):
         """ Moves a number of crew from this Unit to the given Tile. This will consume a move from those crew.
 
         Args:
-            tile (Tile): The Tile to move the crew to.
+            tile (games.pirates.tile.Tile): The Tile to move the crew to.
             amount (Optional[int]): The number of crew to move onto that Tile. Amount <= 0 will move all the crew to that Tile.
             gold (Optional[int]): The amount of gold the crew should take with them. Gold < 0 will move all the gold to that Tile.
 
