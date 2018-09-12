@@ -45,8 +45,10 @@ class Game(BaseGame):
         self._refined_value = 0
         self._session = ""
         self._spawn_time = 0
+        self._stun_time = 0
         self._tiles = []
         self._time_added_per_turn = 0
+        self._time_immune = 0
         self._units = []
 
         self.name = "Newtonian"
@@ -189,6 +191,14 @@ class Game(BaseGame):
         return self._spawn_time
 
     @property
+    def stun_time(self):
+        """How many turns a unit is stunned.
+
+        :rtype: int
+        """
+        return self._stun_time
+
+    @property
     def tiles(self):
         """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
 
@@ -205,6 +215,14 @@ class Game(BaseGame):
         return self._time_added_per_turn
 
     @property
+    def time_immune(self):
+        """How many turns a unit is immune to being stunned.
+
+        :rtype: int
+        """
+        return self._time_immune
+
+    @property
     def units(self):
         """Every Unit in the game.
 
@@ -216,8 +234,8 @@ class Game(BaseGame):
     def get_tile_at(self, x, y):
         """Gets the Tile at a specified (x, y) position
         Args:
-            x (int): integer between 0 and the mapWidth
-            y (int): integer between 0 and the mapHeight
+            x (int): integer between 0 and the map_width
+            y (int): integer between 0 and the map_height
         Returns:
             games.newtonian.tile.Tile: the Tile at (x, y) or None if out of bounds
         """
@@ -225,7 +243,7 @@ class Game(BaseGame):
             # out of bounds
             return None
 
-        return self.tiles[x + y * self.mapWidth]
+        return self.tiles[x + y * self.map_width]
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them
