@@ -69,14 +69,15 @@ class BaseAI:
                 return callback(*arguments)
             except:
                 error_code.handle_error(
-                    error_code.AI_ERRORED, sys.exc_info()[0],
+                    error_code.AI_ERRORED,
+                    sys.exc_info()[0],
                     "AI caused exception while trying to execute order '{}'."
-                    .format(order)
+                        .format(order)
                 )
         else:
             error_code.handle_error(
                 error_code.REFLECTION_FAILED,
-                message="AI has no function '' to respond with.".format(order)
+                message="AI has no function '{}' to respond with.".format(order)
             )
 
     # This is called when this AI sends some invalid command to the server.
