@@ -70,7 +70,7 @@ class GameManager():
                 self._merge_delta(state[state_key], d)
             elif not key_in_state and is_object(d):
                 if isinstance(d, dict):
-                    state[state_key] = [] if d in self._DELTA_LIST_LENGTH else {}
+                    state[state_key] = [] if self._DELTA_LIST_LENGTH in d else {}
                     self._merge_delta(state[state_key], d)
             else:
                 self._set_member(state, state_key, d)

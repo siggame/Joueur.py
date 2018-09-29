@@ -46,7 +46,7 @@ class Port(GameObject):
     def owner(self):
         """The owner of this Port, or None if owned by merchants.
 
-        :rtype: Player
+        :rtype: games.pirates.player.Player
         """
         return self._owner
 
@@ -54,7 +54,7 @@ class Port(GameObject):
     def tile(self):
         """The Tile this Port is on.
 
-        :rtype: Tile
+        :rtype: games.pirates.tile.Tile
         """
         return self._tile
 
