@@ -36,7 +36,7 @@ class Unit(GameObject):
 
     @property
     def acted(self):
-        """Whether this Unit has performed its action this turn.
+        """Whether or not this Unit has performed its action this turn.
 
         :rtype: bool
         """
@@ -44,7 +44,7 @@ class Unit(GameObject):
 
     @property
     def blueium(self):
-        """The amount of blueium carried by this unit.
+        """The amount of blueium carried by this unit. (0 to job carry capacity - other carried items).
 
         :rtype: int
         """
@@ -52,7 +52,7 @@ class Unit(GameObject):
 
     @property
     def blueium_ore(self):
-        """The amount of blueium ore carried by this unit.
+        """The amount of blueium ore carried by this unit. (0 to job carry capacity - other carried items).
 
         :rtype: int
         """
@@ -68,7 +68,7 @@ class Unit(GameObject):
 
     @property
     def job(self):
-        """The Job this Unit does.
+        """The Job this Unit has.
 
         :rtype: games.newtonian.job.Job
         """
@@ -76,7 +76,7 @@ class Unit(GameObject):
 
     @property
     def moves(self):
-        """How many more times this Unit may move this turn.
+        """The number of moves this unit has left this turn.
 
         :rtype: int
         """
@@ -92,7 +92,7 @@ class Unit(GameObject):
 
     @property
     def redium(self):
-        """The amount of redium carried by this unit.
+        """The amount of redium carried by this unit. (0 to job carry capacity - other carried items).
 
         :rtype: int
         """
@@ -100,7 +100,7 @@ class Unit(GameObject):
 
     @property
     def redium_ore(self):
-        """The amount of redium ore carried by this unit.
+        """The amount of redium ore carried by this unit. (0 to job carry capacity - other carried items).
 
         :rtype: int
         """
@@ -108,7 +108,7 @@ class Unit(GameObject):
 
     @property
     def stun_immune(self):
-        """Duration of stun immunity.
+        """Duration of stun immunity. (0 to timeImmune).
 
         :rtype: int
         """
@@ -116,7 +116,7 @@ class Unit(GameObject):
 
     @property
     def stun_time(self):
-        """Duration the unit is stunned.
+        """Duration the unit is stunned. (0 to the game constant stunTime).
 
         :rtype: int
         """
@@ -131,7 +131,7 @@ class Unit(GameObject):
         return self._tile
 
     def act(self, tile):
-        """ Makes the unit do something to a machine on its tile. Interns sabotage, physicists run, and managers protect.
+        """ Makes the unit do something to a machine adjacent to its tile. Interns sabotage, physicists work. Interns stun physicist, physicist stuns manager, manager stuns intern.
 
         Args:
             tile (games.newtonian.tile.Tile): The tile the unit acts on.
@@ -142,7 +142,7 @@ class Unit(GameObject):
         return self._run_on_server('act', tile=tile)
 
     def attack(self, tile):
-        """ Attacks a unit on a ajacent tile.
+        """ Attacks a unit on an adjacent tile.
 
         Args:
             tile (games.newtonian.tile.Tile): The Tile to attack.
@@ -153,11 +153,11 @@ class Unit(GameObject):
         return self._run_on_server('attack', tile=tile)
 
     def drop(self, tile, amount, material):
-        """ Drops material at the units feat
+        """ Drops materials at the units feet or adjacent tile.
 
         Args:
             tile (games.newtonian.tile.Tile): The tile the materials will be dropped on.
-            amount (int): The amount of materials to dropped. Amounts <= 0 will drop all the materials on the Unit.
+            amount (int): The number of materials to dropped. Amounts <= 0 will drop all the materials.
             material (str): The material the unit will drop.
 
         Returns:
@@ -177,11 +177,11 @@ class Unit(GameObject):
         return self._run_on_server('move', tile=tile)
 
     def pickup(self, tile, amount, material):
-        """ Picks up material at the units feat
+        """ Picks up material at the units feet or adjacent tile.
 
         Args:
-            tile (games.newtonian.tile.Tile): The tile the materials will be dropped on.
-            amount (int): The amount of materials to pick up. Amounts <= 0 will pick up all the materials on the Unit.
+            tile (games.newtonian.tile.Tile): The tile the materials will be picked up from.
+            amount (int): The amount of materials to pick up. Amounts <= 0 will pick up all the materials that the unit can.
             material (str): The material the unit will pick up.
 
         Returns:

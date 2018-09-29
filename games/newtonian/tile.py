@@ -57,7 +57,7 @@ class Tile(GameObject):
 
     @property
     def decoration(self):
-        """(Visualizer only) Different tile tipes, cracked, slightly dirty, ect. This has no effect on gameplay, but feel free to use it if you want.
+        """(Visualizer only) Different tile types, cracked, slightly dirty, etc. This has no effect on gameplay, but feel free to use it if you want.
 
         :rtype: int
         """
@@ -65,7 +65,7 @@ class Tile(GameObject):
 
     @property
     def direction(self):
-        """The direction of a conveyor belt ('blank', 'north', 'east', 'south', or 'west'). blank mean no conveyor.
+        """The direction of a conveyor belt ('blank', 'north', 'east', 'south', or 'west'). blank means conveyor doesn't move.
 
         :rtype: str
         """
@@ -73,7 +73,7 @@ class Tile(GameObject):
 
     @property
     def is_wall(self):
-        """Weither or not the tile is a wall.
+        """Whether or not the tile is a wall.
 
         :rtype: bool
         """
@@ -81,7 +81,7 @@ class Tile(GameObject):
 
     @property
     def machine(self):
-        """The machine on this Tile if present, otherwise None.
+        """The Machine on this Tile if present, otherwise None.
 
         :rtype: games.newtonian.machine.Machine
         """

@@ -39,6 +39,7 @@ class Game(BaseGame):
         self._manager_cap = 0
         self._map_height = 0
         self._map_width = 0
+        self._material_spawn = 0
         self._max_turns = 100
         self._physicist_cap = 0
         self._players = []
@@ -80,7 +81,7 @@ class Game(BaseGame):
 
     @property
     def degrade_rate(self):
-        """Determins the rate at which the highest value victory points degrade.
+        """Percent loss from the difference of Heat and Pressure. (0 to 1).
 
         :rtype: float
         """
@@ -96,7 +97,7 @@ class Game(BaseGame):
 
     @property
     def intern_cap(self):
-        """How many interns a player can have.
+        """The maximum number of interns a player can have.
 
         :rtype: int
         """
@@ -104,7 +105,7 @@ class Game(BaseGame):
 
     @property
     def jobs(self):
-        """Every job in the game.
+        """A list of all jobs. first item is intern, second is physicists, and third is manager.
 
         :rtype: list[games.newtonian.job.Job]
         """
@@ -120,7 +121,7 @@ class Game(BaseGame):
 
     @property
     def manager_cap(self):
-        """How many managers a player can have.
+        """The maximum number of managers a player can have.
 
         :rtype: int
         """
@@ -143,6 +144,14 @@ class Game(BaseGame):
         return self._map_width
 
     @property
+    def material_spawn(self):
+        """The number of materials that spawn per spawn cycle.
+
+        :rtype: int
+        """
+        return self._material_spawn
+
+    @property
     def max_turns(self):
         """The maximum number of turns before the game will automatically end.
 
@@ -152,7 +161,7 @@ class Game(BaseGame):
 
     @property
     def physicist_cap(self):
-        """How many physicists a player can have.
+        """The maximum number of physicists a player can have.
 
         :rtype: int
         """
@@ -168,7 +177,7 @@ class Game(BaseGame):
 
     @property
     def refined_value(self):
-        """How much each refined ore adds when put in the generator.
+        """The amount of victory points added when a refined ore is consumed by the generator.
 
         :rtype: int
         """
@@ -184,7 +193,7 @@ class Game(BaseGame):
 
     @property
     def spawn_time(self):
-        """The number of turns between spawning unit waves.
+        """The amount of turns it takes a unit to spawn.
 
         :rtype: int
         """
@@ -192,7 +201,7 @@ class Game(BaseGame):
 
     @property
     def stun_time(self):
-        """How many turns a unit is stunned.
+        """The amount of turns a unit cannot do anything when stunned.
 
         :rtype: int
         """
@@ -216,7 +225,7 @@ class Game(BaseGame):
 
     @property
     def time_immune(self):
-        """How many turns a unit is immune to being stunned.
+        """The number turns a unit is immune to being stunned.
 
         :rtype: int
         """

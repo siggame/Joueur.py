@@ -22,6 +22,7 @@ class Player(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._client_type = ""
+        self._generator_tiles = []
         self._heat = 0
         self._intern_spawn = 0
         self._lost = False
@@ -32,6 +33,7 @@ class Player(GameObject):
         self._pressure = 0
         self._reason_lost = ""
         self._reason_won = ""
+        self._spawn_tiles = []
         self._time_remaining = 0
         self._units = []
         self._won = False
@@ -45,6 +47,14 @@ class Player(GameObject):
         return self._client_type
 
     @property
+    def generator_tiles(self):
+        """Every generator Tile owned by this Player. (listed from the outer edges inward, from top to bottom).
+
+        :rtype: list[games.newtonian.tile.Tile]
+        """
+        return self._generator_tiles
+
+    @property
     def heat(self):
         """The amount of heat this Player has.
 
@@ -54,7 +64,7 @@ class Player(GameObject):
 
     @property
     def intern_spawn(self):
-        """Time left till a intern spawns.
+        """The time left till a intern spawns. (0 to spawnTime).
 
         :rtype: int
         """
@@ -70,7 +80,7 @@ class Player(GameObject):
 
     @property
     def manager_spawn(self):
-        """Time left till a manager spawns.
+        """The time left till a manager spawns. (0 to spawnTime).
 
         :rtype: int
         """
@@ -94,7 +104,7 @@ class Player(GameObject):
 
     @property
     def physicist_spawn(self):
-        """Time left till a physicist spawns.
+        """The time left till a physicist spawns. (0 to spawnTime).
 
         :rtype: int
         """
@@ -123,6 +133,14 @@ class Player(GameObject):
         :rtype: str
         """
         return self._reason_won
+
+    @property
+    def spawn_tiles(self):
+        """All the tiles this Player's units can spawn on. (listed from the outer edges inward, from top to bottom).
+
+        :rtype: list[games.newtonian.tile.Tile]
+        """
+        return self._spawn_tiles
 
     @property
     def time_remaining(self):

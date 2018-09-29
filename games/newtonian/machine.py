@@ -1,4 +1,4 @@
-# Machine: A machine on a tile.
+# Machine: A machine in the game. Used to refine ore.
 
 # DO NOT MODIFY THIS FILE
 # Never try to directly create an instance of this class, or modify its member variables.
@@ -13,7 +13,7 @@ from games.newtonian.game_object import GameObject
 class Machine(GameObject):
     """The class representing the Machine in the Newtonian game.
 
-    A machine on a tile.
+    A machine in the game. Used to refine ore.
     """
 
     def __init__(self):
@@ -26,12 +26,11 @@ class Machine(GameObject):
         self._refine_output = 0
         self._refine_time = 0
         self._tile = None
-        self._time_left = 0
         self._worked = 0
 
     @property
     def ore_type(self):
-        """What type of ore the machine takes it, also determins the type of material it outputs.
+        """What type of ore the machine takes it. Also determines the type of material it outputs. (redium or blueium).
 
         :rtype: str
         """
@@ -39,7 +38,7 @@ class Machine(GameObject):
 
     @property
     def refine_input(self):
-        """The amount of ore that needs to be inputted into the machine.
+        """The amount of ore that needs to be inputted into the machine for it to be worked.
 
         :rtype: int
         """
@@ -47,7 +46,7 @@ class Machine(GameObject):
 
     @property
     def refine_output(self):
-        """The amount of material that out of the machine after running.
+        """The amount of refined ore that is returned after the machine has been fully worked.
 
         :rtype: int
         """
@@ -55,7 +54,7 @@ class Machine(GameObject):
 
     @property
     def refine_time(self):
-        """The amount of turns this machine takes to refine the ore.
+        """The number of times this machine needs to be worked to refine ore.
 
         :rtype: int
         """
@@ -70,16 +69,8 @@ class Machine(GameObject):
         return self._tile
 
     @property
-    def time_left(self):
-        """Time till the machine finishes running.
-
-        :rtype: int
-        """
-        return self._time_left
-
-    @property
     def worked(self):
-        """Tracks how many times this machine has been worked.
+        """Tracks how many times this machine has been worked. (0 to refineTime).
 
         :rtype: int
         """

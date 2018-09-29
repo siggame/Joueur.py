@@ -1,4 +1,4 @@
-# Job: Information about a units's job.
+# Job: Information about a unit's job.
 
 # DO NOT MODIFY THIS FILE
 # Never try to directly create an instance of this class, or modify its member variables.
@@ -13,7 +13,7 @@ from games.newtonian.game_object import GameObject
 class Job(GameObject):
     """The class representing the Job in the Newtonian game.
 
-    Information about a units's job.
+    Information about a unit's job.
     """
 
     def __init__(self):
@@ -29,7 +29,7 @@ class Job(GameObject):
 
     @property
     def carry_limit(self):
-        """How many combined resources a beaver with this Job can hold at once.
+        """How many combined resources a unit with this Job can hold at once.
 
         :rtype: int
         """
