@@ -158,7 +158,7 @@ class Unit(GameObject):
         Args:
             tile (games.newtonian.tile.Tile): The tile the materials will be dropped on.
             amount (int): The number of materials to dropped. Amounts <= 0 will drop all the materials.
-            material (str): The material the unit will drop.
+            material (str): The material the unit will drop. 'redium', 'blueium', 'redium ore', or 'blueium ore'.
 
         Returns:
             bool: True if successfully deposited, False otherwise.
@@ -182,7 +182,7 @@ class Unit(GameObject):
         Args:
             tile (games.newtonian.tile.Tile): The tile the materials will be picked up from.
             amount (int): The amount of materials to pick up. Amounts <= 0 will pick up all the materials that the unit can.
-            material (str): The material the unit will pick up.
+            material (str): The material the unit will pick up. 'redium', 'blueium', 'redium ore', or 'blueium ore'.
 
         Returns:
             bool: True if successfully deposited, False otherwise.

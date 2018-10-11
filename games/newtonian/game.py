@@ -51,6 +51,7 @@ class Game(BaseGame):
         self._time_added_per_turn = 0
         self._time_immune = 0
         self._units = []
+        self._victory_amount = 0
 
         self.name = "Newtonian"
 
@@ -238,6 +239,14 @@ class Game(BaseGame):
         :rtype: list[games.newtonian.unit.Unit]
         """
         return self._units
+
+    @property
+    def victory_amount(self):
+        """The amount of combined heat and pressure that you need to win.
+
+        :rtype: int
+        """
+        return self._victory_amount
 
 
     def get_tile_at(self, x, y):
