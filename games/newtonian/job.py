@@ -61,7 +61,7 @@ class Job(GameObject):
 
     @property
     def title(self):
-        """The Job title.
+        """The Job title. 'intern', 'manager', or 'physicist'.
 
         :rtype: str
         """
