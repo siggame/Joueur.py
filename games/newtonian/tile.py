@@ -10,6 +10,7 @@ from games.newtonian.game_object import GameObject
 # you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
+
 class Tile(GameObject):
     """The class representing the Tile in the Newtonian game.
 
@@ -175,7 +176,6 @@ class Tile(GameObject):
         """
         return self._y
 
-
     directions = ["North", "East", "South", "West"]
     """int: The valid directions that tiles can be in, "North", "East", "South", or "West"
     """
@@ -201,7 +201,10 @@ class Tile(GameObject):
             bool: True if pathable, False otherwise
         """
         # <<-- Creer-Merge: is_pathable_builtin -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        return false  # DEVELOPER ADD LOGIC HERE
+        if self.is_wall or self.unit is not None or self.machine is not None:
+            return False
+        else:
+            return True
         # <<-- /Creer-Merge: is_pathable_builtin -->>
 
     def has_neighbor(self, tile):
