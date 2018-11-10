@@ -29,9 +29,9 @@ class Game(BaseGame):
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
+        self._regenerate_rate = 0
         self._current_player = None
         self._current_turn = 0
-        self._degrade_rate = 0
         self._game_objects = {}
         self._intern_cap = 0
         self._jobs = []
@@ -65,6 +65,14 @@ class Game(BaseGame):
         }
 
     @property
+    def regenerate_rate(self):
+        """The percent of max HP regained when a unit end their turn on a tile owned by their player.
+
+        :rtype: float
+        """
+        return self._regenerate_rate
+
+    @property
     def current_player(self):
         """The player whose turn it is currently. That player can send commands. Other players cannot.
 
@@ -79,14 +87,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._current_turn
-
-    @property
-    def degrade_rate(self):
-        """Percent loss from the difference of Heat and Pressure. (0 to 1).
-
-        :rtype: float
-        """
-        return self._degrade_rate
 
     @property
     def game_objects(self):
