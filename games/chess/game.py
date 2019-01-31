@@ -8,8 +8,6 @@ from joueur.base_game import BaseGame
 
 # import game objects
 from games.chess.game_object import GameObject
-from games.chess.move import Move
-from games.chess.piece import Piece
 from games.chess.player import Player
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -27,45 +25,22 @@ class Game(BaseGame):
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
-        self._current_player = None
-        self._current_turn = 0
         self._fen = ""
         self._game_objects = {}
-        self._max_turns = 100
-        self._moves = []
-        self._pieces = []
+        self._history = []
         self._players = []
         self._session = ""
-        self._turns_to_draw = 0
 
         self.name = "Chess"
 
         self._game_object_classes = {
             'GameObject': GameObject,
-            'Move': Move,
-            'Piece': Piece,
             'Player': Player
         }
 
     @property
-    def current_player(self):
-        """The player whose turn it is currently. That player can send commands. Other players cannot.
-
-        :rtype: games.chess.player.Player
-        """
-        return self._current_player
-
-    @property
-    def current_turn(self):
-        """The current turn number, starting at 0 for the first player's turn.
-
-        :rtype: int
-        """
-        return self._current_turn
-
-    @property
     def fen(self):
-        """Forsythâ€“Edwards Notation, a notation that describes the game board.
+        """Forsyth-Edwards Notation (fen), a notation that describes the game board state.
 
         :rtype: str
         """
@@ -80,28 +55,12 @@ class Game(BaseGame):
         return self._game_objects
 
     @property
-    def max_turns(self):
-        """The maximum number of turns before the game will automatically end.
+    def history(self):
+        """The list of [known] moves that have occured in the game, in Standard Algebriac Notation (SAN) format. The first element is the first move, with the last being the most recent.
 
-        :rtype: int
+        :rtype: list[str]
         """
-        return self._max_turns
-
-    @property
-    def moves(self):
-        """The list of Moves that have occurred, in order.
-
-        :rtype: list[games.chess.move.Move]
-        """
-        return self._moves
-
-    @property
-    def pieces(self):
-        """All the uncaptured Pieces in the game.
-
-        :rtype: list[games.chess.piece.Piece]
-        """
-        return self._pieces
+        return self._history
 
     @property
     def players(self):
@@ -118,14 +77,6 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._session
-
-    @property
-    def turns_to_draw(self):
-        """How many turns until the game ends because no pawn has moved and no Piece has been taken.
-
-        :rtype: int
-        """
-        return self._turns_to_draw
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

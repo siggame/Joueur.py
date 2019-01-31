@@ -64,16 +64,16 @@ class AI(BaseAI):
         # <<-- Creer-Merge: end -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # replace with your end logic
         # <<-- /Creer-Merge: end -->>
-    def run_turn(self):
-        """ This is called every time it is this AI.player's turn.
+    def make_move(self):
+        """ This is called every time it is this AI.player's turn to make a move.
 
         Returns:
-            bool: Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.
+            str: A string in Standard Algebriac Notation (SAN) for the move you want to make. If the move is invalid or not properly formatted you will lose the game.
         """
-        # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        # Put your game logic here for runTurn
-        return True
-        # <<-- /Creer-Merge: runTurn -->>
+        # <<-- Creer-Merge: makeMove -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+        # Put your game logic here for makeMove
+        return ""
+        # <<-- /Creer-Merge: makeMove -->>
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you need additional functions for your AI you can add them here
