@@ -10,10 +10,6 @@ from joueur.base_game import BaseGame
 from games.chess.game_object import GameObject
 from games.chess.player import Player
 
-# <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add additional import(s) here
-# <<-- /Creer-Merge: imports -->>
-
 class Game(BaseGame):
     """The class representing the Game in the Chess game.
 
@@ -77,7 +73,3 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._session
-
-    # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-    # if you want to add any client side logic (such as state checking functions) this is where you can add them
-    # <<-- /Creer-Merge: functions -->>

@@ -2,9 +2,42 @@
 
 from joueur.base_ai import BaseAI
 
-# <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add additional import(s) here
-# <<-- /Creer-Merge: imports -->>
+def pretty_fen(fen, us):
+    """
+    Pretty formats an FEN string to a human readable string.
+
+    For more information on FEN (Forsyth-Edwards Notation) strings see:
+    https://wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
+    """
+
+    # split the FEN string up to help parse it
+    split = fen.split(' ')
+    first = split[0] # the first part is always the board locations
+
+    side_to_move = split[1] # always the second part for side to move
+    us_or_them = 'us' if side_to_move == us[0] else 'them'
+
+    fullmove = split[5]; # always the sixth part for the full move
+
+    lines = first.split('/')
+    strings = ['Move: {}\nSide to move: {} ({})\n   +-----------------+'.format(
+        fullmove, side_to_move, us_or_them
+    )]
+
+    for i, line in enumerate(lines):
+        strings.append('\n {} |'.format(8 - i))
+        for char in line:
+            try:
+                char_as_number = int(char)
+                # it is a number, so that many blank lines
+                strings.append(' .' * char_as_number)
+            except:
+                strings.append(' ' + char)
+
+        strings.append(' |')
+    strings.append('\n   +-----------------+\n     a b c d e f g h\n')
+
+    return ''.join(strings)
 
 class AI(BaseAI):
     """ The AI you add and improve code inside to play Chess. """
@@ -32,25 +65,19 @@ class AI(BaseAI):
         Returns
             str: The name of your Player.
         """
-        # <<-- Creer-Merge: get-name -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         return "Chess Python Player" # REPLACE THIS WITH YOUR TEAM NAME
-        # <<-- /Creer-Merge: get-name -->>
 
     def start(self):
         """ This is called once the game starts and your AI knows its player and
             game. You can initialize your AI here.
         """
-        # <<-- Creer-Merge: start -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # replace with your start logic
-        # <<-- /Creer-Merge: start -->>
 
     def game_updated(self):
         """ This is called every time the game's state updates, so if you are
         tracking anything you can update it here.
         """
-        # <<-- Creer-Merge: game-updated -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # replace with your game updated logic
-        # <<-- /Creer-Merge: game-updated -->>
 
     def end(self, won, reason):
         """ This is called when the game ends, you can clean up your data and
@@ -61,20 +88,16 @@ class AI(BaseAI):
             reason (str): The human readable string explaining why your AI won
             or lost.
         """
-        # <<-- Creer-Merge: end -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # replace with your end logic
-        # <<-- /Creer-Merge: end -->>
     def make_move(self):
         """ This is called every time it is this AI.player's turn to make a move.
 
         Returns:
-            str: A string in Standard Algebriac Notation (SAN) for the move you want to make. If the move is invalid or not properly formatted you will lose the game.
+            str: A string in Standard Algebraic Notation (SAN) for the move you want to make. If the move is invalid or not properly formatted you will lose the game.
         """
-        # <<-- Creer-Merge: makeMove -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        # Put your game logic here for makeMove
-        return ""
-        # <<-- /Creer-Merge: makeMove -->>
+        print(pretty_fen(self.game.fen, self.player.color));
 
-    # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-    # if you need additional functions for your AI you can add them here
-    # <<-- /Creer-Merge: functions -->>
+        # This will only work if we are black move the pawn at b2 to b3.
+        # Otherwise we will lose.
+        # Your job is to code SOMETHING to parse the FEN string in some way to determine a valid move, in SAN format.
+        return 'b3'

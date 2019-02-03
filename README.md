@@ -1,8 +1,8 @@
-# Python 3 Joueur Client
+# Python 3 Chess Client
 
 This is the client for the [Cadre AI framework][cadre]. It can play multiple different games, though you will probably only be interested in one at a time.
 
-In general, try to stay out of the `joueur/` folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in `games/game_name/`, with your very own AI living in `Games/game_name/ai.py` for you to make smarter.
+In general, try to stay out of the `joueur/` folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in `games/chess/`, with your very own AI living in `Games/chess/ai.py` for you to make smarter.
 
 ## How to Run
 
@@ -21,7 +21,7 @@ For Linux, a recent version of `python3` should work. It has been tested on 3.4.
 On Windows you'll need some version of Python 3. As with the Linux version, [3.4.3][343] has been tested against extensively, however there's no none reason why it would not work on newer versions. Install that and ensure that python is set up in your Environmental Variables as 'python3', then
 
 ```
-python3 main.py GAME_NAME -s game.siggame.io -r MyOwnGameSession
+python3 main.py chess -s game.siggame.io -r MyOwnGameSession
 ```
 
 ## Make
@@ -40,10 +40,10 @@ The only file you should ever modify to create your AI is the `ai.py` file. All 
 
 ### Importing  new files for your AI
 
-Because your AI lives in the `games/game_name/` directory, if you add new files in that directory, then you must import them relative to the root of this directory. For example, this means if you add a new file `games/game_name/foo.py`, then you must import it via the python code:
+Because your AI lives in the `games/chess/` directory, if you add new files in that directory, then you must import them relative to the root of this directory. For example, this means if you add a new file `games/chess/foo.py`, then you must import it via the python code:
 
 ```py
-import games.game_name.foo
+import games.chess.foo
 ```
 
 Please do not try to import it via `import foo`, that will not work. (unless you add it to the root of this repo, then it will but that seems a bit strange).
@@ -56,4 +56,3 @@ Please do not try to import it via `import foo`, that will not work. (unless you
 [vagrant-guide]: https://www.vagrantup.com/docs/getting-started/up.html
 [virtualbox]: https://www.virtualbox.org/wiki/Downloads
 [gitbash]: https://git-scm.com/downloads
-
