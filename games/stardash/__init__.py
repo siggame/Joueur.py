@@ -5,6 +5,7 @@ from games.stardash.body import Body
 from games.stardash.game_object import GameObject
 from games.stardash.job import Job
 from games.stardash.player import Player
+from games.stardash.projectile import Projectile
 from games.stardash.unit import Unit
 
 # <<-- Creer-Merge: init -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

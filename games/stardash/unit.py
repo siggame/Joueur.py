@@ -185,17 +185,16 @@ class Unit(GameObject):
         """
         return self._run_on_server('open', x=x, y=y)
 
-    def pathable(self, x, y):
-        """ tell you if there is a open path to that location.
+    def shoot_down(self, missile):
+        """ Attacks the specified projectile.
 
         Args:
-            x (float): The x position of the destination you wish to check to.
-            y (float): The y position of the destination you wish to check to.
+            missile (games.stardash.projectile.Projectile): The projectile being shot down.
 
         Returns:
-            bool: True if pathable by this unit, False otherwise.
+            bool: True if successfully attacked, False otherwise.
         """
-        return self._run_on_server('pathable', x=x, y=y)
+        return self._run_on_server('shootDown', missile=missile)
 
     def transfer(self, unit, amount, material):
         """ Grab materials from a friendly unit. Doesn't use a action.
