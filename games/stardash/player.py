@@ -4,14 +4,14 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
-from games.star_dash.game_object import GameObject
+from games.stardash.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 # you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
 class Player(GameObject):
-    """The class representing the Player in the StarDash game.
+    """The class representing the Player in the Stardash game.
 
     A player in this game. Every AI controls one player.
     """
@@ -46,7 +46,7 @@ class Player(GameObject):
     def home_base(self):
         """The home base of the player.
 
-        :rtype: games.star_dash.body.Body
+        :rtype: games.stardash.body.Body
         """
         return self._home_base
 
@@ -78,7 +78,7 @@ class Player(GameObject):
     def opponent(self):
         """This player's opponent in the game.
 
-        :rtype: games.star_dash.player.Player
+        :rtype: games.stardash.player.Player
         """
         return self._opponent
 
@@ -110,7 +110,7 @@ class Player(GameObject):
     def units(self):
         """Every Unit owned by this Player.
 
-        :rtype: list[games.star_dash.unit.Unit]
+        :rtype: list[games.stardash.unit.Unit]
         """
         return self._units
 

@@ -1,4 +1,4 @@
-# This is where you build your AI for the StarDash game.
+# This is where you build your AI for the Stardash game.
 
 from joueur.base_ai import BaseAI
 
@@ -7,13 +7,13 @@ from joueur.base_ai import BaseAI
 # <<-- /Creer-Merge: imports -->>
 
 class AI(BaseAI):
-    """ The AI you add and improve code inside to play StarDash. """
+    """ The AI you add and improve code inside to play Stardash. """
 
     @property
     def game(self):
         """The reference to the Game instance this AI is playing.
 
-        :rtype: games.star_dash.game.Game
+        :rtype: games.stardash.game.Game
         """
         return self._game # don't directly touch this "private" variable pls
 
@@ -21,7 +21,7 @@ class AI(BaseAI):
     def player(self):
         """The reference to the Player this AI controls in the Game.
 
-        :rtype: games.star_dash.player.Player
+        :rtype: games.stardash.player.Player
         """
         return self._player # don't directly touch this "private" variable pls
 
@@ -33,7 +33,7 @@ class AI(BaseAI):
             str: The name of your Player.
         """
         # <<-- Creer-Merge: get-name -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        return "StarDash Python Player" # REPLACE THIS WITH YOUR TEAM NAME
+        return "Stardash Python Player" # REPLACE THIS WITH YOUR TEAM NAME
         # <<-- /Creer-Merge: get-name -->>
 
     def start(self):

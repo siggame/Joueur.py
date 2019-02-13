@@ -11,7 +11,7 @@ from joueur.base_game_object import BaseGameObject
 # <<-- /Creer-Merge: imports -->>
 
 class GameObject(BaseGameObject):
-    """The class representing the GameObject in the StarDash game.
+    """The class representing the GameObject in the Stardash game.
 
     An object in the game. The most basic class that all game classes should inherit from automatically.
     """
