@@ -45,6 +45,7 @@ class Game(BaseGame):
         self._planet_recharge_rate = 0
         self._players = []
         self._projectile_speed = 0
+        self._projectiles = []
         self._regenerate_rate = 0
         self._session = ""
         self._size_x = 0
@@ -190,6 +191,14 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._projectile_speed
+
+    @property
+    def projectiles(self):
+        """Every projectile in the game.
+
+        :rtype: list[games.stardash.projectile.Projectile]
+        """
+        return self._projectiles
 
     @property
     def regenerate_rate(self):
