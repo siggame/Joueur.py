@@ -11,6 +11,7 @@ from games.stardash.body import Body
 from games.stardash.game_object import GameObject
 from games.stardash.job import Job
 from games.stardash.player import Player
+from games.stardash.projectile import Projectile
 from games.stardash.unit import Unit
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -37,11 +38,13 @@ class Game(BaseGame):
         self._max_asteroid = 0
         self._max_turns = 100
         self._min_asteroid = 0
+        self._mining_speed = 0
         self._ore_rarity1 = 0
         self._ore_rarity2 = 0
         self._ore_rarity3 = 0
         self._planet_recharge_rate = 0
         self._players = []
+        self._projectile_speed = 0
         self._regenerate_rate = 0
         self._session = ""
         self._size_x = 0
@@ -56,6 +59,7 @@ class Game(BaseGame):
             'GameObject': GameObject,
             'Job': Job,
             'Player': Player,
+            'Projectile': Projectile,
             'Unit': Unit
         }
 
@@ -132,6 +136,14 @@ class Game(BaseGame):
         return self._min_asteroid
 
     @property
+    def mining_speed(self):
+        """The rate at which miners grab minerals from asteroids.
+
+        :rtype: int
+        """
+        return self._mining_speed
+
+    @property
     def ore_rarity1(self):
         """The rarity modifier of the most common ore. This controls how much spawns.
 
@@ -170,6 +182,14 @@ class Game(BaseGame):
         :rtype: list[games.stardash.player.Player]
         """
         return self._players
+
+    @property
+    def projectile_speed(self):
+        """The amount of distance missiles travel through space.
+
+        :rtype: int
+        """
+        return self._projectile_speed
 
     @property
     def regenerate_rate(self):

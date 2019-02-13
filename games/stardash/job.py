@@ -27,6 +27,7 @@ class Job(GameObject):
         self._moves = 0
         self._shield = 0
         self._title = ""
+        self._unit_cost = 0
 
     @property
     def carry_limit(self):
@@ -75,6 +76,14 @@ class Job(GameObject):
         :rtype: str
         """
         return self._title
+
+    @property
+    def unit_cost(self):
+        """How much money it costs to spawn a unit.
+
+        :rtype: int
+        """
+        return self._unit_cost
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them
