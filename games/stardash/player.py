@@ -27,6 +27,7 @@ class Player(GameObject):
         self._money = 0
         self._name = "Anonymous"
         self._opponent = None
+        self._projectiles = []
         self._reason_lost = ""
         self._reason_won = ""
         self._time_remaining = 0
@@ -81,6 +82,14 @@ class Player(GameObject):
         :rtype: games.stardash.player.Player
         """
         return self._opponent
+
+    @property
+    def projectiles(self):
+        """Every Projectile owned by this Player.
+
+        :rtype: list[games.stardash.projectile.Projectile]
+        """
+        return self._projectiles
 
     @property
     def reason_lost(self):
