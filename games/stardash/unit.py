@@ -4,14 +4,14 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
-from games.star_dash.game_object import GameObject
+from games.stardash.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 # you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
 class Unit(GameObject):
-    """The class representing the Unit in the StarDash game.
+    """The class representing the Unit in the Stardash game.
 
     A unit in the game. May be a corvette, missleboat, martyr, transport, miner.
     """
@@ -71,7 +71,7 @@ class Unit(GameObject):
     def job(self):
         """The Job this Unit has.
 
-        :rtype: games.star_dash.job.Job
+        :rtype: games.stardash.job.Job
         """
         return self._job
 
@@ -103,7 +103,7 @@ class Unit(GameObject):
     def owner(self):
         """The Player that owns and can control this Unit.
 
-        :rtype: games.star_dash.player.Player
+        :rtype: games.stardash.player.Player
         """
         return self._owner
 
@@ -143,7 +143,7 @@ class Unit(GameObject):
         """ Attacks the specified unit.
 
         Args:
-            enemy (games.star_dash.unit.Unit): The Unit being attacked.
+            enemy (games.stardash.unit.Unit): The Unit being attacked.
 
         Returns:
             bool: True if successfully attacked, False otherwise.
@@ -154,7 +154,7 @@ class Unit(GameObject):
         """ allows a miner to mine a asteroid
 
         Args:
-            body (games.star_dash.body.Body): The object to be mined.
+            body (games.stardash.body.Body): The object to be mined.
 
         Returns:
             bool: True if successfully acted, False otherwise.
@@ -201,7 +201,7 @@ class Unit(GameObject):
         """ Grab materials from a friendly unit. Doesn't use a action.
 
         Args:
-            unit (games.star_dash.unit.Unit): The unit you are grabbing the resources from.
+            unit (games.stardash.unit.Unit): The unit you are grabbing the resources from.
             amount (int): The amount of materials to you with to grab. Amounts <= 0 will pick up all the materials that the unit can.
             material (str): The material the unit will pick up. 'resource1', 'resource2', or 'resource3'.
 

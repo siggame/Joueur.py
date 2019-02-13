@@ -4,14 +4,14 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
-from games.star_dash.game_object import GameObject
+from games.stardash.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 # you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
 class Body(GameObject):
-    """The class representing the Body in the StarDash game.
+    """The class representing the Body in the Stardash game.
 
     A celestial body located within the game.
     """

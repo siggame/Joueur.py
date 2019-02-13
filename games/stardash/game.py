@@ -7,18 +7,18 @@
 from joueur.base_game import BaseGame
 
 # import game objects
-from games.star_dash.body import Body
-from games.star_dash.game_object import GameObject
-from games.star_dash.job import Job
-from games.star_dash.player import Player
-from games.star_dash.unit import Unit
+from games.stardash.body import Body
+from games.stardash.game_object import GameObject
+from games.stardash.job import Job
+from games.stardash.player import Player
+from games.stardash.unit import Unit
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 # you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
 class Game(BaseGame):
-    """The class representing the Game in the StarDash game.
+    """The class representing the Game in the Stardash game.
 
     Collect of the most of the rarest mineral orbiting aroung the sun and outcompete your competetor.
     """
@@ -49,7 +49,7 @@ class Game(BaseGame):
         self._time_added_per_turn = 0
         self._units = []
 
-        self.name = "StarDash"
+        self.name = "Stardash"
 
         self._game_object_classes = {
             'Body': Body,
@@ -63,7 +63,7 @@ class Game(BaseGame):
     def bodies(self):
         """All the celestial bodies in the game.
 
-        :rtype: list[games.star_dash.body.Body]
+        :rtype: list[games.stardash.body.Body]
         """
         return self._bodies
 
@@ -71,7 +71,7 @@ class Game(BaseGame):
     def current_player(self):
         """The player whose turn it is currently. That player can send commands. Other players cannot.
 
-        :rtype: games.star_dash.player.Player
+        :rtype: games.stardash.player.Player
         """
         return self._current_player
 
@@ -95,7 +95,7 @@ class Game(BaseGame):
     def game_objects(self):
         """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
 
-        :rtype: dict[str, games.star_dash.game_object.GameObject]
+        :rtype: dict[str, games.stardash.game_object.GameObject]
         """
         return self._game_objects
 
@@ -103,7 +103,7 @@ class Game(BaseGame):
     def jobs(self):
         """A list of all jobs. first item is corvette, second is missleboat, third is martyr, fourth is transport, and fifth is miner.
 
-        :rtype: list[games.star_dash.job.Job]
+        :rtype: list[games.stardash.job.Job]
         """
         return self._jobs
 
@@ -167,7 +167,7 @@ class Game(BaseGame):
     def players(self):
         """List of all the players in the game.
 
-        :rtype: list[games.star_dash.player.Player]
+        :rtype: list[games.stardash.player.Player]
         """
         return self._players
 
@@ -215,7 +215,7 @@ class Game(BaseGame):
     def units(self):
         """Every Unit in the game.
 
-        :rtype: list[games.star_dash.unit.Unit]
+        :rtype: list[games.stardash.unit.Unit]
         """
         return self._units
 
