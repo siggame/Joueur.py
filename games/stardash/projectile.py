@@ -21,11 +21,20 @@ class Projectile(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
+        self._fuel = 0
         self._owner = None
         self._radius = 0
         self._target = None
         self._x = 0
         self._y = 0
+
+    @property
+    def fuel(self):
+        """The amount of remaining distance the projectile can move.
+
+        :rtype: int
+        """
+        return self._fuel
 
     @property
     def owner(self):

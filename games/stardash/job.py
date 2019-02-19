@@ -25,6 +25,7 @@ class Job(GameObject):
         self._damage = 0
         self._energy = 0
         self._moves = 0
+        self._range = 0
         self._shield = 0
         self._title = ""
         self._unit_cost = 0
@@ -60,6 +61,14 @@ class Job(GameObject):
         :rtype: int
         """
         return self._moves
+
+    @property
+    def range(self):
+        """The distance at which this job can effect things.
+
+        :rtype: int
+        """
+        return self._range
 
     @property
     def shield(self):
