@@ -30,6 +30,7 @@ class Unit(GameObject):
         self._moves = 0
         self._mythicite = 0
         self._owner = None
+        self._protector = None
         self._radius = 0
         self._rarium = 0
         self._x = 0
@@ -106,6 +107,14 @@ class Unit(GameObject):
         :rtype: games.stardash.player.Player
         """
         return self._owner
+
+    @property
+    def protector(self):
+        """The martyr ship that is currently shielding this ship if any.
+
+        :rtype: games.stardash.unit.Unit
+        """
+        return self._protector
 
     @property
     def radius(self):
