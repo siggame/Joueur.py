@@ -24,6 +24,7 @@ class Body(GameObject):
         self._amount = 0
         self._body_type = ""
         self._material_type = ""
+        self._owner = None
         self._radius = 0
         self._x = 0
         self._y = 0
@@ -51,6 +52,14 @@ class Body(GameObject):
         :rtype: str
         """
         return self._material_type
+
+    @property
+    def owner(self):
+        """The Player that owns and can control this Unit.
+
+        :rtype: games.stardash.player.Player
+        """
+        return self._owner
 
     @property
     def radius(self):
