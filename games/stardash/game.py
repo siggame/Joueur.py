@@ -32,6 +32,7 @@ class Game(BaseGame):
         self._bodies = []
         self._current_player = None
         self._current_turn = 0
+        self._dash_block = 0
         self._dash_distance = 0
         self._game_objects = {}
         self._jobs = []
@@ -48,6 +49,7 @@ class Game(BaseGame):
         self._projectiles = []
         self._regenerate_rate = 0
         self._session = ""
+        self._ship_radius = 0
         self._size_x = 0
         self._size_y = 0
         self._time_added_per_turn = 0
@@ -87,6 +89,14 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._current_turn
+
+    @property
+    def dash_block(self):
+        """Radius of the no dash zone around the sun.
+
+        :rtype: int
+        """
+        return self._dash_block
 
     @property
     def dash_distance(self):
@@ -215,6 +225,14 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._session
+
+    @property
+    def ship_radius(self):
+        """The standard size of ships.
+
+        :rtype: int
+        """
+        return self._ship_radius
 
     @property
     def size_x(self):

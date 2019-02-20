@@ -22,6 +22,8 @@ class Unit(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._acted = False
+        self._dash_x = 0
+        self._dash_y = 0
         self._energy = 0
         self._genarium = 0
         self._is_dashing = False
@@ -43,6 +45,22 @@ class Unit(GameObject):
         :rtype: bool
         """
         return self._acted
+
+    @property
+    def dash_x(self):
+        """The x value this unit is dashing to.
+
+        :rtype: float
+        """
+        return self._dash_x
+
+    @property
+    def dash_y(self):
+        """The y value this unit is dashing to.
+
+        :rtype: float
+        """
+        return self._dash_y
 
     @property
     def energy(self):
@@ -183,7 +201,7 @@ class Unit(GameObject):
         return self._run_on_server('move', x=x, y=y)
 
     def open(self, x, y):
-        """ tells you if your ship can be at that location.
+        """ tells you if your ship can dash to that location.
 
         Args:
             x (float): The x position of the location you wish to check.
