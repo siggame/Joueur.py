@@ -40,11 +40,12 @@ class Game(BaseGame):
         self._max_turns = 100
         self._min_asteroid = 0
         self._mining_speed = 0
-        self._ore_rarity1 = 0
-        self._ore_rarity2 = 0
-        self._ore_rarity3 = 0
+        self._ore_rarity_genarium = 0
+        self._ore_rarity_rarium = 0
+        self._ore_raritylegendarium = 0
         self._planet_recharge_rate = 0
         self._players = []
+        self._projectile_radius = 0
         self._projectile_speed = 0
         self._projectiles = []
         self._regenerate_rate = 0
@@ -155,28 +156,28 @@ class Game(BaseGame):
         return self._mining_speed
 
     @property
-    def ore_rarity1(self):
+    def ore_rarity_genarium(self):
         """The rarity modifier of the most common ore. This controls how much spawns.
 
         :rtype: float
         """
-        return self._ore_rarity1
+        return self._ore_rarity_genarium
 
     @property
-    def ore_rarity2(self):
+    def ore_rarity_rarium(self):
         """The rarity modifier of the second rarest ore. This controls how much spawns.
 
         :rtype: float
         """
-        return self._ore_rarity2
+        return self._ore_rarity_rarium
 
     @property
-    def ore_rarity3(self):
+    def ore_raritylegendarium(self):
         """The rarity modifier of the rarest ore. This controls how much spawns.
 
         :rtype: float
         """
-        return self._ore_rarity3
+        return self._ore_raritylegendarium
 
     @property
     def planet_recharge_rate(self):
@@ -193,6 +194,14 @@ class Game(BaseGame):
         :rtype: list[games.stardash.player.Player]
         """
         return self._players
+
+    @property
+    def projectile_radius(self):
+        """The standard size of ships.
+
+        :rtype: int
+        """
+        return self._projectile_radius
 
     @property
     def projectile_speed(self):

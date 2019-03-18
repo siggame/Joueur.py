@@ -33,8 +33,8 @@ class Unit(GameObject):
         self._mythicite = 0
         self._owner = None
         self._protector = None
-        self._radius = 0
         self._rarium = 0
+        self._shield = 0
         self._x = 0
         self._y = 0
 
@@ -135,20 +135,20 @@ class Unit(GameObject):
         return self._protector
 
     @property
-    def radius(self):
-        """The radius of the circle this unit occupies.
-
-        :rtype: float
-        """
-        return self._radius
-
-    @property
     def rarium(self):
         """The amount of Rarium carried by this unit. (0 to job carry capacity - other carried items).
 
         :rtype: int
         """
         return self._rarium
+
+    @property
+    def shield(self):
+        """The sheild that a martyr ship has.
+
+        :rtype: int
+        """
+        return self._shield
 
     @property
     def x(self):
@@ -177,6 +177,18 @@ class Unit(GameObject):
         """
         return self._run_on_server('attack', enemy=enemy)
 
+    def dash(self, x, y):
+        """ Causes the unit to dash towards the designated destination.
+
+        Args:
+            x (float): The x value of the destination's coordinates.
+            y (float): The y value of the destination's coordinates.
+
+        Returns:
+            bool: True if it moved, False otherwise.
+        """
+        return self._run_on_server('dash', x=x, y=y)
+
     def mine(self, body):
         """ allows a miner to mine a asteroid
 
@@ -201,7 +213,7 @@ class Unit(GameObject):
         return self._run_on_server('move', x=x, y=y)
 
     def open(self, x, y):
-        """ tells you if your ship can dash to that location.
+        """ tells you if your ship can be at that location.
 
         Args:
             x (float): The x position of the location you wish to check.

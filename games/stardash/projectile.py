@@ -23,7 +23,6 @@ class Projectile(GameObject):
         # private attributes to hold the properties so they appear read only
         self._fuel = 0
         self._owner = None
-        self._radius = 0
         self._target = None
         self._x = 0
         self._y = 0
@@ -43,14 +42,6 @@ class Projectile(GameObject):
         :rtype: games.stardash.player.Player
         """
         return self._owner
-
-    @property
-    def radius(self):
-        """The radius of the circle this projectile occupies.
-
-        :rtype: float
-        """
-        return self._radius
 
     @property
     def target(self):
