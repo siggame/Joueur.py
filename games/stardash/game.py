@@ -35,19 +35,24 @@ class Game(BaseGame):
         self._dash_block = 0
         self._dash_distance = 0
         self._game_objects = {}
+        self._genarium_value = 0
         self._jobs = []
+        self._legendarium_value = 0
         self._max_asteroid = 0
         self._max_turns = 100
         self._min_asteroid = 0
         self._mining_speed = 0
+        self._mythicite_amount = 0
         self._ore_rarity_genarium = 0
+        self._ore_rarity_legendarium = 0
         self._ore_rarity_rarium = 0
-        self._ore_raritylegendarium = 0
+        self._planet_energy_cap = 0
         self._planet_recharge_rate = 0
         self._players = []
         self._projectile_radius = 0
         self._projectile_speed = 0
         self._projectiles = []
+        self._rarium_value = 0
         self._regenerate_rate = 0
         self._session = ""
         self._ship_radius = 0
@@ -116,12 +121,28 @@ class Game(BaseGame):
         return self._game_objects
 
     @property
+    def genarium_value(self):
+        """The value of every unit of genarium.
+
+        :rtype: float
+        """
+        return self._genarium_value
+
+    @property
     def jobs(self):
         """A list of all jobs. first item is corvette, second is missleboat, third is martyr, fourth is transport, and fifth is miner.
 
         :rtype: list[games.stardash.job.Job]
         """
         return self._jobs
+
+    @property
+    def legendarium_value(self):
+        """The value of every unit of legendarium.
+
+        :rtype: float
+        """
+        return self._legendarium_value
 
     @property
     def max_asteroid(self):
@@ -156,12 +177,28 @@ class Game(BaseGame):
         return self._mining_speed
 
     @property
+    def mythicite_amount(self):
+        """The amount of mythicite that spawns at the start of the game.
+
+        :rtype: float
+        """
+        return self._mythicite_amount
+
+    @property
     def ore_rarity_genarium(self):
         """The rarity modifier of the most common ore. This controls how much spawns.
 
         :rtype: float
         """
         return self._ore_rarity_genarium
+
+    @property
+    def ore_rarity_legendarium(self):
+        """The rarity modifier of the rarest ore. This controls how much spawns.
+
+        :rtype: float
+        """
+        return self._ore_rarity_legendarium
 
     @property
     def ore_rarity_rarium(self):
@@ -172,12 +209,12 @@ class Game(BaseGame):
         return self._ore_rarity_rarium
 
     @property
-    def ore_raritylegendarium(self):
-        """The rarity modifier of the rarest ore. This controls how much spawns.
+    def planet_energy_cap(self):
+        """The amount of energy a planet can hold at once.
 
-        :rtype: float
+        :rtype: int
         """
-        return self._ore_raritylegendarium
+        return self._planet_energy_cap
 
     @property
     def planet_recharge_rate(self):
@@ -218,6 +255,14 @@ class Game(BaseGame):
         :rtype: list[games.stardash.projectile.Projectile]
         """
         return self._projectiles
+
+    @property
+    def rarium_value(self):
+        """The value of every unit of rarium.
+
+        :rtype: float
+        """
+        return self._rarium_value
 
     @property
     def regenerate_rate(self):

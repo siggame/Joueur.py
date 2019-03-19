@@ -31,7 +31,7 @@ class Body(GameObject):
 
     @property
     def amount(self):
-        """The amount of material the object has.
+        """The amount of material the object has, or energy if it is a planet.
 
         :rtype: int
         """
