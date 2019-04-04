@@ -212,7 +212,7 @@ class Unit(GameObject):
         """
         return self._run_on_server('move', x=x, y=y)
 
-    def open(self, x, y):
+    def safe(self, x, y):
         """ tells you if your ship can be at that location.
 
         Args:
@@ -222,7 +222,7 @@ class Unit(GameObject):
         Returns:
             bool: True if pathable by this unit, False otherwise.
         """
-        return self._run_on_server('open', x=x, y=y)
+        return self._run_on_server('safe', x=x, y=y)
 
     def shoot_down(self, missile):
         """ Attacks the specified projectile.

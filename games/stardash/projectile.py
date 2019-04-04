@@ -37,7 +37,7 @@ class Projectile(GameObject):
 
     @property
     def owner(self):
-        """The Player that owns and can control this Unit.
+        """The Player that owns and can control this Projectile.
 
         :rtype: games.stardash.player.Player
         """

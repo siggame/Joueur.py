@@ -33,6 +33,7 @@ class Game(BaseGame):
         self._current_player = None
         self._current_turn = 0
         self._dash_block = 0
+        self._dash_cost = 0
         self._dash_distance = 0
         self._game_objects = {}
         self._genarium_value = 0
@@ -43,6 +44,7 @@ class Game(BaseGame):
         self._min_asteroid = 0
         self._mining_speed = 0
         self._mythicite_amount = 0
+        self._orbits_protected = 0
         self._ore_rarity_genarium = 0
         self._ore_rarity_legendarium = 0
         self._ore_rarity_rarium = 0
@@ -59,6 +61,7 @@ class Game(BaseGame):
         self._size_x = 0
         self._size_y = 0
         self._time_added_per_turn = 0
+        self._turns_to_orbit = 0
         self._units = []
 
         self.name = "Stardash"
@@ -74,7 +77,7 @@ class Game(BaseGame):
 
     @property
     def bodies(self):
-        """All the celestial bodies in the game.
+        """All the celestial bodies in the game. The first two are planets and the third is the sun. The fourth is the VP asteroid. Everything else is normal asteroids.
 
         :rtype: list[games.stardash.body.Body]
         """
@@ -103,6 +106,14 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._dash_block
+
+    @property
+    def dash_cost(self):
+        """The cost of dashing.
+
+        :rtype: int
+        """
+        return self._dash_cost
 
     @property
     def dash_distance(self):
@@ -146,7 +157,7 @@ class Game(BaseGame):
 
     @property
     def max_asteroid(self):
-        """The highest amount of material, barring rarity, that can be in a asteroid.
+        """The highest amount of material, that can be in a asteroid.
 
         :rtype: int
         """
@@ -162,7 +173,7 @@ class Game(BaseGame):
 
     @property
     def min_asteroid(self):
-        """The smallest amount of material, barring rarity, that can be in a asteroid.
+        """The smallest amount of material, that can be in a asteroid.
 
         :rtype: int
         """
@@ -183,6 +194,14 @@ class Game(BaseGame):
         :rtype: float
         """
         return self._mythicite_amount
+
+    @property
+    def orbits_protected(self):
+        """The number of orbit updates you cannot mine the mithicite asteroid.
+
+        :rtype: int
+        """
+        return self._orbits_protected
 
     @property
     def ore_rarity_genarium(self):
@@ -311,6 +330,14 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._time_added_per_turn
+
+    @property
+    def turns_to_orbit(self):
+        """The number of turns it takes for a asteroid to orbit the sun. (Asteroids move after each players turn).
+
+        :rtype: int
+        """
+        return self._turns_to_orbit
 
     @property
     def units(self):
