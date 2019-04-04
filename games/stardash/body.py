@@ -55,7 +55,7 @@ class Body(GameObject):
 
     @property
     def owner(self):
-        """The Player that owns and can control this Unit.
+        """The Player that owns and can control this Body.
 
         :rtype: games.stardash.player.Player
         """
@@ -84,6 +84,28 @@ class Body(GameObject):
         :rtype: float
         """
         return self._y
+
+    def next_x(self, num):
+        """ The x value of this body a number of turns from now. (0-how many you want).
+
+        Args:
+            num (int): The number of turns in the future you wish to check.
+
+        Returns:
+            int: The x position of the body the input number of turns in the future.
+        """
+        return self._run_on_server('nextX', num=num)
+
+    def next_y(self, num):
+        """ The x value of this body a number of turns from now. (0-how many you want).
+
+        Args:
+            num (int): The number of turns in the future you wish to check.
+
+        Returns:
+            int: The x position of the body the input number of turns in the future.
+        """
+        return self._run_on_server('nextY', num=num)
 
     def spawn(self, x, y, title):
         """ Spawn a unit on some value of this celestial body.
