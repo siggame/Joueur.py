@@ -10,6 +10,7 @@ from games.stardash.game_object import GameObject
 # you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
+
 class Unit(GameObject):
     """The class representing the Unit in the Stardash game.
 
@@ -72,7 +73,7 @@ class Unit(GameObject):
 
     @property
     def genarium(self):
-        """The amount of Generium ore carried by this unit. (0 to job carry capacity - other carried items).
+        """The amount of Genarium ore carried by this unit. (0 to job carry capacity - other carried items).
 
         :rtype: int
         """
