@@ -72,7 +72,7 @@ class Unit(GameObject):
 
     @property
     def genarium(self):
-        """The amount of Generium ore carried by this unit. (0 to job carry capacity - other carried items).
+        """The amount of Genarium ore carried by this unit. (0 to job carry capacity - other carried items).
 
         :rtype: int
         """
@@ -189,6 +189,18 @@ class Unit(GameObject):
         """
         return self._run_on_server('dash', x=x, y=y)
 
+    def dashable(self, x, y):
+        """ tells you if your ship dash to that location.
+
+        Args:
+            x (float): The x position of the location you wish to arrive.
+            y (float): The y position of the location you wish to arrive.
+
+        Returns:
+            bool: True if pathable by this unit, False otherwise.
+        """
+        return self._run_on_server('dashable', x=x, y=y)
+
     def mine(self, body):
         """ allows a miner to mine a asteroid
 
@@ -213,11 +225,11 @@ class Unit(GameObject):
         return self._run_on_server('move', x=x, y=y)
 
     def safe(self, x, y):
-        """ tells you if your ship can be at that location.
+        """ tells you if your ship can move to that location.
 
         Args:
-            x (float): The x position of the location you wish to check.
-            y (float): The y position of the location you wish to check.
+            x (float): The x position of the location you wish to arrive.
+            y (float): The y position of the location you wish to arrive.
 
         Returns:
             bool: True if pathable by this unit, False otherwise.
