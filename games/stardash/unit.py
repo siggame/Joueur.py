@@ -26,7 +26,7 @@ class Unit(GameObject):
         self._dash_y = 0
         self._energy = 0
         self._genarium = 0
-        self._is_dashing = False
+        self._is_busy = False
         self._job = None
         self._legendarium = 0
         self._moves = 0
@@ -79,12 +79,12 @@ class Unit(GameObject):
         return self._genarium
 
     @property
-    def is_dashing(self):
-        """Tracks wheither or not the ship is dashing.
+    def is_busy(self):
+        """Tracks wheither or not the ship is dashing or Mining. If True, it cannot do anything else.
 
         :rtype: bool
         """
-        return self._is_dashing
+        return self._is_busy
 
     @property
     def job(self):
