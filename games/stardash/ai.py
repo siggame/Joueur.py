@@ -113,12 +113,13 @@ class AI(BaseAI):
                         target = body
                         best_dist = distance
 
-            # Tries to move to the asteroid.
-            self.find_dash(unit, target.x, target.y)
+            if target is not None:
+                # Tries to move to the asteroid.
+                self.find_dash(unit, target.x, target.y)
 
-            # Checks if the miner is within mining range of the target asteroid.
-            if self.distance(unit.x, unit.y, target.x, target.y) < 100:
-                unit.mine(target)
+                # Checks if the miner is within mining range of the target asteroid.
+                if self.distance(unit.x, unit.y, target.x, target.y) < unit.job.range:
+                    unit.mine(target)
         else:
             # Otherwise return to home base and drop off any mined genarium and restoring energy in the process.
             self.find_dash(unit, home_x, home_y)
@@ -140,7 +141,7 @@ class AI(BaseAI):
             Returns:
                 float: The distance between the two points.
         """
-        return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+        return math.sqrt((x1 - x2) ** 2.0 + (y1 - y2) ** 2.0)
 
     def find_dash(self, unit, x, y):
         """ This is an EXTREMELY basic pathfinding function to move your ship until it can dash to your target.
@@ -155,173 +156,57 @@ class AI(BaseAI):
         # Gets the sun from the list of bodies.
         sun = self.game.bodies[2]
 
-        # Gets the ship radius from the game constants.
-        radius = self.game.ship_radius
+        while unit.moves > 0:
+            if unit.safe(x, y) and unit.energy >= math.ceil((self.distance(unit.x, unit.y, x, y) / self.game.dash_distance) * self.game.dash_cost):
+                # Dashes if it is safe to dash to the point and we have enough energy to dash there.
+                unit.dash(x, y)
 
-        if unit.safe(x, y) and unit.energy >= math.ceil((self.distance(unit.x, unit.y, x, y) / self.game.dash_distance) * self.game.dash_cost):
-            # Dashes if it is safe to dash to the point.
-            unit.dash(x, y)
-        elif unit.energy >= math.ceil((self.distance(unit.x, unit.y, x, y) / self.game.dash_distance) * self.game.dash_cost):
-            # If we were not able to dash, tries to move to a spot where we can.
-            while unit.moves > 0:
-                if unit.y >= sun.y and unit.y < self.game.size_y:
-                    # If we are above the sun, continue moving upwards to try to get a clear path.
-                    unit.move(unit.x, unit.y + 1)
-                elif unit.y < sun.y and unit.y >= 0:
-                    # If we are below the sun, continue moving down to try to get a clear path.
-                    unit.move(unit.x, unit.y - 1)
-                elif unit.x < x:
-                    # If we have reached the top or bottom of the map, starts moving right, towards the destination.
-                    unit.move(unit.x + 1, unit.y)
-                elif unit.x > x:
-                    # If we have reached the top or bottom of the map, starts moving left, towards the destination.
-                    unit.move(unit.x - 1, unit.y)
+                # Breaks out of the loop since we can't do anything else now.
+                break
+            else:
+                # Otherwise tries moving towards the target.
 
-                # Checks if we are safe to dash now and have enough energy.
-                if unit.safe(x, y) and unit.energy >= math.ceil((self.distance(unit.x, unit.y, x, y) / self.game.dash_distance) * self.game.dash_cost):
-                    # Dashes then breaks out of the loop.
-                    unit.dash(x, y)
-                    break
-        else:
-            # If we are out of energy, tries to move to the target normally without dashing.
-            while unit.moves > 0:
                 # The x and y modifiers for movement.
                 x_mod = 0
                 y_mod = 0
 
-                if unit.safe(x, y):
-                    # If there is a clear path to the destination, then just moves in the appropriate direction.
-                    if unit.x < x:
-                        x_mod = 1
-                    elif unit.x > x:
-                        x_mod = -1
+                if unit.x < x or (y < sun.y and unit.y > sun.y or y > sun.y and unit.y < sun.y) and x > sun.x:
+                        # Move to the right if the destination is to the right or on the other side of the sun on the right side.
+                    x_mod = 1
+                elif unit.x > x or (y < sun.y and unit.y > sun.y or y > sun.y and unit.y < sun.y) and x < sun.x:
+                    # Move to the left if the destination is to the left or on the other side of the sun on the left side.
+                    x_mod = -1
 
-                    if unit.y < y:
-                        y_mod = 1
-                    elif unit.y > y:
-                        y_mod = -1
+                if unit.y < y or (x < sun.x and unit.x > sun.x or x > sun.x and unit.x < sun.x) and y > sun.y:
+                    # Move down if the destination is down or on the other side of the sun on the lower side.
+                    y_mod = 1
+                elif unit.y > y or (x < sun.x and unit.x > sun.x or x > sun.x and unit.x < sun.x) and y < sun.y:
+                    # Move up if the destination is up or on the other side of the sun on the upper side.
+                    y_mod = -1
 
-                elif x <= sun.x and y <= sun.y:
-                    # If the destination is in the upper left quadrant...
-                    if unit.x <= sun.x and unit.y > sun.y:
-                        # If we are in the lower left quadrant...
-                        y_mod = 1
+                if x_mod != 0 and y_mod != 0 and not unit.safe(unit.x + x_mod, unit.y + y_mod):
+                    # Special case if we cannot safely move diagonally.
+                    if unit.safe(unit.x + x_mod, unit.y):
+                            # Only move horizontally if it is safe.
+                        y_mod = 0
+                    elif unit.safe(unit.x, unit.y + y_mod):
+                        # Only move vertically if it is safe.
+                        x_mod = 0
 
-                        if unit.x + radius >= sun.x - sun.radius and unit.x - radius <= sun.x + sun.radius:
-                            # If we are in the sun's radius horizontally...
-                            x_mod = -1
-                        elif unit.x != x and abs((sun.x - sun.radius) - (unit.x + radius)) > 1:
-                            # If we are not at the x coordinate of the destination and we are able to move closer to the sun...
-                            x_mod = 1
-                    elif unit.x > sun.x and unit.y <= sun.y:
-                        # If we are in the upper right quadrant...
-                        x_mod = 1
+                if unit.moves == 1 and x_mod != 0 and y_mod != 0:
+                    # Special case if we only have 1 move left and are trying to move 2.
+                    if unit.safe(unit.x + x_mod, unit.y):
+                        y_mod = 0
+                    elif unit.safe(unit.x, unit.y + y_mod):
+                        x_mod = 0
+                    else:
+                        break
 
-                        if unit.y + radius >= sun.y - sun.radius and unit.y - radius <= sun.y + sun.radius:
-                            # If we are in the sun's radius vertically...
-                            y_mod = -1
-                        elif unit.y != y and abs((sun.y - sun.radius) - (unit.y + radius)) > 1:
-                            # If we are not at the y coordinate of the destination and we are able to move closer to the sun...
-                            y_mod = 1
-                    elif unit.x > sun.x and unit.y > sun.y:
-                        # If we are in the lower right quadrant...
-                        if unit.y + radius >= sun.y - sun.radius and unit.y - radius <= sun.y + sun.radius:
-                            # If we are in the sun's radius vertically...
-                            y_mod = 1
-                        else:
-                            x_mod = -1
-
-                elif x <= sun.x and y > sun.y:
-                    # If the destination is in the lower left quadrant...
-                    if unit.x <= sun.x and unit.y <= sun.y:
-                        # If we are in the upper left quadrant...
-                        y_mod = 1
-
-                        if unit.x + radius >= sun.x - sun.radius and unit.x - radius <= sun.x + sun.radius:
-                            # If we are in the sun's radius horizontally...
-                            x_mod = -1
-                        elif unit.x != x and abs((sun.x - sun.radius) - (unit.x + radius)) > 1:
-                            # If we are not at the x coordinate of the destination and we are able to move closer to the sun...
-                            x_mod = 1
-                    elif unit.x > sun.x and unit.y <= sun.y:
-                        # If we are in the upper right quadrant...
-                        if unit.y + radius >= sun.y - sun.radius and unit.y - radius <= sun.y + sun.radius:
-                            # If we are in the sun's radius vertically...
-                            y_mod = -1
-                        else:
-                            x_mod = -1
-                    elif unit.x > sun.x and unit.y > sun.y:
-                        # If we are in the lower right quadrant...
-                        x_mod = -1
-
-                        if unit.y + radius >= sun.y - sun.radius and unit.y - radius <= sun.y + sun.radius:
-                            # If we are in the sun's radius vertically...
-                            y_mod = 1
-                        elif unit.y != y and abs((sun.y - sun.radius) - (unit.y + radius)) > 1:
-                            # If we are not at the y coordinate of the destination and we are able to move closer to the sun...
-                            y_mod = -1
-
-                elif x > sun.x and y <= sun.y:
-                    # If the destination is in the upper right quadrant...
-                    if unit.x <= sun.x and unit.y <= sun.y:
-                        # If we are in the upper left quadrant...
-                        x_mod = 1
-
-                        if unit.y + radius >= sun.y - sun.radius and unit.y - radius <= sun.y + sun.radius:
-                            # If we are in the sun's radius vertically...
-                            y_mod = -1
-                        elif unit.y != y and abs((sun.x - sun.radius) - (unit.x + radius)) > 1:
-                            # If we are not at the y coordinate of the destination and we are able to move closer to the sun...
-                            y_mod = 1
-                    elif unit.x <= sun.x and unit.y > sun.y:
-                        # If we are in the lower left quadrant...
-                        if unit.y + radius >= sun.y - sun.radius and unit.y - radius <= sun.y + sun.radius:
-                            # If we are in the sun's radius vertically...
-                            y_mod = -1
-                        else:
-                            x_mod = 1
-                    elif unit.x > sun.x and unit.y > sun.y:
-                        # If we are in the lower right quadrant...
-                        y_mod = -1
-
-                        if unit.x + radius >= sun.x - sun.radius and unit.x - radius <= sun.x + sun.radius:
-                            # If we are in the sun's radius horizontally...
-                            x_mod = 1
-                        elif unit.x != x and abs((sun.y - sun.radius) - (unit.y + radius)) > 1:
-                            # If we are not at the x coordinate of the destination and we are able to move closer to the sun...
-                            x_mod = -1
-
-                elif x > sun.x and y > sun.y:
-                    # If the destination is in the lower right quadrant...
-                    if unit.x <= sun.x and unit.y <= sun.y:
-                        # If we are in the upper left quadrant...
-                        if unit.y + radius >= sun.y - sun.radius and unit.y - radius <= sun.y + sun.radius:
-                            # If we are in the sun's radius vertically...
-                            y_mod = -1
-                        else:
-                            x_mod = 1
-                    elif unit.x <= sun.x and unit.y > sun.y:
-                        # If we are in the lower left quadrant...
-                        x_mod = 1
-
-                        if unit.y + radius >= sun.y - sun.radius and unit.y - radius <= sun.y + sun.radius:
-                            # If we are in the sun's radius vertically...
-                            y_mod = 1
-                        elif unit.y != y and abs((sun.y - sun.radius) - (unit.y + radius)) > 1:
-                            # If we are not at the y coordinate of the destination and we are able to move closer to the sun...
-                            y_mod = -1
-                    elif unit.x > sun.x and unit.y <= sun.y:
-                        # If we are in the upper right quadrant...
-                        y_mod = 1
-
-                        if unit.x + radius >= sun.x - sun.radius and unit.x - radius <= sun.x + sun.radius:
-                            # If we are in the sun's radius horizontally...
-                            x_mod = 1
-                        elif unit.x != x and abs((sun.y - sun.radius) - (unit.y + radius)) > 1:
-                            # If we are not at the x coordinate of the destination and we are able to move closer to the sun...
-                            x_mod = -1
-
-                if not x_mod == 0 and y_mod == 0:
+                if x_mod != 0 or y_mod != 0:
+                    # Tries to move if either of the modifiers is not zero (we are actually moving somewhere).
                     unit.move(unit.x + x_mod, unit.y + y_mod)
+                else:
+                    # Breaks otherwise, since something probably went wrong.
+                    break
 
     # <<-- /Creer-Merge: functions -->>
