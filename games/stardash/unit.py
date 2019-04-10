@@ -64,7 +64,7 @@ class Unit(GameObject):
 
     @property
     def energy(self):
-        """The remaining health of a unit.
+        """The remaining health of the unit.
 
         :rtype: int
         """
