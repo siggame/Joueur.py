@@ -10,7 +10,6 @@ from games.stardash.game_object import GameObject
 # you can add additional import(s) here
 # <<-- /Creer-Merge: imports -->>
 
-
 class Unit(GameObject):
     """The class representing the Unit in the Stardash game.
 
@@ -27,7 +26,7 @@ class Unit(GameObject):
         self._dash_y = 0
         self._energy = 0
         self._genarium = 0
-        self._is_dashing = False
+        self._is_busy = False
         self._job = None
         self._legendarium = 0
         self._moves = 0
@@ -65,7 +64,7 @@ class Unit(GameObject):
 
     @property
     def energy(self):
-        """The remaining health of a unit.
+        """The remaining health of the unit.
 
         :rtype: int
         """
@@ -80,12 +79,12 @@ class Unit(GameObject):
         return self._genarium
 
     @property
-    def is_dashing(self):
-        """Tracks wheither or not the ship is dashing.
+    def is_busy(self):
+        """Tracks wheither or not the ship is dashing or Mining. If True, it cannot do anything else.
 
         :rtype: bool
         """
-        return self._is_dashing
+        return self._is_busy
 
     @property
     def job(self):
@@ -214,11 +213,11 @@ class Unit(GameObject):
         return self._run_on_server('move', x=x, y=y)
 
     def safe(self, x, y):
-        """ tells you if your ship can be at that location.
+        """ tells you if your ship can move to that location from were it is without clipping the sun.
 
         Args:
-            x (float): The x position of the location you wish to check.
-            y (float): The y position of the location you wish to check.
+            x (float): The x position of the location you wish to arrive.
+            y (float): The y position of the location you wish to arrive.
 
         Returns:
             bool: True if pathable by this unit, False otherwise.
