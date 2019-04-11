@@ -32,7 +32,6 @@ class Game(BaseGame):
         self._bodies = []
         self._current_player = None
         self._current_turn = 0
-        self._dash_block = 0
         self._dash_cost = 0
         self._dash_distance = 0
         self._game_objects = {}
@@ -100,14 +99,6 @@ class Game(BaseGame):
         return self._current_turn
 
     @property
-    def dash_block(self):
-        """Radius of the no dash zone around the sun.
-
-        :rtype: int
-        """
-        return self._dash_block
-
-    @property
     def dash_cost(self):
         """The cost of dashing.
 
@@ -141,7 +132,7 @@ class Game(BaseGame):
 
     @property
     def jobs(self):
-        """A list of all jobs. first item is corvette, second is missleboat, third is martyr, fourth is transport, and fifth is miner.
+        """A list of all jobs. first item is corvette, second is missileboat, third is martyr, fourth is transport, and fifth is miner.
 
         :rtype: list[games.stardash.job.Job]
         """

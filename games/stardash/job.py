@@ -80,7 +80,7 @@ class Job(GameObject):
 
     @property
     def title(self):
-        """The Job title. 'corvette', 'missleboat', 'martyr', 'transport', or 'miner'. (in this order from 0-4).
+        """The Job title. 'corvette', 'missileboat', 'martyr', 'transport', or 'miner'. (in this order from 0-4).
 
         :rtype: str
         """
