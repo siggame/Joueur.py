@@ -7,6 +7,7 @@ from joueur.base_ai import BaseAI
 import math
 # <<-- /Creer-Merge: imports -->>
 
+
 class AI(BaseAI):
     """ The AI you add and improve code inside to play Stardash. """
 
@@ -16,7 +17,7 @@ class AI(BaseAI):
 
         :rtype: games.stardash.game.Game
         """
-        return self._game # don't directly touch this "private" variable pls
+        return self._game  # don't directly touch this "private" variable pls
 
     @property
     def player(self):
@@ -24,7 +25,7 @@ class AI(BaseAI):
 
         :rtype: games.stardash.player.Player
         """
-        return self._player # don't directly touch this "private" variable pls
+        return self._player  # don't directly touch this "private" variable pls
 
     def get_name(self):
         """ This is the name you send to the server so your AI will control the
@@ -65,6 +66,7 @@ class AI(BaseAI):
         # <<-- Creer-Merge: end -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # replace with your end logic
         # <<-- /Creer-Merge: end -->>
+
     def run_turn(self):
         """ This is called every time it is this AI.player's turn.
 
@@ -76,7 +78,7 @@ class AI(BaseAI):
 
         # Note that this code is not efficient whatsoever, you should make improvements to almost every aspect of it.
         # This code is only to demonstrate the use of some of the game's functions.
-        # For more information about these and other game mechanics, refer to the documentation here: TODO: ADD LINK
+        # For more information about these and other game mechanics, refer to the documentation here: http://docs.siggame.io/
         # Feel free to look at all the functions in the other files in this directory, but do not edit anything other than this file.
 
         # Gets the coordinates of your home base (planet).
