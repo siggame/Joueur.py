@@ -7,6 +7,7 @@ from joueur.base_ai import BaseAI
 import math
 # <<-- /Creer-Merge: imports -->>
 
+
 class AI(BaseAI):
     """ The AI you add and improve code inside to play Stardash. """
 
@@ -16,7 +17,7 @@ class AI(BaseAI):
 
         :rtype: games.stardash.game.Game
         """
-        return self._game # don't directly touch this "private" variable pls
+        return self._game  # don't directly touch this "private" variable pls
 
     @property
     def player(self):
@@ -24,7 +25,7 @@ class AI(BaseAI):
 
         :rtype: games.stardash.player.Player
         """
-        return self._player # don't directly touch this "private" variable pls
+        return self._player  # don't directly touch this "private" variable pls
 
     def get_name(self):
         """ This is the name you send to the server so your AI will control the
@@ -65,6 +66,7 @@ class AI(BaseAI):
         # <<-- Creer-Merge: end -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # replace with your end logic
         # <<-- /Creer-Merge: end -->>
+
     def run_turn(self):
         """ This is called every time it is this AI.player's turn.
 
@@ -76,12 +78,15 @@ class AI(BaseAI):
 
         # Note that this code is not efficient whatsoever, you should make improvements to almost every aspect of it.
         # This code is only to demonstrate the use of some of the game's functions.
-        # For more information about these and other game mechanics, refer to the documentation here: TODO: ADD LINK
+        # For more information about these and other game mechanics, refer to the documentation here: http://docs.siggame.io/
         # Feel free to look at all the functions in the other files in this directory, but do not edit anything other than this file.
 
         # Gets the coordinates of your home base (planet).
         home_x = self.player.home_base.x
         home_y = self.player.home_base.y
+
+        # Gets the coordinates of the sun.
+        sun = self.game.bodies[2]
 
         # Checks if we have any units.
         if len(self.player.units) == 0:
@@ -154,7 +159,7 @@ class AI(BaseAI):
         # Gets the sun from the list of bodies.
         sun = self.game.bodies[2]
 
-        while unit.moves > 0:
+        while unit.moves >= 1:
             if unit.safe(x, y) and unit.energy >= math.ceil((self.distance(unit.x, unit.y, x, y) / self.game.dash_distance) * self.game.dash_cost):
                 # Dashes if it is safe to dash to the point and we have enough energy to dash there.
                 unit.dash(x, y)
@@ -169,7 +174,7 @@ class AI(BaseAI):
                 y_mod = 0
 
                 if unit.x < x or (y < sun.y and unit.y > sun.y or y > sun.y and unit.y < sun.y) and x > sun.x:
-                        # Move to the right if the destination is to the right or on the other side of the sun on the right side.
+                    # Move to the right if the destination is to the right or on the other side of the sun on the right side.
                     x_mod = 1
                 elif unit.x > x or (y < sun.y and unit.y > sun.y or y > sun.y and unit.y < sun.y) and x < sun.x:
                     # Move to the left if the destination is to the left or on the other side of the sun on the left side.
@@ -185,13 +190,13 @@ class AI(BaseAI):
                 if x_mod != 0 and y_mod != 0 and not unit.safe(unit.x + x_mod, unit.y + y_mod):
                     # Special case if we cannot safely move diagonally.
                     if unit.safe(unit.x + x_mod, unit.y):
-                            # Only move horizontally if it is safe.
+                        # Only move horizontally if it is safe.
                         y_mod = 0
                     elif unit.safe(unit.x, unit.y + y_mod):
                         # Only move vertically if it is safe.
                         x_mod = 0
 
-                if unit.moves == 1 and x_mod != 0 and y_mod != 0:
+                if unit.moves < math.sqrt(2) and x_mod != 0 and y_mod != 0:
                     # Special case if we only have 1 move left and are trying to move 2.
                     if unit.safe(unit.x + x_mod, unit.y):
                         y_mod = 0
