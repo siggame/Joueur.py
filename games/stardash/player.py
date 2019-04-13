@@ -85,7 +85,7 @@ class Player(GameObject):
 
     @property
     def projectiles(self):
-        """Every Projectile owned by this Player.
+        """Every Projectile owned by this Player. The earlier in the list the older they are.
 
         :rtype: list[games.stardash.projectile.Projectile]
         """
@@ -117,7 +117,7 @@ class Player(GameObject):
 
     @property
     def units(self):
-        """Every Unit owned by this Player.
+        """Every Unit owned by this Player. The earlier in the list the older they are.
 
         :rtype: list[games.stardash.unit.Unit]
         """

@@ -224,7 +224,7 @@ class Unit(GameObject):
         """
         return self._run_on_server('safe', x=x, y=y)
 
-    def shoot_down(self, missile):
+    def shootdown(self, missile):
         """ Attacks the specified projectile.
 
         Args:
@@ -233,7 +233,7 @@ class Unit(GameObject):
         Returns:
             bool: True if successfully attacked, False otherwise.
         """
-        return self._run_on_server('shootDown', missile=missile)
+        return self._run_on_server('shootdown', missile=missile)
 
     def transfer(self, unit, amount, material):
         """ Grab materials from a friendly unit. Doesn't use a action.
@@ -241,7 +241,7 @@ class Unit(GameObject):
         Args:
             unit (games.stardash.unit.Unit): The unit you are grabbing the resources from.
             amount (int): The amount of materials to you with to grab. Amounts <= 0 will pick up all the materials that the unit can.
-            material (str): The material the unit will pick up. 'resource1', 'resource2', or 'resource3'.
+            material (str): The material the unit will pick up. 'genarium', 'rarium', 'legendarium', or 'mythicite'.
 
         Returns:
             bool: True if successfully taken, False otherwise.
