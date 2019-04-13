@@ -39,7 +39,7 @@ class Body(GameObject):
 
     @property
     def body_type(self):
-        """The type of celestial body it is.
+        """The type of celestial body it is. Either 'planet', 'asteroid', or 'sun'.
 
         :rtype: str
         """
@@ -47,7 +47,7 @@ class Body(GameObject):
 
     @property
     def material_type(self):
-        """The type of material the celestial body has.
+        """The type of material the celestial body has. Either 'none', 'genarium', 'rarium', 'legendarium', or 'mythicite'.
 
         :rtype: str
         """
