@@ -7,7 +7,6 @@ from joueur.base_ai import BaseAI
 import math
 # <<-- /Creer-Merge: imports -->>
 
-
 class AI(BaseAI):
     """ The AI you add and improve code inside to play Stardash. """
 
@@ -17,7 +16,7 @@ class AI(BaseAI):
 
         :rtype: games.stardash.game.Game
         """
-        return self._game  # don't directly touch this "private" variable pls
+        return self._game # don't directly touch this "private" variable pls
 
     @property
     def player(self):
@@ -25,7 +24,7 @@ class AI(BaseAI):
 
         :rtype: games.stardash.player.Player
         """
-        return self._player  # don't directly touch this "private" variable pls
+        return self._player # don't directly touch this "private" variable pls
 
     def get_name(self):
         """ This is the name you send to the server so your AI will control the
@@ -66,7 +65,6 @@ class AI(BaseAI):
         # <<-- Creer-Merge: end -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # replace with your end logic
         # <<-- /Creer-Merge: end -->>
-
     def run_turn(self):
         """ This is called every time it is this AI.player's turn.
 
