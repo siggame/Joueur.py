@@ -1,3 +1,4 @@
 # force git to convert line endings
 # crlf line endings break many things
 * text eol=lf
+*.bin -text
