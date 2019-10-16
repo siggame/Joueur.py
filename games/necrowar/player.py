@@ -55,7 +55,7 @@ class Player(GameObject):
 
     @property
     def health(self):
-        """The amount of health remaining for this player's main unit.
+        """The amount of health remaining for this player's Castle.
 
         :rtype: int
         """
@@ -63,7 +63,7 @@ class Player(GameObject):
 
     @property
     def home_base(self):
-        """The tile that the home base is located on.
+        """The tiles that the home base is located on.
 
         :rtype: list[games.necrowar.tile.Tile]
         """
@@ -156,6 +156,28 @@ class Player(GameObject):
         :rtype: bool
         """
         return self._won
+
+    def spawn_unit(self, type):
+        """ Spawn a fighting Unit on this player's path spawn tile.
+
+        Args:
+            type (str): What type of Unit to create (ghoul, hound, abomination, wraith, or horseman).
+
+        Returns:
+            bool: True if Unit was created successfully, False otherwise.
+        """
+        return self._run_on_server('spawnUnit', type=type)
+
+    def spawn_worker(self, type):
+        """ Spawn a worker Unit on this player's worker spawn tile.
+
+        Args:
+            type (str): What type of Unit to create (worker, zombie, ghoul).
+
+        Returns:
+            bool: True if Unit was created successfully, False otherwise.
+        """
+        return self._run_on_server('spawnWorker', type=type)
 
 
 

@@ -28,6 +28,9 @@ class Tile(GameObject):
         self._is_river = False
         self._is_tower = False
         self._is_wall = False
+        self._num_of_ghouls = 0
+        self._num_of_hounds = 0
+        self._num_of_zombies = 0
         self._tile_east = None
         self._tile_north = None
         self._tile_south = None
@@ -95,6 +98,30 @@ class Tile(GameObject):
         return self._is_wall
 
     @property
+    def num_of_ghouls(self):
+        """The amount of Ghouls on this tile at the moment.
+
+        :rtype: int
+        """
+        return self._num_of_ghouls
+
+    @property
+    def num_of_hounds(self):
+        """The amount of Hell Hounds on this tile at the moment.
+
+        :rtype: int
+        """
+        return self._num_of_hounds
+
+    @property
+    def num_of_zombies(self):
+        """The amount of animated zombies on this tile at the moment.
+
+        :rtype: int
+        """
+        return self._num_of_zombies
+
+    @property
     def tile_east(self):
         """The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
 
@@ -136,7 +163,7 @@ class Tile(GameObject):
 
     @property
     def type(self):
-        """The type of Tile this is ('normal', 'path', 'river', or 'spawn').
+        """The type of Tile this is ('normal', 'path', 'river', 'mine', 'castle', 'pathSpawn', or 'workerSpawn').
 
         :rtype: str
         """
@@ -165,6 +192,17 @@ class Tile(GameObject):
         :rtype: int
         """
         return self._y
+
+    def res(self, number):
+        """ Resurrect the corpses on this tile into zombies.
+
+        Args:
+            number (int): Number of zombies on the tile that are being resurrected.
+
+        Returns:
+            bool: True if Unit was created successfully, False otherwise.
+        """
+        return self._run_on_server('res', number=number)
 
 
     directions = ["North", "East", "South", "West"]
