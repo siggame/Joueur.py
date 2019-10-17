@@ -111,7 +111,7 @@ class Unit(GameObject):
         return self._run_on_server('fish', tile=tile)
 
     def mine(self, tile):
-        """ Enters a mine and is put to work gathering resources.
+        """ Enters an empty mine tile and is put to work gathering resources.
 
         Args:
             tile (games.necrowar.tile.Tile): The tile the mine is located on.

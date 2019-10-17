@@ -22,7 +22,6 @@ class uJob(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._damage = 0
-        self._damage_vs_towers = 0
         self._gold_cost = 0
         self._health = 0
         self._mana_cost = 0
@@ -38,14 +37,6 @@ class uJob(GameObject):
         :rtype: int
         """
         return self._damage
-
-    @property
-    def damage_vs_towers(self):
-        """Amount of damage this type does against towers on a given turn.
-
-        :rtype: int
-        """
-        return self._damage_vs_towers
 
     @property
     def gold_cost(self):

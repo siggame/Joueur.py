@@ -35,7 +35,6 @@ class Game(BaseGame):
         self._game_objects = {}
         self._gold_income_per_unit = 0
         self._island_income_per_unit = 0
-        self._island_unit_cap = 0
         self._mana_income_per_unit = 0
         self._map_height = 0
         self._map_width = 0
@@ -102,14 +101,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._island_income_per_unit
-
-    @property
-    def island_unit_cap(self):
-        """The maximum number of workers that can occupy the mine on the island at a given time.
-
-        :rtype: int
-        """
-        return self._island_unit_cap
 
     @property
     def mana_income_per_unit(self):

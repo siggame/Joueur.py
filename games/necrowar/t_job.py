@@ -33,6 +33,7 @@ class tJob(GameObject):
         self._mana_cost = 0
         self._range = 0
         self._title = ""
+        self._turns_between_attacks = 0
 
     @property
     def all_units(self):
@@ -129,6 +130,14 @@ class tJob(GameObject):
         :rtype: str
         """
         return self._title
+
+    @property
+    def turns_between_attacks(self):
+        """How many turns this tower type needs to take between attacks.
+
+        :rtype: int
+        """
+        return self._turns_between_attacks
 
 
 
