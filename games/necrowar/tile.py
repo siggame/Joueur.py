@@ -171,7 +171,7 @@ class Tile(GameObject):
 
     @property
     def unit(self):
-        """The Unit on this Tile if present, otherwise None.
+        """The list of Units on this Tile if present, otherwise None.
 
         :rtype: games.necrowar.unit.Unit
         """

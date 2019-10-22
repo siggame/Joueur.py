@@ -22,12 +22,6 @@ class tJob(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._all_units = False
-        self._damage_vs_abomination = 0
-        self._damage_vs_ghoul = 0
-        self._damage_vs_horseman = 0
-        self._damage_vs_hound = 0
-        self._damage_vs_wraith = 0
-        self._damage_vs_zombie = 0
         self._gold_cost = 0
         self._health = 0
         self._mana_cost = 0
@@ -42,54 +36,6 @@ class tJob(GameObject):
         :rtype: bool
         """
         return self._all_units
-
-    @property
-    def damage_vs_abomination(self):
-        """The amount of damage this type does per attack against abominations.
-
-        :rtype: int
-        """
-        return self._damage_vs_abomination
-
-    @property
-    def damage_vs_ghoul(self):
-        """The amount of damage this type does per attack against ghouls.
-
-        :rtype: int
-        """
-        return self._damage_vs_ghoul
-
-    @property
-    def damage_vs_horseman(self):
-        """The amount of damage this type does per attack against horseman.
-
-        :rtype: int
-        """
-        return self._damage_vs_horseman
-
-    @property
-    def damage_vs_hound(self):
-        """The amount of damage this type does per attack against hounds.
-
-        :rtype: int
-        """
-        return self._damage_vs_hound
-
-    @property
-    def damage_vs_wraith(self):
-        """The amount of damage this type does per attack against wraiths.
-
-        :rtype: int
-        """
-        return self._damage_vs_wraith
-
-    @property
-    def damage_vs_zombie(self):
-        """The amount of damage this type does per attack against zombies.
-
-        :rtype: int
-        """
-        return self._damage_vs_zombie
 
     @property
     def gold_cost(self):

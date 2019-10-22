@@ -39,7 +39,6 @@ class Game(BaseGame):
         self._map_height = 0
         self._map_width = 0
         self._max_turns = 100
-        self._mine_unit_cap = 0
         self._players = []
         self._river_phase = 0
         self._session = ""
@@ -133,14 +132,6 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._max_turns
-
-    @property
-    def mine_unit_cap(self):
-        """The maximum number of workers that can occupy a mine at a given time.
-
-        :rtype: int
-        """
-        return self._mine_unit_cap
 
     @property
     def players(self):
