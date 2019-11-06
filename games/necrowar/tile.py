@@ -22,12 +22,15 @@ class Tile(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._corpses = 0
+        self._is_castle = False
         self._is_gold_mine = False
+        self._is_grass = False
         self._is_island_gold_mine = False
         self._is_path = False
         self._is_river = False
         self._is_tower = False
-        self._is_wall = False
+        self._is_unit_spawn = False
+        self._is_worker_spawn = False
         self._num_of_ghouls = 0
         self._num_of_hounds = 0
         self._num_of_zombies = 0
@@ -50,12 +53,28 @@ class Tile(GameObject):
         return self._corpses
 
     @property
+    def is_castle(self):
+        """Whether or not the tile is where a player's castle rests.
+
+        :rtype: bool
+        """
+        return self._is_castle
+
+    @property
     def is_gold_mine(self):
         """Whether or not the tile is considered to be a gold mine or not.
 
         :rtype: bool
         """
         return self._is_gold_mine
+
+    @property
+    def is_grass(self):
+        """Whether or not the tile can be moved on by workers.
+
+        :rtype: bool
+        """
+        return self._is_grass
 
     @property
     def is_island_gold_mine(self):
@@ -90,12 +109,20 @@ class Tile(GameObject):
         return self._is_tower
 
     @property
-    def is_wall(self):
-        """Whether or not the tile can be moved on by workers.
+    def is_unit_spawn(self):
+        """Whether or not this tile is this player's Unit spawn.
 
         :rtype: bool
         """
-        return self._is_wall
+        return self._is_unit_spawn
+
+    @property
+    def is_worker_spawn(self):
+        """Whether or not this tile is this player's Worker spawn.
+
+        :rtype: bool
+        """
+        return self._is_worker_spawn
 
     @property
     def num_of_ghouls(self):
@@ -163,7 +190,7 @@ class Tile(GameObject):
 
     @property
     def type(self):
-        """The type of Tile this is ('normal', 'path', 'river', 'mine', 'castle', 'pathSpawn', or 'workerSpawn').
+        """The type of Tile this is ('grass', 'path', 'river', 'mine', 'castle', 'pathSpawn', or 'workerSpawn').
 
         :rtype: str
         """

@@ -21,20 +21,30 @@ class Unit(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
-        self._acted = False
+        self._attacked = False
+        self._built = False
         self._health = 0
+        self._moved = False
         self._moves = 0
         self._owner = None
         self._tile = None
         self._u_job = None
 
     @property
-    def acted(self):
-        """Whether or not this Unit has performed its action this turn (attack or build).
+    def attacked(self):
+        """Whether or not this Unit has attacked this turn or not.
 
         :rtype: bool
         """
-        return self._acted
+        return self._attacked
+
+    @property
+    def built(self):
+        """Whether or not this Unit has built a tower (workers only) this turn or not.
+
+        :rtype: bool
+        """
+        return self._built
 
     @property
     def health(self):
@@ -43,6 +53,14 @@ class Unit(GameObject):
         :rtype: int
         """
         return self._health
+
+    @property
+    def moved(self):
+        """Whether or not this Unit has moved yet this turn.
+
+        :rtype: bool
+        """
+        return self._moved
 
     @property
     def moves(self):

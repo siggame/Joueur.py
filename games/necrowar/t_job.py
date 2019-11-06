@@ -22,6 +22,7 @@ class tJob(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._all_units = False
+        self._damage = 0
         self._gold_cost = 0
         self._health = 0
         self._mana_cost = 0
@@ -36,6 +37,14 @@ class tJob(GameObject):
         :rtype: bool
         """
         return self._all_units
+
+    @property
+    def damage(self):
+        """How much damage this tower type does in a single turn of attack.
+
+        :rtype: int
+        """
+        return self._damage
 
     @property
     def gold_cost(self):
