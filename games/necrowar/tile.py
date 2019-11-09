@@ -32,6 +32,9 @@ class Tile(GameObject):
         self._is_unit_spawn = False
         self._is_wall = False
         self._is_worker_spawn = False
+        self._num_ghouls = 0
+        self._num_hounds = 0
+        self._num_zombies = 0
         self._tile_east = None
         self._tile_north = None
         self._tile_south = None
@@ -131,6 +134,30 @@ class Tile(GameObject):
         return self._is_worker_spawn
 
     @property
+    def num_ghouls(self):
+        """The amount of Ghouls on this tile.
+
+        :rtype: int
+        """
+        return self._num_ghouls
+
+    @property
+    def num_hounds(self):
+        """The amount of Hounds on this tile.
+
+        :rtype: int
+        """
+        return self._num_hounds
+
+    @property
+    def num_zombies(self):
+        """The amount of Zombies on this tile.
+
+        :rtype: int
+        """
+        return self._num_zombies
+
+    @property
     def tile_east(self):
         """The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
 
@@ -202,16 +229,16 @@ class Tile(GameObject):
         """
         return self._y
 
-    def res(self, number):
+    def res(self, num):
         """ Resurrect the corpses on this tile into Zombies.
 
         Args:
-            number (int): Number of zombies to resurrect.
+            num (int): Number of zombies to resurrect.
 
         Returns:
             bool: True if successful res, False otherwise.
         """
-        return self._run_on_server('res', number=number)
+        return self._run_on_server('res', num=num)
 
     def spawn_unit(self, title):
         """ Spawns a fighting unit on the correct tile.
