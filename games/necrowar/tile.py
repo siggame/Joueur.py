@@ -30,10 +30,8 @@ class Tile(GameObject):
         self._is_river = False
         self._is_tower = False
         self._is_unit_spawn = False
+        self._is_wall = False
         self._is_worker_spawn = False
-        self._num_of_ghouls = 0
-        self._num_of_hounds = 0
-        self._num_of_zombies = 0
         self._tile_east = None
         self._tile_north = None
         self._tile_south = None
@@ -54,7 +52,7 @@ class Tile(GameObject):
 
     @property
     def is_castle(self):
-        """Whether or not the tile is where a player's castle rests.
+        """Whether or not the tile is a castle tile.
 
         :rtype: bool
         """
@@ -70,7 +68,7 @@ class Tile(GameObject):
 
     @property
     def is_grass(self):
-        """Whether or not the tile can be moved on by workers.
+        """Whether or not the tile is considered grass or not (Workers can walk on grass).
 
         :rtype: bool
         """
@@ -86,7 +84,7 @@ class Tile(GameObject):
 
     @property
     def is_path(self):
-        """Whether or not the tile is considered a path or not.
+        """Whether or not the tile is considered a path or not (Units can walk on paths).
 
         :rtype: bool
         """
@@ -110,43 +108,27 @@ class Tile(GameObject):
 
     @property
     def is_unit_spawn(self):
-        """Whether or not this tile is this player's Unit spawn.
+        """Whether or not the tile is the unit spawn.
 
         :rtype: bool
         """
         return self._is_unit_spawn
 
     @property
+    def is_wall(self):
+        """Whether or not the tile can be moved on by workers.
+
+        :rtype: bool
+        """
+        return self._is_wall
+
+    @property
     def is_worker_spawn(self):
-        """Whether or not this tile is this player's Worker spawn.
+        """Whether or not the tile is the worker spawn.
 
         :rtype: bool
         """
         return self._is_worker_spawn
-
-    @property
-    def num_of_ghouls(self):
-        """The amount of Ghouls on this tile at the moment.
-
-        :rtype: int
-        """
-        return self._num_of_ghouls
-
-    @property
-    def num_of_hounds(self):
-        """The amount of Hell Hounds on this tile at the moment.
-
-        :rtype: int
-        """
-        return self._num_of_hounds
-
-    @property
-    def num_of_zombies(self):
-        """The amount of animated zombies on this tile at the moment.
-
-        :rtype: int
-        """
-        return self._num_of_zombies
 
     @property
     def tile_east(self):
@@ -190,7 +172,7 @@ class Tile(GameObject):
 
     @property
     def type(self):
-        """The type of Tile this is ('grass', 'path', 'river', 'mine', 'castle', 'pathSpawn', or 'workerSpawn').
+        """The type of Tile this is ('normal', 'path', 'river', or 'spawn').
 
         :rtype: str
         """
@@ -198,7 +180,7 @@ class Tile(GameObject):
 
     @property
     def unit(self):
-        """The list of Units on this Tile if present, otherwise None.
+        """The Unit on this Tile if present, otherwise None.
 
         :rtype: games.necrowar.unit.Unit
         """
@@ -221,15 +203,34 @@ class Tile(GameObject):
         return self._y
 
     def res(self, number):
-        """ Resurrect the corpses on this tile into zombies.
+        """ Resurrect the corpses on this tile into Zombies.
 
         Args:
-            number (int): Number of zombies on the tile that are being resurrected.
+            number (int): Number of zombies to resurrect.
 
         Returns:
-            bool: True if Unit was created successfully, False otherwise.
+            bool: True if successful res, False otherwise.
         """
         return self._run_on_server('res', number=number)
+
+    def spawn_unit(self, title):
+        """ Spawns a fighting unit on the correct tile.
+
+        Args:
+            title (str): The title of the desired unit type.
+
+        Returns:
+            bool: True if successfully spawned, False otherwise.
+        """
+        return self._run_on_server('spawnUnit', title=title)
+
+    def spawn_worker(self):
+        """ Spawns a worker on the correct tile.
+
+        Returns:
+            bool: True if successfully spawned, False otherwise.
+        """
+        return self._run_on_server('spawnWorker')
 
 
     directions = ["North", "East", "South", "West"]

@@ -40,7 +40,7 @@ class tJob(GameObject):
 
     @property
     def damage(self):
-        """How much damage this tower type does in a single turn of attack.
+        """The amount of damage this type does per attack.
 
         :rtype: int
         """
@@ -88,7 +88,7 @@ class tJob(GameObject):
 
     @property
     def turns_between_attacks(self):
-        """How many turns this tower type needs to take between attacks.
+        """How many turns have to take place between this type's attacks.
 
         :rtype: int
         """

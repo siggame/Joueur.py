@@ -35,10 +35,12 @@ class Game(BaseGame):
         self._game_objects = {}
         self._gold_income_per_unit = 0
         self._island_income_per_unit = 0
+        self._island_unit_cap = 0
         self._mana_income_per_unit = 0
         self._map_height = 0
         self._map_width = 0
         self._max_turns = 100
+        self._mine_unit_cap = 0
         self._players = []
         self._river_phase = 0
         self._session = ""
@@ -102,6 +104,14 @@ class Game(BaseGame):
         return self._island_income_per_unit
 
     @property
+    def island_unit_cap(self):
+        """The maximum number of workers that can occupy the mine on the island at a given time.
+
+        :rtype: int
+        """
+        return self._island_unit_cap
+
+    @property
     def mana_income_per_unit(self):
         """The Amount of gold income per turn per unit fishing on the river side.
 
@@ -132,6 +142,14 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._max_turns
+
+    @property
+    def mine_unit_cap(self):
+        """The maximum number of workers that can occupy a mine at a given time.
+
+        :rtype: int
+        """
+        return self._mine_unit_cap
 
     @property
     def players(self):

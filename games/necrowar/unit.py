@@ -21,30 +21,20 @@ class Unit(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
-        self._attacked = False
-        self._built = False
+        self._acted = False
         self._health = 0
-        self._moved = False
         self._moves = 0
         self._owner = None
         self._tile = None
         self._u_job = None
 
     @property
-    def attacked(self):
-        """Whether or not this Unit has attacked this turn or not.
+    def acted(self):
+        """Whether or not this Unit has performed its action this turn (attack or build).
 
         :rtype: bool
         """
-        return self._attacked
-
-    @property
-    def built(self):
-        """Whether or not this Unit has built a tower (workers only) this turn or not.
-
-        :rtype: bool
-        """
-        return self._built
+        return self._acted
 
     @property
     def health(self):
@@ -53,14 +43,6 @@ class Unit(GameObject):
         :rtype: int
         """
         return self._health
-
-    @property
-    def moved(self):
-        """Whether or not this Unit has moved yet this turn.
-
-        :rtype: bool
-        """
-        return self._moved
 
     @property
     def moves(self):
@@ -129,7 +111,7 @@ class Unit(GameObject):
         return self._run_on_server('fish', tile=tile)
 
     def mine(self, tile):
-        """ Enters an empty mine tile and is put to work gathering resources.
+        """ Enters a mine and is put to work gathering resources.
 
         Args:
             tile (games.necrowar.tile.Tile): The tile the mine is located on.
