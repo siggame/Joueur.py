@@ -11,9 +11,9 @@ from games.necrowar.game_object import GameObject
 from games.necrowar.player import Player
 from games.necrowar.tile import Tile
 from games.necrowar.tower import Tower
+from games.necrowar.tower_job import TowerJob
 from games.necrowar.unit import Unit
-from games.necrowar.t_job import tJob
-from games.necrowar.u_job import uJob
+from games.necrowar.unit_job import UnitJob
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 # you can add additional import(s) here
@@ -30,6 +30,8 @@ class Game(BaseGame):
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
+        self._tower_jobs = []
+        self._unit_jobs = []
         self._current_player = None
         self._current_turn = 0
         self._game_objects = {}
@@ -42,11 +44,9 @@ class Game(BaseGame):
         self._players = []
         self._river_phase = 0
         self._session = ""
-        self._t_jobs = []
         self._tiles = []
         self._time_added_per_turn = 0
         self._towers = []
-        self._u_jobs = []
         self._units = []
 
         self.name = "Necrowar"
@@ -56,10 +56,26 @@ class Game(BaseGame):
             'Player': Player,
             'Tile': Tile,
             'Tower': Tower,
+            'TowerJob': TowerJob,
             'Unit': Unit,
-            'tJob': tJob,
-            'uJob': uJob
+            'UnitJob': UnitJob
         }
+
+    @property
+    def tower_jobs(self):
+        """A list of every tower type / job.
+
+        :rtype: list[games.necrowar.tower_job.TowerJob]
+        """
+        return self._tower_jobs
+
+    @property
+    def unit_jobs(self):
+        """A list of every unit type / job.
+
+        :rtype: list[games.necrowar.unit_job.UnitJob]
+        """
+        return self._unit_jobs
 
     @property
     def current_player(self):
@@ -158,14 +174,6 @@ class Game(BaseGame):
         return self._session
 
     @property
-    def t_jobs(self):
-        """A list of every tower type / job.
-
-        :rtype: list[tJob]
-        """
-        return self._t_jobs
-
-    @property
     def tiles(self):
         """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
 
@@ -188,14 +196,6 @@ class Game(BaseGame):
         :rtype: list[games.necrowar.tower.Tower]
         """
         return self._towers
-
-    @property
-    def u_jobs(self):
-        """A list of every unit type / job.
-
-        :rtype: list[uJob]
-        """
-        return self._u_jobs
 
     @property
     def units(self):

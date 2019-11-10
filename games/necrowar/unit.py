@@ -23,10 +23,10 @@ class Unit(GameObject):
         # private attributes to hold the properties so they appear read only
         self._acted = False
         self._health = 0
+        self._job = None
         self._moves = 0
         self._owner = None
         self._tile = None
-        self._u_job = None
 
     @property
     def acted(self):
@@ -43,6 +43,14 @@ class Unit(GameObject):
         :rtype: int
         """
         return self._health
+
+    @property
+    def job(self):
+        """The type of unit this is.
+
+        :rtype: games.necrowar.unit_job.UnitJob
+        """
+        return self._job
 
     @property
     def moves(self):
@@ -67,14 +75,6 @@ class Unit(GameObject):
         :rtype: games.necrowar.tile.Tile
         """
         return self._tile
-
-    @property
-    def u_job(self):
-        """The type of unit this is.
-
-        :rtype: uJob
-        """
-        return self._u_job
 
     def attack(self, tile):
         """ Attacks an enemy tower on an adjacent tile.

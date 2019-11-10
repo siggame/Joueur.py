@@ -23,9 +23,9 @@ class Tower(GameObject):
         # private attributes to hold the properties so they appear read only
         self._attacked = False
         self._health = 0
+        self._job = None
         self._owner = None
         self._tile = None
-        self._type = None
 
     @property
     def attacked(self):
@@ -44,6 +44,14 @@ class Tower(GameObject):
         return self._health
 
     @property
+    def job(self):
+        """What type of tower this is (it's job).
+
+        :rtype: games.necrowar.tower_job.TowerJob
+        """
+        return self._job
+
+    @property
     def owner(self):
         """The player that built / owns this tower.
 
@@ -58,14 +66,6 @@ class Tower(GameObject):
         :rtype: games.necrowar.tile.Tile
         """
         return self._tile
-
-    @property
-    def type(self):
-        """What type of tower this is (it's job).
-
-        :rtype: tJob
-        """
-        return self._type
 
     def attack(self, tile):
         """ Attacks an enemy unit on an tile within it's range.
