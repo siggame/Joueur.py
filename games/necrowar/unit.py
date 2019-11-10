@@ -87,17 +87,16 @@ class Unit(GameObject):
         """
         return self._run_on_server('attack', tile=tile)
 
-    def build(self, tile, tJob):
+    def build(self, title):
         """ Unit, if it is a worker, builds a tower on the tile it is on, only workers can do this.
 
         Args:
-            tile (games.necrowar.tile.Tile): The tile the unit is on/builds on.
-            t_job (tJob): The type of tower that is being built. 'arrow', 'aoe', 'ballista', or 'cleansing'.
+            title (str): The tower type to build, as a string.
 
         Returns:
             bool: True if successfully built, False otherwise.
         """
-        return self._run_on_server('build', tile=tile, tJob=tJob)
+        return self._run_on_server('build', title=title)
 
     def fish(self, tile):
         """ Stops adjacent to a river tile and begins fishing for mana.
