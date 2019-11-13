@@ -80,7 +80,7 @@ class TowerJob(GameObject):
 
     @property
     def title(self):
-        """The type title. 'arrow', 'aoe', 'ballista', or 'cleansing'.
+        """The type title. 'arrow', 'aoe', 'ballista', 'cleansing', or 'castle'.
 
         :rtype: str
         """

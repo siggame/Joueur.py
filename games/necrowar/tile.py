@@ -35,12 +35,12 @@ class Tile(GameObject):
         self._num_ghouls = 0
         self._num_hounds = 0
         self._num_zombies = 0
+        self._owner = None
         self._tile_east = None
         self._tile_north = None
         self._tile_south = None
         self._tile_west = None
         self._tower = None
-        self._type = ""
         self._unit = None
         self._x = 0
         self._y = 0
@@ -158,6 +158,14 @@ class Tile(GameObject):
         return self._num_zombies
 
     @property
+    def owner(self):
+        """Which player owns this tile, only applies to grass tiles for workers, NULL otherwise.
+
+        :rtype: games.necrowar.player.Player
+        """
+        return self._owner
+
+    @property
     def tile_east(self):
         """The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
 
@@ -196,14 +204,6 @@ class Tile(GameObject):
         :rtype: games.necrowar.tower.Tower
         """
         return self._tower
-
-    @property
-    def type(self):
-        """The type of Tile this is ('normal', 'path', 'river', or 'spawn').
-
-        :rtype: str
-        """
-        return self._type
 
     @property
     def unit(self):
