@@ -66,6 +66,19 @@ def run(args):
 
     lobby_data = joueur.client.wait_for_event("lobbied")
 
+    if lobby_data['gameVersion'] != module.game_version:
+        print("""{}WARNING: Game versions do not match.
+-> Your local game version is:     {}
+-> Game Server's game version is:  {}
+
+Version mismatch means that unexpected crashes may happen due to differing game structures!{}""".format(
+            color.text('yellow'),
+            str(module.game_version)[:8],
+            str(lobby_data['gameVersion'])[:8],
+            color.reset()
+        )
+    )
+
     print('{}In Lobby for game "{}" in session "{}".{}'.format(
             color.text("cyan"),
             lobby_data['gameName'],

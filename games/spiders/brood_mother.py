@@ -28,7 +28,7 @@ class BroodMother(Spider):
     def eggs(self):
         """How many eggs the BroodMother has to spawn Spiderlings this turn.
 
-        :rtype: float
+        :rtype: int
         """
         return self._eggs
 

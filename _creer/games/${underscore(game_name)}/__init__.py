@@ -5,4 +5,6 @@ from games.${underscore(game_name)}.game import Game
 from games.${underscore(game_name)}.${underscore(game_obj_key)} import ${game_obj_key}
 % endfor
 
+game_version = '${game_version}'
+
 ${merge("# ", "init", "# if you need to initialize this module with custom logic do so here")}

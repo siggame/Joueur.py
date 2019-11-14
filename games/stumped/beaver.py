@@ -136,7 +136,7 @@ class Beaver(GameObject):
 
         Args:
             tile (games.stumped.tile.Tile): The Tile to drop branches/food on. Must be the same Tile that the Beaver is on, or an adjacent one.
-            resource (str): The type of resource to drop ('branch' or 'food').
+            resource (str): The type of resource to drop ('branches' or 'food').
             amount (Optional[int]): The amount of the resource to drop, numbers <= 0 will drop all the resource type.
 
         Returns:
@@ -171,7 +171,7 @@ class Beaver(GameObject):
 
         Args:
             tile (games.stumped.tile.Tile): The Tile to pickup branches/food from. Must be the same Tile that the Beaver is on, or an adjacent one.
-            resource (str): The type of resource to pickup ('branch' or 'food').
+            resource (str): The type of resource to pickup ('branches' or 'food').
             amount (Optional[int]): The amount of the resource to drop, numbers <= 0 will pickup all of the resource type.
 
         Returns:

@@ -26,6 +26,7 @@ class Player(GameObject):
         self._lost = False
         self._max_spiderlings = 0
         self._name = "Anonymous"
+        self._number_of_nests_controlled = 0
         self._opponent = None
         self._reason_lost = ""
         self._reason_won = ""
@@ -72,6 +73,14 @@ class Player(GameObject):
         :rtype: str
         """
         return self._name
+
+    @property
+    def number_of_nests_controlled(self):
+        """The number of nests this player controls.
+
+        :rtype: int
+        """
+        return self._number_of_nests_controlled
 
     @property
     def opponent(self):

@@ -21,10 +21,19 @@ class Nest(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
+        self._controlling_player = None
         self._spiders = []
         self._webs = []
         self._x = 0
         self._y = 0
+
+    @property
+    def controlling_player(self):
+        """The Player that 'controls' this Nest as they have the most Spiders on this nest.
+
+        :rtype: games.spiders.player.Player
+        """
+        return self._controlling_player
 
     @property
     def spiders(self):
