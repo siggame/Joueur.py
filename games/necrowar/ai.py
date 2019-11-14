@@ -70,8 +70,119 @@ class AI(BaseAI):
         Returns:
             bool: Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.
         """
-        # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        # Put your game logic here for runTurn
+        spawnWorkerTiles = []
+        spawnUnitTiles = []
+        for tile in self.player.side:
+            if tile.owner == this.player:
+                if tile.isWorkerSpawn:
+                    spawnWorkerTiles.append(tile)
+                elif tile.isUnitSpawn:
+                    spawnUnitTiles.append(tile)
+
+        gold = self.player.gold
+        mana = self.player.man
+        numWorkers = 0
+        numUnits = 0
+        for unit in self.player.units:
+            if unit.job.title == "worker":
+                numWorkers+=1
+            else:
+                numUnits+=1
+
+        if (numWorkers < 5):
+            spawnWorkerTiles[0].spawnWorker()
+
+        if (numUnits < 3):
+            spawnUnitTiles[0].spawnUnit("ghoul")
+
+        enemy = None;
+        if (self.player == self.game.players.get[0]):
+            enemy = self.game.players.get(1)
+        else:
+            enemy = self.game.players.get(0)
+
+        # Go through all the units that you own.
+        target = None;
+        for unit in self.player.units:
+            # Only tries to do something if the unit actually exists.
+            # if a unit does not have a tile, then they are dead.
+            if not (unit == None) and not (unit.tile == None):
+                if unit.job.title.equals("worker"):
+                    # if the unit is a worker, go to mine and collect gold
+                    target = None
+
+                    # Goes through all tiles in the game and finds a mine.
+                    # Should only have four workers over at the mine.
+                    for tile in self.game.tiles:
+                        # If that mine is on my side, is a gold mine, and have no units on it
+                        if tile.isGoldMine and self.player.side.contains(tile) and tile.unit == None:
+                            # Send it to that tile
+                            target = tile
+                        # If the tile is a tower and on my side, and has no other units on it.
+                        elif tile.isTower and self.player.side.contains(tile) and tile.unit == None:
+                            # Send it to that tile
+                            target = tile
+                    # Else, try fishing
+                    if target == None:
+                        # All river spots
+                        riverSpots = []
+                        for tile in game.tiles:
+                            # Gathers all river spots
+                            if tile.isRiver and self.player.side.contains(tile):
+                                riverSpots.add(tile)
+                        # Go through all game titles and find all adjacent spots to the river
+                        for tile in game.tiles:
+                            foundRiverSpot = False;
+                            for spot in riverSpots:
+                                foundRiverSpot = tile.getNeighbors().contains(spot);
+                            # Only does anything if tile is adjacent to river
+                            if foundRiverSpot and player.side.contains(tile):
+                                while unit.moves > 0 and not findPath(unit.tile, tile).isEmpty():
+                                    # Moves unit until there are no moves left for the worker or at the tile
+                                    if not unit.move(findPath(unit.tile, tile)[0]):
+                                        unit.move(target)
+                                # Fish
+                                if not unit.acted:
+                                    unit.fish(tile)
+                                break
+                    else:
+                        # Move to the target, whether that be mine or tower
+                        while unit.moves > 0 and not findPath(unit.tile, target).isEmpty():
+                            if not unit.move(findPath(unit.tile, target)[0]):
+                                unit.move(target)
+                        # Checks whether the target is a mine or tower. Acts accordingly
+                        if not unit.acted:
+                            if target.isGoldMine:
+                                unit.acted = True
+                                unit.mine(target.tile)
+                            elif (target.isTower):
+                                unit.acted = true
+                                unit.build("arrow")
+                elif unit.job.title.equals("ghoul"):
+                    # Finds enemy towers
+                    target = None
+
+                    for tile in game.tiles:
+                        if tile.isTower and enemy.side.contains(tile) and not tile.unit == None:
+                            target = tile
+                            # Moves towards our target until at the target or out of moves.
+                            while unit.moves > 0 and len(findPath(unit.tile, target)) > 1):
+                                if not unit.move(findPath(unit.tile, target)[0]):
+                                    unit.move(target)
+                                if not unit.acted:
+                                       unit.attack(target)
+                        elif target == None
+                            target = None
+                            for tileTarget in game.tiles:
+                                if tileTarget.isCastle and enemy.side.contains(tileTarget) and not tileTarget.unit == null:
+                                    target = tileTarget
+                                    # Moves towards our target until at the target or out of moves.
+                                    while unit.moves > 0 and len(findPath(unit.tile, target)) > 1:
+                                        if not unit.move(findPath(unit.tile, target)[0]):
+                                            unit.move(target)
+                                        if not unit.acted:
+                                                unit.attack(target)
+                                                unit.acted = True
         return True
         # <<-- /Creer-Merge: runTurn -->>
 
