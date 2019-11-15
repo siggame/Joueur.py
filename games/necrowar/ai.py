@@ -166,12 +166,12 @@ class AI(BaseAI):
                         if tile.isTower and enemy.side.contains(tile) and not tile.unit == None:
                             target = tile
                             # Moves towards our target until at the target or out of moves.
-                            while unit.moves > 0 and len(findPath(unit.tile, target)) > 1):
+                            while unit.moves > 0 and len(findPath(unit.tile, target) > 1):
                                 if not unit.move(findPath(unit.tile, target)[0]):
                                     unit.move(target)
                                 if not unit.acted:
                                        unit.attack(target)
-                        elif target == None
+                        elif target == None:
                             target = None
                             for tileTarget in game.tiles:
                                 if tileTarget.isCastle and enemy.side.contains(tileTarget) and not tileTarget.unit == null:
