@@ -191,7 +191,7 @@ class Unit(GameObject):
 
         Args:
             tile (games.catastrophe.tile.Tile): The Tile to drop materials/food on.
-            resource (str): The type of resource to drop ('material' or 'food').
+            resource (str): The type of resource to drop ('materials' or 'food').
             amount (Optional[int]): The amount of the resource to drop. Amounts <= 0 will drop as much as possible.
 
         Returns:
@@ -226,7 +226,7 @@ class Unit(GameObject):
 
         Args:
             tile (games.catastrophe.tile.Tile): The Tile to pickup materials/food from.
-            resource (str): The type of resource to pickup ('material' or 'food').
+            resource (str): The type of resource to pickup ('materials' or 'food').
             amount (Optional[int]): The amount of the resource to pickup. Amounts <= 0 will pickup as much as possible.
 
         Returns:

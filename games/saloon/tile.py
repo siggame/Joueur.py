@@ -36,7 +36,7 @@ class Tile(GameObject):
 
     @property
     def bottle(self):
-        """The beer Bottle currently flying over this Tile.
+        """The beer Bottle currently flying over this Tile, None otherwise.
 
         :rtype: games.saloon.bottle.Bottle
         """

@@ -189,18 +189,6 @@ class Unit(GameObject):
         """
         return self._run_on_server('dash', x=x, y=y)
 
-    def is_dashable(self, x, y):
-        """ tells you if your ship can dash to that location from where it is without clipping the sun.
-
-        Args:
-            x (float): The x position of the location you wish to arrive.
-            y (float): The y position of the location you wish to arrive.
-
-        Returns:
-            bool: True if pathable by this unit, False otherwise.
-        """
-        return self._run_on_server('isDashable', x=x, y=y)
-
     def mine(self, body):
         """ allows a miner to mine a asteroid
 
@@ -225,7 +213,7 @@ class Unit(GameObject):
         return self._run_on_server('move', x=x, y=y)
 
     def safe(self, x, y):
-        """ tells you if your ship can move to that location from were it is landing in the sun.
+        """ tells you if your ship can move to that location from were it is without clipping the sun.
 
         Args:
             x (float): The x position of the location you wish to arrive.

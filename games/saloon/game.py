@@ -49,6 +49,7 @@ class Game(BaseGame):
         self._sharpshooter_damage = 0
         self._siesta_length = 0
         self._tiles = []
+        self._time_added_per_turn = 0
         self._turns_drunk = 0
 
         self.name = "Saloon"
@@ -216,6 +217,14 @@ class Game(BaseGame):
         return self._tiles
 
     @property
+    def time_added_per_turn(self):
+        """The amount of time (in nano-seconds) added after each player performs a turn.
+
+        :rtype: int
+        """
+        return self._time_added_per_turn
+
+    @property
     def turns_drunk(self):
         """How many turns a Cowboy will be drunk for if a bottle breaks on it.
 
@@ -227,8 +236,8 @@ class Game(BaseGame):
     def get_tile_at(self, x, y):
         """Gets the Tile at a specified (x, y) position
         Args:
-            x (int): integer between 0 and the mapWidth
-            y (int): integer between 0 and the mapHeight
+            x (int): integer between 0 and the map_width
+            y (int): integer between 0 and the map_height
         Returns:
             games.saloon.tile.Tile: the Tile at (x, y) or None if out of bounds
         """
@@ -236,7 +245,7 @@ class Game(BaseGame):
             # out of bounds
             return None
 
-        return self.tiles[x + y * self.mapWidth]
+        return self.tiles[x + y * self.map_width]
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

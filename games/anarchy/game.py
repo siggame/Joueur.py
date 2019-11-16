@@ -46,6 +46,7 @@ class Game(BaseGame):
         self._next_forecast = None
         self._players = []
         self._session = ""
+        self._time_added_per_turn = 0
 
         self.name = "Anarchy"
 
@@ -179,6 +180,14 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._session
+
+    @property
+    def time_added_per_turn(self):
+        """The amount of time (in nano-seconds) added after each player performs a turn.
+
+        :rtype: int
+        """
+        return self._time_added_per_turn
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

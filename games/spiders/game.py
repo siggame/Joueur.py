@@ -40,11 +40,13 @@ class Game(BaseGame):
         self._game_objects = {}
         self._initial_web_strength = 0
         self._max_turns = 100
+        self._max_web_strength = 0
         self._movement_speed = 0
         self._nests = []
         self._players = []
         self._session = ""
         self._spit_speed = 0
+        self._time_added_per_turn = 0
         self._weave_power = 0
         self._weave_speed = 0
         self._webs = []
@@ -121,6 +123,14 @@ class Game(BaseGame):
         return self._max_turns
 
     @property
+    def max_web_strength(self):
+        """The maximum strength a web can be strengthened to.
+
+        :rtype: int
+        """
+        return self._max_web_strength
+
+    @property
     def movement_speed(self):
         """The speed at which Spiderlings move on Webs.
 
@@ -159,6 +169,14 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._spit_speed
+
+    @property
+    def time_added_per_turn(self):
+        """The amount of time (in nano-seconds) added after each player performs a turn.
+
+        :rtype: int
+        """
+        return self._time_added_per_turn
 
     @property
     def weave_power(self):

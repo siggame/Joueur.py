@@ -9,6 +9,8 @@ from games.saloon.player import Player
 from games.saloon.tile import Tile
 from games.saloon.young_gun import YoungGun
 
+game_version = 'fbaeac2bae9020bdd5a8816cb9ae38215c277e4bf7874a2f70c3995cd8eee8d3'
+
 # <<-- Creer-Merge: init -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 # if you need to initialize this module with custom logic do so here
 # <<-- /Creer-Merge: init -->>

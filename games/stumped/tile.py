@@ -117,7 +117,7 @@ class Tile(GameObject):
 
     @property
     def type(self):
-        """What type of Tile this is, either 'Water' or 'Land'.
+        """What type of Tile this is, either 'water' or 'land'.
 
         :rtype: str
         """

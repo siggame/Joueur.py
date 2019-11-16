@@ -12,6 +12,8 @@ from games.spiders.spitter import Spitter
 from games.spiders.weaver import Weaver
 from games.spiders.web import Web
 
+game_version = 'a8df6038306b6855bb35959d7698f8dcbf98f48e7e148de59fef940ccb241bdf'
+
 # <<-- Creer-Merge: init -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 # if you need to initialize this module with custom logic do so here
 # <<-- /Creer-Merge: init -->>
