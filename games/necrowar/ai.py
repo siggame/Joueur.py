@@ -169,7 +169,15 @@ class AI(BaseAI):
                 unit.move(tile)
             if path == [] and unit.moves > 0:
                 unit.attack(self.enemyCastle.tile)
-
+        
+        # Make towers attack anything adjacent to them
+        # Note that they are not using their full range
+        for tower in self.player.towers:
+            adjacent = tower.tile.get_neighbors()
+            for tile in adjacent:
+                if tile.unit and tile.unit.owner == self.player.opponent:
+                    tower.attack(tile)
+        
         return True
         # <<-- /Creer-Merge: runTurn -->>
 
