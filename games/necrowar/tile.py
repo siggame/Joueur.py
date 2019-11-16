@@ -285,7 +285,12 @@ class Tile(GameObject):
             bool: True if pathable, False otherwise
         """
         # <<-- Creer-Merge: is_pathable_builtin -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        return false  # DEVELOPER ADD LOGIC HERE
+        
+        # DEVELOPER ADD LOGIC HERE
+        if self.is_path and self.unit == None and not self.is_tower:
+            return True
+        return False
+        
         # <<-- /Creer-Merge: is_pathable_builtin -->>
 
     def has_neighbor(self, tile):
@@ -298,5 +303,9 @@ class Tile(GameObject):
         return bool(tile and tile in self.get_neighbors())
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+
     # if you want to add any client side logic (such as state checking functions) this is where you can add them
+    def isPathableWorker(self):
+        return not (self.is_river or self.is_unit_spawn or self.is_wall or self.unit != None)
+    
     # <<-- /Creer-Merge: functions -->>
