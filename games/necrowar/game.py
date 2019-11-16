@@ -30,8 +30,6 @@ class Game(BaseGame):
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
-        self._tower_jobs = []
-        self._unit_jobs = []
         self._current_player = None
         self._current_turn = 0
         self._game_objects = {}
@@ -46,7 +44,9 @@ class Game(BaseGame):
         self._session = ""
         self._tiles = []
         self._time_added_per_turn = 0
+        self._tower_jobs = []
         self._towers = []
+        self._unit_jobs = []
         self._units = []
 
         self.name = "Necrowar"
@@ -60,22 +60,6 @@ class Game(BaseGame):
             'Unit': Unit,
             'UnitJob': UnitJob
         }
-
-    @property
-    def tower_jobs(self):
-        """A list of every tower type / job.
-
-        :rtype: list[games.necrowar.tower_job.TowerJob]
-        """
-        return self._tower_jobs
-
-    @property
-    def unit_jobs(self):
-        """A list of every unit type / job.
-
-        :rtype: list[games.necrowar.unit_job.UnitJob]
-        """
-        return self._unit_jobs
 
     @property
     def current_player(self):
@@ -190,12 +174,28 @@ class Game(BaseGame):
         return self._time_added_per_turn
 
     @property
+    def tower_jobs(self):
+        """A list of every tower type / job.
+
+        :rtype: list[games.necrowar.tower_job.TowerJob]
+        """
+        return self._tower_jobs
+
+    @property
     def towers(self):
         """Every Tower in the game.
 
         :rtype: list[games.necrowar.tower.Tower]
         """
         return self._towers
+
+    @property
+    def unit_jobs(self):
+        """A list of every unit type / job.
+
+        :rtype: list[games.necrowar.unit_job.UnitJob]
+        """
+        return self._unit_jobs
 
     @property
     def units(self):
