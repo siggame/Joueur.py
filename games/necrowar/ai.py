@@ -43,17 +43,6 @@ class AI(BaseAI):
         # <<-- Creer-Merge: start -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # replace with your start logic
 
-        # Print our starting stats
-        print("GOLD:", self.player.gold)
-        print("MANA:", self.player.mana)
-        print("UNITS: ")
-        for unit in self.player.units:
-            print(unit.job.title, end=",")
-        print("\nTOWERS: ")
-        for tower in self.player.towers:
-            print(tower.job.title, end=",")
-        print("\nCASTLE HEALTH:", self.player.towers[0].health)
-
         # Set up varibales to track all relevant information
         self.spawnUnitTile = None
         self.spawnWorkerTile = None
@@ -100,21 +89,7 @@ class AI(BaseAI):
             or lost.
         """
         # <<-- Creer-Merge: end -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-
-        # Print our final stats
-        print("GOLD:", self.player.gold)
-        print("MANA:", self.player.mana)
-        print("UNITS: ")
-        for unit in self.player.units:
-            print(unit.job.title, end=",")
-        print("\nTOWERS: ")
-        for tower in self.player.towers:
-            print(tower.job.title, end=",")
-        if self.player.towers[0].job.title == "castle":
-            print("\nCASTLE HEALTH:", self.player.towers[0].health)
-        else:
-            print("No castle left :(")
-
+        # replace with your end logic
         # <<-- /Creer-Merge: end -->>
     def run_turn(self):
         """ This is called every time it is this AI.player's turn.
