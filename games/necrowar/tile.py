@@ -306,6 +306,7 @@ class Tile(GameObject):
 
     # if you want to add any client side logic (such as state checking functions) this is where you can add them
     def isPathableWorker(self):
+        # Change this is you wish to
         return not (self.is_river or self.is_unit_spawn or self.is_wall or self.unit != None)
     
     # <<-- /Creer-Merge: functions -->>
