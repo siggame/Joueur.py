@@ -22,6 +22,7 @@ class Tower(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._attacked = False
+        self._cooldown = 0
         self._health = 0
         self._job = None
         self._owner = None
@@ -34,6 +35,14 @@ class Tower(GameObject):
         :rtype: bool
         """
         return self._attacked
+
+    @property
+    def cooldown(self):
+        """How many turns are left before it can fire again.
+
+        :rtype: int
+        """
+        return self._cooldown
 
     @property
     def health(self):
