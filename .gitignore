@@ -58,3 +58,6 @@ docs/output/
 
 # PyBuilder
 target/
+
+# mypy
+.mypy_cache
