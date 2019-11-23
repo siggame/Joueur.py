@@ -38,7 +38,7 @@ class Forecast(GameObject):
     def direction(self) -> str:
         """The direction the wind will blow fires in. Can be 'north', 'east', 'south', or 'west'.
 
-        :rtype: 'North', 'East', 'South', or West
+        :rtype: 'North', 'East', 'South', or 'West'
         """
         return self._direction
 

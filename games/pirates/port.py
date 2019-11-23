@@ -64,7 +64,7 @@ class Port(GameObject):
         """Spawn a Unit on this port.
 
         Args:
-            type ('crew' or ship): What type of Unit to create ('crew' or 'ship').
+            type ('crew' or 'ship'): What type of Unit to create ('crew' or 'ship').
 
         Returns:
             bool: True if Unit was created successfully, False otherwise.

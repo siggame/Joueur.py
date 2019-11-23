@@ -57,7 +57,7 @@ class Tile(GameObject):
     def flow_direction(self) -> str:
         """The cardinal direction water is flowing on this Tile ('North', 'East', 'South', 'West').
 
-        :rtype: 'North', 'East', 'South', 'West', or 
+        :rtype: 'North', 'East', 'South', 'West', or ''
         """
         return self._flow_direction
 
@@ -121,7 +121,7 @@ class Tile(GameObject):
     def type(self) -> str:
         """What type of Tile this is, either 'water' or 'land'.
 
-        :rtype: 'land' or water
+        :rtype: 'land' or 'water'
         """
         return self._type
 

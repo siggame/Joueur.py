@@ -128,7 +128,7 @@ class Unit(GameObject):
 
         Args:
             tile (games.pirates.tile.Tile): The Tile to attack.
-            target ('crew' or ship): Whether to attack 'crew' or 'ship'. Crew deal damage to crew and ships deal damage to ships. Consumes any remaining moves.
+            target ('crew' or 'ship'): Whether to attack 'crew' or 'ship'. Crew deal damage to crew and ships deal damage to ships. Consumes any remaining moves.
 
         Returns:
             bool: True if successfully attacked, False otherwise.

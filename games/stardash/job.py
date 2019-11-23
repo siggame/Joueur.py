@@ -83,7 +83,7 @@ class Job(GameObject):
     def title(self) -> str:
         """The Job title. 'corvette', 'missileboat', 'martyr', 'transport', or 'miner'. (in this order from 0-4).
 
-        :rtype: 'corvette', 'missileboat', 'martyr', 'transport', or miner
+        :rtype: 'corvette', 'missileboat', 'martyr', 'transport', or 'miner'
         """
         return self._title
 

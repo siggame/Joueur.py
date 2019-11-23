@@ -32,7 +32,7 @@ class Bottle(GameObject):
     def direction(self) -> str:
         """The Direction this Bottle is flying and will move to between turns, can be 'North', 'East', 'South', or 'West'.
 
-        :rtype: 'North', 'East', 'South', or West
+        :rtype: 'North', 'East', 'South', or 'West'
         """
         return self._direction
 
@@ -40,7 +40,7 @@ class Bottle(GameObject):
     def drunk_direction(self) -> str:
         """The direction any Cowboys hit by this will move, can be 'North', 'East', 'South', or 'West'.
 
-        :rtype: 'North', 'East', 'South', or West
+        :rtype: 'North', 'East', 'South', or 'West'
         """
         return self._drunk_direction
 

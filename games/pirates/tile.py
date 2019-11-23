@@ -95,7 +95,7 @@ class Tile(GameObject):
     def type(self) -> str:
         """The type of Tile this is ('water' or 'land').
 
-        :rtype: 'water' or land
+        :rtype: 'water' or 'land'
         """
         return self._type
 

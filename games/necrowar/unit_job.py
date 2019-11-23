@@ -91,7 +91,7 @@ class UnitJob(GameObject):
     def title(self) -> str:
         """The type title. 'worker', 'zombie', 'ghoul', 'hound', 'abomination', 'wraith' or 'horseman'.
 
-        :rtype: 'worker', 'zombie', 'ghoul', 'hound', 'abomination', 'wraith', or horseman
+        :rtype: 'worker', 'zombie', 'ghoul', 'hound', 'abomination', 'wraith', or 'horseman'
         """
         return self._title
 

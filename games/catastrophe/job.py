@@ -65,7 +65,7 @@ class Job(GameObject):
     def title(self) -> str:
         """The Job title.
 
-        :rtype: 'fresh human', 'cat overlord', 'soldier', 'gatherer', 'builder', or missionary
+        :rtype: 'fresh human', 'cat overlord', 'soldier', 'gatherer', 'builder', or 'missionary'
         """
         return self._title
 

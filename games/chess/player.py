@@ -44,7 +44,7 @@ class Player(GameObject):
     def color(self) -> str:
         """The color (side) of this player. Either 'white' or 'black', with the 'white' player having the first move.
 
-        :rtype: 'black' or white
+        :rtype: 'black' or 'white'
         """
         return self._color
 

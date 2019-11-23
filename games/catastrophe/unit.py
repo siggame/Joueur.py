@@ -149,7 +149,7 @@ class Unit(GameObject):
         """Changes this Unit's Job. Must be at max energy (100.0) to change Jobs.
 
         Args:
-            job ('soldier', 'gatherer', 'builder', or missionary): The name of the Job to change to.
+            job ('soldier', 'gatherer', 'builder', or 'missionary'): The name of the Job to change to.
 
         Returns:
             bool: True if successfully changed Jobs, False otherwise.
@@ -163,7 +163,7 @@ class Unit(GameObject):
 
         Args:
             tile (games.catastrophe.tile.Tile): The Tile to construct the Structure on. It must have enough materials on it for a Structure to be constructed.
-            type ('neutral', 'shelter', 'monument', 'wall', or road): The type of Structure to construct on that Tile.
+            type ('neutral', 'shelter', 'monument', 'wall', or 'road'): The type of Structure to construct on that Tile.
 
         Returns:
             bool: True if successfully constructed a structure, False otherwise.
@@ -204,7 +204,7 @@ class Unit(GameObject):
 
         Args:
             tile (games.catastrophe.tile.Tile): The Tile to drop materials/food on.
-            resource ('materials' or food): The type of resource to drop ('materials' or 'food').
+            resource ('materials' or 'food'): The type of resource to drop ('materials' or 'food').
             amount (int): The amount of the resource to drop. Amounts <= 0 will drop as much as possible.
 
         Returns:
@@ -247,7 +247,7 @@ class Unit(GameObject):
 
         Args:
             tile (games.catastrophe.tile.Tile): The Tile to pickup materials/food from.
-            resource ('materials' or food): The type of resource to pickup ('materials' or 'food').
+            resource ('materials' or 'food'): The type of resource to pickup ('materials' or 'food').
             amount (int): The amount of the resource to pickup. Amounts <= 0 will pickup as much as possible.
 
         Returns:

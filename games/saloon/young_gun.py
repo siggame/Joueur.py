@@ -64,7 +64,7 @@ class YoungGun(GameObject):
         """Tells the YoungGun to call in a new Cowboy of the given job to the open Tile nearest to them.
 
         Args:
-            job ('Bartender', 'Brawler', or Sharpshooter): The job you want the Cowboy being brought to have.
+            job ('Bartender', 'Brawler', or 'Sharpshooter'): The job you want the Cowboy being brought to have.
 
         Returns:
             games.saloon.cowboy.Cowboy or None: The new Cowboy that was called in if valid. They will not be added to any `cowboys` lists until the turn ends. None otherwise.

@@ -47,7 +47,7 @@ class Cowboy(GameObject):
     def drunk_direction(self) -> str:
         """The direction this Cowboy is moving while drunk. Will be 'North', 'East', 'South', or 'West' when drunk; or '' (empty string) when not drunk.
 
-        :rtype: '', 'North', 'East', 'South', or West
+        :rtype: '', 'North', 'East', 'South', or 'West'
         """
         return self._drunk_direction
 
@@ -87,7 +87,7 @@ class Cowboy(GameObject):
     def job(self) -> str:
         """The job that this Cowboy does, and dictates how they fight and interact within the Saloon.
 
-        :rtype: 'Bartender', 'Brawler', or Sharpshooter
+        :rtype: 'Bartender', 'Brawler', or 'Sharpshooter'
         """
         return self._job
 
@@ -128,7 +128,7 @@ class Cowboy(GameObject):
 
         Args:
             tile (games.saloon.tile.Tile): The Tile you want this Cowboy to act on.
-            drunk_direction ('', 'North', 'East', 'South', or West): The direction the bottle will cause drunk cowboys to be in, can be 'North', 'East', 'South', or 'West'.
+            drunk_direction ('', 'North', 'East', 'South', or 'West'): The direction the bottle will cause drunk cowboys to be in, can be 'North', 'East', 'South', or 'West'.
 
         Returns:
             bool: True if the act worked, False otherwise.

@@ -39,7 +39,7 @@ if not 'py' in shared:
                 literals = type_obj['literals']
                 if len(literals) == 1:
                     return "'{}'".format(literals[0])
-                return '{}{} or {}'.format(
+                return "{}{} or '{}'".format(
                     ', '.join(map(lambda lit: "'{}'".format(lit), literals[:-1])),
                     ',' if len(literals) > 2 else '', # oxford comma!
                     literals[-1]

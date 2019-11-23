@@ -59,7 +59,7 @@ class BroodMother(Spider):
         """Spawns a new Spiderling on the same Nest as this BroodMother, consuming an egg.
 
         Args:
-            spiderling_type ('Spitter', 'Weaver', or Cutter): The string name of the Spiderling class you want to Spawn. Must be 'Spitter', 'Weaver', or 'Cutter'.
+            spiderling_type ('Spitter', 'Weaver', or 'Cutter'): The string name of the Spiderling class you want to Spawn. Must be 'Spitter', 'Weaver', or 'Cutter'.
 
         Returns:
             games.spiders.spiderling.Spiderling or None: The newly spwaned Spiderling if successful. None otherwise.

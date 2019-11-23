@@ -258,7 +258,7 @@ class Unit(GameObject):
         Args:
             unit (games.stardash.unit.Unit): The unit you are grabbing the resources from.
             amount (int): The amount of materials to you with to grab. Amounts <= 0 will pick up all the materials that the unit can.
-            material ('genarium', 'rarium', 'legendarium', or mythicite): The material the unit will pick up. 'genarium', 'rarium', 'legendarium', or 'mythicite'.
+            material ('genarium', 'rarium', 'legendarium', or 'mythicite'): The material the unit will pick up. 'genarium', 'rarium', 'legendarium', or 'mythicite'.
 
         Returns:
             bool: True if successfully taken, False otherwise.

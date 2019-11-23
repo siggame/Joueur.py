@@ -33,7 +33,7 @@ class Machine(GameObject):
     def ore_type(self) -> str:
         """What type of ore the machine takes it. Also determines the type of material it outputs. (redium or blueium).
 
-        :rtype: 'redium' or blueium
+        :rtype: 'redium' or 'blueium'
         """
         return self._ore_type
 

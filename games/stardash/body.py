@@ -43,7 +43,7 @@ class Body(GameObject):
     def body_type(self) -> str:
         """The type of celestial body it is. Either 'planet', 'asteroid', or 'sun'.
 
-        :rtype: 'planet', 'asteroid', or sun
+        :rtype: 'planet', 'asteroid', or 'sun'
         """
         return self._body_type
 
@@ -51,7 +51,7 @@ class Body(GameObject):
     def material_type(self) -> str:
         """The type of material the celestial body has. Either 'none', 'genarium', 'rarium', 'legendarium', or 'mythicite'.
 
-        :rtype: 'none', 'genarium', 'rarium', 'legendarium', or mythicite
+        :rtype: 'none', 'genarium', 'rarium', 'legendarium', or 'mythicite'
         """
         return self._material_type
 

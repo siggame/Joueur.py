@@ -83,7 +83,7 @@ class TowerJob(GameObject):
     def title(self) -> str:
         """The type title. 'arrow', 'aoe', 'ballista', 'cleansing', or 'castle'.
 
-        :rtype: 'arrow', 'aoe', 'ballista', 'cleansing', or castle
+        :rtype: 'arrow', 'aoe', 'ballista', 'cleansing', or 'castle'
         """
         return self._title
 

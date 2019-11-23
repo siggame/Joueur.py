@@ -69,7 +69,7 @@ class Tile(GameObject):
     def direction(self) -> str:
         """The direction of a conveyor belt ('blank', 'north', 'east', 'south', or 'west'). blank means conveyor doesn't move.
 
-        :rtype: 'blank', 'north', 'east', 'south', or west
+        :rtype: 'blank', 'north', 'east', 'south', or 'west'
         """
         return self._direction
 
@@ -149,7 +149,7 @@ class Tile(GameObject):
     def type(self) -> str:
         """The type of Tile this is ('normal', 'generator', 'conveyor', or 'spawn').
 
-        :rtype: 'normal', 'generator', 'conveyor', or spawn
+        :rtype: 'normal', 'generator', 'conveyor', or 'spawn'
         """
         return self._type
 

@@ -65,7 +65,7 @@ class Structure(GameObject):
     def type(self) -> str:
         """The type of Structure this is ('shelter', 'monument', 'wall', 'road', 'neutral').
 
-        :rtype: 'neutral', 'shelter', 'monument', 'wall', or road
+        :rtype: 'neutral', 'shelter', 'monument', 'wall', or 'road'
         """
         return self._type
 

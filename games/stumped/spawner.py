@@ -55,7 +55,7 @@ class Spawner(GameObject):
     def type(self) -> str:
         """What type of resource this is ('food' or 'branches').
 
-        :rtype: 'food' or branches
+        :rtype: 'food' or 'branches'
         """
         return self._type
 

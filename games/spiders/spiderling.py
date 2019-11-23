@@ -33,7 +33,7 @@ class Spiderling(Spider):
     def busy(self) -> str:
         """When empty string this Spiderling is not busy, and can act. Otherwise a string representing what it is busy with, e.g. 'Moving', 'Attacking'.
 
-        :rtype: '', 'Moving', 'Attacking', 'Strengthening', 'Weakening', 'Cutting', or Spitting
+        :rtype: '', 'Moving', 'Attacking', 'Strengthening', 'Weakening', 'Cutting', or 'Spitting'
         """
         return self._busy
 
