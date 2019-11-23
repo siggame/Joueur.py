@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import List, Optional
 from games.necrowar.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Tile(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Tile with basic logic as provided by the Creer code generator."""
+        """Initializes a Tile with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -46,7 +48,7 @@ class Tile(GameObject):
         self._y = 0
 
     @property
-    def corpses(self):
+    def corpses(self) -> int:
         """The amount of corpses on this tile.
 
         :rtype: int
@@ -54,7 +56,7 @@ class Tile(GameObject):
         return self._corpses
 
     @property
-    def is_castle(self):
+    def is_castle(self) -> bool:
         """Whether or not the tile is a castle tile.
 
         :rtype: bool
@@ -62,7 +64,7 @@ class Tile(GameObject):
         return self._is_castle
 
     @property
-    def is_gold_mine(self):
+    def is_gold_mine(self) -> bool:
         """Whether or not the tile is considered to be a gold mine or not.
 
         :rtype: bool
@@ -70,7 +72,7 @@ class Tile(GameObject):
         return self._is_gold_mine
 
     @property
-    def is_grass(self):
+    def is_grass(self) -> bool:
         """Whether or not the tile is considered grass or not (Workers can walk on grass).
 
         :rtype: bool
@@ -78,7 +80,7 @@ class Tile(GameObject):
         return self._is_grass
 
     @property
-    def is_island_gold_mine(self):
+    def is_island_gold_mine(self) -> bool:
         """Whether or not the tile is considered to be the island gold mine or not.
 
         :rtype: bool
@@ -86,7 +88,7 @@ class Tile(GameObject):
         return self._is_island_gold_mine
 
     @property
-    def is_path(self):
+    def is_path(self) -> bool:
         """Whether or not the tile is considered a path or not (Units can walk on paths).
 
         :rtype: bool
@@ -94,7 +96,7 @@ class Tile(GameObject):
         return self._is_path
 
     @property
-    def is_river(self):
+    def is_river(self) -> bool:
         """Whether or not the tile is considered a river or not.
 
         :rtype: bool
@@ -102,7 +104,7 @@ class Tile(GameObject):
         return self._is_river
 
     @property
-    def is_tower(self):
+    def is_tower(self) -> bool:
         """Whether or not the tile is considered a tower or not.
 
         :rtype: bool
@@ -110,7 +112,7 @@ class Tile(GameObject):
         return self._is_tower
 
     @property
-    def is_unit_spawn(self):
+    def is_unit_spawn(self) -> bool:
         """Whether or not the tile is the unit spawn.
 
         :rtype: bool
@@ -118,7 +120,7 @@ class Tile(GameObject):
         return self._is_unit_spawn
 
     @property
-    def is_wall(self):
+    def is_wall(self) -> bool:
         """Whether or not the tile can be moved on by workers.
 
         :rtype: bool
@@ -126,7 +128,7 @@ class Tile(GameObject):
         return self._is_wall
 
     @property
-    def is_worker_spawn(self):
+    def is_worker_spawn(self) -> bool:
         """Whether or not the tile is the worker spawn.
 
         :rtype: bool
@@ -134,7 +136,7 @@ class Tile(GameObject):
         return self._is_worker_spawn
 
     @property
-    def num_ghouls(self):
+    def num_ghouls(self) -> int:
         """The amount of Ghouls on this tile.
 
         :rtype: int
@@ -142,7 +144,7 @@ class Tile(GameObject):
         return self._num_ghouls
 
     @property
-    def num_hounds(self):
+    def num_hounds(self) -> int:
         """The amount of Hounds on this tile.
 
         :rtype: int
@@ -150,7 +152,7 @@ class Tile(GameObject):
         return self._num_hounds
 
     @property
-    def num_zombies(self):
+    def num_zombies(self) -> int:
         """The amount of Zombies on this tile.
 
         :rtype: int
@@ -158,63 +160,63 @@ class Tile(GameObject):
         return self._num_zombies
 
     @property
-    def owner(self):
+    def owner(self) -> Optional['games.necrowar.player.Player']:
         """Which player owns this tile, only applies to grass tiles for workers, NULL otherwise.
 
-        :rtype: games.necrowar.player.Player
+        :rtype: games.necrowar.player.Player or None
         """
         return self._owner
 
     @property
-    def tile_east(self):
+    def tile_east(self) -> Optional['games.necrowar.tile.Tile']:
         """The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
 
-        :rtype: games.necrowar.tile.Tile
+        :rtype: games.necrowar.tile.Tile or None
         """
         return self._tile_east
 
     @property
-    def tile_north(self):
+    def tile_north(self) -> Optional['games.necrowar.tile.Tile']:
         """The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
 
-        :rtype: games.necrowar.tile.Tile
+        :rtype: games.necrowar.tile.Tile or None
         """
         return self._tile_north
 
     @property
-    def tile_south(self):
+    def tile_south(self) -> Optional['games.necrowar.tile.Tile']:
         """The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
 
-        :rtype: games.necrowar.tile.Tile
+        :rtype: games.necrowar.tile.Tile or None
         """
         return self._tile_south
 
     @property
-    def tile_west(self):
+    def tile_west(self) -> Optional['games.necrowar.tile.Tile']:
         """The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
 
-        :rtype: games.necrowar.tile.Tile
+        :rtype: games.necrowar.tile.Tile or None
         """
         return self._tile_west
 
     @property
-    def tower(self):
+    def tower(self) -> Optional['games.necrowar.tower.Tower']:
         """The Tower on this Tile if present, otherwise None.
 
-        :rtype: games.necrowar.tower.Tower
+        :rtype: games.necrowar.tower.Tower or None
         """
         return self._tower
 
     @property
-    def unit(self):
+    def unit(self) -> Optional['games.necrowar.unit.Unit']:
         """The Unit on this Tile if present, otherwise None.
 
-        :rtype: games.necrowar.unit.Unit
+        :rtype: games.necrowar.unit.Unit or None
         """
         return self._unit
 
     @property
-    def x(self):
+    def x(self) -> int:
         """The x (horizontal) position of this Tile.
 
         :rtype: int
@@ -222,15 +224,15 @@ class Tile(GameObject):
         return self._x
 
     @property
-    def y(self):
+    def y(self) -> int:
         """The y (vertical) position of this Tile.
 
         :rtype: int
         """
         return self._y
 
-    def res(self, num):
-        """ Resurrect the corpses on this tile into Zombies.
+    def res(self, num: int) -> bool:
+        """Resurrect the corpses on this tile into Zombies.
 
         Args:
             num (int): Number of zombies to resurrect.
@@ -238,10 +240,12 @@ class Tile(GameObject):
         Returns:
             bool: True if successful res, False otherwise.
         """
-        return self._run_on_server('res', num=num)
+        return self._run_on_server('res', {
+            'num': num
+        })
 
-    def spawn_unit(self, title):
-        """ Spawns a fighting unit on the correct tile.
+    def spawn_unit(self, title: str) -> bool:
+        """Spawns a fighting unit on the correct tile.
 
         Args:
             title (str): The title of the desired unit type.
@@ -249,25 +253,29 @@ class Tile(GameObject):
         Returns:
             bool: True if successfully spawned, False otherwise.
         """
-        return self._run_on_server('spawnUnit', title=title)
+        return self._run_on_server('spawnUnit', {
+            'title': title
+        })
 
-    def spawn_worker(self):
-        """ Spawns a worker on the correct tile.
+    def spawn_worker(self) -> bool:
+        """Spawns a worker on the correct tile.
 
         Returns:
             bool: True if successfully spawned, False otherwise.
         """
-        return self._run_on_server('spawnWorker')
+        return self._run_on_server('spawnWorker', {
 
+        })
 
     directions = ["North", "East", "South", "West"]
     """int: The valid directions that tiles can be in, "North", "East", "South", or "West"
     """
 
-    def get_neighbors(self):
+    def get_neighbors(self) -> List['games.necrowar.tile.Tile']:
         """Gets the neighbors of this Tile
 
-        :rtype list[games.necrowar.tile.Tile]
+        Returns:
+            list[games.necrowar.tile.Tile]: The list of neighboring Tiles of this Tile.
         """
         neighbors = []
 
@@ -278,20 +286,22 @@ class Tile(GameObject):
 
         return neighbors
 
-    def is_pathable(self):
+    def is_pathable(self) -> bool:
         """Checks if a Tile is pathable to units
 
         Returns:
-            bool: True if pathable, False otherwise
+            bool: True if pathable, False otherwise.
         """
         # <<-- Creer-Merge: is_pathable_builtin -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        return false  # DEVELOPER ADD LOGIC HERE
+        return False # DEVELOPER ADD LOGIC HERE
         # <<-- /Creer-Merge: is_pathable_builtin -->>
 
-    def has_neighbor(self, tile):
-        """Checks if this Tile has a specific neighboring Tile
+    def has_neighbor(self, tile: 'games.necrowar.tile.Tile') -> bool:
+        """Checks if this Tile has a specific neighboring Tile.
+
         Args:
-            tile (games.necrowar.tile.Tile): tile to check against
+            tile (games.necrowar.tile.Tile): The Tile to check against.
+
         Returns:
             bool: True if the tile is a neighbor of this Tile, False otherwise
         """

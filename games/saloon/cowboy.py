@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Optional
 from games.saloon.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Cowboy(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Cowboy with basic logic as provided by the Creer code generator."""
+        """Initializes a Cowboy with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -34,7 +36,7 @@ class Cowboy(GameObject):
         self._turns_busy = 0
 
     @property
-    def can_move(self):
+    def can_move(self) -> bool:
         """If the Cowboy can be moved this turn via its owner.
 
         :rtype: bool
@@ -42,15 +44,15 @@ class Cowboy(GameObject):
         return self._can_move
 
     @property
-    def drunk_direction(self):
+    def drunk_direction(self) -> str:
         """The direction this Cowboy is moving while drunk. Will be 'North', 'East', 'South', or 'West' when drunk; or '' (empty string) when not drunk.
 
-        :rtype: str
+        :rtype: '', 'North', 'East', 'South', or West
         """
         return self._drunk_direction
 
     @property
-    def focus(self):
+    def focus(self) -> int:
         """How much focus this Cowboy has. Different Jobs do different things with their Cowboy's focus.
 
         :rtype: int
@@ -58,7 +60,7 @@ class Cowboy(GameObject):
         return self._focus
 
     @property
-    def health(self):
+    def health(self) -> int:
         """How much health this Cowboy currently has.
 
         :rtype: int
@@ -66,7 +68,7 @@ class Cowboy(GameObject):
         return self._health
 
     @property
-    def is_dead(self):
+    def is_dead(self) -> bool:
         """If this Cowboy is dead and has been removed from the game.
 
         :rtype: bool
@@ -74,7 +76,7 @@ class Cowboy(GameObject):
         return self._is_dead
 
     @property
-    def is_drunk(self):
+    def is_drunk(self) -> bool:
         """If this Cowboy is drunk, and will automatically walk.
 
         :rtype: bool
@@ -82,15 +84,15 @@ class Cowboy(GameObject):
         return self._is_drunk
 
     @property
-    def job(self):
+    def job(self) -> str:
         """The job that this Cowboy does, and dictates how they fight and interact within the Saloon.
 
-        :rtype: str
+        :rtype: 'Bartender', 'Brawler', or Sharpshooter
         """
         return self._job
 
     @property
-    def owner(self):
+    def owner(self) -> 'games.saloon.player.Player':
         """The Player that owns and can control this Cowboy.
 
         :rtype: games.saloon.player.Player
@@ -98,15 +100,15 @@ class Cowboy(GameObject):
         return self._owner
 
     @property
-    def tile(self):
+    def tile(self) -> Optional['games.saloon.tile.Tile']:
         """The Tile that this Cowboy is located on.
 
-        :rtype: games.saloon.tile.Tile
+        :rtype: games.saloon.tile.Tile or None
         """
         return self._tile
 
     @property
-    def tolerance(self):
+    def tolerance(self) -> int:
         """How many times this unit has been drunk before taking their siesta and reseting this to 0.
 
         :rtype: int
@@ -114,27 +116,30 @@ class Cowboy(GameObject):
         return self._tolerance
 
     @property
-    def turns_busy(self):
+    def turns_busy(self) -> int:
         """How many turns this unit has remaining before it is no longer busy and can `act()` or `play()` again.
 
         :rtype: int
         """
         return self._turns_busy
 
-    def act(self, tile, drunkDirection=""):
-        """ Does their job's action on a Tile.
+    def act(self, tile: 'games.saloon.tile.Tile', drunk_direction: str = "") -> bool:
+        """Does their job's action on a Tile.
 
         Args:
             tile (games.saloon.tile.Tile): The Tile you want this Cowboy to act on.
-            drunk_direction (Optional[str]): The direction the bottle will cause drunk cowboys to be in, can be 'North', 'East', 'South', or 'West'.
+            drunk_direction ('', 'North', 'East', 'South', or West): The direction the bottle will cause drunk cowboys to be in, can be 'North', 'East', 'South', or 'West'.
 
         Returns:
             bool: True if the act worked, False otherwise.
         """
-        return self._run_on_server('act', tile=tile, drunkDirection=drunkDirection)
+        return self._run_on_server('act', {
+            'tile': tile,
+            'drunkDirection': drunk_direction
+        })
 
-    def move(self, tile):
-        """ Moves this Cowboy from its current Tile to an adjacent Tile.
+    def move(self, tile: 'games.saloon.tile.Tile') -> bool:
+        """Moves this Cowboy from its current Tile to an adjacent Tile.
 
         Args:
             tile (games.saloon.tile.Tile): The Tile you want to move this Cowboy to.
@@ -142,10 +147,12 @@ class Cowboy(GameObject):
         Returns:
             bool: True if the move worked, False otherwise.
         """
-        return self._run_on_server('move', tile=tile)
+        return self._run_on_server('move', {
+            'tile': tile
+        })
 
-    def play(self, piano):
-        """ Sits down and plays a piano.
+    def play(self, piano: 'games.saloon.furnishing.Furnishing') -> bool:
+        """Sits down and plays a piano.
 
         Args:
             piano (games.saloon.furnishing.Furnishing): The Furnishing that is a piano you want to play.
@@ -153,8 +160,9 @@ class Cowboy(GameObject):
         Returns:
             bool: True if the play worked, False otherwise.
         """
-        return self._run_on_server('play', piano=piano)
-
+        return self._run_on_server('play', {
+            'piano': piano
+        })
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

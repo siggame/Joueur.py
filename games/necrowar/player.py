@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import List
 from games.necrowar.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Player(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Player with basic logic as provided by the Creer code generator."""
+        """Initializes a Player with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -38,7 +40,7 @@ class Player(GameObject):
         self._won = False
 
     @property
-    def client_type(self):
+    def client_type(self) -> str:
         """What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
 
         :rtype: str
@@ -46,7 +48,7 @@ class Player(GameObject):
         return self._client_type
 
     @property
-    def gold(self):
+    def gold(self) -> int:
         """The amount of gold this Player has.
 
         :rtype: int
@@ -54,7 +56,7 @@ class Player(GameObject):
         return self._gold
 
     @property
-    def health(self):
+    def health(self) -> int:
         """The amount of health remaining for this player's main unit.
 
         :rtype: int
@@ -62,7 +64,7 @@ class Player(GameObject):
         return self._health
 
     @property
-    def home_base(self):
+    def home_base(self) -> List['games.necrowar.tile.Tile']:
         """The tile that the home base is located on.
 
         :rtype: list[games.necrowar.tile.Tile]
@@ -70,7 +72,7 @@ class Player(GameObject):
         return self._home_base
 
     @property
-    def lost(self):
+    def lost(self) -> bool:
         """If the player lost the game or not.
 
         :rtype: bool
@@ -78,7 +80,7 @@ class Player(GameObject):
         return self._lost
 
     @property
-    def mana(self):
+    def mana(self) -> int:
         """The amount of mana this player has.
 
         :rtype: int
@@ -86,7 +88,7 @@ class Player(GameObject):
         return self._mana
 
     @property
-    def name(self):
+    def name(self) -> str:
         """The name of the player.
 
         :rtype: str
@@ -94,7 +96,7 @@ class Player(GameObject):
         return self._name
 
     @property
-    def opponent(self):
+    def opponent(self) -> 'games.necrowar.player.Player':
         """This player's opponent in the game.
 
         :rtype: games.necrowar.player.Player
@@ -102,7 +104,7 @@ class Player(GameObject):
         return self._opponent
 
     @property
-    def reason_lost(self):
+    def reason_lost(self) -> str:
         """The reason why the player lost the game.
 
         :rtype: str
@@ -110,7 +112,7 @@ class Player(GameObject):
         return self._reason_lost
 
     @property
-    def reason_won(self):
+    def reason_won(self) -> str:
         """The reason why the player won the game.
 
         :rtype: str
@@ -118,7 +120,7 @@ class Player(GameObject):
         return self._reason_won
 
     @property
-    def side(self):
+    def side(self) -> List['games.necrowar.tile.Tile']:
         """All tiles that this player can build on and move workers on.
 
         :rtype: list[games.necrowar.tile.Tile]
@@ -126,7 +128,7 @@ class Player(GameObject):
         return self._side
 
     @property
-    def time_remaining(self):
+    def time_remaining(self) -> float:
         """The amount of time (in ns) remaining for this AI to send commands.
 
         :rtype: float
@@ -134,7 +136,7 @@ class Player(GameObject):
         return self._time_remaining
 
     @property
-    def towers(self):
+    def towers(self) -> List['games.necrowar.tower.Tower']:
         """Every Tower owned by this player.
 
         :rtype: list[games.necrowar.tower.Tower]
@@ -142,7 +144,7 @@ class Player(GameObject):
         return self._towers
 
     @property
-    def units(self):
+    def units(self) -> List['games.necrowar.unit.Unit']:
         """Every Unit owned by this Player.
 
         :rtype: list[games.necrowar.unit.Unit]
@@ -150,13 +152,12 @@ class Player(GameObject):
         return self._units
 
     @property
-    def won(self):
+    def won(self) -> bool:
         """If the player won the game or not.
 
         :rtype: bool
         """
         return self._won
-
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

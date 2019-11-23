@@ -17,7 +17,8 @@ class Spawner(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Spawner with basic logic as provided by the Creer code generator."""
+        """Initializes a Spawner with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -27,7 +28,7 @@ class Spawner(GameObject):
         self._type = ""
 
     @property
-    def has_been_harvested(self):
+    def has_been_harvested(self) -> bool:
         """True if this Spawner has been harvested this turn, and it will not heal at the end of the turn, False otherwise.
 
         :rtype: bool
@@ -35,7 +36,7 @@ class Spawner(GameObject):
         return self._has_been_harvested
 
     @property
-    def health(self):
+    def health(self) -> int:
         """How much health this Spawner has, which is used to calculate how much of its resource can be harvested.
 
         :rtype: int
@@ -43,7 +44,7 @@ class Spawner(GameObject):
         return self._health
 
     @property
-    def tile(self):
+    def tile(self) -> 'games.stumped.tile.Tile':
         """The Tile this Spawner is on.
 
         :rtype: games.stumped.tile.Tile
@@ -51,13 +52,12 @@ class Spawner(GameObject):
         return self._tile
 
     @property
-    def type(self):
+    def type(self) -> str:
         """What type of resource this is ('food' or 'branches').
 
-        :rtype: str
+        :rtype: 'food' or branches
         """
         return self._type
-
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

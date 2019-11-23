@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import List, Optional
 from games.spiders.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Nest(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Nest with basic logic as provided by the Creer code generator."""
+        """Initializes a Nest with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -28,15 +30,15 @@ class Nest(GameObject):
         self._y = 0
 
     @property
-    def controlling_player(self):
+    def controlling_player(self) -> Optional['games.spiders.player.Player']:
         """The Player that 'controls' this Nest as they have the most Spiders on this nest.
 
-        :rtype: games.spiders.player.Player
+        :rtype: games.spiders.player.Player or None
         """
         return self._controlling_player
 
     @property
-    def spiders(self):
+    def spiders(self) -> List['games.spiders.spider.Spider']:
         """All the Spiders currently located on this Nest.
 
         :rtype: list[games.spiders.spider.Spider]
@@ -44,7 +46,7 @@ class Nest(GameObject):
         return self._spiders
 
     @property
-    def webs(self):
+    def webs(self) -> List['games.spiders.web.Web']:
         """Webs that connect to this Nest.
 
         :rtype: list[games.spiders.web.Web]
@@ -52,7 +54,7 @@ class Nest(GameObject):
         return self._webs
 
     @property
-    def x(self):
+    def x(self) -> int:
         """The X coordinate of the Nest. Used for distance calculations.
 
         :rtype: int
@@ -60,7 +62,7 @@ class Nest(GameObject):
         return self._x
 
     @property
-    def y(self):
+    def y(self) -> int:
         """The Y coordinate of the Nest. Used for distance calculations.
 
         :rtype: int

@@ -1,5 +1,6 @@
 <%
 if not 'py' in shared:
+    import textwrap
     shared['py'] = {}
 
     def py_default(type_obj, default=None):
@@ -31,23 +32,62 @@ if not 'py' in shared:
             return str(default)
     shared['py']['value'] = py_value
 
-    def py_type(type_obj):
+    def py_docstring_type(type_obj):
         base_type = type_obj['name']
         if base_type == "string":
+            if 'literals' in type_obj and type_obj['literals']:
+                literals = type_obj['literals']
+                if len(literals) == 1:
+                    return "'{}'".format(literals[0])
+                return '{}{} or {}'.format(
+                    ', '.join(map(lambda lit: "'{}'".format(lit), literals[:-1])),
+                    ',' if len(literals) > 2 else '', # oxford comma!
+                    literals[-1]
+                )
+
             return "str"
         elif base_type == "list":
-            return "list[{}]".format(py_type(type_obj['valueType']))
+            return "list[{}]".format(py_docstring_type(type_obj['valueType']))
         elif base_type == "dictionary":
-            return "dict[{}, {}]".format(py_type(type_obj['keyType']), py_type(type_obj['valueType']))
+            return "dict[{}, {}]".format(py_docstring_type(type_obj['keyType']), py_docstring_type(type_obj['valueType']))
         elif base_type == "boolean":
             return "bool"
         elif base_type == "null":
             return "None"
-        elif type_obj['is_game_object']:
-            return "games.{}.{}.{}".format(underscore(game_name), underscore(base_type), base_type)
+        elif 'is_game_object' in type_obj and type_obj['is_game_object']:
+            return "games.{}.{}.{}{}".format(
+                underscore(game_name),
+                underscore(base_type),
+                base_type,
+                ' or None' if 'nullable' in type_obj and type_obj['nullable'] else ''
+            )
         else:
             return base_type
-    shared['py']['type'] = py_type
+    shared['py']['docstring_type'] = py_docstring_type
+
+    def py_typing_type(type_obj):
+        base_type = type_obj['name']
+        # Python 3.8 feature - pypy3 at 3.6.9
+        #if 'literals' in type_obj and type_obj['literals']:
+        #    return 'Literal[{}]'.format(', '.join(map(lambda lit: "'{}'".format(lit), type_obj['literals'])))
+        if base_type == "string":
+            return "str"
+        elif base_type == "list":
+            return "List[{}]".format(py_typing_type(type_obj['valueType']))
+        elif base_type == "dictionary":
+            return "Dict[{}, {}]".format(py_typing_type(type_obj['keyType']), py_typing_type(type_obj['valueType']))
+        elif base_type == "boolean":
+            return "bool"
+        elif base_type == "null":
+            return "None"
+        elif 'is_game_object' in type_obj and type_obj['is_game_object']:
+            cycle_safe = "'games.{}.{}.{}'".format(underscore(game_name), underscore(base_type), base_type)
+            if 'nullable' in type_obj and type_obj['nullable']:
+                return 'Optional[{}]'.format(cycle_safe)
+            return cycle_safe
+        else:
+            return base_type
+    shared['py']['typing_type'] = py_typing_type
 
     def py_cast(type_obj):
         base_type = type_obj['name']
@@ -62,14 +102,6 @@ if not 'py' in shared:
         else:
             return ""
     shared['py']['cast'] = py_cast
-
-
-    def py_kwargs(argument_names):
-        k = [""]
-        for name in argument_names:
-            k.append(name + "=" + name)
-        return ", ".join(k)
-    shared['py']['kwargs'] = py_kwargs
 
     def py_args(arguments):
         to_join = [ "" ]
@@ -92,5 +124,101 @@ if not 'py' in shared:
             .replace("false", "False") \
             .replace("dictionary", "dict")
     shared['py']['format_description'] = py_format_description
+
+    def py_function_top(funct_name, funct, add_self=True, indent='    ', is_property=False):
+        # wrapper = TextWrapper()
+        strs = []
+
+        has_args = 'arguments' in funct and len(funct['arguments'])
+        ret_type = ('returns' in funct and funct['returns'] and funct['returns']['type']) or ('type' in funct and funct['type'])
+        ret_desc = 'returns' in funct and funct['returns'] and funct['returns']['description']
+
+        # first part, the def funct(stuff) part
+        if is_property:
+            strs.append('@property\n')
+        strs.extend(['def ', underscore(funct_name), '(', 'self' if add_self else ''])
+        if has_args:
+            for i, arg in enumerate(funct['arguments']):
+                strs.extend([', ' if i > 0 or add_self else '', underscore(arg['name']), ': ', py_typing_type(arg['type'])])
+                if 'default' in arg and arg['default'] != None:
+                    strs.extend([' = ', py_value(arg['type'], arg['default'])])
+        if funct_name.startswith('__'):
+            strs.append('):\n')
+        else:
+            strs.extend([') -> ', py_typing_type(ret_type) if ret_type else 'None', ':\n'])
+
+        ## second part, the docstring
+        strs.extend(['    \"\"\"', py_format_description(funct['description']), '\n'])
+
+        if has_args:
+            strs.append('\n    Args:\n')
+            for arg in funct['arguments']:
+                strs.extend(['        ', underscore(arg['name']), ' (', py_docstring_type(arg['type']), '): ', py_format_description(arg['description']), '\n'])
+        if ret_type:
+            strs.append('\n    ')
+            if is_property:
+                strs.extend([':rtype: ', py_docstring_type(ret_type)])
+            else:
+                strs.extend(['Returns:\n        ', py_docstring_type(ret_type), ': ', py_format_description(ret_desc)])
+            strs.append('\n')
+        strs.append('    \"\"\"')
+
+        lines = ''.join(strs).split('\n')
+        indented = list(map(lambda line: indent + line if line else '', lines))
+        cleaned = '\n'.join(indented)
+
+        return cleaned
+    shared['py']['function_top'] = py_function_top
+
+    def _py_get_imports_from_type(obj, typings, game_objects):
+        type_name = obj['name']
+
+        if 'is_game_object' in obj and obj['is_game_object']:
+            pass # game_objects.add(type_name)
+        if type_name == 'dictionary':
+            typings.add('Dict')
+        if type_name == 'list':
+            typings.add('List')
+
+        # Python 3.8 feature - pypy3 at 3.6.9
+        #if 'literals' in obj and obj['literals']:
+        #    typing.add('Literal')
+        if 'nullable' in obj and obj['nullable']:
+            typings.add('Optional')
+
+        if 'subType' in obj and obj['subType']:
+            _py_get_imports_from_type(obj['subType'], typings, game_objects)
+        if 'valueType' in obj and obj['valueType']:
+            _py_get_imports_from_type(obj['valueType'], typings, game_objects)
+
+    def py_get_imports(obj, starting_typing=None, starting_game_objects=None):
+        typings = starting_typing or set()
+        game_objects = starting_game_objects or set()
+
+        if 'attributes' in obj:
+            for attr_name in obj['attribute_names']:
+                _py_get_imports_from_type(obj['attributes'][attr_name]['type'], typings, game_objects)
+        if 'functions' in obj:
+            for funct_name in obj['functions']:
+                funct_data = obj['functions'][funct_name]
+                if 'arguments' in funct_data:
+                    for arg in funct_data['arguments']:
+                        _py_get_imports_from_type(arg['type'], typings, game_objects)
+                if 'returns' in funct_data and funct_data['returns']:
+                    _py_get_imports_from_type(funct_data['returns']['type'], typings, game_objects)
+
+        if not typings and not game_objects:
+            return ''
+        lines = ['from typing import {}'.format(', '.join(sorted(typings)))]
+        """
+        lines.extend(map(
+            lambda g: 'from games.{}.{} import {}'.format(underscore(game_name), underscore(g), g),
+            sorted(game_objects)
+        ))
+        """
+
+        return '\n'.join(lines)
+        # TODO: add game_object imports
+    shared['py']['get_imports'] = py_get_imports
 
 %>

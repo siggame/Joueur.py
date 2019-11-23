@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import List
 from joueur.base_game_object import BaseGameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class GameObject(BaseGameObject):
     """
 
     def __init__(self):
-        """Initializes a GameObject with basic logic as provided by the Creer code generator."""
+        """Initializes a GameObject with basic logic as provided by the Creer code generator.
+        """
         BaseGameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -26,7 +28,7 @@ class GameObject(BaseGameObject):
         self._logs = []
 
     @property
-    def game_object_name(self):
+    def game_object_name(self) -> str:
         """String representing the top level Class that this game object is an instance of. Used for reflection to create new instances on clients, but exposed for convenience should AIs want this data.
 
         :rtype: str
@@ -34,7 +36,7 @@ class GameObject(BaseGameObject):
         return self._game_object_name
 
     @property
-    def id(self):
+    def id(self) -> str:
         """A unique id for each instance of a GameObject or a sub class. Used for client and server communication. Should never change value after being set.
 
         :rtype: str
@@ -42,21 +44,22 @@ class GameObject(BaseGameObject):
         return self._id
 
     @property
-    def logs(self):
+    def logs(self) -> List[str]:
         """Any strings logged will be stored here. Intended for debugging.
 
         :rtype: list[str]
         """
         return self._logs
 
-    def log(self, message):
-        """ Adds a message to this GameObject's logs. Intended for your own debugging purposes, as strings stored here are saved in the gamelog.
+    def log(self, message: str) -> None:
+        """Adds a message to this GameObject's logs. Intended for your own debugging purposes, as strings stored here are saved in the gamelog.
 
         Args:
             message (str): A string to add to this GameObject's log. Intended for debugging.
         """
-        return self._run_on_server('log', message=message)
-
+        return self._run_on_server('log', {
+            'message': message
+        })
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

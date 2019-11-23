@@ -17,7 +17,8 @@ class Machine(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Machine with basic logic as provided by the Creer code generator."""
+        """Initializes a Machine with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -29,15 +30,15 @@ class Machine(GameObject):
         self._worked = 0
 
     @property
-    def ore_type(self):
+    def ore_type(self) -> str:
         """What type of ore the machine takes it. Also determines the type of material it outputs. (redium or blueium).
 
-        :rtype: str
+        :rtype: 'redium' or blueium
         """
         return self._ore_type
 
     @property
-    def refine_input(self):
+    def refine_input(self) -> int:
         """The amount of ore that needs to be inputted into the machine for it to be worked.
 
         :rtype: int
@@ -45,7 +46,7 @@ class Machine(GameObject):
         return self._refine_input
 
     @property
-    def refine_output(self):
+    def refine_output(self) -> int:
         """The amount of refined ore that is returned after the machine has been fully worked.
 
         :rtype: int
@@ -53,7 +54,7 @@ class Machine(GameObject):
         return self._refine_output
 
     @property
-    def refine_time(self):
+    def refine_time(self) -> int:
         """The number of times this machine needs to be worked to refine ore.
 
         :rtype: int
@@ -61,7 +62,7 @@ class Machine(GameObject):
         return self._refine_time
 
     @property
-    def tile(self):
+    def tile(self) -> 'games.newtonian.tile.Tile':
         """The Tile this Machine is on.
 
         :rtype: games.newtonian.tile.Tile
@@ -69,13 +70,12 @@ class Machine(GameObject):
         return self._tile
 
     @property
-    def worked(self):
+    def worked(self) -> int:
         """Tracks how many times this machine has been worked. (0 to refineTime).
 
         :rtype: int
         """
         return self._worked
-
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

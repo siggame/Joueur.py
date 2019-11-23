@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Optional
 from games.stardash.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Projectile(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Projectile with basic logic as provided by the Creer code generator."""
+        """Initializes a Projectile with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -29,7 +31,7 @@ class Projectile(GameObject):
         self._y = 0
 
     @property
-    def energy(self):
+    def energy(self) -> int:
         """The remaining health of the projectile.
 
         :rtype: int
@@ -37,7 +39,7 @@ class Projectile(GameObject):
         return self._energy
 
     @property
-    def fuel(self):
+    def fuel(self) -> int:
         """The amount of remaining distance the projectile can move.
 
         :rtype: int
@@ -45,15 +47,15 @@ class Projectile(GameObject):
         return self._fuel
 
     @property
-    def owner(self):
+    def owner(self) -> Optional['games.stardash.player.Player']:
         """The Player that owns and can control this Projectile.
 
-        :rtype: games.stardash.player.Player
+        :rtype: games.stardash.player.Player or None
         """
         return self._owner
 
     @property
-    def target(self):
+    def target(self) -> 'games.stardash.unit.Unit':
         """The unit that is being attacked by this projectile.
 
         :rtype: games.stardash.unit.Unit
@@ -61,7 +63,7 @@ class Projectile(GameObject):
         return self._target
 
     @property
-    def x(self):
+    def x(self) -> float:
         """The x value this projectile is on.
 
         :rtype: float
@@ -69,7 +71,7 @@ class Projectile(GameObject):
         return self._x
 
     @property
-    def y(self):
+    def y(self) -> float:
         """The y value this projectile is on.
 
         :rtype: float

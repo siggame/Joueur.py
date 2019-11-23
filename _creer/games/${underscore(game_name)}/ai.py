@@ -1,76 +1,78 @@
 # This is where you build your AI for the ${game_name} game.
-<%include file="functions.noCreer" />
-from joueur.base_ai import BaseAI
+<%include file="functions.noCreer" /><%
+typing_import = shared['py']['get_imports'](
+    ai,
+    { 'List' } if 'TiledGame' in game['serverParentClasses'] else None
+)
+if typing_import:
+    typing_import += '\n'
+%>
+${typing_import}from joueur.base_ai import BaseAI
 
 ${merge("# ", "imports", "# you can add additional import(s) here", optional=True)}
 
 class AI(BaseAI):
     """ The AI you add and improve code inside to play ${game_name}. """
 
-    @property
-    def game(self):
-        """The reference to the Game instance this AI is playing.
-
-        :rtype: games.${underscore(game_name)}.game.Game
-        """
+${shared['py']['function_top']('game', {
+    'description': 'The reference to the Game instance this AI is playing.',
+    'type': {
+        'name': 'Game',
+        'is_game_object': True
+    }
+}, is_property=True)}
         return self._game # don't directly touch this "private" variable pls
 
-    @property
-    def player(self):
-        """The reference to the Player this AI controls in the Game.
-
-        :rtype: games.${underscore(game_name)}.player.Player
-        """
+${shared['py']['function_top']('player', {
+    'description': 'The reference to the Player this AI controls in the Game.',
+    'type': {
+        'name': 'Player',
+        'is_game_object': True
+    }
+}, is_property=True)}
         return self._player # don't directly touch this "private" variable pls
 
-    def get_name(self):
-        """ This is the name you send to the server so your AI will control the
-            player named this string.
-
-        Returns
-            str: The name of your Player.
-        """
+${shared['py']['function_top']('get_name', {
+    'description': 'This is the name you send to the server so your AI will control the player named this string.',
+    'returns': {
+        'description': 'The name of your Player.',
+        'type': { 'name': 'string' }
+    }
+})}
 ${merge("        # ", "get-name", '        return "' + game_name + ' Python Player" # REPLACE THIS WITH YOUR TEAM NAME')}
 
-    def start(self):
-        """ This is called once the game starts and your AI knows its player and
-            game. You can initialize your AI here.
-        """
+${shared['py']['function_top']('start', {
+    'description': 'This is called once the game starts and your AI knows its player and game. You can initialize your AI here.',
+    'returns': None
+})}
 ${merge("        # ", "start", "        # replace with your start logic")}
 
-    def game_updated(self):
-        """ This is called every time the game's state updates, so if you are
-        tracking anything you can update it here.
-        """
+${shared['py']['function_top']('game_updated', {
+    'description': 'This is called every time the game\'s state updates, so if you are tracking anything you can update it here.',
+    'returns': None
+})}
 ${merge("        # ", "game-updated", "        # replace with your game updated logic")}
 
-    def end(self, won, reason):
-        """ This is called when the game ends, you can clean up your data and
-            dump files here if need be.
-
-        Args:
-            won (bool): True means you won, False means you lost.
-            reason (str): The human readable string explaining why your AI won
-            or lost.
-        """
+${shared['py']['function_top']('end', {
+    'description': 'This is called when the game ends, you can clean up your data and dump files here if need be.',
+    'arguments': [
+        {
+            'name': 'won',
+            'description': 'True means you won, False means you lost.',
+            'type': { 'name': 'boolean' }
+        },
+        {
+            'name': 'reason',
+            'description': 'The human readable string explaining why your AI won or lost.',
+            'type': { 'name': 'string' }
+        }
+    ],
+    'returns': None
+})}
 ${merge("        # ", "end", "        # replace with your end logic")}
 % for function_name in ai['function_names']:
 <% function_parms = ai['functions'][function_name]
-%>    def ${underscore(function_name)}(self${", ".join([""] + function_parms['argument_names'])}):
-        """ ${shared['py']['format_description'](function_parms['description'])}
-% if len(function_parms['arguments']) > 0:
-
-        Args:
-% for arg_parms in function_parms['arguments']:
-            ${underscore(arg_parms['name'])} (${shared['py']['type'](arg_parms['type'])}): ${shared['py']['format_description'](arg_parms['description'])}
-% endfor
-% endif
-% if function_parms['returns']:
-
-        Returns:
-            ${shared['py']['type'](function_parms['returns']['type'])}: ${shared['py']['format_description'](function_parms['returns']['description'])}
-% endif
-        """
+%>${shared['py']['function_top'](function_name, function_parms)}
 ${merge("        # ", function_name,
 """        # Put your game logic here for {0}
         return {1}
@@ -79,18 +81,31 @@ ${merge("        # ", function_name,
 % endfor
 
 % if 'TiledGame' in game['serverParentClasses']: # then we need to add some client side utility functions
-    def find_path(self, start, goal):
-        """A very basic path finding algorithm (Breadth First Search) that when
-            given a starting Tile, will return a valid path to the goal Tile.
-
-        Args:
-            start (games.${game_name.lower()}.tile.Tile): the starting Tile
-            goal (games.${game_name.lower()}.tile.Tile): the goal Tile
-        Returns:
-            list[games.${game_name.lower()}.tile.Tile]: A list of Tiles
-            representing the path, the the first element being a valid adjacent
-            Tile to the start, and the last element being the goal.
-        """
+${shared['py']['function_top']('find_path', {
+    'description': 'A very basic path finding algorithm (Breadth First Search) that when given a starting Tile, will return a valid path to the goal Tile.',
+    'arguments': [
+        {
+            'name': 'start',
+            'description': 'The starting Tile to find a path from.',
+            'type': { 'name': 'Tile', 'is_game_object': True }
+        },
+        {
+            'name': 'goal',
+            'description': 'The goal (destination) Tile to find a path to.',
+            'type': { 'name': 'Tile', 'is_game_object': True }
+        }
+    ],
+    'returns': {
+        'description': 'A list of Tiles representing the path, the the first element being a valid adjacent Tile to the start, and the last element being the goal.',
+        'type': {
+            'name': 'list',
+            'valueType': {
+                'name': 'Tile',
+                'is_game_object': True
+            }
+        }
+    }
+})}
 
         if start == goal:
             # no need to make a path to here...

@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Dict, List, Optional
 from joueur.base_game import BaseGame
 
 # import game objects
@@ -25,7 +26,8 @@ class Game(BaseGame):
     """
 
     def __init__(self):
-        """Initializes a Game with basic logic as provided by the Creer code generator."""
+        """Initializes a Game with basic logic as provided by the Creer code generator.
+        """
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -65,7 +67,7 @@ class Game(BaseGame):
         }
 
     @property
-    def current_player(self):
+    def current_player(self) -> 'games.newtonian.player.Player':
         """The player whose turn it is currently. That player can send commands. Other players cannot.
 
         :rtype: games.newtonian.player.Player
@@ -73,7 +75,7 @@ class Game(BaseGame):
         return self._current_player
 
     @property
-    def current_turn(self):
+    def current_turn(self) -> int:
         """The current turn number, starting at 0 for the first player's turn.
 
         :rtype: int
@@ -81,7 +83,7 @@ class Game(BaseGame):
         return self._current_turn
 
     @property
-    def game_objects(self):
+    def game_objects(self) -> Dict[str, 'games.newtonian.game_object.GameObject']:
         """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
 
         :rtype: dict[str, games.newtonian.game_object.GameObject]
@@ -89,7 +91,7 @@ class Game(BaseGame):
         return self._game_objects
 
     @property
-    def intern_cap(self):
+    def intern_cap(self) -> int:
         """The maximum number of interns a player can have.
 
         :rtype: int
@@ -97,7 +99,7 @@ class Game(BaseGame):
         return self._intern_cap
 
     @property
-    def jobs(self):
+    def jobs(self) -> List['games.newtonian.job.Job']:
         """A list of all jobs. first item is intern, second is physicists, and third is manager.
 
         :rtype: list[games.newtonian.job.Job]
@@ -105,7 +107,7 @@ class Game(BaseGame):
         return self._jobs
 
     @property
-    def machines(self):
+    def machines(self) -> List['games.newtonian.machine.Machine']:
         """Every Machine in the game.
 
         :rtype: list[games.newtonian.machine.Machine]
@@ -113,7 +115,7 @@ class Game(BaseGame):
         return self._machines
 
     @property
-    def manager_cap(self):
+    def manager_cap(self) -> int:
         """The maximum number of managers a player can have.
 
         :rtype: int
@@ -121,7 +123,7 @@ class Game(BaseGame):
         return self._manager_cap
 
     @property
-    def map_height(self):
+    def map_height(self) -> int:
         """The number of Tiles in the map along the y (vertical) axis.
 
         :rtype: int
@@ -129,7 +131,7 @@ class Game(BaseGame):
         return self._map_height
 
     @property
-    def map_width(self):
+    def map_width(self) -> int:
         """The number of Tiles in the map along the x (horizontal) axis.
 
         :rtype: int
@@ -137,7 +139,7 @@ class Game(BaseGame):
         return self._map_width
 
     @property
-    def material_spawn(self):
+    def material_spawn(self) -> int:
         """The number of materials that spawn per spawn cycle.
 
         :rtype: int
@@ -145,7 +147,7 @@ class Game(BaseGame):
         return self._material_spawn
 
     @property
-    def max_turns(self):
+    def max_turns(self) -> int:
         """The maximum number of turns before the game will automatically end.
 
         :rtype: int
@@ -153,7 +155,7 @@ class Game(BaseGame):
         return self._max_turns
 
     @property
-    def physicist_cap(self):
+    def physicist_cap(self) -> int:
         """The maximum number of physicists a player can have.
 
         :rtype: int
@@ -161,7 +163,7 @@ class Game(BaseGame):
         return self._physicist_cap
 
     @property
-    def players(self):
+    def players(self) -> List['games.newtonian.player.Player']:
         """List of all the players in the game.
 
         :rtype: list[games.newtonian.player.Player]
@@ -169,7 +171,7 @@ class Game(BaseGame):
         return self._players
 
     @property
-    def refined_value(self):
+    def refined_value(self) -> int:
         """The amount of victory points added when a refined ore is consumed by the generator.
 
         :rtype: int
@@ -177,7 +179,7 @@ class Game(BaseGame):
         return self._refined_value
 
     @property
-    def regenerate_rate(self):
+    def regenerate_rate(self) -> float:
         """The percent of max HP regained when a unit end their turn on a tile owned by their player.
 
         :rtype: float
@@ -185,7 +187,7 @@ class Game(BaseGame):
         return self._regenerate_rate
 
     @property
-    def session(self):
+    def session(self) -> str:
         """A unique identifier for the game instance that is being played.
 
         :rtype: str
@@ -193,7 +195,7 @@ class Game(BaseGame):
         return self._session
 
     @property
-    def spawn_time(self):
+    def spawn_time(self) -> int:
         """The amount of turns it takes a unit to spawn.
 
         :rtype: int
@@ -201,7 +203,7 @@ class Game(BaseGame):
         return self._spawn_time
 
     @property
-    def stun_time(self):
+    def stun_time(self) -> int:
         """The amount of turns a unit cannot do anything when stunned.
 
         :rtype: int
@@ -209,7 +211,7 @@ class Game(BaseGame):
         return self._stun_time
 
     @property
-    def tiles(self):
+    def tiles(self) -> List['games.newtonian.tile.Tile']:
         """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
 
         :rtype: list[games.newtonian.tile.Tile]
@@ -217,7 +219,7 @@ class Game(BaseGame):
         return self._tiles
 
     @property
-    def time_added_per_turn(self):
+    def time_added_per_turn(self) -> int:
         """The amount of time (in nano-seconds) added after each player performs a turn.
 
         :rtype: int
@@ -225,7 +227,7 @@ class Game(BaseGame):
         return self._time_added_per_turn
 
     @property
-    def time_immune(self):
+    def time_immune(self) -> int:
         """The number turns a unit is immune to being stunned.
 
         :rtype: int
@@ -233,7 +235,7 @@ class Game(BaseGame):
         return self._time_immune
 
     @property
-    def units(self):
+    def units(self) -> List['games.newtonian.unit.Unit']:
         """Every Unit in the game.
 
         :rtype: list[games.newtonian.unit.Unit]
@@ -241,21 +243,22 @@ class Game(BaseGame):
         return self._units
 
     @property
-    def victory_amount(self):
+    def victory_amount(self) -> int:
         """The amount of combined heat and pressure that you need to win.
 
         :rtype: int
         """
         return self._victory_amount
 
+    def get_tile_at(self, x: int, y: int) -> Optional['games.newtonian.tile.Tile']:
+        """Gets the Tile at a specified (x, y) position.
 
-    def get_tile_at(self, x, y):
-        """Gets the Tile at a specified (x, y) position
         Args:
-            x (int): integer between 0 and the map_width
-            y (int): integer between 0 and the map_height
+            x (int): An integer between 0 and the map_width.
+            y (int): An integer between 0 and the map_height.
+
         Returns:
-            games.newtonian.tile.Tile: the Tile at (x, y) or None if out of bounds
+            games.newtonian.tile.Tile or None: The Tile at (x, y) or None if out of bounds.
         """
         if x < 0 or y < 0 or x >= self.map_width or y >= self.map_height:
             # out of bounds

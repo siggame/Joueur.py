@@ -17,7 +17,8 @@ class Player(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Player with basic logic as provided by the Creer code generator."""
+        """Initializes a Player with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -32,7 +33,7 @@ class Player(GameObject):
         self._won = False
 
     @property
-    def client_type(self):
+    def client_type(self) -> str:
         """What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
 
         :rtype: str
@@ -40,15 +41,15 @@ class Player(GameObject):
         return self._client_type
 
     @property
-    def color(self):
+    def color(self) -> str:
         """The color (side) of this player. Either 'white' or 'black', with the 'white' player having the first move.
 
-        :rtype: str
+        :rtype: 'black' or white
         """
         return self._color
 
     @property
-    def lost(self):
+    def lost(self) -> bool:
         """If the player lost the game or not.
 
         :rtype: bool
@@ -56,7 +57,7 @@ class Player(GameObject):
         return self._lost
 
     @property
-    def name(self):
+    def name(self) -> str:
         """The name of the player.
 
         :rtype: str
@@ -64,7 +65,7 @@ class Player(GameObject):
         return self._name
 
     @property
-    def opponent(self):
+    def opponent(self) -> 'games.chess.player.Player':
         """This player's opponent in the game.
 
         :rtype: games.chess.player.Player
@@ -72,7 +73,7 @@ class Player(GameObject):
         return self._opponent
 
     @property
-    def reason_lost(self):
+    def reason_lost(self) -> str:
         """The reason why the player lost the game.
 
         :rtype: str
@@ -80,7 +81,7 @@ class Player(GameObject):
         return self._reason_lost
 
     @property
-    def reason_won(self):
+    def reason_won(self) -> str:
         """The reason why the player won the game.
 
         :rtype: str
@@ -88,7 +89,7 @@ class Player(GameObject):
         return self._reason_won
 
     @property
-    def time_remaining(self):
+    def time_remaining(self) -> float:
         """The amount of time (in ns) remaining for this AI to send commands.
 
         :rtype: float
@@ -96,7 +97,7 @@ class Player(GameObject):
         return self._time_remaining
 
     @property
-    def won(self):
+    def won(self) -> bool:
         """If the player won the game or not.
 
         :rtype: bool

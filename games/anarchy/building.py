@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Optional
 from games.anarchy.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Building(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Building with basic logic as provided by the Creer code generator."""
+        """Initializes a Building with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -34,7 +36,7 @@ class Building(GameObject):
         self._y = 0
 
     @property
-    def bribed(self):
+    def bribed(self) -> bool:
         """When True this building has already been bribed this turn and cannot be bribed again this turn.
 
         :rtype: bool
@@ -42,39 +44,39 @@ class Building(GameObject):
         return self._bribed
 
     @property
-    def building_east(self):
+    def building_east(self) -> Optional['games.anarchy.building.Building']:
         """The Building directly to the east of this building, or None if not present.
 
-        :rtype: games.anarchy.building.Building
+        :rtype: games.anarchy.building.Building or None
         """
         return self._building_east
 
     @property
-    def building_north(self):
+    def building_north(self) -> Optional['games.anarchy.building.Building']:
         """The Building directly to the north of this building, or None if not present.
 
-        :rtype: games.anarchy.building.Building
+        :rtype: games.anarchy.building.Building or None
         """
         return self._building_north
 
     @property
-    def building_south(self):
+    def building_south(self) -> Optional['games.anarchy.building.Building']:
         """The Building directly to the south of this building, or None if not present.
 
-        :rtype: games.anarchy.building.Building
+        :rtype: games.anarchy.building.Building or None
         """
         return self._building_south
 
     @property
-    def building_west(self):
+    def building_west(self) -> Optional['games.anarchy.building.Building']:
         """The Building directly to the west of this building, or None if not present.
 
-        :rtype: games.anarchy.building.Building
+        :rtype: games.anarchy.building.Building or None
         """
         return self._building_west
 
     @property
-    def fire(self):
+    def fire(self) -> int:
         """How much fire is currently burning the building, and thus how much damage it will take at the end of its owner's turn. 0 means no fire.
 
         :rtype: int
@@ -82,7 +84,7 @@ class Building(GameObject):
         return self._fire
 
     @property
-    def health(self):
+    def health(self) -> int:
         """How much health this building currently has. When this reaches 0 the Building has been burned down.
 
         :rtype: int
@@ -90,7 +92,7 @@ class Building(GameObject):
         return self._health
 
     @property
-    def is_headquarters(self):
+    def is_headquarters(self) -> bool:
         """True if this is the Headquarters of the owning player, False otherwise. Burning this down wins the game for the other Player.
 
         :rtype: bool
@@ -98,7 +100,7 @@ class Building(GameObject):
         return self._is_headquarters
 
     @property
-    def owner(self):
+    def owner(self) -> 'games.anarchy.player.Player':
         """The player that owns this building. If it burns down (health reaches 0) that player gets an additional bribe(s).
 
         :rtype: games.anarchy.player.Player
@@ -106,7 +108,7 @@ class Building(GameObject):
         return self._owner
 
     @property
-    def x(self):
+    def x(self) -> int:
         """The location of the Building along the x-axis.
 
         :rtype: int
@@ -114,7 +116,7 @@ class Building(GameObject):
         return self._x
 
     @property
-    def y(self):
+    def y(self) -> int:
         """The location of the Building along the y-axis.
 
         :rtype: int

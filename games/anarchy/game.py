@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Dict, List, Optional
 from joueur.base_game import BaseGame
 
 # import game objects
@@ -27,7 +28,8 @@ class Game(BaseGame):
     """
 
     def __init__(self):
-        """Initializes a Game with basic logic as provided by the Creer code generator."""
+        """Initializes a Game with basic logic as provided by the Creer code generator.
+        """
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -62,7 +64,7 @@ class Game(BaseGame):
         }
 
     @property
-    def base_bribes_per_turn(self):
+    def base_bribes_per_turn(self) -> int:
         """How many bribes players get at the beginning of their turn, not counting their burned down Buildings.
 
         :rtype: int
@@ -70,7 +72,7 @@ class Game(BaseGame):
         return self._base_bribes_per_turn
 
     @property
-    def buildings(self):
+    def buildings(self) -> List['games.anarchy.building.Building']:
         """All the buildings in the game.
 
         :rtype: list[games.anarchy.building.Building]
@@ -78,7 +80,7 @@ class Game(BaseGame):
         return self._buildings
 
     @property
-    def current_forecast(self):
+    def current_forecast(self) -> 'games.anarchy.forecast.Forecast':
         """The current Forecast, which will be applied at the end of the turn.
 
         :rtype: games.anarchy.forecast.Forecast
@@ -86,7 +88,7 @@ class Game(BaseGame):
         return self._current_forecast
 
     @property
-    def current_player(self):
+    def current_player(self) -> 'games.anarchy.player.Player':
         """The player whose turn it is currently. That player can send commands. Other players cannot.
 
         :rtype: games.anarchy.player.Player
@@ -94,7 +96,7 @@ class Game(BaseGame):
         return self._current_player
 
     @property
-    def current_turn(self):
+    def current_turn(self) -> int:
         """The current turn number, starting at 0 for the first player's turn.
 
         :rtype: int
@@ -102,7 +104,7 @@ class Game(BaseGame):
         return self._current_turn
 
     @property
-    def forecasts(self):
+    def forecasts(self) -> List['games.anarchy.forecast.Forecast']:
         """All the forecasts in the game, indexed by turn number.
 
         :rtype: list[games.anarchy.forecast.Forecast]
@@ -110,7 +112,7 @@ class Game(BaseGame):
         return self._forecasts
 
     @property
-    def game_objects(self):
+    def game_objects(self) -> Dict[str, 'games.anarchy.game_object.GameObject']:
         """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
 
         :rtype: dict[str, games.anarchy.game_object.GameObject]
@@ -118,7 +120,7 @@ class Game(BaseGame):
         return self._game_objects
 
     @property
-    def map_height(self):
+    def map_height(self) -> int:
         """The width of the entire map along the vertical (y) axis.
 
         :rtype: int
@@ -126,7 +128,7 @@ class Game(BaseGame):
         return self._map_height
 
     @property
-    def map_width(self):
+    def map_width(self) -> int:
         """The width of the entire map along the horizontal (x) axis.
 
         :rtype: int
@@ -134,7 +136,7 @@ class Game(BaseGame):
         return self._map_width
 
     @property
-    def max_fire(self):
+    def max_fire(self) -> int:
         """The maximum amount of fire value for any Building.
 
         :rtype: int
@@ -142,7 +144,7 @@ class Game(BaseGame):
         return self._max_fire
 
     @property
-    def max_forecast_intensity(self):
+    def max_forecast_intensity(self) -> int:
         """The maximum amount of intensity value for any Forecast.
 
         :rtype: int
@@ -150,7 +152,7 @@ class Game(BaseGame):
         return self._max_forecast_intensity
 
     @property
-    def max_turns(self):
+    def max_turns(self) -> int:
         """The maximum number of turns before the game will automatically end.
 
         :rtype: int
@@ -158,15 +160,15 @@ class Game(BaseGame):
         return self._max_turns
 
     @property
-    def next_forecast(self):
+    def next_forecast(self) -> Optional['games.anarchy.forecast.Forecast']:
         """The next Forecast, which will be applied at the end of your opponent's turn. This is also the Forecast WeatherStations can control this turn.
 
-        :rtype: games.anarchy.forecast.Forecast
+        :rtype: games.anarchy.forecast.Forecast or None
         """
         return self._next_forecast
 
     @property
-    def players(self):
+    def players(self) -> List['games.anarchy.player.Player']:
         """List of all the players in the game.
 
         :rtype: list[games.anarchy.player.Player]
@@ -174,7 +176,7 @@ class Game(BaseGame):
         return self._players
 
     @property
-    def session(self):
+    def session(self) -> str:
         """A unique identifier for the game instance that is being played.
 
         :rtype: str
@@ -182,7 +184,7 @@ class Game(BaseGame):
         return self._session
 
     @property
-    def time_added_per_turn(self):
+    def time_added_per_turn(self) -> int:
         """The amount of time (in nano-seconds) added after each player performs a turn.
 
         :rtype: int

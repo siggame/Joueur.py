@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Dict, List, Optional
 from joueur.base_game import BaseGame
 
 # import game objects
@@ -25,7 +26,8 @@ class Game(BaseGame):
     """
 
     def __init__(self):
-        """Initializes a Game with basic logic as provided by the Creer code generator."""
+        """Initializes a Game with basic logic as provided by the Creer code generator.
+        """
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -60,7 +62,7 @@ class Game(BaseGame):
         }
 
     @property
-    def beavers(self):
+    def beavers(self) -> List['games.stumped.beaver.Beaver']:
         """Every Beaver in the game.
 
         :rtype: list[games.stumped.beaver.Beaver]
@@ -68,7 +70,7 @@ class Game(BaseGame):
         return self._beavers
 
     @property
-    def current_player(self):
+    def current_player(self) -> 'games.stumped.player.Player':
         """The player whose turn it is currently. That player can send commands. Other players cannot.
 
         :rtype: games.stumped.player.Player
@@ -76,7 +78,7 @@ class Game(BaseGame):
         return self._current_player
 
     @property
-    def current_turn(self):
+    def current_turn(self) -> int:
         """The current turn number, starting at 0 for the first player's turn.
 
         :rtype: int
@@ -84,7 +86,7 @@ class Game(BaseGame):
         return self._current_turn
 
     @property
-    def free_beavers_count(self):
+    def free_beavers_count(self) -> int:
         """When a Player has less Beavers than this number, then recruiting other Beavers is free.
 
         :rtype: int
@@ -92,7 +94,7 @@ class Game(BaseGame):
         return self._free_beavers_count
 
     @property
-    def game_objects(self):
+    def game_objects(self) -> Dict[str, 'games.stumped.game_object.GameObject']:
         """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
 
         :rtype: dict[str, games.stumped.game_object.GameObject]
@@ -100,7 +102,7 @@ class Game(BaseGame):
         return self._game_objects
 
     @property
-    def jobs(self):
+    def jobs(self) -> List['games.stumped.job.Job']:
         """All the Jobs that Beavers can have in the game.
 
         :rtype: list[games.stumped.job.Job]
@@ -108,7 +110,7 @@ class Game(BaseGame):
         return self._jobs
 
     @property
-    def lodge_cost_constant(self):
+    def lodge_cost_constant(self) -> float:
         """Constant number used to calculate what it costs to spawn a new lodge.
 
         :rtype: float
@@ -116,7 +118,7 @@ class Game(BaseGame):
         return self._lodge_cost_constant
 
     @property
-    def lodges_to_win(self):
+    def lodges_to_win(self) -> int:
         """How many lodges must be owned by a Player at once to win the game.
 
         :rtype: int
@@ -124,7 +126,7 @@ class Game(BaseGame):
         return self._lodges_to_win
 
     @property
-    def map_height(self):
+    def map_height(self) -> int:
         """The number of Tiles in the map along the y (vertical) axis.
 
         :rtype: int
@@ -132,7 +134,7 @@ class Game(BaseGame):
         return self._map_height
 
     @property
-    def map_width(self):
+    def map_width(self) -> int:
         """The number of Tiles in the map along the x (horizontal) axis.
 
         :rtype: int
@@ -140,7 +142,7 @@ class Game(BaseGame):
         return self._map_width
 
     @property
-    def max_turns(self):
+    def max_turns(self) -> int:
         """The maximum number of turns before the game will automatically end.
 
         :rtype: int
@@ -148,7 +150,7 @@ class Game(BaseGame):
         return self._max_turns
 
     @property
-    def players(self):
+    def players(self) -> List['games.stumped.player.Player']:
         """List of all the players in the game.
 
         :rtype: list[games.stumped.player.Player]
@@ -156,7 +158,7 @@ class Game(BaseGame):
         return self._players
 
     @property
-    def session(self):
+    def session(self) -> str:
         """A unique identifier for the game instance that is being played.
 
         :rtype: str
@@ -164,7 +166,7 @@ class Game(BaseGame):
         return self._session
 
     @property
-    def spawner(self):
+    def spawner(self) -> List['games.stumped.spawner.Spawner']:
         """Every Spawner in the game.
 
         :rtype: list[games.stumped.spawner.Spawner]
@@ -172,7 +174,7 @@ class Game(BaseGame):
         return self._spawner
 
     @property
-    def spawner_harvest_constant(self):
+    def spawner_harvest_constant(self) -> float:
         """Constant number used to calculate how many branches/food Beavers harvest from Spawners.
 
         :rtype: float
@@ -180,7 +182,7 @@ class Game(BaseGame):
         return self._spawner_harvest_constant
 
     @property
-    def spawner_types(self):
+    def spawner_types(self) -> List[str]:
         """All the types of Spawners in the game.
 
         :rtype: list[str]
@@ -188,7 +190,7 @@ class Game(BaseGame):
         return self._spawner_types
 
     @property
-    def tiles(self):
+    def tiles(self) -> List['games.stumped.tile.Tile']:
         """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
 
         :rtype: list[games.stumped.tile.Tile]
@@ -196,21 +198,22 @@ class Game(BaseGame):
         return self._tiles
 
     @property
-    def time_added_per_turn(self):
+    def time_added_per_turn(self) -> int:
         """The amount of time (in nano-seconds) added after each player performs a turn.
 
         :rtype: int
         """
         return self._time_added_per_turn
 
+    def get_tile_at(self, x: int, y: int) -> Optional['games.stumped.tile.Tile']:
+        """Gets the Tile at a specified (x, y) position.
 
-    def get_tile_at(self, x, y):
-        """Gets the Tile at a specified (x, y) position
         Args:
-            x (int): integer between 0 and the map_width
-            y (int): integer between 0 and the map_height
+            x (int): An integer between 0 and the map_width.
+            y (int): An integer between 0 and the map_height.
+
         Returns:
-            games.stumped.tile.Tile: the Tile at (x, y) or None if out of bounds
+            games.stumped.tile.Tile or None: The Tile at (x, y) or None if out of bounds.
         """
         if x < 0 or y < 0 or x >= self.map_width or y >= self.map_height:
             # out of bounds

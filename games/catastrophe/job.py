@@ -17,7 +17,8 @@ class Job(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Job with basic logic as provided by the Creer code generator."""
+        """Initializes a Job with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -29,7 +30,7 @@ class Job(GameObject):
         self._upkeep = 0
 
     @property
-    def action_cost(self):
+    def action_cost(self) -> float:
         """The amount of energy this Job normally uses to perform its actions.
 
         :rtype: float
@@ -37,7 +38,7 @@ class Job(GameObject):
         return self._action_cost
 
     @property
-    def carry_limit(self):
+    def carry_limit(self) -> int:
         """How many combined resources a Unit with this Job can hold at once.
 
         :rtype: int
@@ -45,7 +46,7 @@ class Job(GameObject):
         return self._carry_limit
 
     @property
-    def moves(self):
+    def moves(self) -> int:
         """The number of moves this Job can make per turn.
 
         :rtype: int
@@ -53,7 +54,7 @@ class Job(GameObject):
         return self._moves
 
     @property
-    def regen_rate(self):
+    def regen_rate(self) -> float:
         """The amount of energy normally regenerated when resting at a shelter.
 
         :rtype: float
@@ -61,21 +62,20 @@ class Job(GameObject):
         return self._regen_rate
 
     @property
-    def title(self):
+    def title(self) -> str:
         """The Job title.
 
-        :rtype: str
+        :rtype: 'fresh human', 'cat overlord', 'soldier', 'gatherer', 'builder', or missionary
         """
         return self._title
 
     @property
-    def upkeep(self):
+    def upkeep(self) -> int:
         """The amount of food per turn this Unit consumes. If there isn't enough food for every Unit, all Units become starved and do not consume food.
 
         :rtype: int
         """
         return self._upkeep
-
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

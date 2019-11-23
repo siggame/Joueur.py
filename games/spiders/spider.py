@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Optional
 from games.spiders.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Spider(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Spider with basic logic as provided by the Creer code generator."""
+        """Initializes a Spider with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -26,7 +28,7 @@ class Spider(GameObject):
         self._owner = None
 
     @property
-    def is_dead(self):
+    def is_dead(self) -> bool:
         """If this Spider is dead and has been removed from the game.
 
         :rtype: bool
@@ -34,15 +36,15 @@ class Spider(GameObject):
         return self._is_dead
 
     @property
-    def nest(self):
+    def nest(self) -> Optional['games.spiders.nest.Nest']:
         """The Nest that this Spider is currently on. None when moving on a Web.
 
-        :rtype: games.spiders.nest.Nest
+        :rtype: games.spiders.nest.Nest or None
         """
         return self._nest
 
     @property
-    def owner(self):
+    def owner(self) -> 'games.spiders.player.Player':
         """The Player that owns this Spider, and can command it.
 
         :rtype: games.spiders.player.Player

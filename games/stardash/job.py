@@ -17,7 +17,8 @@ class Job(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Job with basic logic as provided by the Creer code generator."""
+        """Initializes a Job with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -31,7 +32,7 @@ class Job(GameObject):
         self._unit_cost = 0
 
     @property
-    def carry_limit(self):
+    def carry_limit(self) -> int:
         """How many combined resources a unit with this Job can hold at once.
 
         :rtype: int
@@ -39,7 +40,7 @@ class Job(GameObject):
         return self._carry_limit
 
     @property
-    def damage(self):
+    def damage(self) -> int:
         """The amount of damage this Job does per attack.
 
         :rtype: int
@@ -47,7 +48,7 @@ class Job(GameObject):
         return self._damage
 
     @property
-    def energy(self):
+    def energy(self) -> int:
         """The amount of starting health this Job has.
 
         :rtype: int
@@ -55,7 +56,7 @@ class Job(GameObject):
         return self._energy
 
     @property
-    def moves(self):
+    def moves(self) -> int:
         """The distance this job can move per turn.
 
         :rtype: int
@@ -63,7 +64,7 @@ class Job(GameObject):
         return self._moves
 
     @property
-    def range(self):
+    def range(self) -> int:
         """The distance at which this job can effect things.
 
         :rtype: int
@@ -71,7 +72,7 @@ class Job(GameObject):
         return self._range
 
     @property
-    def shield(self):
+    def shield(self) -> int:
         """The reserve the martyr use to protect allies.
 
         :rtype: int
@@ -79,15 +80,15 @@ class Job(GameObject):
         return self._shield
 
     @property
-    def title(self):
+    def title(self) -> str:
         """The Job title. 'corvette', 'missileboat', 'martyr', 'transport', or 'miner'. (in this order from 0-4).
 
-        :rtype: str
+        :rtype: 'corvette', 'missileboat', 'martyr', 'transport', or miner
         """
         return self._title
 
     @property
-    def unit_cost(self):
+    def unit_cost(self) -> int:
         """How much money it costs to spawn a unit.
 
         :rtype: int

@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import List, Optional
 from games.spiders.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Web(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Web with basic logic as provided by the Creer code generator."""
+        """Initializes a Web with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -29,7 +31,7 @@ class Web(GameObject):
         self._strength = 0
 
     @property
-    def length(self):
+    def length(self) -> float:
         """How long this Web is, i.e., the distance between its nestA and nestB.
 
         :rtype: float
@@ -37,7 +39,7 @@ class Web(GameObject):
         return self._length
 
     @property
-    def load(self):
+    def load(self) -> int:
         """How much weight this Web currently has on it, which is the sum of all its Spiderlings weight.
 
         :rtype: int
@@ -45,23 +47,23 @@ class Web(GameObject):
         return self._load
 
     @property
-    def nest_a(self):
+    def nest_a(self) -> Optional['games.spiders.nest.Nest']:
         """The first Nest this Web is connected to.
 
-        :rtype: games.spiders.nest.Nest
+        :rtype: games.spiders.nest.Nest or None
         """
         return self._nest_a
 
     @property
-    def nest_b(self):
+    def nest_b(self) -> Optional['games.spiders.nest.Nest']:
         """The second Nest this Web is connected to.
 
-        :rtype: games.spiders.nest.Nest
+        :rtype: games.spiders.nest.Nest or None
         """
         return self._nest_b
 
     @property
-    def spiderlings(self):
+    def spiderlings(self) -> List['games.spiders.spiderling.Spiderling']:
         """All the Spiderlings currently moving along this Web.
 
         :rtype: list[games.spiders.spiderling.Spiderling]
@@ -69,7 +71,7 @@ class Web(GameObject):
         return self._spiderlings
 
     @property
-    def strength(self):
+    def strength(self) -> int:
         """How much weight this Web can take before snapping and destroying itself and all the Spiders on it.
 
         :rtype: int

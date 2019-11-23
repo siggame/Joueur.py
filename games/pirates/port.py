@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Optional
 from games.pirates.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Port(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Port with basic logic as provided by the Creer code generator."""
+        """Initializes a Port with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -27,7 +29,7 @@ class Port(GameObject):
         self._tile = None
 
     @property
-    def gold(self):
+    def gold(self) -> int:
         """For players, how much more gold this Port can spend this turn. For merchants, how much gold this Port has accumulated (it will spawn a ship when the Port can afford one).
 
         :rtype: int
@@ -35,7 +37,7 @@ class Port(GameObject):
         return self._gold
 
     @property
-    def investment(self):
+    def investment(self) -> int:
         """(Merchants only) How much gold was invested into this Port. Investment determines the strength and value of the next ship.
 
         :rtype: int
@@ -43,32 +45,33 @@ class Port(GameObject):
         return self._investment
 
     @property
-    def owner(self):
+    def owner(self) -> Optional['games.pirates.player.Player']:
         """The owner of this Port, or None if owned by merchants.
 
-        :rtype: games.pirates.player.Player
+        :rtype: games.pirates.player.Player or None
         """
         return self._owner
 
     @property
-    def tile(self):
+    def tile(self) -> 'games.pirates.tile.Tile':
         """The Tile this Port is on.
 
         :rtype: games.pirates.tile.Tile
         """
         return self._tile
 
-    def spawn(self, type):
-        """ Spawn a Unit on this port.
+    def spawn(self, type: str) -> bool:
+        """Spawn a Unit on this port.
 
         Args:
-            type (str): What type of Unit to create ('crew' or 'ship').
+            type ('crew' or ship): What type of Unit to create ('crew' or 'ship').
 
         Returns:
             bool: True if Unit was created successfully, False otherwise.
         """
-        return self._run_on_server('spawn', type=type)
-
+        return self._run_on_server('spawn', {
+            'type': type
+        })
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Dict, List, Optional
 from joueur.base_game import BaseGame
 
 # import game objects
@@ -26,7 +27,8 @@ class Game(BaseGame):
     """
 
     def __init__(self):
-        """Initializes a Game with basic logic as provided by the Creer code generator."""
+        """Initializes a Game with basic logic as provided by the Creer code generator.
+        """
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -62,7 +64,7 @@ class Game(BaseGame):
         }
 
     @property
-    def current_player(self):
+    def current_player(self) -> 'games.necrowar.player.Player':
         """The player whose turn it is currently. That player can send commands. Other players cannot.
 
         :rtype: games.necrowar.player.Player
@@ -70,7 +72,7 @@ class Game(BaseGame):
         return self._current_player
 
     @property
-    def current_turn(self):
+    def current_turn(self) -> int:
         """The current turn number, starting at 0 for the first player's turn.
 
         :rtype: int
@@ -78,7 +80,7 @@ class Game(BaseGame):
         return self._current_turn
 
     @property
-    def game_objects(self):
+    def game_objects(self) -> Dict[str, 'games.necrowar.game_object.GameObject']:
         """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
 
         :rtype: dict[str, games.necrowar.game_object.GameObject]
@@ -86,7 +88,7 @@ class Game(BaseGame):
         return self._game_objects
 
     @property
-    def gold_income_per_unit(self):
+    def gold_income_per_unit(self) -> int:
         """The amount of gold income per turn per unit in a mine.
 
         :rtype: int
@@ -94,7 +96,7 @@ class Game(BaseGame):
         return self._gold_income_per_unit
 
     @property
-    def island_income_per_unit(self):
+    def island_income_per_unit(self) -> int:
         """The amount of gold income per turn per unit in the island mine.
 
         :rtype: int
@@ -102,7 +104,7 @@ class Game(BaseGame):
         return self._island_income_per_unit
 
     @property
-    def mana_income_per_unit(self):
+    def mana_income_per_unit(self) -> int:
         """The Amount of gold income per turn per unit fishing on the river side.
 
         :rtype: int
@@ -110,7 +112,7 @@ class Game(BaseGame):
         return self._mana_income_per_unit
 
     @property
-    def map_height(self):
+    def map_height(self) -> int:
         """The number of Tiles in the map along the y (vertical) axis.
 
         :rtype: int
@@ -118,7 +120,7 @@ class Game(BaseGame):
         return self._map_height
 
     @property
-    def map_width(self):
+    def map_width(self) -> int:
         """The number of Tiles in the map along the x (horizontal) axis.
 
         :rtype: int
@@ -126,7 +128,7 @@ class Game(BaseGame):
         return self._map_width
 
     @property
-    def max_turns(self):
+    def max_turns(self) -> int:
         """The maximum number of turns before the game will automatically end.
 
         :rtype: int
@@ -134,7 +136,7 @@ class Game(BaseGame):
         return self._max_turns
 
     @property
-    def players(self):
+    def players(self) -> List['games.necrowar.player.Player']:
         """List of all the players in the game.
 
         :rtype: list[games.necrowar.player.Player]
@@ -142,7 +144,7 @@ class Game(BaseGame):
         return self._players
 
     @property
-    def river_phase(self):
+    def river_phase(self) -> int:
         """The amount of turns it takes between the river changing phases.
 
         :rtype: int
@@ -150,7 +152,7 @@ class Game(BaseGame):
         return self._river_phase
 
     @property
-    def session(self):
+    def session(self) -> str:
         """A unique identifier for the game instance that is being played.
 
         :rtype: str
@@ -158,7 +160,7 @@ class Game(BaseGame):
         return self._session
 
     @property
-    def tiles(self):
+    def tiles(self) -> List['games.necrowar.tile.Tile']:
         """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
 
         :rtype: list[games.necrowar.tile.Tile]
@@ -166,7 +168,7 @@ class Game(BaseGame):
         return self._tiles
 
     @property
-    def time_added_per_turn(self):
+    def time_added_per_turn(self) -> int:
         """The amount of time (in nano-seconds) added after each player performs a turn.
 
         :rtype: int
@@ -174,7 +176,7 @@ class Game(BaseGame):
         return self._time_added_per_turn
 
     @property
-    def tower_jobs(self):
+    def tower_jobs(self) -> List['games.necrowar.tower_job.TowerJob']:
         """A list of every tower type / job.
 
         :rtype: list[games.necrowar.tower_job.TowerJob]
@@ -182,7 +184,7 @@ class Game(BaseGame):
         return self._tower_jobs
 
     @property
-    def towers(self):
+    def towers(self) -> List['games.necrowar.tower.Tower']:
         """Every Tower in the game.
 
         :rtype: list[games.necrowar.tower.Tower]
@@ -190,7 +192,7 @@ class Game(BaseGame):
         return self._towers
 
     @property
-    def unit_jobs(self):
+    def unit_jobs(self) -> List['games.necrowar.unit_job.UnitJob']:
         """A list of every unit type / job.
 
         :rtype: list[games.necrowar.unit_job.UnitJob]
@@ -198,21 +200,22 @@ class Game(BaseGame):
         return self._unit_jobs
 
     @property
-    def units(self):
+    def units(self) -> List['games.necrowar.unit.Unit']:
         """Every Unit in the game.
 
         :rtype: list[games.necrowar.unit.Unit]
         """
         return self._units
 
+    def get_tile_at(self, x: int, y: int) -> Optional['games.necrowar.tile.Tile']:
+        """Gets the Tile at a specified (x, y) position.
 
-    def get_tile_at(self, x, y):
-        """Gets the Tile at a specified (x, y) position
         Args:
-            x (int): integer between 0 and the map_width
-            y (int): integer between 0 and the map_height
+            x (int): An integer between 0 and the map_width.
+            y (int): An integer between 0 and the map_height.
+
         Returns:
-            games.necrowar.tile.Tile: the Tile at (x, y) or None if out of bounds
+            games.necrowar.tile.Tile or None: The Tile at (x, y) or None if out of bounds.
         """
         if x < 0 or y < 0 or x >= self.map_width or y >= self.map_height:
             # out of bounds

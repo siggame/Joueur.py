@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import List, Optional
 from games.newtonian.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Tile(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Tile with basic logic as provided by the Creer code generator."""
+        """Initializes a Tile with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -40,7 +42,7 @@ class Tile(GameObject):
         self._y = 0
 
     @property
-    def blueium(self):
+    def blueium(self) -> int:
         """The amount of blueium on this tile.
 
         :rtype: int
@@ -48,7 +50,7 @@ class Tile(GameObject):
         return self._blueium
 
     @property
-    def blueium_ore(self):
+    def blueium_ore(self) -> int:
         """The amount of blueium ore on this tile.
 
         :rtype: int
@@ -56,7 +58,7 @@ class Tile(GameObject):
         return self._blueium_ore
 
     @property
-    def decoration(self):
+    def decoration(self) -> int:
         """(Visualizer only) Different tile types, cracked, slightly dirty, etc. This has no effect on gameplay, but feel free to use it if you want.
 
         :rtype: int
@@ -64,15 +66,15 @@ class Tile(GameObject):
         return self._decoration
 
     @property
-    def direction(self):
+    def direction(self) -> str:
         """The direction of a conveyor belt ('blank', 'north', 'east', 'south', or 'west'). blank means conveyor doesn't move.
 
-        :rtype: str
+        :rtype: 'blank', 'north', 'east', 'south', or west
         """
         return self._direction
 
     @property
-    def is_wall(self):
+    def is_wall(self) -> bool:
         """Whether or not the tile is a wall.
 
         :rtype: bool
@@ -80,23 +82,23 @@ class Tile(GameObject):
         return self._is_wall
 
     @property
-    def machine(self):
+    def machine(self) -> Optional['games.newtonian.machine.Machine']:
         """The Machine on this Tile if present, otherwise None.
 
-        :rtype: games.newtonian.machine.Machine
+        :rtype: games.newtonian.machine.Machine or None
         """
         return self._machine
 
     @property
-    def owner(self):
+    def owner(self) -> Optional['games.newtonian.player.Player']:
         """The owner of this Tile, or None if owned by no-one. Only for generators and spawn areas.
 
-        :rtype: games.newtonian.player.Player
+        :rtype: games.newtonian.player.Player or None
         """
         return self._owner
 
     @property
-    def redium(self):
+    def redium(self) -> int:
         """The amount of redium on this tile.
 
         :rtype: int
@@ -104,7 +106,7 @@ class Tile(GameObject):
         return self._redium
 
     @property
-    def redium_ore(self):
+    def redium_ore(self) -> int:
         """The amount of redium ore on this tile.
 
         :rtype: int
@@ -112,55 +114,55 @@ class Tile(GameObject):
         return self._redium_ore
 
     @property
-    def tile_east(self):
+    def tile_east(self) -> Optional['games.newtonian.tile.Tile']:
         """The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
 
-        :rtype: games.newtonian.tile.Tile
+        :rtype: games.newtonian.tile.Tile or None
         """
         return self._tile_east
 
     @property
-    def tile_north(self):
+    def tile_north(self) -> Optional['games.newtonian.tile.Tile']:
         """The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
 
-        :rtype: games.newtonian.tile.Tile
+        :rtype: games.newtonian.tile.Tile or None
         """
         return self._tile_north
 
     @property
-    def tile_south(self):
+    def tile_south(self) -> Optional['games.newtonian.tile.Tile']:
         """The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
 
-        :rtype: games.newtonian.tile.Tile
+        :rtype: games.newtonian.tile.Tile or None
         """
         return self._tile_south
 
     @property
-    def tile_west(self):
+    def tile_west(self) -> Optional['games.newtonian.tile.Tile']:
         """The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
 
-        :rtype: games.newtonian.tile.Tile
+        :rtype: games.newtonian.tile.Tile or None
         """
         return self._tile_west
 
     @property
-    def type(self):
+    def type(self) -> str:
         """The type of Tile this is ('normal', 'generator', 'conveyor', or 'spawn').
 
-        :rtype: str
+        :rtype: 'normal', 'generator', 'conveyor', or spawn
         """
         return self._type
 
     @property
-    def unit(self):
+    def unit(self) -> Optional['games.newtonian.unit.Unit']:
         """The Unit on this Tile if present, otherwise None.
 
-        :rtype: games.newtonian.unit.Unit
+        :rtype: games.newtonian.unit.Unit or None
         """
         return self._unit
 
     @property
-    def x(self):
+    def x(self) -> int:
         """The x (horizontal) position of this Tile.
 
         :rtype: int
@@ -168,22 +170,22 @@ class Tile(GameObject):
         return self._x
 
     @property
-    def y(self):
+    def y(self) -> int:
         """The y (vertical) position of this Tile.
 
         :rtype: int
         """
         return self._y
 
-
     directions = ["North", "East", "South", "West"]
     """int: The valid directions that tiles can be in, "North", "East", "South", or "West"
     """
 
-    def get_neighbors(self):
+    def get_neighbors(self) -> List['games.newtonian.tile.Tile']:
         """Gets the neighbors of this Tile
 
-        :rtype list[games.newtonian.tile.Tile]
+        Returns:
+            list[games.newtonian.tile.Tile]: The list of neighboring Tiles of this Tile.
         """
         neighbors = []
 
@@ -194,20 +196,22 @@ class Tile(GameObject):
 
         return neighbors
 
-    def is_pathable(self):
+    def is_pathable(self) -> bool:
         """Checks if a Tile is pathable to units
 
         Returns:
-            bool: True if pathable, False otherwise
+            bool: True if pathable, False otherwise.
         """
         # <<-- Creer-Merge: is_pathable_builtin -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        return false  # DEVELOPER ADD LOGIC HERE
+        return False # DEVELOPER ADD LOGIC HERE
         # <<-- /Creer-Merge: is_pathable_builtin -->>
 
-    def has_neighbor(self, tile):
-        """Checks if this Tile has a specific neighboring Tile
+    def has_neighbor(self, tile: 'games.newtonian.tile.Tile') -> bool:
+        """Checks if this Tile has a specific neighboring Tile.
+
         Args:
-            tile (games.newtonian.tile.Tile): tile to check against
+            tile (games.newtonian.tile.Tile): The Tile to check against.
+
         Returns:
             bool: True if the tile is a neighbor of this Tile, False otherwise
         """

@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Dict, List, Optional
 from joueur.base_game import BaseGame
 
 # import game objects
@@ -24,7 +25,8 @@ class Game(BaseGame):
     """
 
     def __init__(self):
-        """Initializes a Game with basic logic as provided by the Creer code generator."""
+        """Initializes a Game with basic logic as provided by the Creer code generator.
+        """
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -68,7 +70,7 @@ class Game(BaseGame):
         }
 
     @property
-    def bury_interest_rate(self):
+    def bury_interest_rate(self) -> float:
         """The rate buried gold increases each turn.
 
         :rtype: float
@@ -76,7 +78,7 @@ class Game(BaseGame):
         return self._bury_interest_rate
 
     @property
-    def crew_cost(self):
+    def crew_cost(self) -> int:
         """How much gold it costs to construct a single crew.
 
         :rtype: int
@@ -84,7 +86,7 @@ class Game(BaseGame):
         return self._crew_cost
 
     @property
-    def crew_damage(self):
+    def crew_damage(self) -> int:
         """How much damage crew deal to each other.
 
         :rtype: int
@@ -92,7 +94,7 @@ class Game(BaseGame):
         return self._crew_damage
 
     @property
-    def crew_health(self):
+    def crew_health(self) -> int:
         """The maximum amount of health a crew member can have.
 
         :rtype: int
@@ -100,7 +102,7 @@ class Game(BaseGame):
         return self._crew_health
 
     @property
-    def crew_moves(self):
+    def crew_moves(self) -> int:
         """The number of moves Units with only crew are given each turn.
 
         :rtype: int
@@ -108,7 +110,7 @@ class Game(BaseGame):
         return self._crew_moves
 
     @property
-    def crew_range(self):
+    def crew_range(self) -> float:
         """A crew's attack range. Range is circular.
 
         :rtype: float
@@ -116,7 +118,7 @@ class Game(BaseGame):
         return self._crew_range
 
     @property
-    def current_player(self):
+    def current_player(self) -> 'games.pirates.player.Player':
         """The player whose turn it is currently. That player can send commands. Other players cannot.
 
         :rtype: games.pirates.player.Player
@@ -124,7 +126,7 @@ class Game(BaseGame):
         return self._current_player
 
     @property
-    def current_turn(self):
+    def current_turn(self) -> int:
         """The current turn number, starting at 0 for the first player's turn.
 
         :rtype: int
@@ -132,7 +134,7 @@ class Game(BaseGame):
         return self._current_turn
 
     @property
-    def game_objects(self):
+    def game_objects(self) -> Dict[str, 'games.pirates.game_object.GameObject']:
         """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
 
         :rtype: dict[str, games.pirates.game_object.GameObject]
@@ -140,7 +142,7 @@ class Game(BaseGame):
         return self._game_objects
 
     @property
-    def heal_factor(self):
+    def heal_factor(self) -> float:
         """How much health a Unit recovers when they rest.
 
         :rtype: float
@@ -148,7 +150,7 @@ class Game(BaseGame):
         return self._heal_factor
 
     @property
-    def map_height(self):
+    def map_height(self) -> int:
         """The number of Tiles in the map along the y (vertical) axis.
 
         :rtype: int
@@ -156,7 +158,7 @@ class Game(BaseGame):
         return self._map_height
 
     @property
-    def map_width(self):
+    def map_width(self) -> int:
         """The number of Tiles in the map along the x (horizontal) axis.
 
         :rtype: int
@@ -164,7 +166,7 @@ class Game(BaseGame):
         return self._map_width
 
     @property
-    def max_turns(self):
+    def max_turns(self) -> int:
         """The maximum number of turns before the game will automatically end.
 
         :rtype: int
@@ -172,7 +174,7 @@ class Game(BaseGame):
         return self._max_turns
 
     @property
-    def merchant_gold_rate(self):
+    def merchant_gold_rate(self) -> float:
         """How much gold merchant Ports get each turn.
 
         :rtype: float
@@ -180,7 +182,7 @@ class Game(BaseGame):
         return self._merchant_gold_rate
 
     @property
-    def merchant_interest_rate(self):
+    def merchant_interest_rate(self) -> float:
         """When a merchant ship spawns, the amount of additional gold it has relative to the Port's investment.
 
         :rtype: float
@@ -188,7 +190,7 @@ class Game(BaseGame):
         return self._merchant_interest_rate
 
     @property
-    def min_interest_distance(self):
+    def min_interest_distance(self) -> float:
         """The Euclidean distance buried gold must be from the Player's Port to accumulate interest.
 
         :rtype: float
@@ -196,7 +198,7 @@ class Game(BaseGame):
         return self._min_interest_distance
 
     @property
-    def players(self):
+    def players(self) -> List['games.pirates.player.Player']:
         """List of all the players in the game.
 
         :rtype: list[games.pirates.player.Player]
@@ -204,7 +206,7 @@ class Game(BaseGame):
         return self._players
 
     @property
-    def ports(self):
+    def ports(self) -> List['games.pirates.port.Port']:
         """Every Port in the game. Merchant ports have owner set to None.
 
         :rtype: list[games.pirates.port.Port]
@@ -212,7 +214,7 @@ class Game(BaseGame):
         return self._ports
 
     @property
-    def rest_range(self):
+    def rest_range(self) -> float:
         """How far a Unit can be from a Port to rest. Range is circular.
 
         :rtype: float
@@ -220,7 +222,7 @@ class Game(BaseGame):
         return self._rest_range
 
     @property
-    def session(self):
+    def session(self) -> str:
         """A unique identifier for the game instance that is being played.
 
         :rtype: str
@@ -228,7 +230,7 @@ class Game(BaseGame):
         return self._session
 
     @property
-    def ship_cost(self):
+    def ship_cost(self) -> int:
         """How much gold it costs to construct a ship.
 
         :rtype: int
@@ -236,7 +238,7 @@ class Game(BaseGame):
         return self._ship_cost
 
     @property
-    def ship_damage(self):
+    def ship_damage(self) -> int:
         """How much damage ships deal to ships and ports.
 
         :rtype: int
@@ -244,7 +246,7 @@ class Game(BaseGame):
         return self._ship_damage
 
     @property
-    def ship_health(self):
+    def ship_health(self) -> int:
         """The maximum amount of health a ship can have.
 
         :rtype: int
@@ -252,7 +254,7 @@ class Game(BaseGame):
         return self._ship_health
 
     @property
-    def ship_moves(self):
+    def ship_moves(self) -> int:
         """The number of moves Units with ships are given each turn.
 
         :rtype: int
@@ -260,7 +262,7 @@ class Game(BaseGame):
         return self._ship_moves
 
     @property
-    def ship_range(self):
+    def ship_range(self) -> float:
         """A ship's attack range. Range is circular.
 
         :rtype: float
@@ -268,7 +270,7 @@ class Game(BaseGame):
         return self._ship_range
 
     @property
-    def tiles(self):
+    def tiles(self) -> List['games.pirates.tile.Tile']:
         """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
 
         :rtype: list[games.pirates.tile.Tile]
@@ -276,7 +278,7 @@ class Game(BaseGame):
         return self._tiles
 
     @property
-    def time_added_per_turn(self):
+    def time_added_per_turn(self) -> int:
         """The amount of time (in nano-seconds) added after each player performs a turn.
 
         :rtype: int
@@ -284,21 +286,22 @@ class Game(BaseGame):
         return self._time_added_per_turn
 
     @property
-    def units(self):
+    def units(self) -> List['games.pirates.unit.Unit']:
         """Every Unit in the game. Merchant units have targetPort set to a port.
 
         :rtype: list[games.pirates.unit.Unit]
         """
         return self._units
 
+    def get_tile_at(self, x: int, y: int) -> Optional['games.pirates.tile.Tile']:
+        """Gets the Tile at a specified (x, y) position.
 
-    def get_tile_at(self, x, y):
-        """Gets the Tile at a specified (x, y) position
         Args:
-            x (int): integer between 0 and the map_width
-            y (int): integer between 0 and the map_height
+            x (int): An integer between 0 and the map_width.
+            y (int): An integer between 0 and the map_height.
+
         Returns:
-            games.pirates.tile.Tile: the Tile at (x, y) or None if out of bounds
+            games.pirates.tile.Tile or None: The Tile at (x, y) or None if out of bounds.
         """
         if x < 0 or y < 0 or x >= self.map_width or y >= self.map_height:
             # out of bounds
