@@ -38,97 +38,73 @@ class Unit(GameObject):
 
     @property
     def acted(self) -> bool:
-        """Whether this Unit has performed its action this turn.
-
-        :rtype: bool
+        """bool: Whether this Unit has performed its action this turn.
         """
         return self._acted
 
     @property
     def energy(self) -> float:
-        """The amount of energy this Unit has (from 0.0 to 100.0).
-
-        :rtype: float
+        """float: The amount of energy this Unit has (from 0.0 to 100.0).
         """
         return self._energy
 
     @property
     def food(self) -> int:
-        """The amount of food this Unit is holding.
-
-        :rtype: int
+        """int: The amount of food this Unit is holding.
         """
         return self._food
 
     @property
     def job(self) -> 'games.catastrophe.job.Job':
-        """The Job this Unit was recruited to do.
-
-        :rtype: games.catastrophe.job.Job
+        """games.catastrophe.job.Job: The Job this Unit was recruited to do.
         """
         return self._job
 
     @property
     def materials(self) -> int:
-        """The amount of materials this Unit is holding.
-
-        :rtype: int
+        """int: The amount of materials this Unit is holding.
         """
         return self._materials
 
     @property
     def movement_target(self) -> Optional['games.catastrophe.tile.Tile']:
-        """The tile this Unit is moving to. This only applies to neutral fresh humans spawned on the road. Otherwise, the tile this Unit is on.
-
-        :rtype: games.catastrophe.tile.Tile or None
+        """games.catastrophe.tile.Tile or None: The tile this Unit is moving to. This only applies to neutral fresh humans spawned on the road. Otherwise, the tile this Unit is on.
         """
         return self._movement_target
 
     @property
     def moves(self) -> int:
-        """How many moves this Unit has left this turn.
-
-        :rtype: int
+        """int: How many moves this Unit has left this turn.
         """
         return self._moves
 
     @property
     def owner(self) -> Optional['games.catastrophe.player.Player']:
-        """The Player that owns and can control this Unit, or None if the Unit is neutral.
-
-        :rtype: games.catastrophe.player.Player or None
+        """games.catastrophe.player.Player or None: The Player that owns and can control this Unit, or None if the Unit is neutral.
         """
         return self._owner
 
     @property
     def squad(self) -> List['games.catastrophe.unit.Unit']:
-        """The Units in the same squad as this Unit. Units in the same squad attack and defend together.
-
-        :rtype: list[games.catastrophe.unit.Unit]
+        """list[games.catastrophe.unit.Unit]: The Units in the same squad as this Unit. Units in the same squad attack and defend together.
         """
         return self._squad
 
     @property
     def starving(self) -> bool:
-        """Whether this Unit is starving. Starving Units regenerate energy at half the rate they normally would while resting.
-
-        :rtype: bool
+        """bool: Whether this Unit is starving. Starving Units regenerate energy at half the rate they normally would while resting.
         """
         return self._starving
 
     @property
     def tile(self) -> Optional['games.catastrophe.tile.Tile']:
-        """The Tile this Unit is on.
-
-        :rtype: games.catastrophe.tile.Tile or None
+        """games.catastrophe.tile.Tile or None: The Tile this Unit is on.
         """
         return self._tile
 
     @property
     def turns_to_die(self) -> int:
-        """The number of turns before this Unit dies. This only applies to neutral fresh humans created from combat. Otherwise, 0.
-
-        :rtype: int
+        """int: The number of turns before this Unit dies. This only applies to neutral fresh humans created from combat. Otherwise, 0.
         """
         return self._turns_to_die
 

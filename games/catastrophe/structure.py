@@ -31,41 +31,31 @@ class Structure(GameObject):
 
     @property
     def effect_radius(self) -> int:
-        """The range of this Structure's effect. For example, a radius of 1 means this Structure affects a 3x3 square centered on this Structure.
-
-        :rtype: int
+        """int: The range of this Structure's effect. For example, a radius of 1 means this Structure affects a 3x3 square centered on this Structure.
         """
         return self._effect_radius
 
     @property
     def materials(self) -> int:
-        """The number of materials in this Structure. Once this number reaches 0, this Structure is destroyed.
-
-        :rtype: int
+        """int: The number of materials in this Structure. Once this number reaches 0, this Structure is destroyed.
         """
         return self._materials
 
     @property
     def owner(self) -> Optional['games.catastrophe.player.Player']:
-        """The owner of this Structure if any, otherwise None.
-
-        :rtype: games.catastrophe.player.Player or None
+        """games.catastrophe.player.Player or None: The owner of this Structure if any, otherwise None.
         """
         return self._owner
 
     @property
     def tile(self) -> Optional['games.catastrophe.tile.Tile']:
-        """The Tile this Structure is on.
-
-        :rtype: games.catastrophe.tile.Tile or None
+        """games.catastrophe.tile.Tile or None: The Tile this Structure is on.
         """
         return self._tile
 
     @property
     def type(self) -> str:
-        """The type of Structure this is ('shelter', 'monument', 'wall', 'road', 'neutral').
-
-        :rtype: 'neutral', 'shelter', 'monument', 'wall', or 'road'
+        """'neutral', 'shelter', 'monument', 'wall', or 'road': The type of Structure this is ('shelter', 'monument', 'wall', 'road', 'neutral').
         """
         return self._type
 

@@ -30,33 +30,25 @@ class Checker(GameObject):
 
     @property
     def kinged(self) -> bool:
-        """If the checker has been kinged and can move backwards.
-
-        :rtype: bool
+        """bool: If the checker has been kinged and can move backwards.
         """
         return self._kinged
 
     @property
     def owner(self) -> 'games.checkers.player.Player':
-        """The player that controls this Checker.
-
-        :rtype: games.checkers.player.Player
+        """games.checkers.player.Player: The player that controls this Checker.
         """
         return self._owner
 
     @property
     def x(self) -> int:
-        """The x coordinate of the checker.
-
-        :rtype: int
+        """int: The x coordinate of the checker.
         """
         return self._x
 
     @property
     def y(self) -> int:
-        """The y coordinate of the checker.
-
-        :rtype: int
+        """int: The y coordinate of the checker.
         """
         return self._y
 

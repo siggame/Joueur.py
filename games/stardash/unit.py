@@ -42,129 +42,97 @@ class Unit(GameObject):
 
     @property
     def acted(self) -> bool:
-        """Whether or not this Unit has performed its action this turn.
-
-        :rtype: bool
+        """bool: Whether or not this Unit has performed its action this turn.
         """
         return self._acted
 
     @property
     def dash_x(self) -> float:
-        """The x value this unit is dashing to.
-
-        :rtype: float
+        """float: The x value this unit is dashing to.
         """
         return self._dash_x
 
     @property
     def dash_y(self) -> float:
-        """The y value this unit is dashing to.
-
-        :rtype: float
+        """float: The y value this unit is dashing to.
         """
         return self._dash_y
 
     @property
     def energy(self) -> int:
-        """The remaining health of the unit.
-
-        :rtype: int
+        """int: The remaining health of the unit.
         """
         return self._energy
 
     @property
     def genarium(self) -> int:
-        """The amount of Genarium ore carried by this unit. (0 to job carry capacity - other carried items).
-
-        :rtype: int
+        """int: The amount of Genarium ore carried by this unit. (0 to job carry capacity - other carried items).
         """
         return self._genarium
 
     @property
     def is_busy(self) -> bool:
-        """Tracks wheither or not the ship is dashing or Mining. If True, it cannot do anything else.
-
-        :rtype: bool
+        """bool: Tracks wheither or not the ship is dashing or Mining. If True, it cannot do anything else.
         """
         return self._is_busy
 
     @property
     def job(self) -> 'games.stardash.job.Job':
-        """The Job this Unit has.
-
-        :rtype: games.stardash.job.Job
+        """games.stardash.job.Job: The Job this Unit has.
         """
         return self._job
 
     @property
     def legendarium(self) -> int:
-        """The amount of Legendarium ore carried by this unit. (0 to job carry capacity - other carried items).
-
-        :rtype: int
+        """int: The amount of Legendarium ore carried by this unit. (0 to job carry capacity - other carried items).
         """
         return self._legendarium
 
     @property
     def moves(self) -> float:
-        """The distance this unit can still move.
-
-        :rtype: float
+        """float: The distance this unit can still move.
         """
         return self._moves
 
     @property
     def mythicite(self) -> int:
-        """The amount of Mythicite carried by this unit. (0 to job carry capacity - other carried items).
-
-        :rtype: int
+        """int: The amount of Mythicite carried by this unit. (0 to job carry capacity - other carried items).
         """
         return self._mythicite
 
     @property
     def owner(self) -> Optional['games.stardash.player.Player']:
-        """The Player that owns and can control this Unit.
-
-        :rtype: games.stardash.player.Player or None
+        """games.stardash.player.Player or None: The Player that owns and can control this Unit.
         """
         return self._owner
 
     @property
     def protector(self) -> Optional['games.stardash.unit.Unit']:
-        """The martyr ship that is currently shielding this ship if any.
-
-        :rtype: games.stardash.unit.Unit or None
+        """games.stardash.unit.Unit or None: The martyr ship that is currently shielding this ship if any.
         """
         return self._protector
 
     @property
     def rarium(self) -> int:
-        """The amount of Rarium carried by this unit. (0 to job carry capacity - other carried items).
-
-        :rtype: int
+        """int: The amount of Rarium carried by this unit. (0 to job carry capacity - other carried items).
         """
         return self._rarium
 
     @property
     def shield(self) -> int:
-        """The sheild that a martyr ship has.
-
-        :rtype: int
+        """int: The sheild that a martyr ship has.
         """
         return self._shield
 
     @property
     def x(self) -> float:
-        """The x value this unit is on.
-
-        :rtype: float
+        """float: The x value this unit is on.
         """
         return self._x
 
     @property
     def y(self) -> float:
-        """The y value this unit is on.
-
-        :rtype: float
+        """float: The y value this unit is on.
         """
         return self._y
 

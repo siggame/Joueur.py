@@ -36,81 +36,61 @@ class Beaver(GameObject):
 
     @property
     def actions(self) -> int:
-        """The number of actions remaining for the Beaver this turn.
-
-        :rtype: int
+        """int: The number of actions remaining for the Beaver this turn.
         """
         return self._actions
 
     @property
     def branches(self) -> int:
-        """The amount of branches this Beaver is holding.
-
-        :rtype: int
+        """int: The amount of branches this Beaver is holding.
         """
         return self._branches
 
     @property
     def food(self) -> int:
-        """The amount of food this Beaver is holding.
-
-        :rtype: int
+        """int: The amount of food this Beaver is holding.
         """
         return self._food
 
     @property
     def health(self) -> int:
-        """How much health this Beaver has left.
-
-        :rtype: int
+        """int: How much health this Beaver has left.
         """
         return self._health
 
     @property
     def job(self) -> 'games.stumped.job.Job':
-        """The Job this Beaver was recruited to do.
-
-        :rtype: games.stumped.job.Job
+        """games.stumped.job.Job: The Job this Beaver was recruited to do.
         """
         return self._job
 
     @property
     def moves(self) -> int:
-        """How many moves this Beaver has left this turn.
-
-        :rtype: int
+        """int: How many moves this Beaver has left this turn.
         """
         return self._moves
 
     @property
     def owner(self) -> 'games.stumped.player.Player':
-        """The Player that owns and can control this Beaver.
-
-        :rtype: games.stumped.player.Player
+        """games.stumped.player.Player: The Player that owns and can control this Beaver.
         """
         return self._owner
 
     @property
     def recruited(self) -> bool:
-        """True if the Beaver has finished being recruited and can do things, False otherwise.
-
-        :rtype: bool
+        """bool: True if the Beaver has finished being recruited and can do things, False otherwise.
         """
         return self._recruited
 
     @property
     def tile(self) -> Optional['games.stumped.tile.Tile']:
-        """The Tile this Beaver is on.
-
-        :rtype: games.stumped.tile.Tile or None
+        """games.stumped.tile.Tile or None: The Tile this Beaver is on.
         """
         return self._tile
 
     @property
     def turns_distracted(self) -> int:
-        """Number of turns this Beaver is distracted for (0 means not distracted).
-
-        :rtype: int
+        """int: Number of turns this Beaver is distracted for (0 means not distracted).
         """
         return self._turns_distracted
 

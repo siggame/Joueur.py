@@ -32,49 +32,37 @@ class Unit(GameObject):
 
     @property
     def acted(self) -> bool:
-        """Whether or not this Unit has performed its action this turn (attack or build).
-
-        :rtype: bool
+        """bool: Whether or not this Unit has performed its action this turn (attack or build).
         """
         return self._acted
 
     @property
     def health(self) -> int:
-        """The remaining health of a unit.
-
-        :rtype: int
+        """int: The remaining health of a unit.
         """
         return self._health
 
     @property
     def job(self) -> 'games.necrowar.unit_job.UnitJob':
-        """The type of unit this is.
-
-        :rtype: games.necrowar.unit_job.UnitJob
+        """games.necrowar.unit_job.UnitJob: The type of unit this is.
         """
         return self._job
 
     @property
     def moves(self) -> int:
-        """The number of moves this unit has left this turn.
-
-        :rtype: int
+        """int: The number of moves this unit has left this turn.
         """
         return self._moves
 
     @property
     def owner(self) -> Optional['games.necrowar.player.Player']:
-        """The Player that owns and can control this Unit.
-
-        :rtype: games.necrowar.player.Player or None
+        """games.necrowar.player.Player or None: The Player that owns and can control this Unit.
         """
         return self._owner
 
     @property
     def tile(self) -> Optional['games.necrowar.tile.Tile']:
-        """The Tile this Unit is on.
-
-        :rtype: games.necrowar.tile.Tile or None
+        """games.necrowar.tile.Tile or None: The Tile this Unit is on.
         """
         return self._tile
 

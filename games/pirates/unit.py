@@ -37,89 +37,67 @@ class Unit(GameObject):
 
     @property
     def acted(self) -> bool:
-        """Whether this Unit has performed its action this turn.
-
-        :rtype: bool
+        """bool: Whether this Unit has performed its action this turn.
         """
         return self._acted
 
     @property
     def crew(self) -> int:
-        """How many crew are on this Tile. This number will always be <= crewHealth.
-
-        :rtype: int
+        """int: How many crew are on this Tile. This number will always be <= crewHealth.
         """
         return self._crew
 
     @property
     def crew_health(self) -> int:
-        """How much total health the crew on this Tile have.
-
-        :rtype: int
+        """int: How much total health the crew on this Tile have.
         """
         return self._crew_health
 
     @property
     def gold(self) -> int:
-        """How much gold this Unit is carrying.
-
-        :rtype: int
+        """int: How much gold this Unit is carrying.
         """
         return self._gold
 
     @property
     def moves(self) -> int:
-        """How many more times this Unit may move this turn.
-
-        :rtype: int
+        """int: How many more times this Unit may move this turn.
         """
         return self._moves
 
     @property
     def owner(self) -> Optional['games.pirates.player.Player']:
-        """The Player that owns and can control this Unit, or None if the Unit is neutral.
-
-        :rtype: games.pirates.player.Player or None
+        """games.pirates.player.Player or None: The Player that owns and can control this Unit, or None if the Unit is neutral.
         """
         return self._owner
 
     @property
     def path(self) -> List['games.pirates.tile.Tile']:
-        """(Merchants only) The path this Unit will follow. The first element is the Tile this Unit will move to next.
-
-        :rtype: list[games.pirates.tile.Tile]
+        """list[games.pirates.tile.Tile]: (Merchants only) The path this Unit will follow. The first element is the Tile this Unit will move to next.
         """
         return self._path
 
     @property
     def ship_health(self) -> int:
-        """If a ship is on this Tile, how much health it has remaining. 0 for no ship.
-
-        :rtype: int
+        """int: If a ship is on this Tile, how much health it has remaining. 0 for no ship.
         """
         return self._ship_health
 
     @property
     def stun_turns(self) -> int:
-        """(Merchants only) The number of turns this merchant ship won't be able to move. They will still attack. Merchant ships are stunned when they're attacked.
-
-        :rtype: int
+        """int: (Merchants only) The number of turns this merchant ship won't be able to move. They will still attack. Merchant ships are stunned when they're attacked.
         """
         return self._stun_turns
 
     @property
     def target_port(self) -> Optional['games.pirates.port.Port']:
-        """(Merchants only) The Port this Unit is moving to.
-
-        :rtype: games.pirates.port.Port or None
+        """games.pirates.port.Port or None: (Merchants only) The Port this Unit is moving to.
         """
         return self._target_port
 
     @property
     def tile(self) -> Optional['games.pirates.tile.Tile']:
-        """The Tile this Unit is on.
-
-        :rtype: games.pirates.tile.Tile or None
+        """games.pirates.tile.Tile or None: The Tile this Unit is on.
         """
         return self._tile
 

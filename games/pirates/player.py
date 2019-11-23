@@ -38,97 +38,73 @@ class Player(GameObject):
 
     @property
     def client_type(self) -> str:
-        """What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
-
-        :rtype: str
+        """str: What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
         """
         return self._client_type
 
     @property
     def gold(self) -> int:
-        """The amount of gold this Player has in reserve.
-
-        :rtype: int
+        """int: The amount of gold this Player has in reserve.
         """
         return self._gold
 
     @property
     def infamy(self) -> int:
-        """The amount of infamy this Player has.
-
-        :rtype: int
+        """int: The amount of infamy this Player has.
         """
         return self._infamy
 
     @property
     def lost(self) -> bool:
-        """If the player lost the game or not.
-
-        :rtype: bool
+        """bool: If the player lost the game or not.
         """
         return self._lost
 
     @property
     def name(self) -> str:
-        """The name of the player.
-
-        :rtype: str
+        """str: The name of the player.
         """
         return self._name
 
     @property
     def opponent(self) -> 'games.pirates.player.Player':
-        """This player's opponent in the game.
-
-        :rtype: games.pirates.player.Player
+        """games.pirates.player.Player: This player's opponent in the game.
         """
         return self._opponent
 
     @property
     def port(self) -> 'games.pirates.port.Port':
-        """The Port owned by this Player.
-
-        :rtype: games.pirates.port.Port
+        """games.pirates.port.Port: The Port owned by this Player.
         """
         return self._port
 
     @property
     def reason_lost(self) -> str:
-        """The reason why the player lost the game.
-
-        :rtype: str
+        """str: The reason why the player lost the game.
         """
         return self._reason_lost
 
     @property
     def reason_won(self) -> str:
-        """The reason why the player won the game.
-
-        :rtype: str
+        """str: The reason why the player won the game.
         """
         return self._reason_won
 
     @property
     def time_remaining(self) -> float:
-        """The amount of time (in ns) remaining for this AI to send commands.
-
-        :rtype: float
+        """float: The amount of time (in ns) remaining for this AI to send commands.
         """
         return self._time_remaining
 
     @property
     def units(self) -> List['games.pirates.unit.Unit']:
-        """Every Unit owned by this Player.
-
-        :rtype: list[games.pirates.unit.Unit]
+        """list[games.pirates.unit.Unit]: Every Unit owned by this Player.
         """
         return self._units
 
     @property
     def won(self) -> bool:
-        """If the player won the game or not.
-
-        :rtype: bool
+        """bool: If the player won the game or not.
         """
         return self._won
 

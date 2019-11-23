@@ -29,25 +29,19 @@ class Spider(GameObject):
 
     @property
     def is_dead(self) -> bool:
-        """If this Spider is dead and has been removed from the game.
-
-        :rtype: bool
+        """bool: If this Spider is dead and has been removed from the game.
         """
         return self._is_dead
 
     @property
     def nest(self) -> Optional['games.spiders.nest.Nest']:
-        """The Nest that this Spider is currently on. None when moving on a Web.
-
-        :rtype: games.spiders.nest.Nest or None
+        """games.spiders.nest.Nest or None: The Nest that this Spider is currently on. None when moving on a Web.
         """
         return self._nest
 
     @property
     def owner(self) -> 'games.spiders.player.Player':
-        """The Player that owns this Spider, and can command it.
-
-        :rtype: games.spiders.player.Player
+        """games.spiders.player.Player: The Player that owns this Spider, and can command it.
         """
         return self._owner
 

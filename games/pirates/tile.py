@@ -37,89 +37,67 @@ class Tile(GameObject):
 
     @property
     def decoration(self) -> bool:
-        """(Visualizer only) Whether this tile is deep sea or grassy. This has no effect on gameplay, but feel free to use it if you want.
-
-        :rtype: bool
+        """bool: (Visualizer only) Whether this tile is deep sea or grassy. This has no effect on gameplay, but feel free to use it if you want.
         """
         return self._decoration
 
     @property
     def gold(self) -> int:
-        """The amount of gold buried on this tile.
-
-        :rtype: int
+        """int: The amount of gold buried on this tile.
         """
         return self._gold
 
     @property
     def port(self) -> Optional['games.pirates.port.Port']:
-        """The Port on this Tile if present, otherwise None.
-
-        :rtype: games.pirates.port.Port or None
+        """games.pirates.port.Port or None: The Port on this Tile if present, otherwise None.
         """
         return self._port
 
     @property
     def tile_east(self) -> Optional['games.pirates.tile.Tile']:
-        """The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
-
-        :rtype: games.pirates.tile.Tile or None
+        """games.pirates.tile.Tile or None: The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
         """
         return self._tile_east
 
     @property
     def tile_north(self) -> Optional['games.pirates.tile.Tile']:
-        """The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
-
-        :rtype: games.pirates.tile.Tile or None
+        """games.pirates.tile.Tile or None: The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
         """
         return self._tile_north
 
     @property
     def tile_south(self) -> Optional['games.pirates.tile.Tile']:
-        """The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
-
-        :rtype: games.pirates.tile.Tile or None
+        """games.pirates.tile.Tile or None: The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
         """
         return self._tile_south
 
     @property
     def tile_west(self) -> Optional['games.pirates.tile.Tile']:
-        """The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
-
-        :rtype: games.pirates.tile.Tile or None
+        """games.pirates.tile.Tile or None: The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
         """
         return self._tile_west
 
     @property
     def type(self) -> str:
-        """The type of Tile this is ('water' or 'land').
-
-        :rtype: 'water' or 'land'
+        """'water' or 'land': The type of Tile this is ('water' or 'land').
         """
         return self._type
 
     @property
     def unit(self) -> Optional['games.pirates.unit.Unit']:
-        """The Unit on this Tile if present, otherwise None.
-
-        :rtype: games.pirates.unit.Unit or None
+        """games.pirates.unit.Unit or None: The Unit on this Tile if present, otherwise None.
         """
         return self._unit
 
     @property
     def x(self) -> int:
-        """The x (horizontal) position of this Tile.
-
-        :rtype: int
+        """int: The x (horizontal) position of this Tile.
         """
         return self._x
 
     @property
     def y(self) -> int:
-        """The y (vertical) position of this Tile.
-
-        :rtype: int
+        """int: The y (vertical) position of this Tile.
         """
         return self._y
 

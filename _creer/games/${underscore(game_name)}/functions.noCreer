@@ -148,19 +148,17 @@ if not 'py' in shared:
             strs.extend([') -> ', py_typing_type(ret_type) if ret_type else 'None', ':\n'])
 
         ## second part, the docstring
-        strs.extend(['    \"\"\"', py_format_description(funct['description']), '\n'])
+        strs.append('    \"\"\"')
+        if is_property:
+            strs.extend([py_docstring_type(ret_type), ': '])
+        strs.extend([py_format_description(funct['description']), '\n'])
 
         if has_args:
             strs.append('\n    Args:\n')
             for arg in funct['arguments']:
                 strs.extend(['        ', underscore(arg['name']), ' (', py_docstring_type(arg['type']), '): ', py_format_description(arg['description']), '\n'])
-        if ret_type:
-            strs.append('\n    ')
-            if is_property:
-                strs.extend([':rtype: ', py_docstring_type(ret_type)])
-            else:
-                strs.extend(['Returns:\n        ', py_docstring_type(ret_type), ': ', py_format_description(ret_desc)])
-            strs.append('\n')
+        if ret_type and not is_property:
+            strs.extend(['\n    Returns:\n        ', py_docstring_type(ret_type), ': ', py_format_description(ret_desc), '\n'])
         strs.append('    \"\"\"')
 
         lines = ''.join(strs).split('\n')

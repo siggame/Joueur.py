@@ -33,65 +33,49 @@ class UnitJob(GameObject):
 
     @property
     def damage(self) -> int:
-        """The amount of damage this type does per attack.
-
-        :rtype: int
+        """int: The amount of damage this type does per attack.
         """
         return self._damage
 
     @property
     def gold_cost(self) -> int:
-        """How much does this type cost in gold.
-
-        :rtype: int
+        """int: How much does this type cost in gold.
         """
         return self._gold_cost
 
     @property
     def health(self) -> int:
-        """The amount of starting health this type has.
-
-        :rtype: int
+        """int: The amount of starting health this type has.
         """
         return self._health
 
     @property
     def mana_cost(self) -> int:
-        """How much does this type cost in mana.
-
-        :rtype: int
+        """int: How much does this type cost in mana.
         """
         return self._mana_cost
 
     @property
     def moves(self) -> int:
-        """The number of moves this type can make per turn.
-
-        :rtype: int
+        """int: The number of moves this type can make per turn.
         """
         return self._moves
 
     @property
     def per_tile(self) -> int:
-        """How many of this type of unit can take up one tile.
-
-        :rtype: int
+        """int: How many of this type of unit can take up one tile.
         """
         return self._per_tile
 
     @property
     def range(self) -> int:
-        """Amount of tiles away this type has to be in order to be effective.
-
-        :rtype: int
+        """int: Amount of tiles away this type has to be in order to be effective.
         """
         return self._range
 
     @property
     def title(self) -> str:
-        """The type title. 'worker', 'zombie', 'ghoul', 'hound', 'abomination', 'wraith' or 'horseman'.
-
-        :rtype: 'worker', 'zombie', 'ghoul', 'hound', 'abomination', 'wraith', or 'horseman'
+        """'worker', 'zombie', 'ghoul', 'hound', 'abomination', 'wraith', or 'horseman': The type title. 'worker', 'zombie', 'ghoul', 'hound', 'abomination', 'wraith' or 'horseman'.
         """
         return self._title
 

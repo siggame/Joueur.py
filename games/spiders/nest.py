@@ -31,41 +31,31 @@ class Nest(GameObject):
 
     @property
     def controlling_player(self) -> Optional['games.spiders.player.Player']:
-        """The Player that 'controls' this Nest as they have the most Spiders on this nest.
-
-        :rtype: games.spiders.player.Player or None
+        """games.spiders.player.Player or None: The Player that 'controls' this Nest as they have the most Spiders on this nest.
         """
         return self._controlling_player
 
     @property
     def spiders(self) -> List['games.spiders.spider.Spider']:
-        """All the Spiders currently located on this Nest.
-
-        :rtype: list[games.spiders.spider.Spider]
+        """list[games.spiders.spider.Spider]: All the Spiders currently located on this Nest.
         """
         return self._spiders
 
     @property
     def webs(self) -> List['games.spiders.web.Web']:
-        """Webs that connect to this Nest.
-
-        :rtype: list[games.spiders.web.Web]
+        """list[games.spiders.web.Web]: Webs that connect to this Nest.
         """
         return self._webs
 
     @property
     def x(self) -> int:
-        """The X coordinate of the Nest. Used for distance calculations.
-
-        :rtype: int
+        """int: The X coordinate of the Nest. Used for distance calculations.
         """
         return self._x
 
     @property
     def y(self) -> int:
-        """The Y coordinate of the Nest. Used for distance calculations.
-
-        :rtype: int
+        """int: The Y coordinate of the Nest. Used for distance calculations.
         """
         return self._y
 

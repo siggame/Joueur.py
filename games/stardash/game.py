@@ -78,265 +78,199 @@ class Game(BaseGame):
 
     @property
     def bodies(self) -> List['games.stardash.body.Body']:
-        """All the celestial bodies in the game. The first two are planets and the third is the sun. The fourth is the VP asteroid. Everything else is normal asteroids.
-
-        :rtype: list[games.stardash.body.Body]
+        """list[games.stardash.body.Body]: All the celestial bodies in the game. The first two are planets and the third is the sun. The fourth is the VP asteroid. Everything else is normal asteroids.
         """
         return self._bodies
 
     @property
     def current_player(self) -> 'games.stardash.player.Player':
-        """The player whose turn it is currently. That player can send commands. Other players cannot.
-
-        :rtype: games.stardash.player.Player
+        """games.stardash.player.Player: The player whose turn it is currently. That player can send commands. Other players cannot.
         """
         return self._current_player
 
     @property
     def current_turn(self) -> int:
-        """The current turn number, starting at 0 for the first player's turn.
-
-        :rtype: int
+        """int: The current turn number, starting at 0 for the first player's turn.
         """
         return self._current_turn
 
     @property
     def dash_cost(self) -> int:
-        """The cost of dashing.
-
-        :rtype: int
+        """int: The cost of dashing.
         """
         return self._dash_cost
 
     @property
     def dash_distance(self) -> int:
-        """The distance traveled each turn by dashing.
-
-        :rtype: int
+        """int: The distance traveled each turn by dashing.
         """
         return self._dash_distance
 
     @property
     def game_objects(self) -> Dict[str, 'games.stardash.game_object.GameObject']:
-        """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
-
-        :rtype: dict[str, games.stardash.game_object.GameObject]
+        """dict[str, games.stardash.game_object.GameObject]: A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
         """
         return self._game_objects
 
     @property
     def genarium_value(self) -> float:
-        """The value of every unit of genarium.
-
-        :rtype: float
+        """float: The value of every unit of genarium.
         """
         return self._genarium_value
 
     @property
     def jobs(self) -> List['games.stardash.job.Job']:
-        """A list of all jobs. first item is corvette, second is missileboat, third is martyr, fourth is transport, and fifth is miner.
-
-        :rtype: list[games.stardash.job.Job]
+        """list[games.stardash.job.Job]: A list of all jobs. first item is corvette, second is missileboat, third is martyr, fourth is transport, and fifth is miner.
         """
         return self._jobs
 
     @property
     def legendarium_value(self) -> float:
-        """The value of every unit of legendarium.
-
-        :rtype: float
+        """float: The value of every unit of legendarium.
         """
         return self._legendarium_value
 
     @property
     def max_asteroid(self) -> int:
-        """The highest amount of material, that can be in a asteroid.
-
-        :rtype: int
+        """int: The highest amount of material, that can be in a asteroid.
         """
         return self._max_asteroid
 
     @property
     def max_turns(self) -> int:
-        """The maximum number of turns before the game will automatically end.
-
-        :rtype: int
+        """int: The maximum number of turns before the game will automatically end.
         """
         return self._max_turns
 
     @property
     def min_asteroid(self) -> int:
-        """The smallest amount of material, that can be in a asteroid.
-
-        :rtype: int
+        """int: The smallest amount of material, that can be in a asteroid.
         """
         return self._min_asteroid
 
     @property
     def mining_speed(self) -> int:
-        """The rate at which miners grab minerals from asteroids.
-
-        :rtype: int
+        """int: The rate at which miners grab minerals from asteroids.
         """
         return self._mining_speed
 
     @property
     def mythicite_amount(self) -> float:
-        """The amount of mythicite that spawns at the start of the game.
-
-        :rtype: float
+        """float: The amount of mythicite that spawns at the start of the game.
         """
         return self._mythicite_amount
 
     @property
     def orbits_protected(self) -> int:
-        """The number of orbit updates you cannot mine the mithicite asteroid.
-
-        :rtype: int
+        """int: The number of orbit updates you cannot mine the mithicite asteroid.
         """
         return self._orbits_protected
 
     @property
     def ore_rarity_genarium(self) -> float:
-        """The rarity modifier of the most common ore. This controls how much spawns.
-
-        :rtype: float
+        """float: The rarity modifier of the most common ore. This controls how much spawns.
         """
         return self._ore_rarity_genarium
 
     @property
     def ore_rarity_legendarium(self) -> float:
-        """The rarity modifier of the rarest ore. This controls how much spawns.
-
-        :rtype: float
+        """float: The rarity modifier of the rarest ore. This controls how much spawns.
         """
         return self._ore_rarity_legendarium
 
     @property
     def ore_rarity_rarium(self) -> float:
-        """The rarity modifier of the second rarest ore. This controls how much spawns.
-
-        :rtype: float
+        """float: The rarity modifier of the second rarest ore. This controls how much spawns.
         """
         return self._ore_rarity_rarium
 
     @property
     def planet_energy_cap(self) -> int:
-        """The amount of energy a planet can hold at once.
-
-        :rtype: int
+        """int: The amount of energy a planet can hold at once.
         """
         return self._planet_energy_cap
 
     @property
     def planet_recharge_rate(self) -> int:
-        """The amount of energy the planets restore each round.
-
-        :rtype: int
+        """int: The amount of energy the planets restore each round.
         """
         return self._planet_recharge_rate
 
     @property
     def players(self) -> List['games.stardash.player.Player']:
-        """List of all the players in the game.
-
-        :rtype: list[games.stardash.player.Player]
+        """list[games.stardash.player.Player]: List of all the players in the game.
         """
         return self._players
 
     @property
     def projectile_radius(self) -> int:
-        """The standard size of ships.
-
-        :rtype: int
+        """int: The standard size of ships.
         """
         return self._projectile_radius
 
     @property
     def projectile_speed(self) -> int:
-        """The amount of distance missiles travel through space.
-
-        :rtype: int
+        """int: The amount of distance missiles travel through space.
         """
         return self._projectile_speed
 
     @property
     def projectiles(self) -> List['games.stardash.projectile.Projectile']:
-        """Every projectile in the game.
-
-        :rtype: list[games.stardash.projectile.Projectile]
+        """list[games.stardash.projectile.Projectile]: Every projectile in the game.
         """
         return self._projectiles
 
     @property
     def rarium_value(self) -> float:
-        """The value of every unit of rarium.
-
-        :rtype: float
+        """float: The value of every unit of rarium.
         """
         return self._rarium_value
 
     @property
     def regenerate_rate(self) -> float:
-        """The regeneration rate of asteroids.
-
-        :rtype: float
+        """float: The regeneration rate of asteroids.
         """
         return self._regenerate_rate
 
     @property
     def session(self) -> str:
-        """A unique identifier for the game instance that is being played.
-
-        :rtype: str
+        """str: A unique identifier for the game instance that is being played.
         """
         return self._session
 
     @property
     def ship_radius(self) -> int:
-        """The standard size of ships.
-
-        :rtype: int
+        """int: The standard size of ships.
         """
         return self._ship_radius
 
     @property
     def size_x(self) -> int:
-        """The size of the map in the X direction.
-
-        :rtype: int
+        """int: The size of the map in the X direction.
         """
         return self._size_x
 
     @property
     def size_y(self) -> int:
-        """The size of the map in the Y direction.
-
-        :rtype: int
+        """int: The size of the map in the Y direction.
         """
         return self._size_y
 
     @property
     def time_added_per_turn(self) -> int:
-        """The amount of time (in nano-seconds) added after each player performs a turn.
-
-        :rtype: int
+        """int: The amount of time (in nano-seconds) added after each player performs a turn.
         """
         return self._time_added_per_turn
 
     @property
     def turns_to_orbit(self) -> int:
-        """The number of turns it takes for a asteroid to orbit the sun. (Asteroids move after each players turn).
-
-        :rtype: int
+        """int: The number of turns it takes for a asteroid to orbit the sun. (Asteroids move after each players turn).
         """
         return self._turns_to_orbit
 
     @property
     def units(self) -> List['games.stardash.unit.Unit']:
-        """Every Unit in the game.
-
-        :rtype: list[games.stardash.unit.Unit]
+        """list[games.stardash.unit.Unit]: Every Unit in the game.
         """
         return self._units
 

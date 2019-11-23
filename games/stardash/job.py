@@ -33,65 +33,49 @@ class Job(GameObject):
 
     @property
     def carry_limit(self) -> int:
-        """How many combined resources a unit with this Job can hold at once.
-
-        :rtype: int
+        """int: How many combined resources a unit with this Job can hold at once.
         """
         return self._carry_limit
 
     @property
     def damage(self) -> int:
-        """The amount of damage this Job does per attack.
-
-        :rtype: int
+        """int: The amount of damage this Job does per attack.
         """
         return self._damage
 
     @property
     def energy(self) -> int:
-        """The amount of starting health this Job has.
-
-        :rtype: int
+        """int: The amount of starting health this Job has.
         """
         return self._energy
 
     @property
     def moves(self) -> int:
-        """The distance this job can move per turn.
-
-        :rtype: int
+        """int: The distance this job can move per turn.
         """
         return self._moves
 
     @property
     def range(self) -> int:
-        """The distance at which this job can effect things.
-
-        :rtype: int
+        """int: The distance at which this job can effect things.
         """
         return self._range
 
     @property
     def shield(self) -> int:
-        """The reserve the martyr use to protect allies.
-
-        :rtype: int
+        """int: The reserve the martyr use to protect allies.
         """
         return self._shield
 
     @property
     def title(self) -> str:
-        """The Job title. 'corvette', 'missileboat', 'martyr', 'transport', or 'miner'. (in this order from 0-4).
-
-        :rtype: 'corvette', 'missileboat', 'martyr', 'transport', or 'miner'
+        """'corvette', 'missileboat', 'martyr', 'transport', or 'miner': The Job title. 'corvette', 'missileboat', 'martyr', 'transport', or 'miner'. (in this order from 0-4).
         """
         return self._title
 
     @property
     def unit_cost(self) -> int:
-        """How much money it costs to spawn a unit.
-
-        :rtype: int
+        """int: How much money it costs to spawn a unit.
         """
         return self._unit_cost
 

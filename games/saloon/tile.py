@@ -38,97 +38,73 @@ class Tile(GameObject):
 
     @property
     def bottle(self) -> Optional['games.saloon.bottle.Bottle']:
-        """The beer Bottle currently flying over this Tile, None otherwise.
-
-        :rtype: games.saloon.bottle.Bottle or None
+        """games.saloon.bottle.Bottle or None: The beer Bottle currently flying over this Tile, None otherwise.
         """
         return self._bottle
 
     @property
     def cowboy(self) -> Optional['games.saloon.cowboy.Cowboy']:
-        """The Cowboy that is on this Tile, None otherwise.
-
-        :rtype: games.saloon.cowboy.Cowboy or None
+        """games.saloon.cowboy.Cowboy or None: The Cowboy that is on this Tile, None otherwise.
         """
         return self._cowboy
 
     @property
     def furnishing(self) -> Optional['games.saloon.furnishing.Furnishing']:
-        """The furnishing that is on this Tile, None otherwise.
-
-        :rtype: games.saloon.furnishing.Furnishing or None
+        """games.saloon.furnishing.Furnishing or None: The furnishing that is on this Tile, None otherwise.
         """
         return self._furnishing
 
     @property
     def has_hazard(self) -> bool:
-        """If this Tile is pathable, but has a hazard that damages Cowboys that path through it.
-
-        :rtype: bool
+        """bool: If this Tile is pathable, but has a hazard that damages Cowboys that path through it.
         """
         return self._has_hazard
 
     @property
     def is_balcony(self) -> bool:
-        """If this Tile is a balcony of the Saloon that YoungGuns walk around on, and can never be pathed through by Cowboys.
-
-        :rtype: bool
+        """bool: If this Tile is a balcony of the Saloon that YoungGuns walk around on, and can never be pathed through by Cowboys.
         """
         return self._is_balcony
 
     @property
     def tile_east(self) -> Optional['games.saloon.tile.Tile']:
-        """The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
-
-        :rtype: games.saloon.tile.Tile or None
+        """games.saloon.tile.Tile or None: The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
         """
         return self._tile_east
 
     @property
     def tile_north(self) -> Optional['games.saloon.tile.Tile']:
-        """The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
-
-        :rtype: games.saloon.tile.Tile or None
+        """games.saloon.tile.Tile or None: The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
         """
         return self._tile_north
 
     @property
     def tile_south(self) -> Optional['games.saloon.tile.Tile']:
-        """The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
-
-        :rtype: games.saloon.tile.Tile or None
+        """games.saloon.tile.Tile or None: The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
         """
         return self._tile_south
 
     @property
     def tile_west(self) -> Optional['games.saloon.tile.Tile']:
-        """The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
-
-        :rtype: games.saloon.tile.Tile or None
+        """games.saloon.tile.Tile or None: The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
         """
         return self._tile_west
 
     @property
     def x(self) -> int:
-        """The x (horizontal) position of this Tile.
-
-        :rtype: int
+        """int: The x (horizontal) position of this Tile.
         """
         return self._x
 
     @property
     def y(self) -> int:
-        """The y (vertical) position of this Tile.
-
-        :rtype: int
+        """int: The y (vertical) position of this Tile.
         """
         return self._y
 
     @property
     def young_gun(self) -> Optional['games.saloon.young_gun.YoungGun']:
-        """The YoungGun on this tile, None otherwise.
-
-        :rtype: games.saloon.young_gun.YoungGun or None
+        """games.saloon.young_gun.YoungGun or None: The YoungGun on this tile, None otherwise.
         """
         return self._young_gun
 

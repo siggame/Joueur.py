@@ -49,185 +49,139 @@ class Tile(GameObject):
 
     @property
     def corpses(self) -> int:
-        """The amount of corpses on this tile.
-
-        :rtype: int
+        """int: The amount of corpses on this tile.
         """
         return self._corpses
 
     @property
     def is_castle(self) -> bool:
-        """Whether or not the tile is a castle tile.
-
-        :rtype: bool
+        """bool: Whether or not the tile is a castle tile.
         """
         return self._is_castle
 
     @property
     def is_gold_mine(self) -> bool:
-        """Whether or not the tile is considered to be a gold mine or not.
-
-        :rtype: bool
+        """bool: Whether or not the tile is considered to be a gold mine or not.
         """
         return self._is_gold_mine
 
     @property
     def is_grass(self) -> bool:
-        """Whether or not the tile is considered grass or not (Workers can walk on grass).
-
-        :rtype: bool
+        """bool: Whether or not the tile is considered grass or not (Workers can walk on grass).
         """
         return self._is_grass
 
     @property
     def is_island_gold_mine(self) -> bool:
-        """Whether or not the tile is considered to be the island gold mine or not.
-
-        :rtype: bool
+        """bool: Whether or not the tile is considered to be the island gold mine or not.
         """
         return self._is_island_gold_mine
 
     @property
     def is_path(self) -> bool:
-        """Whether or not the tile is considered a path or not (Units can walk on paths).
-
-        :rtype: bool
+        """bool: Whether or not the tile is considered a path or not (Units can walk on paths).
         """
         return self._is_path
 
     @property
     def is_river(self) -> bool:
-        """Whether or not the tile is considered a river or not.
-
-        :rtype: bool
+        """bool: Whether or not the tile is considered a river or not.
         """
         return self._is_river
 
     @property
     def is_tower(self) -> bool:
-        """Whether or not the tile is considered a tower or not.
-
-        :rtype: bool
+        """bool: Whether or not the tile is considered a tower or not.
         """
         return self._is_tower
 
     @property
     def is_unit_spawn(self) -> bool:
-        """Whether or not the tile is the unit spawn.
-
-        :rtype: bool
+        """bool: Whether or not the tile is the unit spawn.
         """
         return self._is_unit_spawn
 
     @property
     def is_wall(self) -> bool:
-        """Whether or not the tile can be moved on by workers.
-
-        :rtype: bool
+        """bool: Whether or not the tile can be moved on by workers.
         """
         return self._is_wall
 
     @property
     def is_worker_spawn(self) -> bool:
-        """Whether or not the tile is the worker spawn.
-
-        :rtype: bool
+        """bool: Whether or not the tile is the worker spawn.
         """
         return self._is_worker_spawn
 
     @property
     def num_ghouls(self) -> int:
-        """The amount of Ghouls on this tile.
-
-        :rtype: int
+        """int: The amount of Ghouls on this tile.
         """
         return self._num_ghouls
 
     @property
     def num_hounds(self) -> int:
-        """The amount of Hounds on this tile.
-
-        :rtype: int
+        """int: The amount of Hounds on this tile.
         """
         return self._num_hounds
 
     @property
     def num_zombies(self) -> int:
-        """The amount of Zombies on this tile.
-
-        :rtype: int
+        """int: The amount of Zombies on this tile.
         """
         return self._num_zombies
 
     @property
     def owner(self) -> Optional['games.necrowar.player.Player']:
-        """Which player owns this tile, only applies to grass tiles for workers, NULL otherwise.
-
-        :rtype: games.necrowar.player.Player or None
+        """games.necrowar.player.Player or None: Which player owns this tile, only applies to grass tiles for workers, NULL otherwise.
         """
         return self._owner
 
     @property
     def tile_east(self) -> Optional['games.necrowar.tile.Tile']:
-        """The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
-
-        :rtype: games.necrowar.tile.Tile or None
+        """games.necrowar.tile.Tile or None: The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
         """
         return self._tile_east
 
     @property
     def tile_north(self) -> Optional['games.necrowar.tile.Tile']:
-        """The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
-
-        :rtype: games.necrowar.tile.Tile or None
+        """games.necrowar.tile.Tile or None: The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
         """
         return self._tile_north
 
     @property
     def tile_south(self) -> Optional['games.necrowar.tile.Tile']:
-        """The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
-
-        :rtype: games.necrowar.tile.Tile or None
+        """games.necrowar.tile.Tile or None: The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
         """
         return self._tile_south
 
     @property
     def tile_west(self) -> Optional['games.necrowar.tile.Tile']:
-        """The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
-
-        :rtype: games.necrowar.tile.Tile or None
+        """games.necrowar.tile.Tile or None: The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
         """
         return self._tile_west
 
     @property
     def tower(self) -> Optional['games.necrowar.tower.Tower']:
-        """The Tower on this Tile if present, otherwise None.
-
-        :rtype: games.necrowar.tower.Tower or None
+        """games.necrowar.tower.Tower or None: The Tower on this Tile if present, otherwise None.
         """
         return self._tower
 
     @property
     def unit(self) -> Optional['games.necrowar.unit.Unit']:
-        """The Unit on this Tile if present, otherwise None.
-
-        :rtype: games.necrowar.unit.Unit or None
+        """games.necrowar.unit.Unit or None: The Unit on this Tile if present, otherwise None.
         """
         return self._unit
 
     @property
     def x(self) -> int:
-        """The x (horizontal) position of this Tile.
-
-        :rtype: int
+        """int: The x (horizontal) position of this Tile.
         """
         return self._x
 
     @property
     def y(self) -> int:
-        """The y (vertical) position of this Tile.
-
-        :rtype: int
+        """int: The y (vertical) position of this Tile.
         """
         return self._y
 

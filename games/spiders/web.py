@@ -32,49 +32,37 @@ class Web(GameObject):
 
     @property
     def length(self) -> float:
-        """How long this Web is, i.e., the distance between its nestA and nestB.
-
-        :rtype: float
+        """float: How long this Web is, i.e., the distance between its nestA and nestB.
         """
         return self._length
 
     @property
     def load(self) -> int:
-        """How much weight this Web currently has on it, which is the sum of all its Spiderlings weight.
-
-        :rtype: int
+        """int: How much weight this Web currently has on it, which is the sum of all its Spiderlings weight.
         """
         return self._load
 
     @property
     def nest_a(self) -> Optional['games.spiders.nest.Nest']:
-        """The first Nest this Web is connected to.
-
-        :rtype: games.spiders.nest.Nest or None
+        """games.spiders.nest.Nest or None: The first Nest this Web is connected to.
         """
         return self._nest_a
 
     @property
     def nest_b(self) -> Optional['games.spiders.nest.Nest']:
-        """The second Nest this Web is connected to.
-
-        :rtype: games.spiders.nest.Nest or None
+        """games.spiders.nest.Nest or None: The second Nest this Web is connected to.
         """
         return self._nest_b
 
     @property
     def spiderlings(self) -> List['games.spiders.spiderling.Spiderling']:
-        """All the Spiderlings currently moving along this Web.
-
-        :rtype: list[games.spiders.spiderling.Spiderling]
+        """list[games.spiders.spiderling.Spiderling]: All the Spiderlings currently moving along this Web.
         """
         return self._spiderlings
 
     @property
     def strength(self) -> int:
-        """How much weight this Web can take before snapping and destroying itself and all the Spiders on it.
-
-        :rtype: int
+        """int: How much weight this Web can take before snapping and destroying itself and all the Spiders on it.
         """
         return self._strength
 

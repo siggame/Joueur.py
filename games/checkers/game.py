@@ -51,97 +51,73 @@ class Game(BaseGame):
 
     @property
     def board_height(self) -> int:
-        """The height of the board for the Y component of a checker.
-
-        :rtype: int
+        """int: The height of the board for the Y component of a checker.
         """
         return self._board_height
 
     @property
     def board_width(self) -> int:
-        """The width of the board for X component of a checker.
-
-        :rtype: int
+        """int: The width of the board for X component of a checker.
         """
         return self._board_width
 
     @property
     def checker_moved(self) -> Optional['games.checkers.checker.Checker']:
-        """The checker that last moved and must be moved because only one checker can move during each players turn.
-
-        :rtype: games.checkers.checker.Checker or None
+        """games.checkers.checker.Checker or None: The checker that last moved and must be moved because only one checker can move during each players turn.
         """
         return self._checker_moved
 
     @property
     def checker_moved_jumped(self) -> bool:
-        """If the last checker that moved jumped, meaning it can move again.
-
-        :rtype: bool
+        """bool: If the last checker that moved jumped, meaning it can move again.
         """
         return self._checker_moved_jumped
 
     @property
     def checkers(self) -> List['games.checkers.checker.Checker']:
-        """All the checkers currently in the game.
-
-        :rtype: list[games.checkers.checker.Checker]
+        """list[games.checkers.checker.Checker]: All the checkers currently in the game.
         """
         return self._checkers
 
     @property
     def current_player(self) -> 'games.checkers.player.Player':
-        """The player whose turn it is currently. That player can send commands. Other players cannot.
-
-        :rtype: games.checkers.player.Player
+        """games.checkers.player.Player: The player whose turn it is currently. That player can send commands. Other players cannot.
         """
         return self._current_player
 
     @property
     def current_turn(self) -> int:
-        """The current turn number, starting at 0 for the first player's turn.
-
-        :rtype: int
+        """int: The current turn number, starting at 0 for the first player's turn.
         """
         return self._current_turn
 
     @property
     def game_objects(self) -> Dict[str, 'games.checkers.game_object.GameObject']:
-        """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
-
-        :rtype: dict[str, games.checkers.game_object.GameObject]
+        """dict[str, games.checkers.game_object.GameObject]: A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
         """
         return self._game_objects
 
     @property
     def max_turns(self) -> int:
-        """The maximum number of turns before the game will automatically end.
-
-        :rtype: int
+        """int: The maximum number of turns before the game will automatically end.
         """
         return self._max_turns
 
     @property
     def players(self) -> List['games.checkers.player.Player']:
-        """List of all the players in the game.
-
-        :rtype: list[games.checkers.player.Player]
+        """list[games.checkers.player.Player]: List of all the players in the game.
         """
         return self._players
 
     @property
     def session(self) -> str:
-        """A unique identifier for the game instance that is being played.
-
-        :rtype: str
+        """str: A unique identifier for the game instance that is being played.
         """
         return self._session
 
     @property
     def time_added_per_turn(self) -> int:
-        """The amount of time (in nano-seconds) added after each player performs a turn.
-
-        :rtype: int
+        """int: The amount of time (in nano-seconds) added after each player performs a turn.
         """
         return self._time_added_per_turn
 

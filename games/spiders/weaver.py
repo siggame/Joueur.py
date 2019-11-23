@@ -28,17 +28,13 @@ class Weaver(Spiderling):
 
     @property
     def strengthening_web(self) -> Optional['games.spiders.web.Web']:
-        """The Web that this Weaver is strengthening. None if not strengthening.
-
-        :rtype: games.spiders.web.Web or None
+        """games.spiders.web.Web or None: The Web that this Weaver is strengthening. None if not strengthening.
         """
         return self._strengthening_web
 
     @property
     def weakening_web(self) -> Optional['games.spiders.web.Web']:
-        """The Web that this Weaver is weakening. None if not weakening.
-
-        :rtype: games.spiders.web.Web or None
+        """games.spiders.web.Web or None: The Web that this Weaver is weakening. None if not weakening.
         """
         return self._weakening_web
 

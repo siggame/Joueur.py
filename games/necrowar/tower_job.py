@@ -33,65 +33,49 @@ class TowerJob(GameObject):
 
     @property
     def all_units(self) -> bool:
-        """Whether this tower type hits all of the units on a tile (True) or one at a time (False).
-
-        :rtype: bool
+        """bool: Whether this tower type hits all of the units on a tile (True) or one at a time (False).
         """
         return self._all_units
 
     @property
     def damage(self) -> int:
-        """The amount of damage this type does per attack.
-
-        :rtype: int
+        """int: The amount of damage this type does per attack.
         """
         return self._damage
 
     @property
     def gold_cost(self) -> int:
-        """How much does this type cost in gold.
-
-        :rtype: int
+        """int: How much does this type cost in gold.
         """
         return self._gold_cost
 
     @property
     def health(self) -> int:
-        """The amount of starting health this type has.
-
-        :rtype: int
+        """int: The amount of starting health this type has.
         """
         return self._health
 
     @property
     def mana_cost(self) -> int:
-        """How much does this type cost in mana.
-
-        :rtype: int
+        """int: How much does this type cost in mana.
         """
         return self._mana_cost
 
     @property
     def range(self) -> int:
-        """The number of tiles this type can attack from.
-
-        :rtype: int
+        """int: The number of tiles this type can attack from.
         """
         return self._range
 
     @property
     def title(self) -> str:
-        """The type title. 'arrow', 'aoe', 'ballista', 'cleansing', or 'castle'.
-
-        :rtype: 'arrow', 'aoe', 'ballista', 'cleansing', or 'castle'
+        """'arrow', 'aoe', 'ballista', 'cleansing', or 'castle': The type title. 'arrow', 'aoe', 'ballista', 'cleansing', or 'castle'.
         """
         return self._title
 
     @property
     def turns_between_attacks(self) -> int:
-        """How many turns have to take place between this type's attacks.
-
-        :rtype: int
+        """int: How many turns have to take place between this type's attacks.
         """
         return self._turns_between_attacks
 

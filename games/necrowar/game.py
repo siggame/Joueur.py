@@ -65,145 +65,109 @@ class Game(BaseGame):
 
     @property
     def current_player(self) -> 'games.necrowar.player.Player':
-        """The player whose turn it is currently. That player can send commands. Other players cannot.
-
-        :rtype: games.necrowar.player.Player
+        """games.necrowar.player.Player: The player whose turn it is currently. That player can send commands. Other players cannot.
         """
         return self._current_player
 
     @property
     def current_turn(self) -> int:
-        """The current turn number, starting at 0 for the first player's turn.
-
-        :rtype: int
+        """int: The current turn number, starting at 0 for the first player's turn.
         """
         return self._current_turn
 
     @property
     def game_objects(self) -> Dict[str, 'games.necrowar.game_object.GameObject']:
-        """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
-
-        :rtype: dict[str, games.necrowar.game_object.GameObject]
+        """dict[str, games.necrowar.game_object.GameObject]: A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
         """
         return self._game_objects
 
     @property
     def gold_income_per_unit(self) -> int:
-        """The amount of gold income per turn per unit in a mine.
-
-        :rtype: int
+        """int: The amount of gold income per turn per unit in a mine.
         """
         return self._gold_income_per_unit
 
     @property
     def island_income_per_unit(self) -> int:
-        """The amount of gold income per turn per unit in the island mine.
-
-        :rtype: int
+        """int: The amount of gold income per turn per unit in the island mine.
         """
         return self._island_income_per_unit
 
     @property
     def mana_income_per_unit(self) -> int:
-        """The Amount of gold income per turn per unit fishing on the river side.
-
-        :rtype: int
+        """int: The Amount of gold income per turn per unit fishing on the river side.
         """
         return self._mana_income_per_unit
 
     @property
     def map_height(self) -> int:
-        """The number of Tiles in the map along the y (vertical) axis.
-
-        :rtype: int
+        """int: The number of Tiles in the map along the y (vertical) axis.
         """
         return self._map_height
 
     @property
     def map_width(self) -> int:
-        """The number of Tiles in the map along the x (horizontal) axis.
-
-        :rtype: int
+        """int: The number of Tiles in the map along the x (horizontal) axis.
         """
         return self._map_width
 
     @property
     def max_turns(self) -> int:
-        """The maximum number of turns before the game will automatically end.
-
-        :rtype: int
+        """int: The maximum number of turns before the game will automatically end.
         """
         return self._max_turns
 
     @property
     def players(self) -> List['games.necrowar.player.Player']:
-        """List of all the players in the game.
-
-        :rtype: list[games.necrowar.player.Player]
+        """list[games.necrowar.player.Player]: List of all the players in the game.
         """
         return self._players
 
     @property
     def river_phase(self) -> int:
-        """The amount of turns it takes between the river changing phases.
-
-        :rtype: int
+        """int: The amount of turns it takes between the river changing phases.
         """
         return self._river_phase
 
     @property
     def session(self) -> str:
-        """A unique identifier for the game instance that is being played.
-
-        :rtype: str
+        """str: A unique identifier for the game instance that is being played.
         """
         return self._session
 
     @property
     def tiles(self) -> List['games.necrowar.tile.Tile']:
-        """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
-
-        :rtype: list[games.necrowar.tile.Tile]
+        """list[games.necrowar.tile.Tile]: All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
         """
         return self._tiles
 
     @property
     def time_added_per_turn(self) -> int:
-        """The amount of time (in nano-seconds) added after each player performs a turn.
-
-        :rtype: int
+        """int: The amount of time (in nano-seconds) added after each player performs a turn.
         """
         return self._time_added_per_turn
 
     @property
     def tower_jobs(self) -> List['games.necrowar.tower_job.TowerJob']:
-        """A list of every tower type / job.
-
-        :rtype: list[games.necrowar.tower_job.TowerJob]
+        """list[games.necrowar.tower_job.TowerJob]: A list of every tower type / job.
         """
         return self._tower_jobs
 
     @property
     def towers(self) -> List['games.necrowar.tower.Tower']:
-        """Every Tower in the game.
-
-        :rtype: list[games.necrowar.tower.Tower]
+        """list[games.necrowar.tower.Tower]: Every Tower in the game.
         """
         return self._towers
 
     @property
     def unit_jobs(self) -> List['games.necrowar.unit_job.UnitJob']:
-        """A list of every unit type / job.
-
-        :rtype: list[games.necrowar.unit_job.UnitJob]
+        """list[games.necrowar.unit_job.UnitJob]: A list of every unit type / job.
         """
         return self._unit_jobs
 
     @property
     def units(self) -> List['games.necrowar.unit.Unit']:
-        """Every Unit in the game.
-
-        :rtype: list[games.necrowar.unit.Unit]
+        """list[games.necrowar.unit.Unit]: Every Unit in the game.
         """
         return self._units
 

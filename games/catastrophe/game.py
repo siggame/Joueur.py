@@ -71,209 +71,157 @@ class Game(BaseGame):
 
     @property
     def cat_energy_mult(self) -> float:
-        """The multiplier for the amount of energy regenerated when resting in a shelter with the cat overlord.
-
-        :rtype: float
+        """float: The multiplier for the amount of energy regenerated when resting in a shelter with the cat overlord.
         """
         return self._cat_energy_mult
 
     @property
     def current_player(self) -> 'games.catastrophe.player.Player':
-        """The player whose turn it is currently. That player can send commands. Other players cannot.
-
-        :rtype: games.catastrophe.player.Player
+        """games.catastrophe.player.Player: The player whose turn it is currently. That player can send commands. Other players cannot.
         """
         return self._current_player
 
     @property
     def current_turn(self) -> int:
-        """The current turn number, starting at 0 for the first player's turn.
-
-        :rtype: int
+        """int: The current turn number, starting at 0 for the first player's turn.
         """
         return self._current_turn
 
     @property
     def game_objects(self) -> Dict[str, 'games.catastrophe.game_object.GameObject']:
-        """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
-
-        :rtype: dict[str, games.catastrophe.game_object.GameObject]
+        """dict[str, games.catastrophe.game_object.GameObject]: A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
         """
         return self._game_objects
 
     @property
     def harvest_cooldown(self) -> int:
-        """The amount of turns it takes for a Tile that was just harvested to grow food again.
-
-        :rtype: int
+        """int: The amount of turns it takes for a Tile that was just harvested to grow food again.
         """
         return self._harvest_cooldown
 
     @property
     def jobs(self) -> List['games.catastrophe.job.Job']:
-        """All the Jobs that Units can have in the game.
-
-        :rtype: list[games.catastrophe.job.Job]
+        """list[games.catastrophe.job.Job]: All the Jobs that Units can have in the game.
         """
         return self._jobs
 
     @property
     def lower_harvest_amount(self) -> int:
-        """The amount that the harvest rate is lowered each season.
-
-        :rtype: int
+        """int: The amount that the harvest rate is lowered each season.
         """
         return self._lower_harvest_amount
 
     @property
     def map_height(self) -> int:
-        """The number of Tiles in the map along the y (vertical) axis.
-
-        :rtype: int
+        """int: The number of Tiles in the map along the y (vertical) axis.
         """
         return self._map_height
 
     @property
     def map_width(self) -> int:
-        """The number of Tiles in the map along the x (horizontal) axis.
-
-        :rtype: int
+        """int: The number of Tiles in the map along the x (horizontal) axis.
         """
         return self._map_width
 
     @property
     def max_turns(self) -> int:
-        """The maximum number of turns before the game will automatically end.
-
-        :rtype: int
+        """int: The maximum number of turns before the game will automatically end.
         """
         return self._max_turns
 
     @property
     def monument_cost_mult(self) -> float:
-        """The multiplier for the cost of actions when performing them in range of a monument. Does not effect pickup cost.
-
-        :rtype: float
+        """float: The multiplier for the cost of actions when performing them in range of a monument. Does not effect pickup cost.
         """
         return self._monument_cost_mult
 
     @property
     def monument_materials(self) -> int:
-        """The number of materials in a monument.
-
-        :rtype: int
+        """int: The number of materials in a monument.
         """
         return self._monument_materials
 
     @property
     def neutral_materials(self) -> int:
-        """The number of materials in a neutral Structure.
-
-        :rtype: int
+        """int: The number of materials in a neutral Structure.
         """
         return self._neutral_materials
 
     @property
     def players(self) -> List['games.catastrophe.player.Player']:
-        """List of all the players in the game.
-
-        :rtype: list[games.catastrophe.player.Player]
+        """list[games.catastrophe.player.Player]: List of all the players in the game.
         """
         return self._players
 
     @property
     def session(self) -> str:
-        """A unique identifier for the game instance that is being played.
-
-        :rtype: str
+        """str: A unique identifier for the game instance that is being played.
         """
         return self._session
 
     @property
     def shelter_materials(self) -> int:
-        """The number of materials in a shelter.
-
-        :rtype: int
+        """int: The number of materials in a shelter.
         """
         return self._shelter_materials
 
     @property
     def starting_food(self) -> int:
-        """The amount of food Players start with.
-
-        :rtype: int
+        """int: The amount of food Players start with.
         """
         return self._starting_food
 
     @property
     def starving_energy_mult(self) -> float:
-        """The multiplier for the amount of energy regenerated when resting while starving.
-
-        :rtype: float
+        """float: The multiplier for the amount of energy regenerated when resting while starving.
         """
         return self._starving_energy_mult
 
     @property
     def structures(self) -> List['games.catastrophe.structure.Structure']:
-        """Every Structure in the game.
-
-        :rtype: list[games.catastrophe.structure.Structure]
+        """list[games.catastrophe.structure.Structure]: Every Structure in the game.
         """
         return self._structures
 
     @property
     def tiles(self) -> List['games.catastrophe.tile.Tile']:
-        """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
-
-        :rtype: list[games.catastrophe.tile.Tile]
+        """list[games.catastrophe.tile.Tile]: All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
         """
         return self._tiles
 
     @property
     def time_added_per_turn(self) -> int:
-        """The amount of time (in nano-seconds) added after each player performs a turn.
-
-        :rtype: int
+        """int: The amount of time (in nano-seconds) added after each player performs a turn.
         """
         return self._time_added_per_turn
 
     @property
     def turns_between_harvests(self) -> int:
-        """After a food tile is harvested, the number of turns before it can be harvested again.
-
-        :rtype: int
+        """int: After a food tile is harvested, the number of turns before it can be harvested again.
         """
         return self._turns_between_harvests
 
     @property
     def turns_to_create_human(self) -> int:
-        """The number of turns between fresh humans being spawned on the road.
-
-        :rtype: int
+        """int: The number of turns between fresh humans being spawned on the road.
         """
         return self._turns_to_create_human
 
     @property
     def turns_to_lower_harvest(self) -> int:
-        """The number of turns before the harvest rate is lowered (length of each season basically).
-
-        :rtype: int
+        """int: The number of turns before the harvest rate is lowered (length of each season basically).
         """
         return self._turns_to_lower_harvest
 
     @property
     def units(self) -> List['games.catastrophe.unit.Unit']:
-        """Every Unit in the game.
-
-        :rtype: list[games.catastrophe.unit.Unit]
+        """list[games.catastrophe.unit.Unit]: Every Unit in the game.
         """
         return self._units
 
     @property
     def wall_materials(self) -> int:
-        """The number of materials in a wall.
-
-        :rtype: int
+        """int: The number of materials in a wall.
         """
         return self._wall_materials
 

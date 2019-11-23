@@ -30,33 +30,25 @@ class Port(GameObject):
 
     @property
     def gold(self) -> int:
-        """For players, how much more gold this Port can spend this turn. For merchants, how much gold this Port has accumulated (it will spawn a ship when the Port can afford one).
-
-        :rtype: int
+        """int: For players, how much more gold this Port can spend this turn. For merchants, how much gold this Port has accumulated (it will spawn a ship when the Port can afford one).
         """
         return self._gold
 
     @property
     def investment(self) -> int:
-        """(Merchants only) How much gold was invested into this Port. Investment determines the strength and value of the next ship.
-
-        :rtype: int
+        """int: (Merchants only) How much gold was invested into this Port. Investment determines the strength and value of the next ship.
         """
         return self._investment
 
     @property
     def owner(self) -> Optional['games.pirates.player.Player']:
-        """The owner of this Port, or None if owned by merchants.
-
-        :rtype: games.pirates.player.Player or None
+        """games.pirates.player.Player or None: The owner of this Port, or None if owned by merchants.
         """
         return self._owner
 
     @property
     def tile(self) -> 'games.pirates.tile.Tile':
-        """The Tile this Port is on.
-
-        :rtype: games.pirates.tile.Tile
+        """games.pirates.tile.Tile: The Tile this Port is on.
         """
         return self._tile
 

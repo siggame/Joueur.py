@@ -32,49 +32,37 @@ class Tower(GameObject):
 
     @property
     def attacked(self) -> bool:
-        """Whether this tower has attacked this turn or not.
-
-        :rtype: bool
+        """bool: Whether this tower has attacked this turn or not.
         """
         return self._attacked
 
     @property
     def cooldown(self) -> int:
-        """How many turns are left before it can fire again.
-
-        :rtype: int
+        """int: How many turns are left before it can fire again.
         """
         return self._cooldown
 
     @property
     def health(self) -> int:
-        """How much remaining health this tower has.
-
-        :rtype: int
+        """int: How much remaining health this tower has.
         """
         return self._health
 
     @property
     def job(self) -> 'games.necrowar.tower_job.TowerJob':
-        """What type of tower this is (it's job).
-
-        :rtype: games.necrowar.tower_job.TowerJob
+        """games.necrowar.tower_job.TowerJob: What type of tower this is (it's job).
         """
         return self._job
 
     @property
     def owner(self) -> Optional['games.necrowar.player.Player']:
-        """The player that built / owns this tower.
-
-        :rtype: games.necrowar.player.Player or None
+        """games.necrowar.player.Player or None: The player that built / owns this tower.
         """
         return self._owner
 
     @property
     def tile(self) -> 'games.necrowar.tile.Tile':
-        """The Tile this Tower is on.
-
-        :rtype: games.necrowar.tile.Tile
+        """games.necrowar.tile.Tile: The Tile this Tower is on.
         """
         return self._tile
 

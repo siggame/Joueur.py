@@ -39,105 +39,79 @@ class Tile(GameObject):
 
     @property
     def beaver(self) -> Optional['games.stumped.beaver.Beaver']:
-        """The Beaver on this Tile if present, otherwise None.
-
-        :rtype: games.stumped.beaver.Beaver or None
+        """games.stumped.beaver.Beaver or None: The Beaver on this Tile if present, otherwise None.
         """
         return self._beaver
 
     @property
     def branches(self) -> int:
-        """The number of branches dropped on this Tile.
-
-        :rtype: int
+        """int: The number of branches dropped on this Tile.
         """
         return self._branches
 
     @property
     def flow_direction(self) -> str:
-        """The cardinal direction water is flowing on this Tile ('North', 'East', 'South', 'West').
-
-        :rtype: 'North', 'East', 'South', 'West', or ''
+        """'North', 'East', 'South', 'West', or '': The cardinal direction water is flowing on this Tile ('North', 'East', 'South', 'West').
         """
         return self._flow_direction
 
     @property
     def food(self) -> int:
-        """The number of food dropped on this Tile.
-
-        :rtype: int
+        """int: The number of food dropped on this Tile.
         """
         return self._food
 
     @property
     def lodge_owner(self) -> Optional['games.stumped.player.Player']:
-        """The owner of the Beaver lodge on this Tile, if present, otherwise None.
-
-        :rtype: games.stumped.player.Player or None
+        """games.stumped.player.Player or None: The owner of the Beaver lodge on this Tile, if present, otherwise None.
         """
         return self._lodge_owner
 
     @property
     def spawner(self) -> Optional['games.stumped.spawner.Spawner']:
-        """The resource Spawner on this Tile if present, otherwise None.
-
-        :rtype: games.stumped.spawner.Spawner or None
+        """games.stumped.spawner.Spawner or None: The resource Spawner on this Tile if present, otherwise None.
         """
         return self._spawner
 
     @property
     def tile_east(self) -> Optional['games.stumped.tile.Tile']:
-        """The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
-
-        :rtype: games.stumped.tile.Tile or None
+        """games.stumped.tile.Tile or None: The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
         """
         return self._tile_east
 
     @property
     def tile_north(self) -> Optional['games.stumped.tile.Tile']:
-        """The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
-
-        :rtype: games.stumped.tile.Tile or None
+        """games.stumped.tile.Tile or None: The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
         """
         return self._tile_north
 
     @property
     def tile_south(self) -> Optional['games.stumped.tile.Tile']:
-        """The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
-
-        :rtype: games.stumped.tile.Tile or None
+        """games.stumped.tile.Tile or None: The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
         """
         return self._tile_south
 
     @property
     def tile_west(self) -> Optional['games.stumped.tile.Tile']:
-        """The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
-
-        :rtype: games.stumped.tile.Tile or None
+        """games.stumped.tile.Tile or None: The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
         """
         return self._tile_west
 
     @property
     def type(self) -> str:
-        """What type of Tile this is, either 'water' or 'land'.
-
-        :rtype: 'land' or 'water'
+        """'land' or 'water': What type of Tile this is, either 'water' or 'land'.
         """
         return self._type
 
     @property
     def x(self) -> int:
-        """The x (horizontal) position of this Tile.
-
-        :rtype: int
+        """int: The x (horizontal) position of this Tile.
         """
         return self._x
 
     @property
     def y(self) -> int:
-        """The y (vertical) position of this Tile.
-
-        :rtype: int
+        """int: The y (vertical) position of this Tile.
         """
         return self._y
 

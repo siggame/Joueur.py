@@ -30,41 +30,31 @@ class Job(GameObject):
 
     @property
     def carry_limit(self) -> int:
-        """How many combined resources a unit with this Job can hold at once.
-
-        :rtype: int
+        """int: How many combined resources a unit with this Job can hold at once.
         """
         return self._carry_limit
 
     @property
     def damage(self) -> int:
-        """The amount of damage this Job does per attack.
-
-        :rtype: int
+        """int: The amount of damage this Job does per attack.
         """
         return self._damage
 
     @property
     def health(self) -> int:
-        """The amount of starting health this Job has.
-
-        :rtype: int
+        """int: The amount of starting health this Job has.
         """
         return self._health
 
     @property
     def moves(self) -> int:
-        """The number of moves this Job can make per turn.
-
-        :rtype: int
+        """int: The number of moves this Job can make per turn.
         """
         return self._moves
 
     @property
     def title(self) -> str:
-        """The Job title. 'intern', 'manager', or 'physicist'.
-
-        :rtype: 'intern', 'manager', or 'physicist'
+        """'intern', 'manager', or 'physicist': The Job title. 'intern', 'manager', or 'physicist'.
         """
         return self._title
 

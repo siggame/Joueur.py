@@ -30,33 +30,25 @@ class YoungGun(GameObject):
 
     @property
     def call_in_tile(self) -> 'games.saloon.tile.Tile':
-        """The Tile that a Cowboy will be called in on if this YoungGun calls in a Cowboy.
-
-        :rtype: games.saloon.tile.Tile
+        """games.saloon.tile.Tile: The Tile that a Cowboy will be called in on if this YoungGun calls in a Cowboy.
         """
         return self._call_in_tile
 
     @property
     def can_call_in(self) -> bool:
-        """True if the YoungGun can call in a Cowboy, False otherwise.
-
-        :rtype: bool
+        """bool: True if the YoungGun can call in a Cowboy, False otherwise.
         """
         return self._can_call_in
 
     @property
     def owner(self) -> 'games.saloon.player.Player':
-        """The Player that owns and can control this YoungGun.
-
-        :rtype: games.saloon.player.Player
+        """games.saloon.player.Player: The Player that owns and can control this YoungGun.
         """
         return self._owner
 
     @property
     def tile(self) -> 'games.saloon.tile.Tile':
-        """The Tile this YoungGun is currently on.
-
-        :rtype: games.saloon.tile.Tile
+        """games.saloon.tile.Tile: The Tile this YoungGun is currently on.
         """
         return self._tile
 

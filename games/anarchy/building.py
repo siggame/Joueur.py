@@ -37,89 +37,67 @@ class Building(GameObject):
 
     @property
     def bribed(self) -> bool:
-        """When True this building has already been bribed this turn and cannot be bribed again this turn.
-
-        :rtype: bool
+        """bool: When True this building has already been bribed this turn and cannot be bribed again this turn.
         """
         return self._bribed
 
     @property
     def building_east(self) -> Optional['games.anarchy.building.Building']:
-        """The Building directly to the east of this building, or None if not present.
-
-        :rtype: games.anarchy.building.Building or None
+        """games.anarchy.building.Building or None: The Building directly to the east of this building, or None if not present.
         """
         return self._building_east
 
     @property
     def building_north(self) -> Optional['games.anarchy.building.Building']:
-        """The Building directly to the north of this building, or None if not present.
-
-        :rtype: games.anarchy.building.Building or None
+        """games.anarchy.building.Building or None: The Building directly to the north of this building, or None if not present.
         """
         return self._building_north
 
     @property
     def building_south(self) -> Optional['games.anarchy.building.Building']:
-        """The Building directly to the south of this building, or None if not present.
-
-        :rtype: games.anarchy.building.Building or None
+        """games.anarchy.building.Building or None: The Building directly to the south of this building, or None if not present.
         """
         return self._building_south
 
     @property
     def building_west(self) -> Optional['games.anarchy.building.Building']:
-        """The Building directly to the west of this building, or None if not present.
-
-        :rtype: games.anarchy.building.Building or None
+        """games.anarchy.building.Building or None: The Building directly to the west of this building, or None if not present.
         """
         return self._building_west
 
     @property
     def fire(self) -> int:
-        """How much fire is currently burning the building, and thus how much damage it will take at the end of its owner's turn. 0 means no fire.
-
-        :rtype: int
+        """int: How much fire is currently burning the building, and thus how much damage it will take at the end of its owner's turn. 0 means no fire.
         """
         return self._fire
 
     @property
     def health(self) -> int:
-        """How much health this building currently has. When this reaches 0 the Building has been burned down.
-
-        :rtype: int
+        """int: How much health this building currently has. When this reaches 0 the Building has been burned down.
         """
         return self._health
 
     @property
     def is_headquarters(self) -> bool:
-        """True if this is the Headquarters of the owning player, False otherwise. Burning this down wins the game for the other Player.
-
-        :rtype: bool
+        """bool: True if this is the Headquarters of the owning player, False otherwise. Burning this down wins the game for the other Player.
         """
         return self._is_headquarters
 
     @property
     def owner(self) -> 'games.anarchy.player.Player':
-        """The player that owns this building. If it burns down (health reaches 0) that player gets an additional bribe(s).
-
-        :rtype: games.anarchy.player.Player
+        """games.anarchy.player.Player: The player that owns this building. If it burns down (health reaches 0) that player gets an additional bribe(s).
         """
         return self._owner
 
     @property
     def x(self) -> int:
-        """The location of the Building along the x-axis.
-
-        :rtype: int
+        """int: The location of the Building along the x-axis.
         """
         return self._x
 
     @property
     def y(self) -> int:
-        """The location of the Building along the y-axis.
-
-        :rtype: int
+        """int: The location of the Building along the y-axis.
         """
         return self._y
 

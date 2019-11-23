@@ -26,9 +26,7 @@ class FireDepartment(Building):
 
     @property
     def fire_extinguished(self) -> int:
-        """The amount of fire removed from a building when bribed to extinguish a building.
-
-        :rtype: int
+        """int: The amount of fire removed from a building when bribed to extinguish a building.
         """
         return self._fire_extinguished
 

@@ -36,81 +36,61 @@ class Player(GameObject):
 
     @property
     def checkers(self) -> List['games.checkers.checker.Checker']:
-        """All the checkers currently in the game owned by this player.
-
-        :rtype: list[games.checkers.checker.Checker]
+        """list[games.checkers.checker.Checker]: All the checkers currently in the game owned by this player.
         """
         return self._checkers
 
     @property
     def client_type(self) -> str:
-        """What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
-
-        :rtype: str
+        """str: What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
         """
         return self._client_type
 
     @property
     def lost(self) -> bool:
-        """If the player lost the game or not.
-
-        :rtype: bool
+        """bool: If the player lost the game or not.
         """
         return self._lost
 
     @property
     def name(self) -> str:
-        """The name of the player.
-
-        :rtype: str
+        """str: The name of the player.
         """
         return self._name
 
     @property
     def opponent(self) -> 'games.checkers.player.Player':
-        """This player's opponent in the game.
-
-        :rtype: games.checkers.player.Player
+        """games.checkers.player.Player: This player's opponent in the game.
         """
         return self._opponent
 
     @property
     def reason_lost(self) -> str:
-        """The reason why the player lost the game.
-
-        :rtype: str
+        """str: The reason why the player lost the game.
         """
         return self._reason_lost
 
     @property
     def reason_won(self) -> str:
-        """The reason why the player won the game.
-
-        :rtype: str
+        """str: The reason why the player won the game.
         """
         return self._reason_won
 
     @property
     def time_remaining(self) -> float:
-        """The amount of time (in ns) remaining for this AI to send commands.
-
-        :rtype: float
+        """float: The amount of time (in ns) remaining for this AI to send commands.
         """
         return self._time_remaining
 
     @property
     def won(self) -> bool:
-        """If the player won the game or not.
-
-        :rtype: bool
+        """bool: If the player won the game or not.
         """
         return self._won
 
     @property
     def y_direction(self) -> int:
-        """The direction your checkers must go along the y-axis until kinged.
-
-        :rtype: int
+        """int: The direction your checkers must go along the y-axis until kinged.
         """
         return self._y_direction
 

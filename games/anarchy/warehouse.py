@@ -27,17 +27,13 @@ class Warehouse(Building):
 
     @property
     def exposure(self) -> int:
-        """How exposed the anarchists in this warehouse are to PoliceDepartments. Raises when bribed to ignite buildings, and drops each turn if not bribed.
-
-        :rtype: int
+        """int: How exposed the anarchists in this warehouse are to PoliceDepartments. Raises when bribed to ignite buildings, and drops each turn if not bribed.
         """
         return self._exposure
 
     @property
     def fire_added(self) -> int:
-        """The amount of fire added to buildings when bribed to ignite a building. Headquarters add more fire than normal Warehouses.
-
-        :rtype: int
+        """int: The amount of fire added to buildings when bribed to ignite a building. Headquarters add more fire than normal Warehouses.
         """
         return self._fire_added
 

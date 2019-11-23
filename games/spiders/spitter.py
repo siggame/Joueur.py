@@ -27,9 +27,7 @@ class Spitter(Spiderling):
 
     @property
     def spitting_web_to_nest(self) -> Optional['games.spiders.nest.Nest']:
-        """The Nest that this Spitter is creating a Web to spit at, thus connecting them. None if not spitting.
-
-        :rtype: games.spiders.nest.Nest or None
+        """games.spiders.nest.Nest or None: The Nest that this Spitter is creating a Web to spit at, thus connecting them. None if not spitting.
         """
         return self._spitting_web_to_nest
 

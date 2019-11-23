@@ -31,41 +31,31 @@ class Furnishing(GameObject):
 
     @property
     def health(self) -> int:
-        """How much health this Furnishing currently has.
-
-        :rtype: int
+        """int: How much health this Furnishing currently has.
         """
         return self._health
 
     @property
     def is_destroyed(self) -> bool:
-        """If this Furnishing has been destroyed, and has been removed from the game.
-
-        :rtype: bool
+        """bool: If this Furnishing has been destroyed, and has been removed from the game.
         """
         return self._is_destroyed
 
     @property
     def is_piano(self) -> bool:
-        """True if this Furnishing is a piano and can be played, False otherwise.
-
-        :rtype: bool
+        """bool: True if this Furnishing is a piano and can be played, False otherwise.
         """
         return self._is_piano
 
     @property
     def is_playing(self) -> bool:
-        """If this is a piano and a Cowboy is playing it this turn.
-
-        :rtype: bool
+        """bool: If this is a piano and a Cowboy is playing it this turn.
         """
         return self._is_playing
 
     @property
     def tile(self) -> Optional['games.saloon.tile.Tile']:
-        """The Tile that this Furnishing is located on.
-
-        :rtype: games.saloon.tile.Tile or None
+        """games.saloon.tile.Tile or None: The Tile that this Furnishing is located on.
         """
         return self._tile
 

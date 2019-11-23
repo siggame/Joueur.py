@@ -27,9 +27,7 @@ class Cutter(Spiderling):
 
     @property
     def cutting_web(self) -> Optional['games.spiders.web.Web']:
-        """The Web that this Cutter is trying to cut. None if not cutting.
-
-        :rtype: games.spiders.web.Web or None
+        """games.spiders.web.Web or None: The Web that this Cutter is trying to cut. None if not cutting.
         """
         return self._cutting_web
 

@@ -33,57 +33,43 @@ class Body(GameObject):
 
     @property
     def amount(self) -> int:
-        """The amount of material the object has, or energy if it is a planet.
-
-        :rtype: int
+        """int: The amount of material the object has, or energy if it is a planet.
         """
         return self._amount
 
     @property
     def body_type(self) -> str:
-        """The type of celestial body it is. Either 'planet', 'asteroid', or 'sun'.
-
-        :rtype: 'planet', 'asteroid', or 'sun'
+        """'planet', 'asteroid', or 'sun': The type of celestial body it is. Either 'planet', 'asteroid', or 'sun'.
         """
         return self._body_type
 
     @property
     def material_type(self) -> str:
-        """The type of material the celestial body has. Either 'none', 'genarium', 'rarium', 'legendarium', or 'mythicite'.
-
-        :rtype: 'none', 'genarium', 'rarium', 'legendarium', or 'mythicite'
+        """'none', 'genarium', 'rarium', 'legendarium', or 'mythicite': The type of material the celestial body has. Either 'none', 'genarium', 'rarium', 'legendarium', or 'mythicite'.
         """
         return self._material_type
 
     @property
     def owner(self) -> Optional['games.stardash.player.Player']:
-        """The Player that owns and can control this Body.
-
-        :rtype: games.stardash.player.Player or None
+        """games.stardash.player.Player or None: The Player that owns and can control this Body.
         """
         return self._owner
 
     @property
     def radius(self) -> float:
-        """The radius of the circle that this body takes up.
-
-        :rtype: float
+        """float: The radius of the circle that this body takes up.
         """
         return self._radius
 
     @property
     def x(self) -> float:
-        """The x value this celestial body is on.
-
-        :rtype: float
+        """float: The x value this celestial body is on.
         """
         return self._x
 
     @property
     def y(self) -> float:
-        """The y value this celestial body is on.
-
-        :rtype: float
+        """float: The y value this celestial body is on.
         """
         return self._y
 

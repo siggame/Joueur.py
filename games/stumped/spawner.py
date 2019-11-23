@@ -29,33 +29,25 @@ class Spawner(GameObject):
 
     @property
     def has_been_harvested(self) -> bool:
-        """True if this Spawner has been harvested this turn, and it will not heal at the end of the turn, False otherwise.
-
-        :rtype: bool
+        """bool: True if this Spawner has been harvested this turn, and it will not heal at the end of the turn, False otherwise.
         """
         return self._has_been_harvested
 
     @property
     def health(self) -> int:
-        """How much health this Spawner has, which is used to calculate how much of its resource can be harvested.
-
-        :rtype: int
+        """int: How much health this Spawner has, which is used to calculate how much of its resource can be harvested.
         """
         return self._health
 
     @property
     def tile(self) -> 'games.stumped.tile.Tile':
-        """The Tile this Spawner is on.
-
-        :rtype: games.stumped.tile.Tile
+        """games.stumped.tile.Tile: The Tile this Spawner is on.
         """
         return self._tile
 
     @property
     def type(self) -> str:
-        """What type of resource this is ('food' or 'branches').
-
-        :rtype: 'food' or 'branches'
+        """'food' or 'branches': What type of resource this is ('food' or 'branches').
         """
         return self._type
 

@@ -30,33 +30,25 @@ class Bottle(GameObject):
 
     @property
     def direction(self) -> str:
-        """The Direction this Bottle is flying and will move to between turns, can be 'North', 'East', 'South', or 'West'.
-
-        :rtype: 'North', 'East', 'South', or 'West'
+        """'North', 'East', 'South', or 'West': The Direction this Bottle is flying and will move to between turns, can be 'North', 'East', 'South', or 'West'.
         """
         return self._direction
 
     @property
     def drunk_direction(self) -> str:
-        """The direction any Cowboys hit by this will move, can be 'North', 'East', 'South', or 'West'.
-
-        :rtype: 'North', 'East', 'South', or 'West'
+        """'North', 'East', 'South', or 'West': The direction any Cowboys hit by this will move, can be 'North', 'East', 'South', or 'West'.
         """
         return self._drunk_direction
 
     @property
     def is_destroyed(self) -> bool:
-        """True if this Bottle has impacted and has been destroyed (removed from the Game). False if still in the game flying through the saloon.
-
-        :rtype: bool
+        """bool: True if this Bottle has impacted and has been destroyed (removed from the Game). False if still in the game flying through the saloon.
         """
         return self._is_destroyed
 
     @property
     def tile(self) -> Optional['games.saloon.tile.Tile']:
-        """The Tile this bottle is currently flying over.
-
-        :rtype: games.saloon.tile.Tile or None
+        """games.saloon.tile.Tile or None: The Tile this bottle is currently flying over.
         """
         return self._tile
 

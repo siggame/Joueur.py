@@ -37,89 +37,67 @@ class Cowboy(GameObject):
 
     @property
     def can_move(self) -> bool:
-        """If the Cowboy can be moved this turn via its owner.
-
-        :rtype: bool
+        """bool: If the Cowboy can be moved this turn via its owner.
         """
         return self._can_move
 
     @property
     def drunk_direction(self) -> str:
-        """The direction this Cowboy is moving while drunk. Will be 'North', 'East', 'South', or 'West' when drunk; or '' (empty string) when not drunk.
-
-        :rtype: '', 'North', 'East', 'South', or 'West'
+        """'', 'North', 'East', 'South', or 'West': The direction this Cowboy is moving while drunk. Will be 'North', 'East', 'South', or 'West' when drunk; or '' (empty string) when not drunk.
         """
         return self._drunk_direction
 
     @property
     def focus(self) -> int:
-        """How much focus this Cowboy has. Different Jobs do different things with their Cowboy's focus.
-
-        :rtype: int
+        """int: How much focus this Cowboy has. Different Jobs do different things with their Cowboy's focus.
         """
         return self._focus
 
     @property
     def health(self) -> int:
-        """How much health this Cowboy currently has.
-
-        :rtype: int
+        """int: How much health this Cowboy currently has.
         """
         return self._health
 
     @property
     def is_dead(self) -> bool:
-        """If this Cowboy is dead and has been removed from the game.
-
-        :rtype: bool
+        """bool: If this Cowboy is dead and has been removed from the game.
         """
         return self._is_dead
 
     @property
     def is_drunk(self) -> bool:
-        """If this Cowboy is drunk, and will automatically walk.
-
-        :rtype: bool
+        """bool: If this Cowboy is drunk, and will automatically walk.
         """
         return self._is_drunk
 
     @property
     def job(self) -> str:
-        """The job that this Cowboy does, and dictates how they fight and interact within the Saloon.
-
-        :rtype: 'Bartender', 'Brawler', or 'Sharpshooter'
+        """'Bartender', 'Brawler', or 'Sharpshooter': The job that this Cowboy does, and dictates how they fight and interact within the Saloon.
         """
         return self._job
 
     @property
     def owner(self) -> 'games.saloon.player.Player':
-        """The Player that owns and can control this Cowboy.
-
-        :rtype: games.saloon.player.Player
+        """games.saloon.player.Player: The Player that owns and can control this Cowboy.
         """
         return self._owner
 
     @property
     def tile(self) -> Optional['games.saloon.tile.Tile']:
-        """The Tile that this Cowboy is located on.
-
-        :rtype: games.saloon.tile.Tile or None
+        """games.saloon.tile.Tile or None: The Tile that this Cowboy is located on.
         """
         return self._tile
 
     @property
     def tolerance(self) -> int:
-        """How many times this unit has been drunk before taking their siesta and reseting this to 0.
-
-        :rtype: int
+        """int: How many times this unit has been drunk before taking their siesta and reseting this to 0.
         """
         return self._tolerance
 
     @property
     def turns_busy(self) -> int:
-        """How many turns this unit has remaining before it is no longer busy and can `act()` or `play()` again.
-
-        :rtype: int
+        """int: How many turns this unit has remaining before it is no longer busy and can `act()` or `play()` again.
         """
         return self._turns_busy
 

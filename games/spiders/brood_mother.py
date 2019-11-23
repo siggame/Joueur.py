@@ -28,17 +28,13 @@ class BroodMother(Spider):
 
     @property
     def eggs(self) -> int:
-        """How many eggs the BroodMother has to spawn Spiderlings this turn.
-
-        :rtype: int
+        """int: How many eggs the BroodMother has to spawn Spiderlings this turn.
         """
         return self._eggs
 
     @property
     def health(self) -> int:
-        """How much health this BroodMother has left. When it reaches 0, she dies and her owner loses.
-
-        :rtype: int
+        """int: How much health this BroodMother has left. When it reaches 0, she dies and her owner loses.
         """
         return self._health
 

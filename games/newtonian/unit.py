@@ -38,97 +38,73 @@ class Unit(GameObject):
 
     @property
     def acted(self) -> bool:
-        """Whether or not this Unit has performed its action this turn.
-
-        :rtype: bool
+        """bool: Whether or not this Unit has performed its action this turn.
         """
         return self._acted
 
     @property
     def blueium(self) -> int:
-        """The amount of blueium carried by this unit. (0 to job carry capacity - other carried items).
-
-        :rtype: int
+        """int: The amount of blueium carried by this unit. (0 to job carry capacity - other carried items).
         """
         return self._blueium
 
     @property
     def blueium_ore(self) -> int:
-        """The amount of blueium ore carried by this unit. (0 to job carry capacity - other carried items).
-
-        :rtype: int
+        """int: The amount of blueium ore carried by this unit. (0 to job carry capacity - other carried items).
         """
         return self._blueium_ore
 
     @property
     def health(self) -> int:
-        """The remaining health of a unit.
-
-        :rtype: int
+        """int: The remaining health of a unit.
         """
         return self._health
 
     @property
     def job(self) -> 'games.newtonian.job.Job':
-        """The Job this Unit has.
-
-        :rtype: games.newtonian.job.Job
+        """games.newtonian.job.Job: The Job this Unit has.
         """
         return self._job
 
     @property
     def moves(self) -> int:
-        """The number of moves this unit has left this turn.
-
-        :rtype: int
+        """int: The number of moves this unit has left this turn.
         """
         return self._moves
 
     @property
     def owner(self) -> Optional['games.newtonian.player.Player']:
-        """The Player that owns and can control this Unit.
-
-        :rtype: games.newtonian.player.Player or None
+        """games.newtonian.player.Player or None: The Player that owns and can control this Unit.
         """
         return self._owner
 
     @property
     def redium(self) -> int:
-        """The amount of redium carried by this unit. (0 to job carry capacity - other carried items).
-
-        :rtype: int
+        """int: The amount of redium carried by this unit. (0 to job carry capacity - other carried items).
         """
         return self._redium
 
     @property
     def redium_ore(self) -> int:
-        """The amount of redium ore carried by this unit. (0 to job carry capacity - other carried items).
-
-        :rtype: int
+        """int: The amount of redium ore carried by this unit. (0 to job carry capacity - other carried items).
         """
         return self._redium_ore
 
     @property
     def stun_immune(self) -> int:
-        """Duration of stun immunity. (0 to timeImmune).
-
-        :rtype: int
+        """int: Duration of stun immunity. (0 to timeImmune).
         """
         return self._stun_immune
 
     @property
     def stun_time(self) -> int:
-        """Duration the unit is stunned. (0 to the game constant stunTime).
-
-        :rtype: int
+        """int: Duration the unit is stunned. (0 to the game constant stunTime).
         """
         return self._stun_time
 
     @property
     def tile(self) -> Optional['games.newtonian.tile.Tile']:
-        """The Tile this Unit is on.
-
-        :rtype: games.newtonian.tile.Tile or None
+        """games.newtonian.tile.Tile or None: The Tile this Unit is on.
         """
         return self._tile
 

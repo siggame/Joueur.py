@@ -29,25 +29,19 @@ class GameObject(BaseGameObject):
 
     @property
     def game_object_name(self) -> str:
-        """String representing the top level Class that this game object is an instance of. Used for reflection to create new instances on clients, but exposed for convenience should AIs want this data.
-
-        :rtype: str
+        """str: String representing the top level Class that this game object is an instance of. Used for reflection to create new instances on clients, but exposed for convenience should AIs want this data.
         """
         return self._game_object_name
 
     @property
     def id(self) -> str:
-        """A unique id for each instance of a GameObject or a sub class. Used for client and server communication. Should never change value after being set.
-
-        :rtype: str
+        """str: A unique id for each instance of a GameObject or a sub class. Used for client and server communication. Should never change value after being set.
         """
         return self._id
 
     @property
     def logs(self) -> List[str]:
-        """Any strings logged will be stored here. Intended for debugging.
-
-        :rtype: list[str]
+        """list[str]: Any strings logged will be stored here. Intended for debugging.
         """
         return self._logs
 

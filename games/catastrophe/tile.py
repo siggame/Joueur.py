@@ -38,97 +38,73 @@ class Tile(GameObject):
 
     @property
     def food(self) -> int:
-        """The number of food dropped on this Tile.
-
-        :rtype: int
+        """int: The number of food dropped on this Tile.
         """
         return self._food
 
     @property
     def harvest_rate(self) -> int:
-        """The amount of food that can be harvested from this Tile per turn.
-
-        :rtype: int
+        """int: The amount of food that can be harvested from this Tile per turn.
         """
         return self._harvest_rate
 
     @property
     def materials(self) -> int:
-        """The number of materials dropped on this Tile.
-
-        :rtype: int
+        """int: The number of materials dropped on this Tile.
         """
         return self._materials
 
     @property
     def structure(self) -> Optional['games.catastrophe.structure.Structure']:
-        """The Structure on this Tile if present, otherwise None.
-
-        :rtype: games.catastrophe.structure.Structure or None
+        """games.catastrophe.structure.Structure or None: The Structure on this Tile if present, otherwise None.
         """
         return self._structure
 
     @property
     def tile_east(self) -> Optional['games.catastrophe.tile.Tile']:
-        """The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
-
-        :rtype: games.catastrophe.tile.Tile or None
+        """games.catastrophe.tile.Tile or None: The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
         """
         return self._tile_east
 
     @property
     def tile_north(self) -> Optional['games.catastrophe.tile.Tile']:
-        """The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
-
-        :rtype: games.catastrophe.tile.Tile or None
+        """games.catastrophe.tile.Tile or None: The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
         """
         return self._tile_north
 
     @property
     def tile_south(self) -> Optional['games.catastrophe.tile.Tile']:
-        """The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
-
-        :rtype: games.catastrophe.tile.Tile or None
+        """games.catastrophe.tile.Tile or None: The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
         """
         return self._tile_south
 
     @property
     def tile_west(self) -> Optional['games.catastrophe.tile.Tile']:
-        """The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
-
-        :rtype: games.catastrophe.tile.Tile or None
+        """games.catastrophe.tile.Tile or None: The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
         """
         return self._tile_west
 
     @property
     def turns_to_harvest(self) -> int:
-        """The amount of turns before this resource can be harvested.
-
-        :rtype: int
+        """int: The amount of turns before this resource can be harvested.
         """
         return self._turns_to_harvest
 
     @property
     def unit(self) -> Optional['games.catastrophe.unit.Unit']:
-        """The Unit on this Tile if present, otherwise None.
-
-        :rtype: games.catastrophe.unit.Unit or None
+        """games.catastrophe.unit.Unit or None: The Unit on this Tile if present, otherwise None.
         """
         return self._unit
 
     @property
     def x(self) -> int:
-        """The x (horizontal) position of this Tile.
-
-        :rtype: int
+        """int: The x (horizontal) position of this Tile.
         """
         return self._x
 
     @property
     def y(self) -> int:
-        """The y (vertical) position of this Tile.
-
-        :rtype: int
+        """int: The y (vertical) position of this Tile.
         """
         return self._y
 

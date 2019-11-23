@@ -32,49 +32,37 @@ class Projectile(GameObject):
 
     @property
     def energy(self) -> int:
-        """The remaining health of the projectile.
-
-        :rtype: int
+        """int: The remaining health of the projectile.
         """
         return self._energy
 
     @property
     def fuel(self) -> int:
-        """The amount of remaining distance the projectile can move.
-
-        :rtype: int
+        """int: The amount of remaining distance the projectile can move.
         """
         return self._fuel
 
     @property
     def owner(self) -> Optional['games.stardash.player.Player']:
-        """The Player that owns and can control this Projectile.
-
-        :rtype: games.stardash.player.Player or None
+        """games.stardash.player.Player or None: The Player that owns and can control this Projectile.
         """
         return self._owner
 
     @property
     def target(self) -> 'games.stardash.unit.Unit':
-        """The unit that is being attacked by this projectile.
-
-        :rtype: games.stardash.unit.Unit
+        """games.stardash.unit.Unit: The unit that is being attacked by this projectile.
         """
         return self._target
 
     @property
     def x(self) -> float:
-        """The x value this projectile is on.
-
-        :rtype: float
+        """float: The x value this projectile is on.
         """
         return self._x
 
     @property
     def y(self) -> float:
-        """The y value this projectile is on.
-
-        :rtype: float
+        """float: The y value this projectile is on.
         """
         return self._y
 

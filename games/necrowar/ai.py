@@ -12,17 +12,13 @@ class AI(BaseAI):
 
     @property
     def game(self) -> 'games.necrowar.game.Game':
-        """The reference to the Game instance this AI is playing.
-
-        :rtype: games.necrowar.game.Game
+        """games.necrowar.game.Game: The reference to the Game instance this AI is playing.
         """
         return self._game # don't directly touch this "private" variable pls
 
     @property
     def player(self) -> 'games.necrowar.player.Player':
-        """The reference to the Player this AI controls in the Game.
-
-        :rtype: games.necrowar.player.Player
+        """games.necrowar.player.Player: The reference to the Player this AI controls in the Game.
         """
         return self._player # don't directly touch this "private" variable pls
 

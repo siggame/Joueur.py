@@ -39,105 +39,79 @@ class Player(GameObject):
 
     @property
     def client_type(self) -> str:
-        """What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
-
-        :rtype: str
+        """str: What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
         """
         return self._client_type
 
     @property
     def home_base(self) -> 'games.stardash.body.Body':
-        """The home base of the player.
-
-        :rtype: games.stardash.body.Body
+        """games.stardash.body.Body: The home base of the player.
         """
         return self._home_base
 
     @property
     def lost(self) -> bool:
-        """If the player lost the game or not.
-
-        :rtype: bool
+        """bool: If the player lost the game or not.
         """
         return self._lost
 
     @property
     def money(self) -> int:
-        """The amount of money this Player has.
-
-        :rtype: int
+        """int: The amount of money this Player has.
         """
         return self._money
 
     @property
     def name(self) -> str:
-        """The name of the player.
-
-        :rtype: str
+        """str: The name of the player.
         """
         return self._name
 
     @property
     def opponent(self) -> 'games.stardash.player.Player':
-        """This player's opponent in the game.
-
-        :rtype: games.stardash.player.Player
+        """games.stardash.player.Player: This player's opponent in the game.
         """
         return self._opponent
 
     @property
     def projectiles(self) -> List['games.stardash.projectile.Projectile']:
-        """Every Projectile owned by this Player. The earlier in the list the older they are.
-
-        :rtype: list[games.stardash.projectile.Projectile]
+        """list[games.stardash.projectile.Projectile]: Every Projectile owned by this Player. The earlier in the list the older they are.
         """
         return self._projectiles
 
     @property
     def reason_lost(self) -> str:
-        """The reason why the player lost the game.
-
-        :rtype: str
+        """str: The reason why the player lost the game.
         """
         return self._reason_lost
 
     @property
     def reason_won(self) -> str:
-        """The reason why the player won the game.
-
-        :rtype: str
+        """str: The reason why the player won the game.
         """
         return self._reason_won
 
     @property
     def time_remaining(self) -> float:
-        """The amount of time (in ns) remaining for this AI to send commands.
-
-        :rtype: float
+        """float: The amount of time (in ns) remaining for this AI to send commands.
         """
         return self._time_remaining
 
     @property
     def units(self) -> List['games.stardash.unit.Unit']:
-        """Every Unit owned by this Player. The earlier in the list the older they are.
-
-        :rtype: list[games.stardash.unit.Unit]
+        """list[games.stardash.unit.Unit]: Every Unit owned by this Player. The earlier in the list the older they are.
         """
         return self._units
 
     @property
     def victory_points(self) -> int:
-        """The number of victory points the player has.
-
-        :rtype: int
+        """int: The number of victory points the player has.
         """
         return self._victory_points
 
     @property
     def won(self) -> bool:
-        """If the player won the game or not.
-
-        :rtype: bool
+        """bool: If the player won the game or not.
         """
         return self._won
 

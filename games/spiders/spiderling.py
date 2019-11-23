@@ -31,41 +31,31 @@ class Spiderling(Spider):
 
     @property
     def busy(self) -> str:
-        """When empty string this Spiderling is not busy, and can act. Otherwise a string representing what it is busy with, e.g. 'Moving', 'Attacking'.
-
-        :rtype: '', 'Moving', 'Attacking', 'Strengthening', 'Weakening', 'Cutting', or 'Spitting'
+        """'', 'Moving', 'Attacking', 'Strengthening', 'Weakening', 'Cutting', or 'Spitting': When empty string this Spiderling is not busy, and can act. Otherwise a string representing what it is busy with, e.g. 'Moving', 'Attacking'.
         """
         return self._busy
 
     @property
     def moving_on_web(self) -> Optional['games.spiders.web.Web']:
-        """The Web this Spiderling is using to move. None if it is not moving.
-
-        :rtype: games.spiders.web.Web or None
+        """games.spiders.web.Web or None: The Web this Spiderling is using to move. None if it is not moving.
         """
         return self._moving_on_web
 
     @property
     def moving_to_nest(self) -> Optional['games.spiders.nest.Nest']:
-        """The Nest this Spiderling is moving to. None if it is not moving.
-
-        :rtype: games.spiders.nest.Nest or None
+        """games.spiders.nest.Nest or None: The Nest this Spiderling is moving to. None if it is not moving.
         """
         return self._moving_to_nest
 
     @property
     def number_of_coworkers(self) -> int:
-        """The number of Spiderlings busy with the same work this Spiderling is doing, speeding up the task.
-
-        :rtype: int
+        """int: The number of Spiderlings busy with the same work this Spiderling is doing, speeding up the task.
         """
         return self._number_of_coworkers
 
     @property
     def work_remaining(self) -> float:
-        """How much work needs to be done for this Spiderling to finish being busy. See docs for the Work forumla.
-
-        :rtype: float
+        """float: How much work needs to be done for this Spiderling to finish being busy. See docs for the Work forumla.
         """
         return self._work_remaining
 

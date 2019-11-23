@@ -28,25 +28,19 @@ class Forecast(GameObject):
 
     @property
     def controlling_player(self) -> 'games.anarchy.player.Player':
-        """The Player that can use WeatherStations to control this Forecast when its the nextForecast.
-
-        :rtype: games.anarchy.player.Player
+        """games.anarchy.player.Player: The Player that can use WeatherStations to control this Forecast when its the nextForecast.
         """
         return self._controlling_player
 
     @property
     def direction(self) -> str:
-        """The direction the wind will blow fires in. Can be 'north', 'east', 'south', or 'west'.
-
-        :rtype: 'North', 'East', 'South', or 'West'
+        """'North', 'East', 'South', or 'West': The direction the wind will blow fires in. Can be 'north', 'east', 'south', or 'west'.
         """
         return self._direction
 
     @property
     def intensity(self) -> int:
-        """How much of a Building's fire that can be blown in the direction of this Forecast. Fire is duplicated (copied), not moved (transfered).
-
-        :rtype: int
+        """int: How much of a Building's fire that can be blown in the direction of this Forecast. Fire is duplicated (copied), not moved (transfered).
         """
         return self._intensity
 

@@ -41,121 +41,91 @@ class Player(GameObject):
 
     @property
     def bribes_remaining(self) -> int:
-        """How many bribes this player has remaining to use during their turn. Each action a Building does costs 1 bribe. Any unused bribes are lost at the end of the player's turn.
-
-        :rtype: int
+        """int: How many bribes this player has remaining to use during their turn. Each action a Building does costs 1 bribe. Any unused bribes are lost at the end of the player's turn.
         """
         return self._bribes_remaining
 
     @property
     def buildings(self) -> List['games.anarchy.building.Building']:
-        """All the buildings owned by this player.
-
-        :rtype: list[games.anarchy.building.Building]
+        """list[games.anarchy.building.Building]: All the buildings owned by this player.
         """
         return self._buildings
 
     @property
     def client_type(self) -> str:
-        """What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
-
-        :rtype: str
+        """str: What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
         """
         return self._client_type
 
     @property
     def fire_departments(self) -> List['games.anarchy.fire_department.FireDepartment']:
-        """All the FireDepartments owned by this player.
-
-        :rtype: list[games.anarchy.fire_department.FireDepartment]
+        """list[games.anarchy.fire_department.FireDepartment]: All the FireDepartments owned by this player.
         """
         return self._fire_departments
 
     @property
     def headquarters(self) -> 'games.anarchy.warehouse.Warehouse':
-        """The Warehouse that serves as this player's headquarters and has extra health. If this gets destroyed they lose.
-
-        :rtype: games.anarchy.warehouse.Warehouse
+        """games.anarchy.warehouse.Warehouse: The Warehouse that serves as this player's headquarters and has extra health. If this gets destroyed they lose.
         """
         return self._headquarters
 
     @property
     def lost(self) -> bool:
-        """If the player lost the game or not.
-
-        :rtype: bool
+        """bool: If the player lost the game or not.
         """
         return self._lost
 
     @property
     def name(self) -> str:
-        """The name of the player.
-
-        :rtype: str
+        """str: The name of the player.
         """
         return self._name
 
     @property
     def opponent(self) -> 'games.anarchy.player.Player':
-        """This player's opponent in the game.
-
-        :rtype: games.anarchy.player.Player
+        """games.anarchy.player.Player: This player's opponent in the game.
         """
         return self._opponent
 
     @property
     def police_departments(self) -> List['games.anarchy.police_department.PoliceDepartment']:
-        """All the PoliceDepartments owned by this player.
-
-        :rtype: list[games.anarchy.police_department.PoliceDepartment]
+        """list[games.anarchy.police_department.PoliceDepartment]: All the PoliceDepartments owned by this player.
         """
         return self._police_departments
 
     @property
     def reason_lost(self) -> str:
-        """The reason why the player lost the game.
-
-        :rtype: str
+        """str: The reason why the player lost the game.
         """
         return self._reason_lost
 
     @property
     def reason_won(self) -> str:
-        """The reason why the player won the game.
-
-        :rtype: str
+        """str: The reason why the player won the game.
         """
         return self._reason_won
 
     @property
     def time_remaining(self) -> float:
-        """The amount of time (in ns) remaining for this AI to send commands.
-
-        :rtype: float
+        """float: The amount of time (in ns) remaining for this AI to send commands.
         """
         return self._time_remaining
 
     @property
     def warehouses(self) -> List['games.anarchy.warehouse.Warehouse']:
-        """All the warehouses owned by this player. Includes the Headquarters.
-
-        :rtype: list[games.anarchy.warehouse.Warehouse]
+        """list[games.anarchy.warehouse.Warehouse]: All the warehouses owned by this player. Includes the Headquarters.
         """
         return self._warehouses
 
     @property
     def weather_stations(self) -> List['games.anarchy.weather_station.WeatherStation']:
-        """All the WeatherStations owned by this player.
-
-        :rtype: list[games.anarchy.weather_station.WeatherStation]
+        """list[games.anarchy.weather_station.WeatherStation]: All the WeatherStations owned by this player.
         """
         return self._weather_stations
 
     @property
     def won(self) -> bool:
-        """If the player won the game or not.
-
-        :rtype: bool
+        """bool: If the player won the game or not.
         """
         return self._won
 
