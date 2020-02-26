@@ -130,14 +130,6 @@ class Player(GameObject):
         """
         return self._won
 
-    def spawn_miner(self):
-        """ Spawns a Miner Unit on this Player's Base Tile.
-
-        Returns:
-            bool: True if successfully spawned, False otherwise.
-        """
-        return self._run_on_server('spawnMiner')
-
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

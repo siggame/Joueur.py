@@ -34,6 +34,7 @@ class Tile(GameObject):
         self._tile_north = None
         self._tile_south = None
         self._tile_west = None
+        self._units = []
         self._x = 0
         self._y = 0
 
@@ -142,6 +143,14 @@ class Tile(GameObject):
         return self._tile_west
 
     @property
+    def units(self):
+        """An array of the Units on this Tile.
+
+        :rtype: list[games.coreminer.unit.Unit]
+        """
+        return self._units
+
+    @property
     def x(self):
         """The x (horizontal) position of this Tile.
 
@@ -156,6 +165,14 @@ class Tile(GameObject):
         :rtype: int
         """
         return self._y
+
+    def spawn_miner(self):
+        """ Spawns a Miner Unit on this Tile - Must be on the surface on their side of the map.
+
+        Returns:
+            bool: True if successfully spawned, False otherwise.
+        """
+        return self._run_on_server('spawnMiner')
 
 
     directions = ["North", "East", "South", "West"]
