@@ -38,7 +38,7 @@ class BaseAI:
                 kv = pair.split("=")
                 self._settings[kv[0]] = kv[1] if len(kv) == 2 else ""
 
-    def get_setting(self, key):
+    def get_setting(self, key: str) -> str:
         """Gets an AI setting passed to the program via the `--aiSettings`
         flag. If the flag was set it will be returned as a string value,
         None otherwise.
@@ -86,7 +86,7 @@ class BaseAI:
     # You can manually inherit this method, but because the only data you get
     # about the invalid event is a human readable message, printing it to the
     # terminal should be enough to not expose it to all except the curious.
-    def invalid(self, message):
+    def invalid(self, message: str) -> None:
         print(color.text("yellow") + "Invalid: " + message + color.reset())
 
     # intended to be overridden by the AI class

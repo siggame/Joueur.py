@@ -4,10 +4,15 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
-from games.chess.game_object import GameObject
+from typing import List
+from games.stardash.game_object import GameObject
+
+# <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+# you can add additional import(s) here
+# <<-- /Creer-Merge: imports -->>
 
 class Player(GameObject):
-    """The class representing the Player in the Chess game.
+    """The class representing the Player in the Stardash game.
 
     A player in this game. Every AI controls one player.
     """
@@ -19,13 +24,17 @@ class Player(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._client_type = ""
-        self._color = ""
+        self._home_base = None
         self._lost = False
+        self._money = 0
         self._name = "Anonymous"
         self._opponent = None
+        self._projectiles = []
         self._reason_lost = ""
         self._reason_won = ""
         self._time_remaining = 0
+        self._units = []
+        self._victory_points = 0
         self._won = False
 
     @property
@@ -35,10 +44,10 @@ class Player(GameObject):
         return self._client_type
 
     @property
-    def color(self) -> str:
-        """'black' or 'white': The color (side) of this player. Either 'white' or 'black', with the 'white' player having the first move.
+    def home_base(self) -> 'games.stardash.body.Body':
+        """games.stardash.body.Body: The home base of the player.
         """
-        return self._color
+        return self._home_base
 
     @property
     def lost(self) -> bool:
@@ -47,16 +56,28 @@ class Player(GameObject):
         return self._lost
 
     @property
+    def money(self) -> int:
+        """int: The amount of money this Player has.
+        """
+        return self._money
+
+    @property
     def name(self) -> str:
         """str: The name of the player.
         """
         return self._name
 
     @property
-    def opponent(self) -> 'games.chess.player.Player':
-        """games.chess.player.Player: This player's opponent in the game.
+    def opponent(self) -> 'games.stardash.player.Player':
+        """games.stardash.player.Player: This player's opponent in the game.
         """
         return self._opponent
+
+    @property
+    def projectiles(self) -> List['games.stardash.projectile.Projectile']:
+        """list[games.stardash.projectile.Projectile]: Every Projectile owned by this Player. The earlier in the list the older they are.
+        """
+        return self._projectiles
 
     @property
     def reason_lost(self) -> str:
@@ -77,7 +98,23 @@ class Player(GameObject):
         return self._time_remaining
 
     @property
+    def units(self) -> List['games.stardash.unit.Unit']:
+        """list[games.stardash.unit.Unit]: Every Unit owned by this Player. The earlier in the list the older they are.
+        """
+        return self._units
+
+    @property
+    def victory_points(self) -> int:
+        """int: The number of victory points the player has.
+        """
+        return self._victory_points
+
+    @property
     def won(self) -> bool:
         """bool: If the player won the game or not.
         """
         return self._won
+
+    # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+    # if you want to add any client side logic (such as state checking functions) this is where you can add them
+    # <<-- /Creer-Merge: functions -->>

@@ -1,3 +1,4 @@
+from typing import Optional
 from joueur.delta_mergeable import DeltaMergeable
 
 
@@ -6,7 +7,7 @@ class BaseGame(DeltaMergeable):
     def __init__(self):
         DeltaMergeable.__init__(self)
 
-    def get_game_object(self, id):
+    def get_game_object(self, id: str) -> Optional['joueur.base_game_object.BaseGameObject']:
         """ gets the game object with the given id, or None
 
         Returns:

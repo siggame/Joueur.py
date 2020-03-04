@@ -1,3 +1,10 @@
 #!/bin/bash
 
-python3 -u ./main.py "$@"
+# use `pypy3` if available as it's way faster, otherwise default to normal python3
+if [ -x "$(command -v pypy3)" ]; then
+    pypy3 ./main.py "$@"
+elif [ -x "$(command -v python3)" ]; then
+    python3 ./main.py "$@"
+else
+    echo "ERROR: pyp3 or python3 not installed!" >&2
+fi

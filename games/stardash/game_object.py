@@ -7,8 +7,12 @@
 from typing import List
 from joueur.base_game_object import BaseGameObject
 
+# <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+# you can add additional import(s) here
+# <<-- /Creer-Merge: imports -->>
+
 class GameObject(BaseGameObject):
-    """The class representing the GameObject in the Chess game.
+    """The class representing the GameObject in the Stardash game.
 
     An object in the game. The most basic class that all game classes should inherit from automatically.
     """
@@ -50,3 +54,7 @@ class GameObject(BaseGameObject):
         return self._run_on_server('log', {
             'message': message
         })
+
+    # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+    # if you want to add any client side logic (such as state checking functions) this is where you can add them
+    # <<-- /Creer-Merge: functions -->>
