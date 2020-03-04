@@ -17,7 +17,7 @@ def pretty_fen(fen: str, us: str) -> str:
     side_to_move = split[1] # always the second part for side to move
     us_or_them = 'us' if side_to_move == us[0] else 'them'
 
-    fullmove = split[5]; # always the sixth part for the full move
+    fullmove = split[5] # always the sixth part for the full move
 
     lines = first.split('/')
     strings = [
