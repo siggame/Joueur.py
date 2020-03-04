@@ -2,7 +2,7 @@
 
 from joueur.base_ai import BaseAI
 
-def pretty_fen(fen, us):
+def pretty_fen(fen: str, us: str) -> str:
     """
     Pretty formats an FEN string to a human readable string.
 
