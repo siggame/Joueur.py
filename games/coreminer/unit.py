@@ -113,11 +113,11 @@ class Unit(GameObject):
         return self._tile
 
     def build(self, tile, type):
-        """ Builds a support, shield, ladder, or bomb on Unit's tile, or an adjacent Tile.
+        """ Builds a support, shield, or ladder on Unit's tile, or an adjacent Tile.
 
         Args:
             tile (games.coreminer.tile.Tile): The Tile to build on.
-            type (str): The structure to build (support, ladder, shield, or bomb).
+            type (str): The structure to build (support, ladder, or shield).
 
         Returns:
             bool: True if successfully built, False otherwise.
@@ -129,7 +129,7 @@ class Unit(GameObject):
 
         Args:
             tile (games.coreminer.tile.Tile): The tile the materials will be dumped on.
-            material (str): The material the Unit will drop. 'dirt' or 'ore'.
+            material (str): The material the Unit will drop. 'dirt', 'ore', or 'bomb'.
             amount (int): The number of materials to drop. Amounts <= 0 will drop all the materials.
 
         Returns:
