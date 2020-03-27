@@ -26,6 +26,10 @@ class Unit(GameObject):
         self._dirt = 0
         self._health = 0
         self._job = None
+        self._max_cargo_capacity = 0
+        self._max_health = 0
+        self._max_mining_power = 0
+        self._max_moves = 0
         self._mining_power = 0
         self._moves = 0
         self._ore = 0
@@ -71,6 +75,38 @@ class Unit(GameObject):
         :rtype: games.coreminer.job.Job
         """
         return self._job
+
+    @property
+    def max_cargo_capacity(self):
+        """The maximum amount of cargo this Unit can carry.
+
+        :rtype: int
+        """
+        return self._max_cargo_capacity
+
+    @property
+    def max_health(self):
+        """The maximum health of this Unit.
+
+        :rtype: int
+        """
+        return self._max_health
+
+    @property
+    def max_mining_power(self):
+        """The maximum mining power of this Unit.
+
+        :rtype: int
+        """
+        return self._max_mining_power
+
+    @property
+    def max_moves(self):
+        """The maximum moves this Unit can have.
+
+        :rtype: int
+        """
+        return self._max_moves
 
     @property
     def mining_power(self):

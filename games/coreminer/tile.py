@@ -64,7 +64,7 @@ class Tile(GameObject):
 
     @property
     def is_hopper(self):
-        """Whether or not a hopper is placed on this Tile.
+        """Whether or not a hopper is on this Tile.
 
         :rtype: bool
         """
@@ -96,7 +96,7 @@ class Tile(GameObject):
 
     @property
     def owner(self):
-        """The owner of this Tile, or None if owned by no-one. Only for bases and hoppers.
+        """The owner of this Tile, or undefined if owned by no-one. Only for bases and hoppers.
 
         :rtype: games.coreminer.player.Player
         """

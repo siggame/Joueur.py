@@ -21,77 +21,50 @@ class Job(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
-        self._cargo_capacity = 0
-        self._health = 0
-        self._max_cargo_capacity = 0
-        self._max_health = 0
-        self._max_mining_power = 0
-        self._max_moves = 0
-        self._mining_power = 0
-        self._moves = 0
+        self._cargo_capacity = []
+        self._cost = 0
+        self._health = []
+        self._mining_power = []
+        self._moves = []
         self._title = ""
 
     @property
     def cargo_capacity(self):
-        """The amount of cargo capacity this Unit starts with.
+        """The amount of cargo capacity this Unit starts with per level.
 
-        :rtype: int
+        :rtype: list[int]
         """
         return self._cargo_capacity
 
     @property
-    def health(self):
-        """The amount of starting health this Job has.
+    def cost(self):
+        """The cost of spawning a Unit with this Job.
 
         :rtype: int
+        """
+        return self._cost
+
+    @property
+    def health(self):
+        """The amount of starting health this Job has per level.
+
+        :rtype: list[int]
         """
         return self._health
 
     @property
-    def max_cargo_capacity(self):
-        """The maximum amount of cargo capacity this Unit can have.
-
-        :rtype: int
-        """
-        return self._max_cargo_capacity
-
-    @property
-    def max_health(self):
-        """The maximum amount of health this Job can have.
-
-        :rtype: int
-        """
-        return self._max_health
-
-    @property
-    def max_mining_power(self):
-        """The maximum amount of mining power this Unit can have.
-
-        :rtype: int
-        """
-        return self._max_mining_power
-
-    @property
-    def max_moves(self):
-        """The maximum number of moves this Job can have.
-
-        :rtype: int
-        """
-        return self._max_moves
-
-    @property
     def mining_power(self):
-        """The amount of mining power this Unit has per turn.
+        """The amount of mining power this Unit has per turn per level.
 
-        :rtype: int
+        :rtype: list[int]
         """
         return self._mining_power
 
     @property
     def moves(self):
-        """The number of moves this Job can make per turn.
+        """The number of moves this Job can make per turn per level.
 
-        :rtype: int
+        :rtype: list[int]
         """
         return self._moves
 

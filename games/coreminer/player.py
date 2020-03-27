@@ -22,13 +22,17 @@ class Player(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._base_tile = None
+        self._bombs = 0
         self._client_type = ""
         self._hopper_tiles = []
         self._lost = False
+        self._money = 0
         self._name = "Anonymous"
         self._opponent = None
         self._reason_lost = ""
         self._reason_won = ""
+        self._side = []
+        self._spawn_tiles = []
         self._time_remaining = 0
         self._units = []
         self._value = 0
@@ -41,6 +45,14 @@ class Player(GameObject):
         :rtype: games.coreminer.tile.Tile
         """
         return self._base_tile
+
+    @property
+    def bombs(self):
+        """The bombs stored in the Player's supply.
+
+        :rtype: int
+        """
+        return self._bombs
 
     @property
     def client_type(self):
@@ -65,6 +77,14 @@ class Player(GameObject):
         :rtype: bool
         """
         return self._lost
+
+    @property
+    def money(self):
+        """The amount of money this Player currently has.
+
+        :rtype: int
+        """
+        return self._money
 
     @property
     def name(self):
@@ -97,6 +117,22 @@ class Player(GameObject):
         :rtype: str
         """
         return self._reason_won
+
+    @property
+    def side(self):
+        """The Tiles on this Player's side of the map.
+
+        :rtype: list[games.coreminer.tile.Tile]
+        """
+        return self._side
+
+    @property
+    def spawn_tiles(self):
+        """The Tiles this Player may spawn Units on.
+
+        :rtype: list[games.coreminer.tile.Tile]
+        """
+        return self._spawn_tiles
 
     @property
     def time_remaining(self):

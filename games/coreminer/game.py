@@ -33,12 +33,15 @@ class Game(BaseGame):
         self._free_bomb_interval = 0
         self._game_objects = {}
         self._jobs = []
+        self._ladder_cost = 0
         self._map_height = 0
         self._map_width = 0
         self._max_turns = 100
         self._ore_value = 0
         self._players = []
         self._session = ""
+        self._shield_cost = 0
+        self._support_cost = 0
         self._tiles = []
         self._time_added_per_turn = 0
         self._units = []
@@ -95,6 +98,14 @@ class Game(BaseGame):
         return self._jobs
 
     @property
+    def ladder_cost(self):
+        """The amount of building material required to build a ladder.
+
+        :rtype: int
+        """
+        return self._ladder_cost
+
+    @property
     def map_height(self):
         """The number of Tiles in the map along the y (vertical) axis.
 
@@ -141,6 +152,22 @@ class Game(BaseGame):
         :rtype: str
         """
         return self._session
+
+    @property
+    def shield_cost(self):
+        """The amount of building material required to shield a Tile.
+
+        :rtype: int
+        """
+        return self._shield_cost
+
+    @property
+    def support_cost(self):
+        """The amount of building material required to build a support.
+
+        :rtype: int
+        """
+        return self._support_cost
 
     @property
     def tiles(self):
