@@ -28,6 +28,8 @@ class Game(BaseGame):
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
+        self._bomb_cost = 0
+        self._building_material_cost = 0
         self._current_player = None
         self._current_turn = 0
         self._free_bomb_interval = 0
@@ -56,6 +58,22 @@ class Game(BaseGame):
             'Tile': Tile,
             'Unit': Unit
         }
+
+    @property
+    def bomb_cost(self):
+        """The price of buying a bomb.
+
+        :rtype: int
+        """
+        return self._bomb_cost
+
+    @property
+    def building_material_cost(self):
+        """The price of buying building materials.
+
+        :rtype: int
+        """
+        return self._building_material_cost
 
     @property
     def current_player(self):
