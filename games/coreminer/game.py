@@ -29,6 +29,7 @@ class Game(BaseGame):
 
         # private attributes to hold the properties so they appear read only
         self._bomb_cost = 0
+        self._bomb_size = 0
         self._building_material_cost = 0
         self._current_player = None
         self._current_turn = 0
@@ -66,6 +67,14 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._bomb_cost
+
+    @property
+    def bomb_size(self):
+        """The amount of cargo space taken up by a bomb.
+
+        :rtype: int
+        """
+        return self._bomb_size
 
     @property
     def building_material_cost(self):
