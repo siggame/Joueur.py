@@ -42,6 +42,16 @@ class AI(BaseAI):
         """
         # <<-- Creer-Merge: start -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # replace with your start logic
+        self.lastMined = None
+        self.mineTiles = []
+        self.supportTiles = []
+        for tile in self.player.side:
+            if (tile.x == 1):
+                self.mineTiles.append(tile) # Tunnel downwards
+            elif (tile.y % 6 == 0):
+                self.mineTiles.append(tile) # Horizontal tunnels
+                if (tile.x % 2 == 0):
+                    self.supportTiles.append(tile) # Supports
         # <<-- /Creer-Merge: start -->>
 
     def game_updated(self):
@@ -71,7 +81,35 @@ class AI(BaseAI):
             bool: Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.
         """
         # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        # Put your game logic here for runTurn
+        if (self.player.units < 5):
+            self.player.base_tile.spawn_miner()
+        for unit in self.player.units:
+            if unit.job == "miner":
+                nearTiles = unit.tile.get_neighbors() # get nearby tiles and check for ore
+                for tile in nearTiles:
+                    if tile.ore > 0:
+                        unit.mine(tile, -1) # mine as much as possible
+                # Move to base if full
+                if (unit.ore + unit.dirt + (unit.bombs * self.game.bomb_size) + unit.building_materials >= unit.max_cargo_capacity):
+                    for position in self.find_path(unit.tile, self.player.base_tile):
+                        if (unit.moves > 0):
+                            unit.move(position)
+                    if unit.tile.is_base:
+                        # dump and gather building materials for two supports
+                        unit.dump(unit.tile, "ore", -1)
+                        unit.dump(unit.tile, "dirt", -1)
+                        self.player.buy("buildingMaterial", self.game.support_cost * 2)
+                        self.player.transfer(unit, "buildingMaterial", self.game.support_cost * 2)
+                # Mine along paths and place supports
+                if self.mineTiles:
+                    target = self.mineTiles[0]
+                    for position in self.find_path(unit.tile, target):
+                        if (unit.moves > 0):
+                            unit.move(position)
+                            if position in self.supportTiles:
+                                unit.build(position, "support")
+                    unit.mine(target)
+
         return True
         # <<-- /Creer-Merge: runTurn -->>
 
