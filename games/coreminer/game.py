@@ -48,6 +48,10 @@ class Game(BaseGame):
         self._tiles = []
         self._time_added_per_turn = 0
         self._units = []
+        self._upgrade_cargo_capacity_cost = 0
+        self._upgrade_health_cost = 0
+        self._upgrade_mining_power_cost = 0
+        self._upgrade_moves_cost = 0
         self._victory_amount = 0
 
         self.name = "Coreminer"
@@ -219,6 +223,38 @@ class Game(BaseGame):
         :rtype: list[games.coreminer.unit.Unit]
         """
         return self._units
+
+    @property
+    def upgrade_cargo_capacity_cost(self):
+        """The cost to upgrade a Unit's cargo capacity.
+
+        :rtype: int
+        """
+        return self._upgrade_cargo_capacity_cost
+
+    @property
+    def upgrade_health_cost(self):
+        """The cost to upgrade a Unit's health.
+
+        :rtype: int
+        """
+        return self._upgrade_health_cost
+
+    @property
+    def upgrade_mining_power_cost(self):
+        """The cost to upgrade a Unit's mining power.
+
+        :rtype: int
+        """
+        return self._upgrade_mining_power_cost
+
+    @property
+    def upgrade_moves_cost(self):
+        """The cost to upgrade a Unit's movement speed.
+
+        :rtype: int
+        """
+        return self._upgrade_moves_cost
 
     @property
     def victory_amount(self):
