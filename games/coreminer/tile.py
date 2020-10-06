@@ -48,7 +48,7 @@ class Tile(GameObject):
 
     @property
     def is_base(self):
-        """Whether or not the tile is an indestructible base Tile.
+        """Whether or not the tile is a base Tile.
 
         :rtype: bool
         """
@@ -96,7 +96,7 @@ class Tile(GameObject):
 
     @property
     def owner(self):
-        """The owner of this Tile, or undefined if owned by no-one. Only for bases and hoppers.
+        """The owner of this Tile, or undefined if owned by no-one.
 
         :rtype: games.coreminer.player.Player
         """
@@ -165,14 +165,6 @@ class Tile(GameObject):
         :rtype: int
         """
         return self._y
-
-    def spawn_miner(self):
-        """ Spawns a Miner Unit on this Tile - Must be on the surface on their side of the map.
-
-        Returns:
-            bool: True if successfully spawned, False otherwise.
-        """
-        return self._run_on_server('spawnMiner')
 
 
     directions = ["North", "East", "South", "West"]

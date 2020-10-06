@@ -22,10 +22,7 @@ class Player(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._base_tile = None
-        self._bombs = 0
-        self._building_materials = 0
         self._client_type = ""
-        self._dirt = 0
         self._hopper_tiles = []
         self._lost = False
         self._money = 0
@@ -49,36 +46,12 @@ class Player(GameObject):
         return self._base_tile
 
     @property
-    def bombs(self):
-        """The bombs stored in the Player's supply.
-
-        :rtype: int
-        """
-        return self._bombs
-
-    @property
-    def building_materials(self):
-        """The building material stored in the Player's supply.
-
-        :rtype: int
-        """
-        return self._building_materials
-
-    @property
     def client_type(self):
         """What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
 
         :rtype: str
         """
         return self._client_type
-
-    @property
-    def dirt(self):
-        """The dirt stored in the Player's supply.
-
-        :rtype: int
-        """
-        return self._dirt
 
     @property
     def hopper_tiles(self):
@@ -184,30 +157,13 @@ class Player(GameObject):
         """
         return self._won
 
-    def buy(self, resource, amount):
-        """ Purchases a resource and adds it to the Player's supply.
-
-        Args:
-            resource (str): The type of resource to buy.
-            amount (int): The amount of resource to buy.
+    def spawn_miner(self):
+        """ Spawns a Miner Unit on this Player's base tile.
 
         Returns:
-            bool: True if successfully purchased, False otherwise.
+            bool: True if successfully spawned, False otherwise.
         """
-        return self._run_on_server('buy', resource=resource, amount=amount)
-
-    def transfer(self, unit, resource, amount):
-        """ Transfers a resource from the Player's supply to a Unit.
-
-        Args:
-            unit (games.coreminer.unit.Unit): The Unit to transfer materials to.
-            resource (str): The type of resource to transfer.
-            amount (int): The amount of resource to transfer.
-
-        Returns:
-            bool: True if successfully transfered, False otherwise.
-        """
-        return self._run_on_server('transfer', unit=unit, resource=resource, amount=amount)
+        return self._run_on_server('spawnMiner')
 
 
 

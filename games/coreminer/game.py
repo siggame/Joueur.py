@@ -1,4 +1,4 @@
-# Game: Mine resources to obtain more wealth than your opponent.
+# Game: Mine resources to obtain more value than your opponent.
 
 # DO NOT MODIFY THIS FILE
 # Never try to directly create an instance of this class, or modify its member variables.
@@ -20,7 +20,7 @@ from games.coreminer.unit import Unit
 class Game(BaseGame):
     """The class representing the Game in the Coreminer game.
 
-    Mine resources to obtain more wealth than your opponent.
+    Mine resources to obtain more value than your opponent.
     """
 
     def __init__(self):
@@ -28,30 +28,29 @@ class Game(BaseGame):
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
-        self._bomb_cost = 0
+        self._bomb_price = 0
         self._bomb_size = 0
-        self._building_material_cost = 0
+        self._building_material_price = 0
         self._current_player = None
         self._current_turn = 0
-        self._free_bomb_interval = 0
+        self._dirt_price = 0
         self._game_objects = {}
         self._jobs = []
         self._ladder_cost = 0
         self._map_height = 0
         self._map_width = 0
         self._max_turns = 100
+        self._ore_price = 0
         self._ore_value = 0
         self._players = []
         self._session = ""
         self._shield_cost = 0
+        self._spawn_price = 0
         self._support_cost = 0
         self._tiles = []
         self._time_added_per_turn = 0
         self._units = []
-        self._upgrade_cargo_capacity_cost = 0
-        self._upgrade_health_cost = 0
-        self._upgrade_mining_power_cost = 0
-        self._upgrade_moves_cost = 0
+        self._upgrade_price = []
         self._victory_amount = 0
 
         self.name = "Coreminer"
@@ -65,12 +64,12 @@ class Game(BaseGame):
         }
 
     @property
-    def bomb_cost(self):
-        """The price of buying a bomb.
+    def bomb_price(self):
+        """The monetary price of a bomb when bought or sold.
 
         :rtype: int
         """
-        return self._bomb_cost
+        return self._bomb_price
 
     @property
     def bomb_size(self):
@@ -81,12 +80,12 @@ class Game(BaseGame):
         return self._bomb_size
 
     @property
-    def building_material_cost(self):
-        """The price of buying building materials.
+    def building_material_price(self):
+        """The monetary price of building materials when bought.
 
         :rtype: int
         """
-        return self._building_material_cost
+        return self._building_material_price
 
     @property
     def current_player(self):
@@ -105,12 +104,12 @@ class Game(BaseGame):
         return self._current_turn
 
     @property
-    def free_bomb_interval(self):
-        """The amount of turns it takes to gain a free Bomb.
+    def dirt_price(self):
+        """The monetary price of dirt when bought or sold.
 
         :rtype: int
         """
-        return self._free_bomb_interval
+        return self._dirt_price
 
     @property
     def game_objects(self):
@@ -161,8 +160,16 @@ class Game(BaseGame):
         return self._max_turns
 
     @property
+    def ore_price(self):
+        """The amount of money awarded when ore is dumped in the base and sold.
+
+        :rtype: int
+        """
+        return self._ore_price
+
+    @property
     def ore_value(self):
-        """The amount of victory points awarded when ore is deposited in the base.
+        """The amount of victory points awarded when ore is dumped in the base and sold.
 
         :rtype: int
         """
@@ -191,6 +198,14 @@ class Game(BaseGame):
         :rtype: int
         """
         return self._shield_cost
+
+    @property
+    def spawn_price(self):
+        """The monetary price of spawning a Miner.
+
+        :rtype: int
+        """
+        return self._spawn_price
 
     @property
     def support_cost(self):
@@ -225,36 +240,12 @@ class Game(BaseGame):
         return self._units
 
     @property
-    def upgrade_cargo_capacity_cost(self):
-        """The cost to upgrade a Unit's cargo capacity.
+    def upgrade_price(self):
+        """The cost to upgrade a Unit at each level.
 
-        :rtype: int
+        :rtype: list[int]
         """
-        return self._upgrade_cargo_capacity_cost
-
-    @property
-    def upgrade_health_cost(self):
-        """The cost to upgrade a Unit's health.
-
-        :rtype: int
-        """
-        return self._upgrade_health_cost
-
-    @property
-    def upgrade_mining_power_cost(self):
-        """The cost to upgrade a Unit's mining power.
-
-        :rtype: int
-        """
-        return self._upgrade_mining_power_cost
-
-    @property
-    def upgrade_moves_cost(self):
-        """The cost to upgrade a Unit's movement speed.
-
-        :rtype: int
-        """
-        return self._upgrade_moves_cost
+        return self._upgrade_price
 
     @property
     def victory_amount(self):

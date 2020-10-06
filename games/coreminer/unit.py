@@ -35,6 +35,7 @@ class Unit(GameObject):
         self._ore = 0
         self._owner = None
         self._tile = None
+        self._upgrade_level = 0
 
     @property
     def bombs(self):
@@ -148,6 +149,14 @@ class Unit(GameObject):
         """
         return self._tile
 
+    @property
+    def upgrade_level(self):
+        """The upgrade level of this unit. Starts at 0.
+
+        :rtype: int
+        """
+        return self._upgrade_level
+
     def build(self, tile, type):
         """ Builds a support, shield, or ladder on Unit's tile, or an adjacent Tile.
 
@@ -161,7 +170,7 @@ class Unit(GameObject):
         return self._run_on_server('build', tile=tile, type=type)
 
     def dump(self, tile, material, amount):
-        """ Dumps materials from cargo to an adjacent tile.
+        """ Dumps materials from cargo to an adjacent tile. If the tile is a base or hopper tile, materials are sold instead of placed.
 
         Args:
             tile (games.coreminer.tile.Tile): The tile the materials will be dumped on.
@@ -196,16 +205,26 @@ class Unit(GameObject):
         """
         return self._run_on_server('move', tile=tile)
 
-    def upgrade(self, attribute):
-        """ Upgrade an attribute of this Unit. "health", "miningPower", "moves", or "capacity".
+    def transfer(self, unit, resource, amount):
+        """ Transfers a resource from the one Unit to another.
 
         Args:
-            attribute (str): The attribute of the Unit to be upgraded.
+            unit (games.coreminer.unit.Unit): The Unit to transfer materials to.
+            resource (str): The type of resource to transfer.
+            amount (int): The amount of resource to transfer.
+
+        Returns:
+            bool: True if successfully transfered, False otherwise.
+        """
+        return self._run_on_server('transfer', unit=unit, resource=resource, amount=amount)
+
+    def upgrade(self):
+        """ Upgrade this Unit.
 
         Returns:
             bool: True if successfully upgraded, False otherwise.
         """
-        return self._run_on_server('upgrade', attribute=attribute)
+        return self._run_on_server('upgrade')
 
 
 
