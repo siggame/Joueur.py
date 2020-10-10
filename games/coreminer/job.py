@@ -22,7 +22,6 @@ class Job(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._cargo_capacity = []
-        self._cost = 0
         self._health = []
         self._mining_power = []
         self._moves = []
@@ -35,14 +34,6 @@ class Job(GameObject):
         :rtype: list[int]
         """
         return self._cargo_capacity
-
-    @property
-    def cost(self):
-        """The cost of spawning a Unit with this Job.
-
-        :rtype: int
-        """
-        return self._cost
 
     @property
     def health(self):

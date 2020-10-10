@@ -7,7 +7,7 @@ from games.coreminer.player import Player
 from games.coreminer.tile import Tile
 from games.coreminer.unit import Unit
 
-game_version = '230d41da5f9e95a58b66fbaa7d6d61f4853e459517e93b553d829607b0286082'
+game_version = 'cf0da2dd981969e39b8de1dd6332be0ea8f725b9b62baa0cb102a1d12a7179bf'
 
 # <<-- Creer-Merge: init -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 # if you need to initialize this module with custom logic do so here

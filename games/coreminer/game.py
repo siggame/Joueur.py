@@ -50,7 +50,7 @@ class Game(BaseGame):
         self._tiles = []
         self._time_added_per_turn = 0
         self._units = []
-        self._upgrade_price = []
+        self._upgrade_price = 0
         self._victory_amount = 0
 
         self.name = "Coreminer"
@@ -241,9 +241,9 @@ class Game(BaseGame):
 
     @property
     def upgrade_price(self):
-        """The cost to upgrade a Unit at each level.
+        """The cost to upgrade a Unit.
 
-        :rtype: list[int]
+        :rtype: int
         """
         return self._upgrade_price
 
