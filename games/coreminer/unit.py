@@ -169,6 +169,18 @@ class Unit(GameObject):
         """
         return self._run_on_server('build', tile=tile, type=type)
 
+    def buy(self, resource, amount):
+        """ Purchase a resource from the player's base or hopper.
+
+        Args:
+            resource (str): The type of resource to buy.
+            amount (int): The amount of resource to buy.
+
+        Returns:
+            bool: True if successfully purchased, False otherwise.
+        """
+        return self._run_on_server('buy', resource=resource, amount=amount)
+
     def dump(self, tile, material, amount):
         """ Dumps materials from cargo to an adjacent tile. If the tile is a base or hopper tile, materials are sold instead of placed.
 

@@ -31,7 +31,6 @@ class Player(GameObject):
         self._reason_lost = ""
         self._reason_won = ""
         self._side = []
-        self._spawn_tiles = []
         self._time_remaining = 0
         self._units = []
         self._value = 0
@@ -116,14 +115,6 @@ class Player(GameObject):
         :rtype: list[games.coreminer.tile.Tile]
         """
         return self._side
-
-    @property
-    def spawn_tiles(self):
-        """The Tiles this Player may spawn Units on.
-
-        :rtype: list[games.coreminer.tile.Tile]
-        """
-        return self._spawn_tiles
 
     @property
     def time_remaining(self):
