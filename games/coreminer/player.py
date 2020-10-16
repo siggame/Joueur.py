@@ -22,17 +22,17 @@ class Player(GameObject):
 
         # private attributes to hold the properties so they appear read only
         self._base_tile = None
+        self._bombs = []
         self._client_type = ""
         self._hopper_tiles = []
         self._lost = False
+        self._miners = []
         self._money = 0
         self._name = "Anonymous"
         self._opponent = None
         self._reason_lost = ""
         self._reason_won = ""
-        self._side = []
         self._time_remaining = 0
-        self._units = []
         self._value = 0
         self._won = False
 
@@ -43,6 +43,14 @@ class Player(GameObject):
         :rtype: games.coreminer.tile.Tile
         """
         return self._base_tile
+
+    @property
+    def bombs(self):
+        """Every Bomb owned by this Player.
+
+        :rtype: list[games.coreminer.bomb.Bomb]
+        """
+        return self._bombs
 
     @property
     def client_type(self):
@@ -67,6 +75,14 @@ class Player(GameObject):
         :rtype: bool
         """
         return self._lost
+
+    @property
+    def miners(self):
+        """Every Miner owned by this Player.
+
+        :rtype: list[games.coreminer.miner.Miner]
+        """
+        return self._miners
 
     @property
     def money(self):
@@ -109,28 +125,12 @@ class Player(GameObject):
         return self._reason_won
 
     @property
-    def side(self):
-        """The Tiles on this Player's side of the map.
-
-        :rtype: list[games.coreminer.tile.Tile]
-        """
-        return self._side
-
-    @property
     def time_remaining(self):
         """The amount of time (in ns) remaining for this AI to send commands.
 
         :rtype: float
         """
         return self._time_remaining
-
-    @property
-    def units(self):
-        """Every Unit owned by this Player.
-
-        :rtype: list[games.coreminer.unit.Unit]
-        """
-        return self._units
 
     @property
     def value(self):
@@ -149,7 +149,7 @@ class Player(GameObject):
         return self._won
 
     def spawn_miner(self):
-        """ Spawns a Miner Unit on this Player's base tile.
+        """ Spawns a Miner on this Player's base Tile.
 
         Returns:
             bool: True if successfully spawned, False otherwise.

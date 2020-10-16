@@ -21,12 +21,14 @@ class Tile(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
+        self._bombs = []
         self._dirt = 0
         self._is_base = False
         self._is_falling = False
         self._is_hopper = False
         self._is_ladder = False
         self._is_support = False
+        self._miners = []
         self._ore = 0
         self._owner = None
         self._shielding = 0
@@ -34,9 +36,16 @@ class Tile(GameObject):
         self._tile_north = None
         self._tile_south = None
         self._tile_west = None
-        self._units = []
         self._x = 0
         self._y = 0
+
+    @property
+    def bombs(self):
+        """An array of Bombs on this Tile.
+
+        :rtype: list[games.coreminer.bomb.Bomb]
+        """
+        return self._bombs
 
     @property
     def dirt(self):
@@ -48,7 +57,7 @@ class Tile(GameObject):
 
     @property
     def is_base(self):
-        """Whether or not the tile is a base Tile.
+        """Whether or not the Tile is a base Tile.
 
         :rtype: bool
         """
@@ -56,7 +65,7 @@ class Tile(GameObject):
 
     @property
     def is_falling(self):
-        """Whether or not this tile is about to fall.
+        """Whether or not this Tile is about to fall after this turn.
 
         :rtype: bool
         """
@@ -85,6 +94,14 @@ class Tile(GameObject):
         :rtype: bool
         """
         return self._is_support
+
+    @property
+    def miners(self):
+        """An array of the Miners on this Tile.
+
+        :rtype: list[games.coreminer.miner.Miner]
+        """
+        return self._miners
 
     @property
     def ore(self):
@@ -141,14 +158,6 @@ class Tile(GameObject):
         :rtype: games.coreminer.tile.Tile
         """
         return self._tile_west
-
-    @property
-    def units(self):
-        """An array of the Units on this Tile.
-
-        :rtype: list[games.coreminer.unit.Unit]
-        """
-        return self._units
 
     @property
     def x(self):
