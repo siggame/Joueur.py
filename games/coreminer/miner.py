@@ -23,6 +23,7 @@ class Miner(GameObject):
         # private attributes to hold the properties so they appear read only
         self._bombs = 0
         self._building_materials = 0
+        self._current_upgrade = None
         self._dirt = 0
         self._health = 0
         self._mining_power = 0
@@ -30,7 +31,6 @@ class Miner(GameObject):
         self._ore = 0
         self._owner = None
         self._tile = None
-        self._upgrade = None
         self._upgrade_level = 0
 
     @property
@@ -48,6 +48,14 @@ class Miner(GameObject):
         :rtype: int
         """
         return self._building_materials
+
+    @property
+    def current_upgrade(self):
+        """The Upgrade this Miner is on.
+
+        :rtype: games.coreminer.upgrade.Upgrade
+        """
+        return self._current_upgrade
 
     @property
     def dirt(self):
@@ -104,14 +112,6 @@ class Miner(GameObject):
         :rtype: games.coreminer.tile.Tile
         """
         return self._tile
-
-    @property
-    def upgrade(self):
-        """The Upgrade this Miner is on.
-
-        :rtype: games.coreminer.upgrade.Upgrade
-        """
-        return self._upgrade
 
     @property
     def upgrade_level(self):
