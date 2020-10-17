@@ -91,7 +91,7 @@ class Cowboy(GameObject):
 
     @property
     def tolerance(self) -> int:
-        """int: How many times this unit has been drunk before taking their siesta and reseting this to 0.
+        """int: How many times this unit has been drunk before taking their siesta and resetting this to 0.
         """
         return self._tolerance
 

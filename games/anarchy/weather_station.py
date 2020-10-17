@@ -24,7 +24,7 @@ class WeatherStation(Building):
         # private attributes to hold the properties so they appear read only
 
     def intensify(self, negative: bool = False) -> bool:
-        """Bribe the weathermen to intensity the next Forecast by 1 or -1
+        """Bribe the weathermen to intensity the next Forecast by 1 or -1.
 
         Args:
             negative (bool): By default the intensity will be increased by 1, setting this to True decreases the intensity by 1.

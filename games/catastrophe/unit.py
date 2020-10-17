@@ -122,7 +122,7 @@ class Unit(GameObject):
         })
 
     def change_job(self, job: str) -> bool:
-        """Changes this Unit's Job. Must be at max energy (100.0) to change Jobs.
+        """Changes this Unit's Job. Must be at max energy (100) to change Jobs.
 
         Args:
             job ('soldier', 'gatherer', 'builder', or 'missionary'): The name of the Job to change to.
@@ -163,7 +163,7 @@ class Unit(GameObject):
         })
 
     def deconstruct(self, tile: 'games.catastrophe.tile.Tile') -> bool:
-        """Removes materials from an adjacent Tile's Structure. You cannot deconstruct friendly structures (see Unit.attack).
+        """Removes materials from an adjacent Tile's Structure. You cannot deconstruct friendly structures (see `Unit.attack`).
 
         Args:
             tile (games.catastrophe.tile.Tile): The Tile to deconstruct. It must have a Structure on it.

@@ -1,4 +1,4 @@
-# Warehouse: A typical abandoned warehouse... that anarchists hang out in and can be bribed to burn down Buildings.
+# Warehouse: A typical abandoned warehouse that anarchists hang out in and can be bribed to burn down Buildings.
 
 # DO NOT MODIFY THIS FILE
 # Never try to directly create an instance of this class, or modify its member variables.
@@ -13,7 +13,7 @@ from games.anarchy.building import Building
 class Warehouse(Building):
     """The class representing the Warehouse in the Anarchy game.
 
-    A typical abandoned warehouse... that anarchists hang out in and can be bribed to burn down Buildings.
+    A typical abandoned warehouse that anarchists hang out in and can be bribed to burn down Buildings.
     """
 
     def __init__(self):
@@ -38,7 +38,7 @@ class Warehouse(Building):
         return self._fire_added
 
     def ignite(self, building: 'games.anarchy.building.Building') -> int:
-        """Bribes the Warehouse to light a Building on fire. This adds this building's fireAdded to their fire, and then this building's exposure is increased based on the Manhatten distance between the two buildings.
+        """Bribes the Warehouse to light a Building on fire. This adds this building's fireAdded to their fire, and then this building's exposure is increased based on the Manhattan distance between the two buildings.
 
         Args:
             building (games.anarchy.building.Building): The Building you want to light on fire.

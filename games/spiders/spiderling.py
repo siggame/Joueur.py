@@ -55,12 +55,12 @@ class Spiderling(Spider):
 
     @property
     def work_remaining(self) -> float:
-        """float: How much work needs to be done for this Spiderling to finish being busy. See docs for the Work forumla.
+        """float: How much work needs to be done for this Spiderling to finish being busy. See docs for the Work formula.
         """
         return self._work_remaining
 
     def attack(self, spiderling: 'games.spiders.spiderling.Spiderling') -> bool:
-        """Attacks another Spiderling
+        """Attacks another Spiderling.
 
         Args:
             spiderling (games.spiders.spiderling.Spiderling): The Spiderling to attack.

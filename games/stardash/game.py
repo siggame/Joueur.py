@@ -1,4 +1,4 @@
-# Game: Collect of the most of the rarest mineral orbiting aroung the sun and outcompete your competetor.
+# Game: Collect of the most of the rarest mineral orbiting around the sun and out-compete your competitor.
 
 # DO NOT MODIFY THIS FILE
 # Never try to directly create an instance of this class, or modify its member variables.
@@ -22,7 +22,7 @@ from games.stardash.unit import Unit
 class Game(BaseGame):
     """The class representing the Game in the Stardash game.
 
-    Collect of the most of the rarest mineral orbiting aroung the sun and outcompete your competetor.
+    Collect of the most of the rarest mineral orbiting around the sun and out-compete your competitor.
     """
 
     def __init__(self):
@@ -120,7 +120,7 @@ class Game(BaseGame):
 
     @property
     def jobs(self) -> List['games.stardash.job.Job']:
-        """list[games.stardash.job.Job]: A list of all jobs. first item is corvette, second is missileboat, third is martyr, fourth is transport, and fifth is miner.
+        """list[games.stardash.job.Job]: A list of all jobs. The first element is corvette, second is missileboat, third is martyr, fourth is transport, and fifth is miner.
         """
         return self._jobs
 

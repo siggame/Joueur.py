@@ -58,7 +58,7 @@ class BroodMother(Spider):
             spiderling_type ('Spitter', 'Weaver', or 'Cutter'): The string name of the Spiderling class you want to Spawn. Must be 'Spitter', 'Weaver', or 'Cutter'.
 
         Returns:
-            games.spiders.spiderling.Spiderling or None: The newly spwaned Spiderling if successful. None otherwise.
+            games.spiders.spiderling.Spiderling or None: The newly spawned Spiderling if successful. None otherwise.
         """
         return self._run_on_server('spawn', {
             'spiderlingType': spiderling_type

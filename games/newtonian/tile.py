@@ -61,7 +61,7 @@ class Tile(GameObject):
 
     @property
     def direction(self) -> str:
-        """'blank', 'north', 'east', 'south', or 'west': The direction of a conveyor belt ('blank', 'north', 'east', 'south', or 'west'). blank means conveyor doesn't move.
+        """'blank', 'north', 'east', 'south', or 'west': The direction of a conveyor belt ('blank', 'north', 'east', 'south', or 'west'). Blank means conveyor doesn't move.
         """
         return self._direction
 

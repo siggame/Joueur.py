@@ -40,7 +40,7 @@ class Forecast(GameObject):
 
     @property
     def intensity(self) -> int:
-        """int: How much of a Building's fire that can be blown in the direction of this Forecast. Fire is duplicated (copied), not moved (transfered).
+        """int: How much of a Building's fire that can be blown in the direction of this Forecast. Fire is duplicated (copied), not moved (transferred).
         """
         return self._intensity
 

@@ -72,7 +72,7 @@ class Unit(GameObject):
 
     @property
     def is_busy(self) -> bool:
-        """bool: Tracks wheither or not the ship is dashing or Mining. If True, it cannot do anything else.
+        """bool: Tracks whether or not the ship is dashing or Mining. If True, it cannot do anything else.
         """
         return self._is_busy
 
@@ -120,7 +120,7 @@ class Unit(GameObject):
 
     @property
     def shield(self) -> int:
-        """int: The sheild that a martyr ship has.
+        """int: The shield that a martyr ship has.
         """
         return self._shield
 
@@ -165,7 +165,7 @@ class Unit(GameObject):
         })
 
     def mine(self, body: 'games.stardash.body.Body') -> bool:
-        """allows a miner to mine a asteroid
+        """Allows a miner to mine a asteroid.
 
         Args:
             body (games.stardash.body.Body): The object to be mined.
@@ -193,7 +193,7 @@ class Unit(GameObject):
         })
 
     def safe(self, x: float, y: float) -> bool:
-        """tells you if your ship can move to that location from were it is without clipping the sun.
+        """Tells you if your ship can move to that location from were it is without clipping the sun.
 
         Args:
             x (float): The x position of the location you wish to arrive.

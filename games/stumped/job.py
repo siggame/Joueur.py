@@ -95,7 +95,7 @@ class Job(GameObject):
         return self._title
 
     def recruit(self, tile: 'games.stumped.tile.Tile') -> Optional['games.stumped.beaver.Beaver']:
-        """Recruits a Beaver of this Job to a lodge
+        """Recruits a Beaver of this Job to a lodge.
 
         Args:
             tile (games.stumped.tile.Tile): The Tile that is a lodge owned by you that you wish to spawn the Beaver of this Job on.

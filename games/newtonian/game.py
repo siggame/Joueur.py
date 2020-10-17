@@ -92,7 +92,7 @@ class Game(BaseGame):
 
     @property
     def jobs(self) -> List['games.newtonian.job.Job']:
-        """list[games.newtonian.job.Job]: A list of all jobs. first item is intern, second is physicists, and third is manager.
+        """list[games.newtonian.job.Job]: A list of all jobs. The first element is intern, second is physicists, and third is manager.
         """
         return self._jobs
 

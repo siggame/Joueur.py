@@ -70,7 +70,7 @@ class Checker(GameObject):
             y (int): The y coordinate to move to.
 
         Returns:
-            games.checkers.checker.Checker or None: Returns the same checker that moved if the move was successful. None otherwise.
+            games.checkers.checker.Checker or None: Returns the same checker that moved if the move was successful. Otherwise None.
         """
         return self._run_on_server('move', {
             'x': x,
