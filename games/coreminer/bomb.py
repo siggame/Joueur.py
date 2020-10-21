@@ -21,7 +21,16 @@ class Bomb(GameObject):
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
+        self._tile = None
         self._timer = 0
+
+    @property
+    def tile(self):
+        """The Tile this Miner is on.
+
+        :rtype: games.coreminer.tile.Tile
+        """
+        return self._tile
 
     @property
     def timer(self):
