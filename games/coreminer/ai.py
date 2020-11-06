@@ -96,9 +96,13 @@ class AI(BaseAI):
             eastTile = miner.tile.tile_east
             westTile = miner.tile.tile_west
 
-            # Mine east and west tiles
-            miner.mine(eastTile, -1)
-            miner.mine(westTile, -1)
+            # Mine east and west tiles, hopper side first
+            if eastTile.x == self.player.base_tile.x:
+                miner.mine(eastTile, -1)
+                miner.mine(westTile, -1)
+            else:
+                miner.mine(westTile, -1)
+                miner.mine(eastTile, -1)
 
             # Check to make sure east and west tiles are mined
             if (eastTile and eastTile.ore + eastTile.dirt == 0) and (westTile and westTile.ore + westTile.dirt == 0):
