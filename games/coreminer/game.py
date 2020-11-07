@@ -272,8 +272,8 @@ class Game(BaseGame):
         return self._tiles
 
     @property
-    def time_added_per_turn(self) -> int:
-        """int: The amount of time (in nano-seconds) added after each player performs a turn.
+    def time_added_per_turn(self) -> float:
+        """float: The amount of time (in nano-seconds) added after each player performs a turn.
         """
         return self._time_added_per_turn
 
