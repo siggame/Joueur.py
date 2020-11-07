@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import List
 from games.coreminer.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Player(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Player with basic logic as provided by the Creer code generator."""
+        """Initializes a Player with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -37,125 +39,98 @@ class Player(GameObject):
         self._won = False
 
     @property
-    def base_tile(self):
-        """The Tile this Player's base is on.
-
-        :rtype: games.coreminer.tile.Tile
+    def base_tile(self) -> 'games.coreminer.tile.Tile':
+        """games.coreminer.tile.Tile: The Tile this Player's base is on.
         """
         return self._base_tile
 
     @property
-    def bombs(self):
-        """Every Bomb owned by this Player.
-
-        :rtype: list[games.coreminer.bomb.Bomb]
+    def bombs(self) -> List['games.coreminer.bomb.Bomb']:
+        """list[games.coreminer.bomb.Bomb]: Every Bomb owned by this Player.
         """
         return self._bombs
 
     @property
-    def client_type(self):
-        """What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
-
-        :rtype: str
+    def client_type(self) -> str:
+        """str: What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
         """
         return self._client_type
 
     @property
-    def hopper_tiles(self):
-        """The Tiles this Player's hoppers are on.
-
-        :rtype: list[games.coreminer.tile.Tile]
+    def hopper_tiles(self) -> List['games.coreminer.tile.Tile']:
+        """list[games.coreminer.tile.Tile]: The Tiles this Player's hoppers are on.
         """
         return self._hopper_tiles
 
     @property
-    def lost(self):
-        """If the player lost the game or not.
-
-        :rtype: bool
+    def lost(self) -> bool:
+        """bool: If the player lost the game or not.
         """
         return self._lost
 
     @property
-    def miners(self):
-        """Every Miner owned by this Player.
-
-        :rtype: list[games.coreminer.miner.Miner]
+    def miners(self) -> List['games.coreminer.miner.Miner']:
+        """list[games.coreminer.miner.Miner]: Every Miner owned by this Player.
         """
         return self._miners
 
     @property
-    def money(self):
-        """The amount of money this Player currently has.
-
-        :rtype: int
+    def money(self) -> int:
+        """int: The amount of money this Player currently has.
         """
         return self._money
 
     @property
-    def name(self):
-        """The name of the player.
-
-        :rtype: str
+    def name(self) -> str:
+        """str: The name of the player.
         """
         return self._name
 
     @property
-    def opponent(self):
-        """This player's opponent in the game.
-
-        :rtype: games.coreminer.player.Player
+    def opponent(self) -> 'games.coreminer.player.Player':
+        """games.coreminer.player.Player: This player's opponent in the game.
         """
         return self._opponent
 
     @property
-    def reason_lost(self):
-        """The reason why the player lost the game.
-
-        :rtype: str
+    def reason_lost(self) -> str:
+        """str: The reason why the player lost the game.
         """
         return self._reason_lost
 
     @property
-    def reason_won(self):
-        """The reason why the player won the game.
-
-        :rtype: str
+    def reason_won(self) -> str:
+        """str: The reason why the player won the game.
         """
         return self._reason_won
 
     @property
-    def time_remaining(self):
-        """The amount of time (in ns) remaining for this AI to send commands.
-
-        :rtype: float
+    def time_remaining(self) -> float:
+        """float: The amount of time (in ns) remaining for this AI to send commands.
         """
         return self._time_remaining
 
     @property
-    def value(self):
-        """The amount of value (victory points) this Player has gained.
-
-        :rtype: int
+    def value(self) -> int:
+        """int: The amount of value (victory points) this Player has gained.
         """
         return self._value
 
     @property
-    def won(self):
-        """If the player won the game or not.
-
-        :rtype: bool
+    def won(self) -> bool:
+        """bool: If the player won the game or not.
         """
         return self._won
 
-    def spawn_miner(self):
-        """ Spawns a Miner on this Player's base Tile.
+    def spawn_miner(self) -> bool:
+        """Spawns a Miner on this Player's base Tile.
 
         Returns:
             bool: True if successfully spawned, False otherwise.
         """
-        return self._run_on_server('spawnMiner')
+        return self._run_on_server('spawnMiner', {
 
+        })
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
