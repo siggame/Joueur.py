@@ -29,7 +29,7 @@ class AI(BaseAI):
             str: The name of your Player.
         """
         # <<-- Creer-Merge: get-name -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        return "Coreminer Python Player" # REPLACE THIS WITH YOUR TEAM NAME
+        return "Big_Bean_Samurai" # REPLACE THIS WITH YOUR TEAM NAME
         # <<-- /Creer-Merge: get-name -->>
 
     def start(self) -> None:
