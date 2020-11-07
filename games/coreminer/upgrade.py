@@ -17,7 +17,8 @@ class Upgrade(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Upgrade with basic logic as provided by the Creer code generator."""
+        """Initializes a Upgrade with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -28,45 +29,34 @@ class Upgrade(GameObject):
         self._title = ""
 
     @property
-    def cargo_capacity(self):
-        """The amount of cargo capacity this Upgrade has.
-
-        :rtype: int
+    def cargo_capacity(self) -> int:
+        """int: The amount of cargo capacity this Upgrade has.
         """
         return self._cargo_capacity
 
     @property
-    def health(self):
-        """The maximum amount of health this Upgrade has.
-
-        :rtype: int
+    def health(self) -> int:
+        """int: The maximum amount of health this Upgrade has.
         """
         return self._health
 
     @property
-    def mining_power(self):
-        """The amount of mining power this Upgrade has per turn.
-
-        :rtype: int
+    def mining_power(self) -> int:
+        """int: The amount of mining power this Upgrade has per turn.
         """
         return self._mining_power
 
     @property
-    def moves(self):
-        """The number of moves this Upgrade can make per turn.
-
-        :rtype: int
+    def moves(self) -> int:
+        """int: The number of moves this Upgrade can make per turn.
         """
         return self._moves
 
     @property
-    def title(self):
-        """The Upgrade title.
-
-        :rtype: str
+    def title(self) -> str:
+        """str: The Upgrade title.
         """
         return self._title
-
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
