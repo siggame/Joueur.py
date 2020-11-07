@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cowboy &#8212; Python 3 Joueur Client Docs</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Furnishing" href="furnishing.html" />
+    <link rel="prev" title="Bottle" href="bottle.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="../_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+    
+
+  </head><body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="responsive-menu"><a href="#sidebar-anchor" title="Navigation">&#9776;</a></li>
+        <li><a href="../index.html">Python 3 Joueur Client Docs</a> &#187;</li>
+          <li><a href="index.html" accesskey="U">Saloon</a> &#187;</li> 
+      </ul>
+    </div>
+    
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-games.saloon.cowboy">
+<span id="cowboy"></span><h1>Cowboy<a class="headerlink" href="#module-games.saloon.cowboy" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="games.saloon.cowboy.Cowboy">
+<em class="property">class </em><code class="sig-prename descclassname">games.saloon.cowboy.</code><code class="sig-name descname">Cowboy</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="game_object.html#games.saloon.game_object.GameObject" title="games.saloon.game_object.GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">games.saloon.game_object.GameObject</span></code></a></p>
+<p>The class representing the Cowboy in the Saloon game.</p>
+<p>A person on the map that can move around and interact within the saloon.</p>
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.act">
+<code class="sig-name descname">act</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tile</span><span class="p">:</span> <span class="n"><a class="reference internal" href="tile.html#games.saloon.tile.Tile" title="games.saloon.tile.Tile">games.saloon.tile.Tile</a></span></em>, <em class="sig-param"><span class="n">drunk_direction</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.saloon.cowboy.Cowboy.act" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does their job’s action on a Tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tile</strong> (<a class="reference internal" href="tile.html#games.saloon.tile.Tile" title="games.saloon.tile.Tile"><em>games.saloon.tile.Tile</em></a>) – The Tile you want this Cowboy to act on.</p></li>
+<li><p><strong>drunk_direction</strong> (<em>''</em><em>, </em><em>'North'</em><em>, </em><em>'East'</em><em>, </em><em>'South'</em><em>, or </em><em>'West'</em>) – The direction the bottle will cause drunk cowboys to be in, can be ‘North’, ‘East’, ‘South’, or ‘West’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the act worked, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.can_move">
+<em class="property">property </em><code class="sig-name descname">can_move</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.can_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the Cowboy can be moved this turn via its owner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.drunk_direction">
+<em class="property">property </em><code class="sig-name descname">drunk_direction</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.drunk_direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>The direction this Cowboy is moving while drunk. Will be ‘North’, ‘East’, ‘South’, or ‘West’ when drunk; or ‘’ (empty string) when not drunk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>‘’, ‘North’, ‘East’, ‘South’, or ‘West’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.focus">
+<em class="property">property </em><code class="sig-name descname">focus</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.focus" title="Permalink to this definition">¶</a></dt>
+<dd><p>How much focus this Cowboy has. Different Jobs do different things with their Cowboy’s focus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.game_object_name">
+<em class="property">property </em><code class="sig-name descname">game_object_name</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.game_object_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representing the top level Class that this game object is an instance of. Used for reflection to create new instances on clients, but exposed for convenience should AIs want this data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.health">
+<em class="property">property </em><code class="sig-name descname">health</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.health" title="Permalink to this definition">¶</a></dt>
+<dd><p>How much health this Cowboy currently has.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A unique id for each instance of a GameObject or a sub class. Used for client and server communication. Should never change value after being set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.is_dead">
+<em class="property">property </em><code class="sig-name descname">is_dead</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.is_dead" title="Permalink to this definition">¶</a></dt>
+<dd><p>If this Cowboy is dead and has been removed from the game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.is_drunk">
+<em class="property">property </em><code class="sig-name descname">is_drunk</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.is_drunk" title="Permalink to this definition">¶</a></dt>
+<dd><p>If this Cowboy is drunk, and will automatically walk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.job">
+<em class="property">property </em><code class="sig-name descname">job</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.job" title="Permalink to this definition">¶</a></dt>
+<dd><p>The job that this Cowboy does, and dictates how they fight and interact within the Saloon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>‘Bartender’, ‘Brawler’, or ‘Sharpshooter’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.log">
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#games.saloon.cowboy.Cowboy.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a message to this GameObject’s logs. Intended for your own debugging purposes, as strings stored here are saved in the gamelog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – A string to add to this GameObject’s log. Intended for debugging.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.logs">
+<em class="property">property </em><code class="sig-name descname">logs</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any strings logged will be stored here. Intended for debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.move">
+<code class="sig-name descname">move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tile</span><span class="p">:</span> <span class="n"><a class="reference internal" href="tile.html#games.saloon.tile.Tile" title="games.saloon.tile.Tile">games.saloon.tile.Tile</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.saloon.cowboy.Cowboy.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves this Cowboy from its current Tile to an adjacent Tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tile</strong> (<a class="reference internal" href="tile.html#games.saloon.tile.Tile" title="games.saloon.tile.Tile"><em>games.saloon.tile.Tile</em></a>) – The Tile you want to move this Cowboy to.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the move worked, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.owner">
+<em class="property">property </em><code class="sig-name descname">owner</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.owner" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Player that owns and can control this Cowboy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="player.html#games.saloon.player.Player" title="games.saloon.player.Player">games.saloon.player.Player</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.play">
+<code class="sig-name descname">play</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">piano</span><span class="p">:</span> <span class="n"><a class="reference internal" href="furnishing.html#games.saloon.furnishing.Furnishing" title="games.saloon.furnishing.Furnishing">games.saloon.furnishing.Furnishing</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.saloon.cowboy.Cowboy.play" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sits down and plays a piano.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>piano</strong> (<a class="reference internal" href="furnishing.html#games.saloon.furnishing.Furnishing" title="games.saloon.furnishing.Furnishing"><em>games.saloon.furnishing.Furnishing</em></a>) – The Furnishing that is a piano you want to play.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the play worked, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.tile">
+<em class="property">property </em><code class="sig-name descname">tile</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Tile that this Cowboy is located on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="tile.html#games.saloon.tile.Tile" title="games.saloon.tile.Tile">games.saloon.tile.Tile</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.tolerance">
+<em class="property">property </em><code class="sig-name descname">tolerance</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.tolerance" title="Permalink to this definition">¶</a></dt>
+<dd><p>How many times this unit has been drunk before taking their siesta and resetting this to 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.cowboy.Cowboy.turns_busy">
+<em class="property">property </em><code class="sig-name descname">turns_busy</code><a class="headerlink" href="#games.saloon.cowboy.Cowboy.turns_busy" title="Permalink to this definition">¶</a></dt>
+<dd><p>How many turns this unit has remaining before it is no longer busy and can <cite>act()</cite> or <cite>play()</cite> again.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../anarchy/index.html">Anarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catastrophe/index.html">Catastrophe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../checkers/index.html">Checkers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chess/index.html">Chess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coreminer/index.html">Coreminer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../necrowar/index.html">Necrowar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../newtonian/index.html">Newtonian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pirates/index.html">Pirates</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Saloon</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#rules">Rules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#classes">Classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ai.html">AI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bottle.html">Bottle</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Cowboy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="furnishing.html">Furnishing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game_object.html">GameObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tile.html">Tile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="young_gun.html">YoungGun</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-notes">Other Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../spiders/index.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stardash/index.html">Stardash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stumped/index.html">Stumped</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="bottle.html"
+                        title="previous chapter">Bottle</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="furnishing.html"
+                        title="next chapter">Furnishing</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/saloon/cowboy.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="furnishing.html" title="Furnishing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="bottle.html" title="Bottle"
+             accesskey="P">previous</a> |</li>
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, SIG-GAME.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.0.
+    </div>
+  </body>
+</html>

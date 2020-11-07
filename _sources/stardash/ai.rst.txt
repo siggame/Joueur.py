@@ -1,0 +1,9 @@
+AI
+==
+
+.. currentmodule:: games.stardash.ai
+
+.. automodule:: games.stardash.ai
+   :members:
+   :inherited-members:
+   :show-inheritance:

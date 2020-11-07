@@ -1,0 +1,9 @@
+Tower
+=====
+
+.. currentmodule:: games.necrowar.tower
+
+.. automodule:: games.necrowar.tower
+   :members:
+   :inherited-members:
+   :show-inheritance:

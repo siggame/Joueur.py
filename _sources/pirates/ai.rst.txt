@@ -1,0 +1,9 @@
+AI
+==
+
+.. currentmodule:: games.pirates.ai
+
+.. automodule:: games.pirates.ai
+   :members:
+   :inherited-members:
+   :show-inheritance:

@@ -1,0 +1,9 @@
+Game
+====
+
+.. currentmodule:: games.stumped.game
+
+.. automodule:: games.stumped.game
+   :members:
+   :inherited-members:
+   :show-inheritance:

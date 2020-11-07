@@ -1,0 +1,9 @@
+Job
+===
+
+.. currentmodule:: games.newtonian.job
+
+.. automodule:: games.newtonian.job
+   :members:
+   :inherited-members:
+   :show-inheritance:

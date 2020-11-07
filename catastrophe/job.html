@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job &#8212; Python 3 Joueur Client Docs</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Player" href="player.html" />
+    <link rel="prev" title="GameObject" href="game_object.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="../_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+    
+
+  </head><body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="responsive-menu"><a href="#sidebar-anchor" title="Navigation">&#9776;</a></li>
+        <li><a href="../index.html">Python 3 Joueur Client Docs</a> &#187;</li>
+          <li><a href="index.html" accesskey="U">Catastrophe</a> &#187;</li> 
+      </ul>
+    </div>
+    
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-games.catastrophe.job">
+<span id="job"></span><h1>Job<a class="headerlink" href="#module-games.catastrophe.job" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="games.catastrophe.job.Job">
+<em class="property">class </em><code class="sig-prename descclassname">games.catastrophe.job.</code><code class="sig-name descname">Job</code><a class="headerlink" href="#games.catastrophe.job.Job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="game_object.html#games.catastrophe.game_object.GameObject" title="games.catastrophe.game_object.GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">games.catastrophe.game_object.GameObject</span></code></a></p>
+<p>The class representing the Job in the Catastrophe game.</p>
+<p>Information about a Unit’s job.</p>
+<dl class="py method">
+<dt id="games.catastrophe.job.Job.action_cost">
+<em class="property">property </em><code class="sig-name descname">action_cost</code><a class="headerlink" href="#games.catastrophe.job.Job.action_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of energy this Job normally uses to perform its actions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.job.Job.carry_limit">
+<em class="property">property </em><code class="sig-name descname">carry_limit</code><a class="headerlink" href="#games.catastrophe.job.Job.carry_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>How many combined resources a Unit with this Job can hold at once.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.job.Job.game_object_name">
+<em class="property">property </em><code class="sig-name descname">game_object_name</code><a class="headerlink" href="#games.catastrophe.job.Job.game_object_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representing the top level Class that this game object is an instance of. Used for reflection to create new instances on clients, but exposed for convenience should AIs want this data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.job.Job.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#games.catastrophe.job.Job.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A unique id for each instance of a GameObject or a sub class. Used for client and server communication. Should never change value after being set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.job.Job.log">
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#games.catastrophe.job.Job.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a message to this GameObject’s logs. Intended for your own debugging purposes, as strings stored here are saved in the gamelog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – A string to add to this GameObject’s log. Intended for debugging.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.job.Job.logs">
+<em class="property">property </em><code class="sig-name descname">logs</code><a class="headerlink" href="#games.catastrophe.job.Job.logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any strings logged will be stored here. Intended for debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.job.Job.moves">
+<em class="property">property </em><code class="sig-name descname">moves</code><a class="headerlink" href="#games.catastrophe.job.Job.moves" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of moves this Job can make per turn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.job.Job.regen_rate">
+<em class="property">property </em><code class="sig-name descname">regen_rate</code><a class="headerlink" href="#games.catastrophe.job.Job.regen_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of energy normally regenerated when resting at a shelter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.job.Job.title">
+<em class="property">property </em><code class="sig-name descname">title</code><a class="headerlink" href="#games.catastrophe.job.Job.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Job title.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>‘fresh human’, ‘cat overlord’, ‘soldier’, ‘gatherer’, ‘builder’, or ‘missionary’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.job.Job.upkeep">
+<em class="property">property </em><code class="sig-name descname">upkeep</code><a class="headerlink" href="#games.catastrophe.job.Job.upkeep" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of food per turn this Unit consumes. If there isn’t enough food for every Unit, all Units become starved and do not consume food.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../anarchy/index.html">Anarchy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Catastrophe</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#rules">Rules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#classes">Classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ai.html">AI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game_object.html">GameObject</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="structure.html">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tile.html">Tile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-notes">Other Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../checkers/index.html">Checkers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chess/index.html">Chess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coreminer/index.html">Coreminer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../necrowar/index.html">Necrowar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../newtonian/index.html">Newtonian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pirates/index.html">Pirates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saloon/index.html">Saloon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spiders/index.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stardash/index.html">Stardash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stumped/index.html">Stumped</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="game_object.html"
+                        title="previous chapter">GameObject</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="player.html"
+                        title="next chapter">Player</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/catastrophe/job.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="player.html" title="Player"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="game_object.html" title="GameObject"
+             accesskey="P">previous</a> |</li>
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, SIG-GAME.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.0.
+    </div>
+  </body>
+</html>

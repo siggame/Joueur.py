@@ -1,0 +1,9 @@
+GameObject
+==========
+
+.. currentmodule:: games.spiders.game_object
+
+.. automodule:: games.spiders.game_object
+   :members:
+   :inherited-members:
+   :show-inheritance:

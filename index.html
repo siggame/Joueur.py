@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python 3 Joueur Client &#8212; Python 3 Joueur Client Docs</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pydoctheme.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    
+    <script src="_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Anarchy" href="anarchy/index.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+    
+
+  </head><body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="responsive-menu"><a href="#sidebar-anchor" title="Navigation">&#9776;</a></li>
+        <li><a href="#">Python 3 Joueur Client Docs</a> &#187;</li> 
+      </ul>
+    </div>
+    
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="python-3-joueur-client">
+<h1>Python 3 Joueur Client<a class="headerlink" href="#python-3-joueur-client" title="Permalink to this headline">¶</a></h1>
+<p>This is the client for the <a class="reference external" href="https://github.com/siggame/Cadre">Cadre AI framework</a>. It can play multiple different games, though you will probably only be interested in one at a time.</p>
+<p>In general, try to stay out of the <code class="docutils literal notranslate"><span class="pre">joueur/</span></code> folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in <code class="docutils literal notranslate"><span class="pre">games/game_name/</span></code>, with your very own AI living in <code class="docutils literal notranslate"><span class="pre">Games/game_name/ai.py</span></code> for you to make smarter.</p>
+<div class="section" id="games">
+<h2>Games<a class="headerlink" href="#games" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound" id="mastertoc">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="anarchy/index.html">Anarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catastrophe/index.html">Catastrophe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkers/index.html">Checkers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chess/index.html">Chess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coreminer/index.html">Coreminer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="necrowar/index.html">Necrowar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="newtonian/index.html">Newtonian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pirates/index.html">Pirates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saloon/index.html">Saloon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders/index.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stardash/index.html">Stardash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stumped/index.html">Stumped</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="how-to-run">
+<h2>How to Run<a class="headerlink" href="#how-to-run" title="Permalink to this headline">¶</a></h2>
+<p>This client has been tested and confirmed to work on the Campus rc##xcs213 Linux machines, but it can work on your own Windows/Linux/Mac machines if you desire.</p>
+<div class="section" id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./testRun MyOwnGameSession
+</pre></div>
+</div>
+<p>For Linux, a recent version of <code class="docutils literal notranslate"><span class="pre">python3</span></code> should work. It has been tested on 3.4.3 extensively, but should work with &gt;= 3.2. The normal ‘python’ usually refers to Python 2.7.X, so make sure you have the python<strong>3</strong> installed.</p>
+</div>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>On Windows you’ll need some version of Python 3. As with the Linux version, <a class="reference external" href="https://www.python.org/downloads/release/python-343/">3.4.3</a> has been tested against extensively, however there’s no none reason why it would not work on newer versions. Install that and ensure that python is set up in your Environmental Variables as ‘python3’, then</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py GAME_NAME -s game.siggame.io -r MyOwnGameSession
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="make">
+<h2>Make<a class="headerlink" href="#make" title="Permalink to this headline">¶</a></h2>
+<p>There is a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> provided. Although Python is an interpreted language, we have added some useful default steps. By default it installs all pip packges you add to <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>, and then runs the Python compiler on all .py files to make sure they are syntactically correct.</p>
+</div>
+<div class="section" id="other-notes">
+<h2>Other Notes<a class="headerlink" href="#other-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mst-s-drive">
+<h3>MST S-Drive<a class="headerlink" href="#mst-s-drive" title="Permalink to this headline">¶</a></h3>
+<p>If you are using this on the Missouri S&amp;T Campus, it is possible that on your Missouri S&amp;T S-Drive this client will not run properly. This is not a fault with the client, but rather the school’s S-Drive implementation changing some file permissions during run time. We cannot control this. Instead, we recommend cloning your repo outside the S-Drive and use an SCP program like <a class="reference external" href="https://winscp.net/eng/download.php">WinSCP</a> to edit the files in Windows using whatever IDE you want if you want to code in Windows, but compile in Linux.</p>
+</div>
+<div class="section" id="modifying-our-game-files">
+<h3>Modifying Our Game Files<a class="headerlink" href="#modifying-our-game-files" title="Permalink to this headline">¶</a></h3>
+<p>The only file you should ever modify to create your AI is the <code class="docutils literal notranslate"><span class="pre">ai.py</span></code> file. All the other files are needed for the game to work. In addition, you should never be creating your own instances of the Game’s classes, nor should you ever try to modify their variables. Instead, treat the Game and its members as a read only structure that represents the game state on the game server. You interact with it by calling the game functions.</p>
+</div>
+<div class="section" id="importing-new-files-for-your-ai">
+<h3>Importing  new files for your AI<a class="headerlink" href="#importing-new-files-for-your-ai" title="Permalink to this headline">¶</a></h3>
+<p>Because your AI lives in the <code class="docutils literal notranslate"><span class="pre">games/game_name/</span></code> directory, if you add new files in that directory, then you must import them relative to the root of this directory. For example, this means if you add a new file <code class="docutils literal notranslate"><span class="pre">games/game_name/foo.py</span></code>, then you must import it via the python code:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">games.game_name.foo</span>
+</pre></div>
+</div>
+<p>Please do not try to import it via <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">foo</span></code>, that will not work. (unless you add it to the root of this repo, then it will but that seems a bit strange).</p>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="anarchy/index.html">Anarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catastrophe/index.html">Catastrophe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkers/index.html">Checkers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chess/index.html">Chess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coreminer/index.html">Coreminer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="necrowar/index.html">Necrowar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="newtonian/index.html">Newtonian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pirates/index.html">Pirates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saloon/index.html">Saloon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders/index.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stardash/index.html">Stardash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stumped/index.html">Stumped</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="anarchy/index.html"
+                        title="next chapter">Anarchy</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="anarchy/index.html" title="Anarchy"
+             accesskey="N">next</a> |</li>
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, SIG-GAME.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+Stumped
+=======
+
+*Gather branches and build up your lodge as beavers fight to survive.*
+
+Rules
+^^^^^
+
+The full game rules for stumped can be found on `GitHub <https://github.com/siggame/Cadre/blob/master/Games/Stumped/rules.md>`_.
+
+Additional materials, such as the `story <https://github.com/siggame/Cadre/blob/master/Games/Stumped/story.md>`_ and `game template <https://github.com/siggame/Cadre/blob/master/Games/Stumped/creer.yaml>`_ can be found on `GitHub as well <https://github.com/siggame/Cadre/blob/master/Games/Stumped/>`_.
+
+Classes
+^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+   :name: Stumped
+
+   ai.rst
+   beaver.rst
+   game.rst
+   game_object.rst
+   job.rst
+   player.rst
+   spawner.rst
+   tile.rst
+
+Other Notes
+^^^^^^^^^^^
+
+Modifying non AI files
+
+Each class fle inside of ``games/GAME_NAME/``, except for your ``ai.py`` should ideally not be modified. They are intended
+to be read only constructs that hold the state of that object at the point in time you are reading its properties.
+That being is said, if you really wish to add functionality, such as helper functions, ensure they do not directly modify game state information.
+
+Game Logic
+
+If you are attempting to figure out how the logic is executed for a game, that code is **not** here.
+All `Cadre <https://github.com/siggame/Cadre>`_ game clients are dumb state tracking programs that facilitate IO between a game server and your AI in whatever language you choose.
+If you wish to get the actual code for a game check in the `game server <https://github.com/siggame/Cerveau>`_.
+Its directory structure is similar to most clients (such as this one).
+

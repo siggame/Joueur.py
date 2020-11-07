@@ -1,0 +1,9 @@
+BroodMother
+===========
+
+.. currentmodule:: games.spiders.brood_mother
+
+.. automodule:: games.spiders.brood_mother
+   :members:
+   :inherited-members:
+   :show-inheritance:

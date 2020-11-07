@@ -1,0 +1,9 @@
+Tile
+====
+
+.. currentmodule:: games.catastrophe.tile
+
+.. automodule:: games.catastrophe.tile
+   :members:
+   :inherited-members:
+   :show-inheritance:

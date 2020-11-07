@@ -1,0 +1,9 @@
+Tile
+====
+
+.. currentmodule:: games.newtonian.tile
+
+.. automodule:: games.newtonian.tile
+   :members:
+   :inherited-members:
+   :show-inheritance:

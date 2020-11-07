@@ -1,0 +1,9 @@
+Player
+======
+
+.. currentmodule:: games.coreminer.player
+
+.. automodule:: games.coreminer.player
+   :members:
+   :inherited-members:
+   :show-inheritance:

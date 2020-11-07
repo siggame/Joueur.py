@@ -1,0 +1,9 @@
+Spawner
+=======
+
+.. currentmodule:: games.stumped.spawner
+
+.. automodule:: games.stumped.spawner
+   :members:
+   :inherited-members:
+   :show-inheritance:

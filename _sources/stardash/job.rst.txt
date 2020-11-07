@@ -1,0 +1,9 @@
+Job
+===
+
+.. currentmodule:: games.stardash.job
+
+.. automodule:: games.stardash.job
+   :members:
+   :inherited-members:
+   :show-inheritance:

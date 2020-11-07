@@ -1,0 +1,9 @@
+Tile
+====
+
+.. currentmodule:: games.stumped.tile
+
+.. automodule:: games.stumped.tile
+   :members:
+   :inherited-members:
+   :show-inheritance:

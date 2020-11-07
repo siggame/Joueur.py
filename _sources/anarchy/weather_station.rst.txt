@@ -1,0 +1,9 @@
+WeatherStation
+==============
+
+.. currentmodule:: games.anarchy.weather_station
+
+.. automodule:: games.anarchy.weather_station
+   :members:
+   :inherited-members:
+   :show-inheritance:

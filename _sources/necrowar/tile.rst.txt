@@ -1,0 +1,9 @@
+Tile
+====
+
+.. currentmodule:: games.necrowar.tile
+
+.. automodule:: games.necrowar.tile
+   :members:
+   :inherited-members:
+   :show-inheritance:

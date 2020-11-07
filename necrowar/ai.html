@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI &#8212; Python 3 Joueur Client Docs</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Game" href="game.html" />
+    <link rel="prev" title="Necrowar" href="index.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="../_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+    
+
+  </head><body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="responsive-menu"><a href="#sidebar-anchor" title="Navigation">&#9776;</a></li>
+        <li><a href="../index.html">Python 3 Joueur Client Docs</a> &#187;</li>
+          <li><a href="index.html" accesskey="U">Necrowar</a> &#187;</li> 
+      </ul>
+    </div>
+    
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-games.necrowar.ai">
+<span id="ai"></span><h1>AI<a class="headerlink" href="#module-games.necrowar.ai" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="games.necrowar.ai.AI">
+<em class="property">class </em><code class="sig-prename descclassname">games.necrowar.ai.</code><code class="sig-name descname">AI</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">game</span></em><span class="sig-paren">)</span><a class="headerlink" href="#games.necrowar.ai.AI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">joueur.base_ai.BaseAI</span></code></p>
+<p>The AI you add and improve code inside to play Necrowar.</p>
+<dl class="py method">
+<dt id="games.necrowar.ai.AI.end">
+<code class="sig-name descname">end</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">won</span><span class="p">:</span> <span class="n">bool</span></em>, <em class="sig-param"><span class="n">reason</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#games.necrowar.ai.AI.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is called when the game ends, you can clean up your data and dump files here if need be.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>won</strong> (<em>bool</em>) – True means you won, False means you lost.</p></li>
+<li><p><strong>reason</strong> (<em>str</em>) – The human readable string explaining why your AI won or lost.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.ai.AI.find_path">
+<code class="sig-name descname">find_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span><span class="p">:</span> <span class="n"><a class="reference internal" href="tile.html#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile">games.necrowar.tile.Tile</a></span></em>, <em class="sig-param"><span class="n">goal</span><span class="p">:</span> <span class="n"><a class="reference internal" href="tile.html#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile">games.necrowar.tile.Tile</a></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="tile.html#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile">games.necrowar.tile.Tile</a><span class="p">]</span><a class="headerlink" href="#games.necrowar.ai.AI.find_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>A very basic path finding algorithm (Breadth First Search) that when given a starting Tile, will return a valid path to the goal Tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<a class="reference internal" href="tile.html#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile"><em>games.necrowar.tile.Tile</em></a>) – The starting Tile to find a path from.</p></li>
+<li><p><strong>goal</strong> (<a class="reference internal" href="tile.html#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile"><em>games.necrowar.tile.Tile</em></a>) – The goal (destination) Tile to find a path to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of Tiles representing the path, the the first element being a valid adjacent Tile to the start, and the last element being the goal.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="tile.html#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile">games.necrowar.tile.Tile</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.ai.AI.game">
+<em class="property">property </em><code class="sig-name descname">game</code><a class="headerlink" href="#games.necrowar.ai.AI.game" title="Permalink to this definition">¶</a></dt>
+<dd><p>The reference to the Game instance this AI is playing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="game.html#games.necrowar.game.Game" title="games.necrowar.game.Game">games.necrowar.game.Game</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.ai.AI.game_updated">
+<code class="sig-name descname">game_updated</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#games.necrowar.ai.AI.game_updated" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is called every time the game’s state updates, so if you are tracking anything you can update it here.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.ai.AI.get_name">
+<code class="sig-name descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#games.necrowar.ai.AI.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the name you send to the server so your AI will control the player named this string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The name of your Player.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.ai.AI.get_setting">
+<code class="sig-name descname">get_setting</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#games.necrowar.ai.AI.get_setting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets an AI setting passed to the program via the <cite>–aiSettings</cite>
+flag. If the flag was set it will be returned as a string value,
+None otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – The key of the setting you wish to get the value for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A string representing the value set via command line, or None
+if the key was not set</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.ai.AI.player">
+<em class="property">property </em><code class="sig-name descname">player</code><a class="headerlink" href="#games.necrowar.ai.AI.player" title="Permalink to this definition">¶</a></dt>
+<dd><p>The reference to the Player this AI controls in the Game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="player.html#games.necrowar.player.Player" title="games.necrowar.player.Player">games.necrowar.player.Player</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.ai.AI.run_turn">
+<code class="sig-name descname">run_turn</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.necrowar.ai.AI.run_turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is called every time it is this AI.player’s turn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.ai.AI.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#games.necrowar.ai.AI.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is called once the game starts and your AI knows its player and game. You can initialize your AI here.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../anarchy/index.html">Anarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catastrophe/index.html">Catastrophe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../checkers/index.html">Checkers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chess/index.html">Chess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coreminer/index.html">Coreminer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Necrowar</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#rules">Rules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#classes">Classes</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">AI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game_object.html">GameObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tile.html">Tile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tower.html">Tower</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tower_job.html">TowerJob</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit.html">Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_job.html">UnitJob</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-notes">Other Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../newtonian/index.html">Newtonian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pirates/index.html">Pirates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saloon/index.html">Saloon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spiders/index.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stardash/index.html">Stardash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stumped/index.html">Stumped</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Necrowar</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="game.html"
+                        title="next chapter">Game</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/necrowar/ai.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="game.html" title="Game"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Necrowar"
+             accesskey="P">previous</a> |</li>
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, SIG-GAME.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.0.
+    </div>
+  </body>
+</html>

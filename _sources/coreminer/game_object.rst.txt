@@ -1,0 +1,9 @@
+GameObject
+==========
+
+.. currentmodule:: games.coreminer.game_object
+
+.. automodule:: games.coreminer.game_object
+   :members:
+   :inherited-members:
+   :show-inheritance:

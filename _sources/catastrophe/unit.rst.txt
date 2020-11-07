@@ -1,0 +1,9 @@
+Unit
+====
+
+.. currentmodule:: games.catastrophe.unit
+
+.. automodule:: games.catastrophe.unit
+   :members:
+   :inherited-members:
+   :show-inheritance:

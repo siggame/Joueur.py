@@ -1,0 +1,9 @@
+GameObject
+==========
+
+.. currentmodule:: games.stardash.game_object
+
+.. automodule:: games.stardash.game_object
+   :members:
+   :inherited-members:
+   :show-inheritance:

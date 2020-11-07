@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unit &#8212; Python 3 Joueur Client Docs</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Saloon" href="../saloon/index.html" />
+    <link rel="prev" title="Tile" href="tile.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="../_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+    
+
+  </head><body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="responsive-menu"><a href="#sidebar-anchor" title="Navigation">&#9776;</a></li>
+        <li><a href="../index.html">Python 3 Joueur Client Docs</a> &#187;</li>
+          <li><a href="index.html" accesskey="U">Pirates</a> &#187;</li> 
+      </ul>
+    </div>
+    
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-games.pirates.unit">
+<span id="unit"></span><h1>Unit<a class="headerlink" href="#module-games.pirates.unit" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="games.pirates.unit.Unit">
+<em class="property">class </em><code class="sig-prename descclassname">games.pirates.unit.</code><code class="sig-name descname">Unit</code><a class="headerlink" href="#games.pirates.unit.Unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="game_object.html#games.pirates.game_object.GameObject" title="games.pirates.game_object.GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">games.pirates.game_object.GameObject</span></code></a></p>
+<p>The class representing the Unit in the Pirates game.</p>
+<p>A unit group in the game. This may consist of a ship and any number of crew.</p>
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.acted">
+<em class="property">property </em><code class="sig-name descname">acted</code><a class="headerlink" href="#games.pirates.unit.Unit.acted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether this Unit has performed its action this turn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.attack">
+<code class="sig-name descname">attack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tile</span><span class="p">:</span> <span class="n"><a class="reference internal" href="tile.html#games.pirates.tile.Tile" title="games.pirates.tile.Tile">games.pirates.tile.Tile</a></span></em>, <em class="sig-param"><span class="n">target</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.pirates.unit.Unit.attack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attacks either the ‘crew’ or ‘ship’ on a Tile in range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tile</strong> (<a class="reference internal" href="tile.html#games.pirates.tile.Tile" title="games.pirates.tile.Tile"><em>games.pirates.tile.Tile</em></a>) – The Tile to attack.</p></li>
+<li><p><strong>target</strong> (<em>'crew'</em><em> or </em><em>'ship'</em>) – Whether to attack ‘crew’ or ‘ship’. Crew deal damage to crew and ships deal damage to ships. Consumes any remaining moves.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successfully attacked, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.bury">
+<code class="sig-name descname">bury</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">amount</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.pirates.unit.Unit.bury" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buries gold on this Unit’s Tile. Gold must be a certain distance away for it to get interest (Game.minInterestDistance).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>amount</strong> (<em>int</em>) – How much gold this Unit should bury. Amounts &lt;= 0 will bury as much as possible.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successfully buried, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.crew">
+<em class="property">property </em><code class="sig-name descname">crew</code><a class="headerlink" href="#games.pirates.unit.Unit.crew" title="Permalink to this definition">¶</a></dt>
+<dd><p>How many crew are on this Tile. This number will always be &lt;= crewHealth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.crew_health">
+<em class="property">property </em><code class="sig-name descname">crew_health</code><a class="headerlink" href="#games.pirates.unit.Unit.crew_health" title="Permalink to this definition">¶</a></dt>
+<dd><p>How much total health the crew on this Tile have.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.deposit">
+<code class="sig-name descname">deposit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">amount</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.pirates.unit.Unit.deposit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Puts gold into an adjacent Port. If that Port is the Player’s port, the gold is added to that Player. If that Port is owned by merchants, it adds to that Port’s investment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>amount</strong> (<em>int</em>) – The amount of gold to deposit. Amounts &lt;= 0 will deposit all the gold on this Unit.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successfully deposited, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.dig">
+<code class="sig-name descname">dig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">amount</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.pirates.unit.Unit.dig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Digs up gold on this Unit’s Tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>amount</strong> (<em>int</em>) – How much gold this Unit should take. Amounts &lt;= 0 will dig up as much as possible.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successfully dug up, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.game_object_name">
+<em class="property">property </em><code class="sig-name descname">game_object_name</code><a class="headerlink" href="#games.pirates.unit.Unit.game_object_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representing the top level Class that this game object is an instance of. Used for reflection to create new instances on clients, but exposed for convenience should AIs want this data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.gold">
+<em class="property">property </em><code class="sig-name descname">gold</code><a class="headerlink" href="#games.pirates.unit.Unit.gold" title="Permalink to this definition">¶</a></dt>
+<dd><p>How much gold this Unit is carrying.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#games.pirates.unit.Unit.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A unique id for each instance of a GameObject or a sub class. Used for client and server communication. Should never change value after being set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.log">
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#games.pirates.unit.Unit.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a message to this GameObject’s logs. Intended for your own debugging purposes, as strings stored here are saved in the gamelog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – A string to add to this GameObject’s log. Intended for debugging.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.logs">
+<em class="property">property </em><code class="sig-name descname">logs</code><a class="headerlink" href="#games.pirates.unit.Unit.logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any strings logged will be stored here. Intended for debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.move">
+<code class="sig-name descname">move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tile</span><span class="p">:</span> <span class="n"><a class="reference internal" href="tile.html#games.pirates.tile.Tile" title="games.pirates.tile.Tile">games.pirates.tile.Tile</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.pirates.unit.Unit.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves this Unit from its current Tile to an adjacent Tile. If this Unit merges with another one, the other Unit will be destroyed and its tile will be set to None. Make sure to check that your Unit’s tile is not None before doing things with it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tile</strong> (<a class="reference internal" href="tile.html#games.pirates.tile.Tile" title="games.pirates.tile.Tile"><em>games.pirates.tile.Tile</em></a>) – The Tile this Unit should move to.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if it moved, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.moves">
+<em class="property">property </em><code class="sig-name descname">moves</code><a class="headerlink" href="#games.pirates.unit.Unit.moves" title="Permalink to this definition">¶</a></dt>
+<dd><p>How many more times this Unit may move this turn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.owner">
+<em class="property">property </em><code class="sig-name descname">owner</code><a class="headerlink" href="#games.pirates.unit.Unit.owner" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Player that owns and can control this Unit, or None if the Unit is neutral.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="player.html#games.pirates.player.Player" title="games.pirates.player.Player">games.pirates.player.Player</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.path">
+<em class="property">property </em><code class="sig-name descname">path</code><a class="headerlink" href="#games.pirates.unit.Unit.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Merchants only) The path this Unit will follow. The first element is the Tile this Unit will move to next.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="tile.html#games.pirates.tile.Tile" title="games.pirates.tile.Tile">games.pirates.tile.Tile</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.rest">
+<code class="sig-name descname">rest</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.pirates.unit.Unit.rest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regenerates this Unit’s health. Must be used in range of a port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if successfully rested, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.ship_health">
+<em class="property">property </em><code class="sig-name descname">ship_health</code><a class="headerlink" href="#games.pirates.unit.Unit.ship_health" title="Permalink to this definition">¶</a></dt>
+<dd><p>If a ship is on this Tile, how much health it has remaining. 0 for no ship.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.split">
+<code class="sig-name descname">split</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tile</span><span class="p">:</span> <span class="n"><a class="reference internal" href="tile.html#games.pirates.tile.Tile" title="games.pirates.tile.Tile">games.pirates.tile.Tile</a></span></em>, <em class="sig-param"><span class="n">amount</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">gold</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.pirates.unit.Unit.split" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves a number of crew from this Unit to the given Tile. This will consume a move from those crew.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tile</strong> (<a class="reference internal" href="tile.html#games.pirates.tile.Tile" title="games.pirates.tile.Tile"><em>games.pirates.tile.Tile</em></a>) – The Tile to move the crew to.</p></li>
+<li><p><strong>amount</strong> (<em>int</em>) – The number of crew to move onto that Tile. Amount &lt;= 0 will move all the crew to that Tile.</p></li>
+<li><p><strong>gold</strong> (<em>int</em>) – The amount of gold the crew should take with them. Gold &lt; 0 will move all the gold to that Tile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successfully split, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.stun_turns">
+<em class="property">property </em><code class="sig-name descname">stun_turns</code><a class="headerlink" href="#games.pirates.unit.Unit.stun_turns" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Merchants only) The number of turns this merchant ship won’t be able to move. They will still attack. Merchant ships are stunned when they’re attacked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.target_port">
+<em class="property">property </em><code class="sig-name descname">target_port</code><a class="headerlink" href="#games.pirates.unit.Unit.target_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Merchants only) The Port this Unit is moving to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="port.html#games.pirates.port.Port" title="games.pirates.port.Port">games.pirates.port.Port</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.tile">
+<em class="property">property </em><code class="sig-name descname">tile</code><a class="headerlink" href="#games.pirates.unit.Unit.tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Tile this Unit is on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="tile.html#games.pirates.tile.Tile" title="games.pirates.tile.Tile">games.pirates.tile.Tile</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.pirates.unit.Unit.withdraw">
+<code class="sig-name descname">withdraw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">amount</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.pirates.unit.Unit.withdraw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes gold from the Player. You can only withdraw from your own Port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>amount</strong> (<em>int</em>) – The amount of gold to withdraw. Amounts &lt;= 0 will withdraw everything.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successfully withdrawn, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../anarchy/index.html">Anarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catastrophe/index.html">Catastrophe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../checkers/index.html">Checkers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chess/index.html">Chess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coreminer/index.html">Coreminer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../necrowar/index.html">Necrowar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../newtonian/index.html">Newtonian</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Pirates</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#rules">Rules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#classes">Classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ai.html">AI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game_object.html">GameObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="port.html">Port</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tile.html">Tile</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-notes">Other Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../saloon/index.html">Saloon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spiders/index.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stardash/index.html">Stardash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stumped/index.html">Stumped</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tile.html"
+                        title="previous chapter">Tile</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../saloon/index.html"
+                        title="next chapter">Saloon</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/pirates/unit.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../saloon/index.html" title="Saloon"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tile.html" title="Tile"
+             accesskey="P">previous</a> |</li>
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, SIG-GAME.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.0.
+    </div>
+  </body>
+</html>

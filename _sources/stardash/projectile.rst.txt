@@ -1,0 +1,9 @@
+Projectile
+==========
+
+.. currentmodule:: games.stardash.projectile
+
+.. automodule:: games.stardash.projectile
+   :members:
+   :inherited-members:
+   :show-inheritance:

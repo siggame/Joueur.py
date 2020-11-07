@@ -1,0 +1,9 @@
+Upgrade
+=======
+
+.. currentmodule:: games.coreminer.upgrade
+
+.. automodule:: games.coreminer.upgrade
+   :members:
+   :inherited-members:
+   :show-inheritance:

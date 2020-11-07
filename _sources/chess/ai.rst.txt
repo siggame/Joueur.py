@@ -1,0 +1,9 @@
+AI
+==
+
+.. currentmodule:: games.chess.ai
+
+.. automodule:: games.chess.ai
+   :members:
+   :inherited-members:
+   :show-inheritance:

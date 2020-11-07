@@ -1,0 +1,9 @@
+Warehouse
+=========
+
+.. currentmodule:: games.anarchy.warehouse
+
+.. automodule:: games.anarchy.warehouse
+   :members:
+   :inherited-members:
+   :show-inheritance:

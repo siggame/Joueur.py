@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game &#8212; Python 3 Joueur Client Docs</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="GameObject" href="game_object.html" />
+    <link rel="prev" title="AI" href="ai.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="../_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+    
+
+  </head><body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="responsive-menu"><a href="#sidebar-anchor" title="Navigation">&#9776;</a></li>
+        <li><a href="../index.html">Python 3 Joueur Client Docs</a> &#187;</li>
+          <li><a href="index.html" accesskey="U">Catastrophe</a> &#187;</li> 
+      </ul>
+    </div>
+    
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-games.catastrophe.game">
+<span id="game"></span><h1>Game<a class="headerlink" href="#module-games.catastrophe.game" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="games.catastrophe.game.Game">
+<em class="property">class </em><code class="sig-prename descclassname">games.catastrophe.game.</code><code class="sig-name descname">Game</code><a class="headerlink" href="#games.catastrophe.game.Game" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">joueur.base_game.BaseGame</span></code></p>
+<p>The class representing the Game in the Catastrophe game.</p>
+<p>Convert as many humans to as you can to survive in this post-apocalyptic wasteland.</p>
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.cat_energy_mult">
+<em class="property">property </em><code class="sig-name descname">cat_energy_mult</code><a class="headerlink" href="#games.catastrophe.game.Game.cat_energy_mult" title="Permalink to this definition">¶</a></dt>
+<dd><p>The multiplier for the amount of energy regenerated when resting in a shelter with the cat overlord.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.current_player">
+<em class="property">property </em><code class="sig-name descname">current_player</code><a class="headerlink" href="#games.catastrophe.game.Game.current_player" title="Permalink to this definition">¶</a></dt>
+<dd><p>The player whose turn it is currently. That player can send commands. Other players cannot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="player.html#games.catastrophe.player.Player" title="games.catastrophe.player.Player">games.catastrophe.player.Player</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.current_turn">
+<em class="property">property </em><code class="sig-name descname">current_turn</code><a class="headerlink" href="#games.catastrophe.game.Game.current_turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>The current turn number, starting at 0 for the first player’s turn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.game_objects">
+<em class="property">property </em><code class="sig-name descname">game_objects</code><a class="headerlink" href="#games.catastrophe.game.Game.game_objects" title="Permalink to this definition">¶</a></dt>
+<dd><p>A mapping of every game object’s ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict[str, <a class="reference internal" href="game_object.html#games.catastrophe.game_object.GameObject" title="games.catastrophe.game_object.GameObject">games.catastrophe.game_object.GameObject</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.get_game_object">
+<code class="sig-name descname">get_game_object</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>joueur.base_game_object.BaseGameObject<span class="p">]</span><a class="headerlink" href="#games.catastrophe.game.Game.get_game_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>gets the game object with the given id, or None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>BaseGameObject in the game with the given id, or None if not found</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.get_tile_at">
+<code class="sig-name descname">get_tile_at</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span><a class="reference internal" href="tile.html#games.catastrophe.tile.Tile" title="games.catastrophe.tile.Tile">games.catastrophe.tile.Tile</a><span class="p">]</span><a class="headerlink" href="#games.catastrophe.game.Game.get_tile_at" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the Tile at a specified (x, y) position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – An integer between 0 and the map_width.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – An integer between 0 and the map_height.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The Tile at (x, y) or None if out of bounds.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="tile.html#games.catastrophe.tile.Tile" title="games.catastrophe.tile.Tile">games.catastrophe.tile.Tile</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.harvest_cooldown">
+<em class="property">property </em><code class="sig-name descname">harvest_cooldown</code><a class="headerlink" href="#games.catastrophe.game.Game.harvest_cooldown" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of turns it takes for a Tile that was just harvested to grow food again.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.jobs">
+<em class="property">property </em><code class="sig-name descname">jobs</code><a class="headerlink" href="#games.catastrophe.game.Game.jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>All the Jobs that Units can have in the game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="job.html#games.catastrophe.job.Job" title="games.catastrophe.job.Job">games.catastrophe.job.Job</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.lower_harvest_amount">
+<em class="property">property </em><code class="sig-name descname">lower_harvest_amount</code><a class="headerlink" href="#games.catastrophe.game.Game.lower_harvest_amount" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount that the harvest rate is lowered each season.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.map_height">
+<em class="property">property </em><code class="sig-name descname">map_height</code><a class="headerlink" href="#games.catastrophe.game.Game.map_height" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of Tiles in the map along the y (vertical) axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.map_width">
+<em class="property">property </em><code class="sig-name descname">map_width</code><a class="headerlink" href="#games.catastrophe.game.Game.map_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of Tiles in the map along the x (horizontal) axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.max_turns">
+<em class="property">property </em><code class="sig-name descname">max_turns</code><a class="headerlink" href="#games.catastrophe.game.Game.max_turns" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum number of turns before the game will automatically end.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.monument_cost_mult">
+<em class="property">property </em><code class="sig-name descname">monument_cost_mult</code><a class="headerlink" href="#games.catastrophe.game.Game.monument_cost_mult" title="Permalink to this definition">¶</a></dt>
+<dd><p>The multiplier for the cost of actions when performing them in range of a monument. Does not effect pickup cost.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.monument_materials">
+<em class="property">property </em><code class="sig-name descname">monument_materials</code><a class="headerlink" href="#games.catastrophe.game.Game.monument_materials" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of materials in a monument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.neutral_materials">
+<em class="property">property </em><code class="sig-name descname">neutral_materials</code><a class="headerlink" href="#games.catastrophe.game.Game.neutral_materials" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of materials in a neutral Structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.players">
+<em class="property">property </em><code class="sig-name descname">players</code><a class="headerlink" href="#games.catastrophe.game.Game.players" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of all the players in the game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="player.html#games.catastrophe.player.Player" title="games.catastrophe.player.Player">games.catastrophe.player.Player</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.session">
+<em class="property">property </em><code class="sig-name descname">session</code><a class="headerlink" href="#games.catastrophe.game.Game.session" title="Permalink to this definition">¶</a></dt>
+<dd><p>A unique identifier for the game instance that is being played.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.shelter_materials">
+<em class="property">property </em><code class="sig-name descname">shelter_materials</code><a class="headerlink" href="#games.catastrophe.game.Game.shelter_materials" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of materials in a shelter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.starting_food">
+<em class="property">property </em><code class="sig-name descname">starting_food</code><a class="headerlink" href="#games.catastrophe.game.Game.starting_food" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of food Players start with.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.starving_energy_mult">
+<em class="property">property </em><code class="sig-name descname">starving_energy_mult</code><a class="headerlink" href="#games.catastrophe.game.Game.starving_energy_mult" title="Permalink to this definition">¶</a></dt>
+<dd><p>The multiplier for the amount of energy regenerated when resting while starving.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.structures">
+<em class="property">property </em><code class="sig-name descname">structures</code><a class="headerlink" href="#games.catastrophe.game.Game.structures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Every Structure in the game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="structure.html#games.catastrophe.structure.Structure" title="games.catastrophe.structure.Structure">games.catastrophe.structure.Structure</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.tiles">
+<em class="property">property </em><code class="sig-name descname">tiles</code><a class="headerlink" href="#games.catastrophe.game.Game.tiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>All the tiles in the map, stored in Row-major order. Use <cite>x + y * mapWidth</cite> to access the correct index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="tile.html#games.catastrophe.tile.Tile" title="games.catastrophe.tile.Tile">games.catastrophe.tile.Tile</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.time_added_per_turn">
+<em class="property">property </em><code class="sig-name descname">time_added_per_turn</code><a class="headerlink" href="#games.catastrophe.game.Game.time_added_per_turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of time (in nano-seconds) added after each player performs a turn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.turns_between_harvests">
+<em class="property">property </em><code class="sig-name descname">turns_between_harvests</code><a class="headerlink" href="#games.catastrophe.game.Game.turns_between_harvests" title="Permalink to this definition">¶</a></dt>
+<dd><p>After a food tile is harvested, the number of turns before it can be harvested again.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.turns_to_create_human">
+<em class="property">property </em><code class="sig-name descname">turns_to_create_human</code><a class="headerlink" href="#games.catastrophe.game.Game.turns_to_create_human" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of turns between fresh humans being spawned on the road.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.turns_to_lower_harvest">
+<em class="property">property </em><code class="sig-name descname">turns_to_lower_harvest</code><a class="headerlink" href="#games.catastrophe.game.Game.turns_to_lower_harvest" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of turns before the harvest rate is lowered (length of each season basically).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.units">
+<em class="property">property </em><code class="sig-name descname">units</code><a class="headerlink" href="#games.catastrophe.game.Game.units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Every Unit in the game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="unit.html#games.catastrophe.unit.Unit" title="games.catastrophe.unit.Unit">games.catastrophe.unit.Unit</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.catastrophe.game.Game.wall_materials">
+<em class="property">property </em><code class="sig-name descname">wall_materials</code><a class="headerlink" href="#games.catastrophe.game.Game.wall_materials" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of materials in a wall.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../anarchy/index.html">Anarchy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Catastrophe</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#rules">Rules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#classes">Classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ai.html">AI</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game_object.html">GameObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="job.html">Job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="structure.html">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tile.html">Tile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-notes">Other Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../checkers/index.html">Checkers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chess/index.html">Chess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coreminer/index.html">Coreminer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../necrowar/index.html">Necrowar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../newtonian/index.html">Newtonian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pirates/index.html">Pirates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saloon/index.html">Saloon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spiders/index.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stardash/index.html">Stardash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stumped/index.html">Stumped</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ai.html"
+                        title="previous chapter">AI</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="game_object.html"
+                        title="next chapter">GameObject</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/catastrophe/game.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="game_object.html" title="GameObject"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ai.html" title="AI"
+             accesskey="P">previous</a> |</li>
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, SIG-GAME.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.0.
+    </div>
+  </body>
+</html>

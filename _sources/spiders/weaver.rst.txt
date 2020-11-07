@@ -1,0 +1,9 @@
+Weaver
+======
+
+.. currentmodule:: games.spiders.weaver
+
+.. automodule:: games.spiders.weaver
+   :members:
+   :inherited-members:
+   :show-inheritance:

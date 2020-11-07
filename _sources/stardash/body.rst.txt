@@ -1,0 +1,9 @@
+Body
+====
+
+.. currentmodule:: games.stardash.body
+
+.. automodule:: games.stardash.body
+   :members:
+   :inherited-members:
+   :show-inheritance:

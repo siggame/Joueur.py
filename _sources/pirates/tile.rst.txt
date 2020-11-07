@@ -1,0 +1,9 @@
+Tile
+====
+
+.. currentmodule:: games.pirates.tile
+
+.. automodule:: games.pirates.tile
+   :members:
+   :inherited-members:
+   :show-inheritance:

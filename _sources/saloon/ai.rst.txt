@@ -1,0 +1,9 @@
+AI
+==
+
+.. currentmodule:: games.saloon.ai
+
+.. automodule:: games.saloon.ai
+   :members:
+   :inherited-members:
+   :show-inheritance:

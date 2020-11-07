@@ -1,0 +1,9 @@
+GameObject
+==========
+
+.. currentmodule:: games.pirates.game_object
+
+.. automodule:: games.pirates.game_object
+   :members:
+   :inherited-members:
+   :show-inheritance:

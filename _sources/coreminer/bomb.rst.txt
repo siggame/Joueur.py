@@ -1,0 +1,9 @@
+Bomb
+====
+
+.. currentmodule:: games.coreminer.bomb
+
+.. automodule:: games.coreminer.bomb
+   :members:
+   :inherited-members:
+   :show-inheritance:

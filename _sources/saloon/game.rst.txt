@@ -1,0 +1,9 @@
+Game
+====
+
+.. currentmodule:: games.saloon.game
+
+.. automodule:: games.saloon.game
+   :members:
+   :inherited-members:
+   :show-inheritance:

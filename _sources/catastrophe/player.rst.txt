@@ -1,0 +1,9 @@
+Player
+======
+
+.. currentmodule:: games.catastrophe.player
+
+.. automodule:: games.catastrophe.player
+   :members:
+   :inherited-members:
+   :show-inheritance:

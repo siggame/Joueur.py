@@ -1,0 +1,9 @@
+Building
+========
+
+.. currentmodule:: games.anarchy.building
+
+.. automodule:: games.anarchy.building
+   :members:
+   :inherited-members:
+   :show-inheritance:

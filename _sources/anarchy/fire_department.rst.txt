@@ -1,0 +1,9 @@
+FireDepartment
+==============
+
+.. currentmodule:: games.anarchy.fire_department
+
+.. automodule:: games.anarchy.fire_department
+   :members:
+   :inherited-members:
+   :show-inheritance:

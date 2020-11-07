@@ -1,0 +1,9 @@
+AI
+==
+
+.. currentmodule:: games.catastrophe.ai
+
+.. automodule:: games.catastrophe.ai
+   :members:
+   :inherited-members:
+   :show-inheritance:

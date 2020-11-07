@@ -1,0 +1,48 @@
+Spiders
+=======
+
+*There's an infestation of enemy spiders challenging your queen BroodMother spider! Protect her and attack the other BroodMother in this turn based, node based, game.*
+
+Rules
+^^^^^
+
+The full game rules for spiders can be found on `GitHub <https://github.com/siggame/Cadre/blob/master/Games/Spiders/rules.md>`_.
+
+Additional materials, such as the `story <https://github.com/siggame/Cadre/blob/master/Games/Spiders/story.md>`_ and `game template <https://github.com/siggame/Cadre/blob/master/Games/Spiders/creer.yaml>`_ can be found on `GitHub as well <https://github.com/siggame/Cadre/blob/master/Games/Spiders/>`_.
+
+Classes
+^^^^^^^
+
+.. toctree::
+   :maxdepth: 3
+   :name: Spiders
+
+   ai.rst
+   brood_mother.rst
+   cutter.rst
+   game.rst
+   game_object.rst
+   nest.rst
+   player.rst
+   spider.rst
+   spiderling.rst
+   spitter.rst
+   weaver.rst
+   web.rst
+
+Other Notes
+^^^^^^^^^^^
+
+Modifying non AI files
+
+Each class fle inside of ``games/GAME_NAME/``, except for your ``ai.py`` should ideally not be modified. They are intended
+to be read only constructs that hold the state of that object at the point in time you are reading its properties.
+That being is said, if you really wish to add functionality, such as helper functions, ensure they do not directly modify game state information.
+
+Game Logic
+
+If you are attempting to figure out how the logic is executed for a game, that code is **not** here.
+All `Cadre <https://github.com/siggame/Cadre>`_ game clients are dumb state tracking programs that facilitate IO between a game server and your AI in whatever language you choose.
+If you wish to get the actual code for a game check in the `game server <https://github.com/siggame/Cerveau>`_.
+Its directory structure is similar to most clients (such as this one).
+

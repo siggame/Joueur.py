@@ -1,0 +1,9 @@
+AI
+==
+
+.. currentmodule:: games.stumped.ai
+
+.. automodule:: games.stumped.ai
+   :members:
+   :inherited-members:
+   :show-inheritance:

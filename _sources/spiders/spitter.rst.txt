@@ -1,0 +1,9 @@
+Spitter
+=======
+
+.. currentmodule:: games.spiders.spitter
+
+.. automodule:: games.spiders.spitter
+   :members:
+   :inherited-members:
+   :show-inheritance:

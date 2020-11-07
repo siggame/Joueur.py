@@ -1,0 +1,9 @@
+Job
+===
+
+.. currentmodule:: games.catastrophe.job
+
+.. automodule:: games.catastrophe.job
+   :members:
+   :inherited-members:
+   :show-inheritance:

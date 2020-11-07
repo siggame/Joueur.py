@@ -1,0 +1,9 @@
+Player
+======
+
+.. currentmodule:: games.stardash.player
+
+.. automodule:: games.stardash.player
+   :members:
+   :inherited-members:
+   :show-inheritance:

@@ -1,0 +1,9 @@
+Player
+======
+
+.. currentmodule:: games.anarchy.player
+
+.. automodule:: games.anarchy.player
+   :members:
+   :inherited-members:
+   :show-inheritance:

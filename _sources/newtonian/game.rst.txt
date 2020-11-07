@@ -1,0 +1,9 @@
+Game
+====
+
+.. currentmodule:: games.newtonian.game
+
+.. automodule:: games.newtonian.game
+   :members:
+   :inherited-members:
+   :show-inheritance:

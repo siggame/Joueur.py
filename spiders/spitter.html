@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spitter &#8212; Python 3 Joueur Client Docs</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Weaver" href="weaver.html" />
+    <link rel="prev" title="Spiderling" href="spiderling.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="../_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+    
+
+  </head><body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="responsive-menu"><a href="#sidebar-anchor" title="Navigation">&#9776;</a></li>
+        <li><a href="../index.html">Python 3 Joueur Client Docs</a> &#187;</li>
+          <li><a href="index.html" accesskey="U">Spiders</a> &#187;</li> 
+      </ul>
+    </div>
+    
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-games.spiders.spitter">
+<span id="spitter"></span><h1>Spitter<a class="headerlink" href="#module-games.spiders.spitter" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="games.spiders.spitter.Spitter">
+<em class="property">class </em><code class="sig-prename descclassname">games.spiders.spitter.</code><code class="sig-name descname">Spitter</code><a class="headerlink" href="#games.spiders.spitter.Spitter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="spiderling.html#games.spiders.spiderling.Spiderling" title="games.spiders.spiderling.Spiderling"><code class="xref py py-class docutils literal notranslate"><span class="pre">games.spiders.spiderling.Spiderling</span></code></a></p>
+<p>The class representing the Spitter in the Spiders game.</p>
+<p>A Spiderling that creates and spits new Webs from the Nest it is on to another Nest, connecting them.</p>
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.attack">
+<code class="sig-name descname">attack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spiderling</span><span class="p">:</span> <span class="n"><a class="reference internal" href="spiderling.html#games.spiders.spiderling.Spiderling" title="games.spiders.spiderling.Spiderling">games.spiders.spiderling.Spiderling</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.spiders.spitter.Spitter.attack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attacks another Spiderling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spiderling</strong> (<a class="reference internal" href="spiderling.html#games.spiders.spiderling.Spiderling" title="games.spiders.spiderling.Spiderling"><em>games.spiders.spiderling.Spiderling</em></a>) – The Spiderling to attack.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the attack was successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.busy">
+<em class="property">property </em><code class="sig-name descname">busy</code><a class="headerlink" href="#games.spiders.spitter.Spitter.busy" title="Permalink to this definition">¶</a></dt>
+<dd><p>When empty string this Spiderling is not busy, and can act. Otherwise a string representing what it is busy with, e.g. ‘Moving’, ‘Attacking’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>‘’, ‘Moving’, ‘Attacking’, ‘Strengthening’, ‘Weakening’, ‘Cutting’, or ‘Spitting’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.game_object_name">
+<em class="property">property </em><code class="sig-name descname">game_object_name</code><a class="headerlink" href="#games.spiders.spitter.Spitter.game_object_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representing the top level Class that this game object is an instance of. Used for reflection to create new instances on clients, but exposed for convenience should AIs want this data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#games.spiders.spitter.Spitter.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A unique id for each instance of a GameObject or a sub class. Used for client and server communication. Should never change value after being set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.is_dead">
+<em class="property">property </em><code class="sig-name descname">is_dead</code><a class="headerlink" href="#games.spiders.spitter.Spitter.is_dead" title="Permalink to this definition">¶</a></dt>
+<dd><p>If this Spider is dead and has been removed from the game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.log">
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#games.spiders.spitter.Spitter.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a message to this GameObject’s logs. Intended for your own debugging purposes, as strings stored here are saved in the gamelog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – A string to add to this GameObject’s log. Intended for debugging.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.logs">
+<em class="property">property </em><code class="sig-name descname">logs</code><a class="headerlink" href="#games.spiders.spitter.Spitter.logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any strings logged will be stored here. Intended for debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.move">
+<code class="sig-name descname">move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">web</span><span class="p">:</span> <span class="n"><a class="reference internal" href="web.html#games.spiders.web.Web" title="games.spiders.web.Web">games.spiders.web.Web</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.spiders.spitter.Spitter.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts moving the Spiderling across a Web to another Nest.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>web</strong> (<a class="reference internal" href="web.html#games.spiders.web.Web" title="games.spiders.web.Web"><em>games.spiders.web.Web</em></a>) – The Web you want to move across to the other Nest.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the move was successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.moving_on_web">
+<em class="property">property </em><code class="sig-name descname">moving_on_web</code><a class="headerlink" href="#games.spiders.spitter.Spitter.moving_on_web" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Web this Spiderling is using to move. None if it is not moving.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="web.html#games.spiders.web.Web" title="games.spiders.web.Web">games.spiders.web.Web</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.moving_to_nest">
+<em class="property">property </em><code class="sig-name descname">moving_to_nest</code><a class="headerlink" href="#games.spiders.spitter.Spitter.moving_to_nest" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Nest this Spiderling is moving to. None if it is not moving.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="nest.html#games.spiders.nest.Nest" title="games.spiders.nest.Nest">games.spiders.nest.Nest</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.nest">
+<em class="property">property </em><code class="sig-name descname">nest</code><a class="headerlink" href="#games.spiders.spitter.Spitter.nest" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Nest that this Spider is currently on. None when moving on a Web.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="nest.html#games.spiders.nest.Nest" title="games.spiders.nest.Nest">games.spiders.nest.Nest</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.number_of_coworkers">
+<em class="property">property </em><code class="sig-name descname">number_of_coworkers</code><a class="headerlink" href="#games.spiders.spitter.Spitter.number_of_coworkers" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of Spiderlings busy with the same work this Spiderling is doing, speeding up the task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.owner">
+<em class="property">property </em><code class="sig-name descname">owner</code><a class="headerlink" href="#games.spiders.spitter.Spitter.owner" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Player that owns this Spider, and can command it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="player.html#games.spiders.player.Player" title="games.spiders.player.Player">games.spiders.player.Player</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.spit">
+<code class="sig-name descname">spit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nest</span><span class="p">:</span> <span class="n"><a class="reference internal" href="nest.html#games.spiders.nest.Nest" title="games.spiders.nest.Nest">games.spiders.nest.Nest</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.spiders.spitter.Spitter.spit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and spits a new Web from the Nest the Spitter is on to another Nest, connecting them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nest</strong> (<a class="reference internal" href="nest.html#games.spiders.nest.Nest" title="games.spiders.nest.Nest"><em>games.spiders.nest.Nest</em></a>) – The Nest you want to spit a Web to, thus connecting that Nest and the one the Spitter is on.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the spit was successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.spitting_web_to_nest">
+<em class="property">property </em><code class="sig-name descname">spitting_web_to_nest</code><a class="headerlink" href="#games.spiders.spitter.Spitter.spitting_web_to_nest" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Nest that this Spitter is creating a Web to spit at, thus connecting them. None if not spitting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="nest.html#games.spiders.nest.Nest" title="games.spiders.nest.Nest">games.spiders.nest.Nest</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.spiders.spitter.Spitter.work_remaining">
+<em class="property">property </em><code class="sig-name descname">work_remaining</code><a class="headerlink" href="#games.spiders.spitter.Spitter.work_remaining" title="Permalink to this definition">¶</a></dt>
+<dd><p>How much work needs to be done for this Spiderling to finish being busy. See docs for the Work formula.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../anarchy/index.html">Anarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catastrophe/index.html">Catastrophe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../checkers/index.html">Checkers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chess/index.html">Chess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coreminer/index.html">Coreminer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../necrowar/index.html">Necrowar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../newtonian/index.html">Newtonian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pirates/index.html">Pirates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saloon/index.html">Saloon</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Spiders</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#rules">Rules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#classes">Classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ai.html">AI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="brood_mother.html">BroodMother</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cutter.html">Cutter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game_object.html">GameObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nest.html">Nest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spider.html">Spider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spiderling.html">Spiderling</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Spitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="weaver.html">Weaver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="web.html">Web</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-notes">Other Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../stardash/index.html">Stardash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stumped/index.html">Stumped</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="spiderling.html"
+                        title="previous chapter">Spiderling</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="weaver.html"
+                        title="next chapter">Weaver</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/spiders/spitter.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="weaver.html" title="Weaver"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spiderling.html" title="Spiderling"
+             accesskey="P">previous</a> |</li>
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, SIG-GAME.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.0.
+    </div>
+  </body>
+</html>

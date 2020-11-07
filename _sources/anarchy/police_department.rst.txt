@@ -1,0 +1,9 @@
+PoliceDepartment
+================
+
+.. currentmodule:: games.anarchy.police_department
+
+.. automodule:: games.anarchy.police_department
+   :members:
+   :inherited-members:
+   :show-inheritance:

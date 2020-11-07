@@ -1,0 +1,9 @@
+Forecast
+========
+
+.. currentmodule:: games.anarchy.forecast
+
+.. automodule:: games.anarchy.forecast
+   :members:
+   :inherited-members:
+   :show-inheritance:

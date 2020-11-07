@@ -1,0 +1,9 @@
+Furnishing
+==========
+
+.. currentmodule:: games.saloon.furnishing
+
+.. automodule:: games.saloon.furnishing
+   :members:
+   :inherited-members:
+   :show-inheritance:

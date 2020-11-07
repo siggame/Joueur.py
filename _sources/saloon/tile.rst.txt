@@ -1,0 +1,9 @@
+Tile
+====
+
+.. currentmodule:: games.saloon.tile
+
+.. automodule:: games.saloon.tile
+   :members:
+   :inherited-members:
+   :show-inheritance:

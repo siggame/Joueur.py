@@ -1,0 +1,9 @@
+Nest
+====
+
+.. currentmodule:: games.spiders.nest
+
+.. automodule:: games.spiders.nest
+   :members:
+   :inherited-members:
+   :show-inheritance:

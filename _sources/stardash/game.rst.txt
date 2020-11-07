@@ -1,0 +1,9 @@
+Game
+====
+
+.. currentmodule:: games.stardash.game
+
+.. automodule:: games.stardash.game
+   :members:
+   :inherited-members:
+   :show-inheritance:

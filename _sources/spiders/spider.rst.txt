@@ -1,0 +1,9 @@
+Spider
+======
+
+.. currentmodule:: games.spiders.spider
+
+.. automodule:: games.spiders.spider
+   :members:
+   :inherited-members:
+   :show-inheritance:

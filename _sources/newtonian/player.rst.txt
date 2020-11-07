@@ -1,0 +1,9 @@
+Player
+======
+
+.. currentmodule:: games.newtonian.player
+
+.. automodule:: games.newtonian.player
+   :members:
+   :inherited-members:
+   :show-inheritance:

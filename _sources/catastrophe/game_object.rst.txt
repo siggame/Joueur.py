@@ -1,0 +1,9 @@
+GameObject
+==========
+
+.. currentmodule:: games.catastrophe.game_object
+
+.. automodule:: games.catastrophe.game_object
+   :members:
+   :inherited-members:
+   :show-inheritance:

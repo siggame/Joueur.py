@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tile &#8212; Python 3 Joueur Client Docs</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="YoungGun" href="young_gun.html" />
+    <link rel="prev" title="Player" href="player.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="../_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+    
+
+  </head><body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="responsive-menu"><a href="#sidebar-anchor" title="Navigation">&#9776;</a></li>
+        <li><a href="../index.html">Python 3 Joueur Client Docs</a> &#187;</li>
+          <li><a href="index.html" accesskey="U">Saloon</a> &#187;</li> 
+      </ul>
+    </div>
+    
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-games.saloon.tile">
+<span id="tile"></span><h1>Tile<a class="headerlink" href="#module-games.saloon.tile" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="games.saloon.tile.Tile">
+<em class="property">class </em><code class="sig-prename descclassname">games.saloon.tile.</code><code class="sig-name descname">Tile</code><a class="headerlink" href="#games.saloon.tile.Tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="game_object.html#games.saloon.game_object.GameObject" title="games.saloon.game_object.GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">games.saloon.game_object.GameObject</span></code></a></p>
+<p>The class representing the Tile in the Saloon game.</p>
+<p>A Tile in the game that makes up the 2D map grid.</p>
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.bottle">
+<em class="property">property </em><code class="sig-name descname">bottle</code><a class="headerlink" href="#games.saloon.tile.Tile.bottle" title="Permalink to this definition">¶</a></dt>
+<dd><p>The beer Bottle currently flying over this Tile, None otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bottle.html#games.saloon.bottle.Bottle" title="games.saloon.bottle.Bottle">games.saloon.bottle.Bottle</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.cowboy">
+<em class="property">property </em><code class="sig-name descname">cowboy</code><a class="headerlink" href="#games.saloon.tile.Tile.cowboy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Cowboy that is on this Tile, None otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="cowboy.html#games.saloon.cowboy.Cowboy" title="games.saloon.cowboy.Cowboy">games.saloon.cowboy.Cowboy</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="games.saloon.tile.Tile.directions">
+<code class="sig-name descname">directions</code><em class="property"> = ['North', 'East', 'South', 'West']</em><a class="headerlink" href="#games.saloon.tile.Tile.directions" title="Permalink to this definition">¶</a></dt>
+<dd><p>The valid directions that tiles can be in, “North”, “East”, “South”, or “West”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.furnishing">
+<em class="property">property </em><code class="sig-name descname">furnishing</code><a class="headerlink" href="#games.saloon.tile.Tile.furnishing" title="Permalink to this definition">¶</a></dt>
+<dd><p>The furnishing that is on this Tile, None otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="furnishing.html#games.saloon.furnishing.Furnishing" title="games.saloon.furnishing.Furnishing">games.saloon.furnishing.Furnishing</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.game_object_name">
+<em class="property">property </em><code class="sig-name descname">game_object_name</code><a class="headerlink" href="#games.saloon.tile.Tile.game_object_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representing the top level Class that this game object is an instance of. Used for reflection to create new instances on clients, but exposed for convenience should AIs want this data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.get_neighbors">
+<code class="sig-name descname">get_neighbors</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="#games.saloon.tile.Tile" title="games.saloon.tile.Tile">games.saloon.tile.Tile</a><span class="p">]</span><a class="headerlink" href="#games.saloon.tile.Tile.get_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the neighbors of this Tile</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of neighboring Tiles of this Tile.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="#games.saloon.tile.Tile" title="games.saloon.tile.Tile">games.saloon.tile.Tile</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.has_hazard">
+<em class="property">property </em><code class="sig-name descname">has_hazard</code><a class="headerlink" href="#games.saloon.tile.Tile.has_hazard" title="Permalink to this definition">¶</a></dt>
+<dd><p>If this Tile is pathable, but has a hazard that damages Cowboys that path through it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.has_neighbor">
+<code class="sig-name descname">has_neighbor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tile</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#games.saloon.tile.Tile" title="games.saloon.tile.Tile">games.saloon.tile.Tile</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.saloon.tile.Tile.has_neighbor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if this Tile has a specific neighboring Tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tile</strong> (<a class="reference internal" href="#games.saloon.tile.Tile" title="games.saloon.tile.Tile"><em>games.saloon.tile.Tile</em></a>) – The Tile to check against.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the tile is a neighbor of this Tile, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#games.saloon.tile.Tile.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A unique id for each instance of a GameObject or a sub class. Used for client and server communication. Should never change value after being set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.is_balcony">
+<em class="property">property </em><code class="sig-name descname">is_balcony</code><a class="headerlink" href="#games.saloon.tile.Tile.is_balcony" title="Permalink to this definition">¶</a></dt>
+<dd><p>If this Tile is a balcony of the Saloon that YoungGuns walk around on, and can never be pathed through by Cowboys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.is_pathable">
+<code class="sig-name descname">is_pathable</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.saloon.tile.Tile.is_pathable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a Tile is pathable to units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if pathable, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.log">
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#games.saloon.tile.Tile.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a message to this GameObject’s logs. Intended for your own debugging purposes, as strings stored here are saved in the gamelog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – A string to add to this GameObject’s log. Intended for debugging.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.logs">
+<em class="property">property </em><code class="sig-name descname">logs</code><a class="headerlink" href="#games.saloon.tile.Tile.logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any strings logged will be stored here. Intended for debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.tile_east">
+<em class="property">property </em><code class="sig-name descname">tile_east</code><a class="headerlink" href="#games.saloon.tile.Tile.tile_east" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Tile to the ‘East’ of this one (x+1, y). None if out of bounds of the map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#games.saloon.tile.Tile" title="games.saloon.tile.Tile">games.saloon.tile.Tile</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.tile_north">
+<em class="property">property </em><code class="sig-name descname">tile_north</code><a class="headerlink" href="#games.saloon.tile.Tile.tile_north" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Tile to the ‘North’ of this one (x, y-1). None if out of bounds of the map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#games.saloon.tile.Tile" title="games.saloon.tile.Tile">games.saloon.tile.Tile</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.tile_south">
+<em class="property">property </em><code class="sig-name descname">tile_south</code><a class="headerlink" href="#games.saloon.tile.Tile.tile_south" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Tile to the ‘South’ of this one (x, y+1). None if out of bounds of the map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#games.saloon.tile.Tile" title="games.saloon.tile.Tile">games.saloon.tile.Tile</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.tile_west">
+<em class="property">property </em><code class="sig-name descname">tile_west</code><a class="headerlink" href="#games.saloon.tile.Tile.tile_west" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Tile to the ‘West’ of this one (x-1, y). None if out of bounds of the map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#games.saloon.tile.Tile" title="games.saloon.tile.Tile">games.saloon.tile.Tile</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.x">
+<em class="property">property </em><code class="sig-name descname">x</code><a class="headerlink" href="#games.saloon.tile.Tile.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>The x (horizontal) position of this Tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.y">
+<em class="property">property </em><code class="sig-name descname">y</code><a class="headerlink" href="#games.saloon.tile.Tile.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>The y (vertical) position of this Tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.saloon.tile.Tile.young_gun">
+<em class="property">property </em><code class="sig-name descname">young_gun</code><a class="headerlink" href="#games.saloon.tile.Tile.young_gun" title="Permalink to this definition">¶</a></dt>
+<dd><p>The YoungGun on this tile, None otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="young_gun.html#games.saloon.young_gun.YoungGun" title="games.saloon.young_gun.YoungGun">games.saloon.young_gun.YoungGun</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../anarchy/index.html">Anarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catastrophe/index.html">Catastrophe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../checkers/index.html">Checkers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chess/index.html">Chess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coreminer/index.html">Coreminer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../necrowar/index.html">Necrowar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../newtonian/index.html">Newtonian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pirates/index.html">Pirates</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Saloon</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#rules">Rules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#classes">Classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ai.html">AI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bottle.html">Bottle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cowboy.html">Cowboy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="furnishing.html">Furnishing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game_object.html">GameObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="young_gun.html">YoungGun</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-notes">Other Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../spiders/index.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stardash/index.html">Stardash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stumped/index.html">Stumped</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="player.html"
+                        title="previous chapter">Player</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="young_gun.html"
+                        title="next chapter">YoungGun</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/saloon/tile.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="young_gun.html" title="YoungGun"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="player.html" title="Player"
+             accesskey="P">previous</a> |</li>
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, SIG-GAME.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.0.
+    </div>
+  </body>
+</html>

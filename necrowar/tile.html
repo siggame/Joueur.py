@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tile &#8212; Python 3 Joueur Client Docs</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tower" href="tower.html" />
+    <link rel="prev" title="Player" href="player.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="../_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+    
+
+  </head><body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="responsive-menu"><a href="#sidebar-anchor" title="Navigation">&#9776;</a></li>
+        <li><a href="../index.html">Python 3 Joueur Client Docs</a> &#187;</li>
+          <li><a href="index.html" accesskey="U">Necrowar</a> &#187;</li> 
+      </ul>
+    </div>
+    
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-games.necrowar.tile">
+<span id="tile"></span><h1>Tile<a class="headerlink" href="#module-games.necrowar.tile" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="games.necrowar.tile.Tile">
+<em class="property">class </em><code class="sig-prename descclassname">games.necrowar.tile.</code><code class="sig-name descname">Tile</code><a class="headerlink" href="#games.necrowar.tile.Tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="game_object.html#games.necrowar.game_object.GameObject" title="games.necrowar.game_object.GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">games.necrowar.game_object.GameObject</span></code></a></p>
+<p>The class representing the Tile in the Necrowar game.</p>
+<p>A Tile in the game that makes up the 2D map grid.</p>
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.corpses">
+<em class="property">property </em><code class="sig-name descname">corpses</code><a class="headerlink" href="#games.necrowar.tile.Tile.corpses" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of corpses on this tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="games.necrowar.tile.Tile.directions">
+<code class="sig-name descname">directions</code><em class="property"> = ['North', 'East', 'South', 'West']</em><a class="headerlink" href="#games.necrowar.tile.Tile.directions" title="Permalink to this definition">¶</a></dt>
+<dd><p>The valid directions that tiles can be in, “North”, “East”, “South”, or “West”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.game_object_name">
+<em class="property">property </em><code class="sig-name descname">game_object_name</code><a class="headerlink" href="#games.necrowar.tile.Tile.game_object_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representing the top level Class that this game object is an instance of. Used for reflection to create new instances on clients, but exposed for convenience should AIs want this data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.get_neighbors">
+<code class="sig-name descname">get_neighbors</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile">games.necrowar.tile.Tile</a><span class="p">]</span><a class="headerlink" href="#games.necrowar.tile.Tile.get_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the neighbors of this Tile</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of neighboring Tiles of this Tile.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile">games.necrowar.tile.Tile</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.has_neighbor">
+<code class="sig-name descname">has_neighbor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tile</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile">games.necrowar.tile.Tile</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.necrowar.tile.Tile.has_neighbor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if this Tile has a specific neighboring Tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tile</strong> (<a class="reference internal" href="#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile"><em>games.necrowar.tile.Tile</em></a>) – The Tile to check against.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the tile is a neighbor of this Tile, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#games.necrowar.tile.Tile.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A unique id for each instance of a GameObject or a sub class. Used for client and server communication. Should never change value after being set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.is_castle">
+<em class="property">property </em><code class="sig-name descname">is_castle</code><a class="headerlink" href="#games.necrowar.tile.Tile.is_castle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether or not the tile is a castle tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.is_gold_mine">
+<em class="property">property </em><code class="sig-name descname">is_gold_mine</code><a class="headerlink" href="#games.necrowar.tile.Tile.is_gold_mine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether or not the tile is considered to be a gold mine or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.is_grass">
+<em class="property">property </em><code class="sig-name descname">is_grass</code><a class="headerlink" href="#games.necrowar.tile.Tile.is_grass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether or not the tile is considered grass or not (Workers can walk on grass).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.is_island_gold_mine">
+<em class="property">property </em><code class="sig-name descname">is_island_gold_mine</code><a class="headerlink" href="#games.necrowar.tile.Tile.is_island_gold_mine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether or not the tile is considered to be the island gold mine or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.is_path">
+<em class="property">property </em><code class="sig-name descname">is_path</code><a class="headerlink" href="#games.necrowar.tile.Tile.is_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether or not the tile is considered a path or not (Units can walk on paths).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.is_pathable">
+<code class="sig-name descname">is_pathable</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.necrowar.tile.Tile.is_pathable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a Tile is pathable to units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if pathable, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.is_river">
+<em class="property">property </em><code class="sig-name descname">is_river</code><a class="headerlink" href="#games.necrowar.tile.Tile.is_river" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether or not the tile is considered a river or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.is_tower">
+<em class="property">property </em><code class="sig-name descname">is_tower</code><a class="headerlink" href="#games.necrowar.tile.Tile.is_tower" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether or not the tile is considered a tower or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.is_unit_spawn">
+<em class="property">property </em><code class="sig-name descname">is_unit_spawn</code><a class="headerlink" href="#games.necrowar.tile.Tile.is_unit_spawn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether or not the tile is the unit spawn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.is_wall">
+<em class="property">property </em><code class="sig-name descname">is_wall</code><a class="headerlink" href="#games.necrowar.tile.Tile.is_wall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether or not the tile can be moved on by workers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.is_worker_spawn">
+<em class="property">property </em><code class="sig-name descname">is_worker_spawn</code><a class="headerlink" href="#games.necrowar.tile.Tile.is_worker_spawn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether or not the tile is the worker spawn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.log">
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#games.necrowar.tile.Tile.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a message to this GameObject’s logs. Intended for your own debugging purposes, as strings stored here are saved in the gamelog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – A string to add to this GameObject’s log. Intended for debugging.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.logs">
+<em class="property">property </em><code class="sig-name descname">logs</code><a class="headerlink" href="#games.necrowar.tile.Tile.logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any strings logged will be stored here. Intended for debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.num_ghouls">
+<em class="property">property </em><code class="sig-name descname">num_ghouls</code><a class="headerlink" href="#games.necrowar.tile.Tile.num_ghouls" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of Ghouls on this tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.num_hounds">
+<em class="property">property </em><code class="sig-name descname">num_hounds</code><a class="headerlink" href="#games.necrowar.tile.Tile.num_hounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of Hounds on this tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.num_zombies">
+<em class="property">property </em><code class="sig-name descname">num_zombies</code><a class="headerlink" href="#games.necrowar.tile.Tile.num_zombies" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of Zombies on this tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.owner">
+<em class="property">property </em><code class="sig-name descname">owner</code><a class="headerlink" href="#games.necrowar.tile.Tile.owner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Which player owns this tile, only applies to grass tiles for workers, NULL otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="player.html#games.necrowar.player.Player" title="games.necrowar.player.Player">games.necrowar.player.Player</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.res">
+<code class="sig-name descname">res</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.necrowar.tile.Tile.res" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resurrect the corpses on this tile into Zombies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – Number of zombies to resurrect.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successful res, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.spawn_unit">
+<code class="sig-name descname">spawn_unit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.necrowar.tile.Tile.spawn_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spawns a fighting unit on the correct tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>title</strong> (<em>str</em>) – The title of the desired unit type.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successfully spawned, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.spawn_worker">
+<code class="sig-name descname">spawn_worker</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.necrowar.tile.Tile.spawn_worker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spawns a worker on the correct tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if successfully spawned, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.tile_east">
+<em class="property">property </em><code class="sig-name descname">tile_east</code><a class="headerlink" href="#games.necrowar.tile.Tile.tile_east" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Tile to the ‘East’ of this one (x+1, y). None if out of bounds of the map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile">games.necrowar.tile.Tile</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.tile_north">
+<em class="property">property </em><code class="sig-name descname">tile_north</code><a class="headerlink" href="#games.necrowar.tile.Tile.tile_north" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Tile to the ‘North’ of this one (x, y-1). None if out of bounds of the map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile">games.necrowar.tile.Tile</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.tile_south">
+<em class="property">property </em><code class="sig-name descname">tile_south</code><a class="headerlink" href="#games.necrowar.tile.Tile.tile_south" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Tile to the ‘South’ of this one (x, y+1). None if out of bounds of the map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile">games.necrowar.tile.Tile</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.tile_west">
+<em class="property">property </em><code class="sig-name descname">tile_west</code><a class="headerlink" href="#games.necrowar.tile.Tile.tile_west" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Tile to the ‘West’ of this one (x-1, y). None if out of bounds of the map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile">games.necrowar.tile.Tile</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.tower">
+<em class="property">property </em><code class="sig-name descname">tower</code><a class="headerlink" href="#games.necrowar.tile.Tile.tower" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Tower on this Tile if present, otherwise None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="tower.html#games.necrowar.tower.Tower" title="games.necrowar.tower.Tower">games.necrowar.tower.Tower</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.unit">
+<em class="property">property </em><code class="sig-name descname">unit</code><a class="headerlink" href="#games.necrowar.tile.Tile.unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Unit on this Tile if present, otherwise None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="unit.html#games.necrowar.unit.Unit" title="games.necrowar.unit.Unit">games.necrowar.unit.Unit</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.x">
+<em class="property">property </em><code class="sig-name descname">x</code><a class="headerlink" href="#games.necrowar.tile.Tile.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>The x (horizontal) position of this Tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tile.Tile.y">
+<em class="property">property </em><code class="sig-name descname">y</code><a class="headerlink" href="#games.necrowar.tile.Tile.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>The y (vertical) position of this Tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../anarchy/index.html">Anarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catastrophe/index.html">Catastrophe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../checkers/index.html">Checkers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chess/index.html">Chess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coreminer/index.html">Coreminer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Necrowar</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#rules">Rules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#classes">Classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ai.html">AI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game_object.html">GameObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tower.html">Tower</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tower_job.html">TowerJob</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit.html">Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_job.html">UnitJob</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-notes">Other Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../newtonian/index.html">Newtonian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pirates/index.html">Pirates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saloon/index.html">Saloon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spiders/index.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stardash/index.html">Stardash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stumped/index.html">Stumped</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="player.html"
+                        title="previous chapter">Player</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tower.html"
+                        title="next chapter">Tower</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/necrowar/tile.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tower.html" title="Tower"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="player.html" title="Player"
+             accesskey="P">previous</a> |</li>
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, SIG-GAME.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.0.
+    </div>
+  </body>
+</html>

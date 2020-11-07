@@ -1,0 +1,9 @@
+Spiderling
+==========
+
+.. currentmodule:: games.spiders.spiderling
+
+.. automodule:: games.spiders.spiderling
+   :members:
+   :inherited-members:
+   :show-inheritance:

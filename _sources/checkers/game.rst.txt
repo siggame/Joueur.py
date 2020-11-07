@@ -1,0 +1,9 @@
+Game
+====
+
+.. currentmodule:: games.checkers.game
+
+.. automodule:: games.checkers.game
+   :members:
+   :inherited-members:
+   :show-inheritance:

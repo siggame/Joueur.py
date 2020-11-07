@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Building &#8212; Python 3 Joueur Client Docs</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FireDepartment" href="fire_department.html" />
+    <link rel="prev" title="AI" href="ai.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="../_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+    
+
+  </head><body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="responsive-menu"><a href="#sidebar-anchor" title="Navigation">&#9776;</a></li>
+        <li><a href="../index.html">Python 3 Joueur Client Docs</a> &#187;</li>
+          <li><a href="index.html" accesskey="U">Anarchy</a> &#187;</li> 
+      </ul>
+    </div>
+    
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-games.anarchy.building">
+<span id="building"></span><h1>Building<a class="headerlink" href="#module-games.anarchy.building" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="games.anarchy.building.Building">
+<em class="property">class </em><code class="sig-prename descclassname">games.anarchy.building.</code><code class="sig-name descname">Building</code><a class="headerlink" href="#games.anarchy.building.Building" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="game_object.html#games.anarchy.game_object.GameObject" title="games.anarchy.game_object.GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">games.anarchy.game_object.GameObject</span></code></a></p>
+<p>The class representing the Building in the Anarchy game.</p>
+<p>A basic building. It does nothing besides burn down. Other Buildings inherit from this class.</p>
+<dl class="py method">
+<dt id="games.anarchy.building.Building.bribed">
+<em class="property">property </em><code class="sig-name descname">bribed</code><a class="headerlink" href="#games.anarchy.building.Building.bribed" title="Permalink to this definition">¶</a></dt>
+<dd><p>When True this building has already been bribed this turn and cannot be bribed again this turn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.building_east">
+<em class="property">property </em><code class="sig-name descname">building_east</code><a class="headerlink" href="#games.anarchy.building.Building.building_east" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Building directly to the east of this building, or None if not present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#games.anarchy.building.Building" title="games.anarchy.building.Building">games.anarchy.building.Building</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.building_north">
+<em class="property">property </em><code class="sig-name descname">building_north</code><a class="headerlink" href="#games.anarchy.building.Building.building_north" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Building directly to the north of this building, or None if not present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#games.anarchy.building.Building" title="games.anarchy.building.Building">games.anarchy.building.Building</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.building_south">
+<em class="property">property </em><code class="sig-name descname">building_south</code><a class="headerlink" href="#games.anarchy.building.Building.building_south" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Building directly to the south of this building, or None if not present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#games.anarchy.building.Building" title="games.anarchy.building.Building">games.anarchy.building.Building</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.building_west">
+<em class="property">property </em><code class="sig-name descname">building_west</code><a class="headerlink" href="#games.anarchy.building.Building.building_west" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Building directly to the west of this building, or None if not present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#games.anarchy.building.Building" title="games.anarchy.building.Building">games.anarchy.building.Building</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.fire">
+<em class="property">property </em><code class="sig-name descname">fire</code><a class="headerlink" href="#games.anarchy.building.Building.fire" title="Permalink to this definition">¶</a></dt>
+<dd><p>How much fire is currently burning the building, and thus how much damage it will take at the end of its owner’s turn. 0 means no fire.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.game_object_name">
+<em class="property">property </em><code class="sig-name descname">game_object_name</code><a class="headerlink" href="#games.anarchy.building.Building.game_object_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representing the top level Class that this game object is an instance of. Used for reflection to create new instances on clients, but exposed for convenience should AIs want this data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.health">
+<em class="property">property </em><code class="sig-name descname">health</code><a class="headerlink" href="#games.anarchy.building.Building.health" title="Permalink to this definition">¶</a></dt>
+<dd><p>How much health this building currently has. When this reaches 0 the Building has been burned down.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#games.anarchy.building.Building.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A unique id for each instance of a GameObject or a sub class. Used for client and server communication. Should never change value after being set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.is_headquarters">
+<em class="property">property </em><code class="sig-name descname">is_headquarters</code><a class="headerlink" href="#games.anarchy.building.Building.is_headquarters" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if this is the Headquarters of the owning player, False otherwise. Burning this down wins the game for the other Player.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.log">
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#games.anarchy.building.Building.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a message to this GameObject’s logs. Intended for your own debugging purposes, as strings stored here are saved in the gamelog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – A string to add to this GameObject’s log. Intended for debugging.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.logs">
+<em class="property">property </em><code class="sig-name descname">logs</code><a class="headerlink" href="#games.anarchy.building.Building.logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any strings logged will be stored here. Intended for debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.owner">
+<em class="property">property </em><code class="sig-name descname">owner</code><a class="headerlink" href="#games.anarchy.building.Building.owner" title="Permalink to this definition">¶</a></dt>
+<dd><p>The player that owns this building. If it burns down (health reaches 0) that player gets an additional bribe(s).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="player.html#games.anarchy.player.Player" title="games.anarchy.player.Player">games.anarchy.player.Player</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.x">
+<em class="property">property </em><code class="sig-name descname">x</code><a class="headerlink" href="#games.anarchy.building.Building.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>The location of the Building along the x-axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.anarchy.building.Building.y">
+<em class="property">property </em><code class="sig-name descname">y</code><a class="headerlink" href="#games.anarchy.building.Building.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>The location of the Building along the y-axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Anarchy</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#rules">Rules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#classes">Classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ai.html">AI</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fire_department.html">FireDepartment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forecast.html">Forecast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game_object.html">GameObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="police_department.html">PoliceDepartment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="warehouse.html">Warehouse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="weather_station.html">WeatherStation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-notes">Other Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../catastrophe/index.html">Catastrophe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../checkers/index.html">Checkers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chess/index.html">Chess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coreminer/index.html">Coreminer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../necrowar/index.html">Necrowar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../newtonian/index.html">Newtonian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pirates/index.html">Pirates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saloon/index.html">Saloon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spiders/index.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stardash/index.html">Stardash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stumped/index.html">Stumped</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ai.html"
+                        title="previous chapter">AI</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="fire_department.html"
+                        title="next chapter">FireDepartment</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/anarchy/building.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="fire_department.html" title="FireDepartment"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ai.html" title="AI"
+             accesskey="P">previous</a> |</li>
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, SIG-GAME.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.0.
+    </div>
+  </body>
+</html>

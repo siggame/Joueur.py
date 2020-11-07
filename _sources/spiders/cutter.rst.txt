@@ -1,0 +1,9 @@
+Cutter
+======
+
+.. currentmodule:: games.spiders.cutter
+
+.. automodule:: games.spiders.cutter
+   :members:
+   :inherited-members:
+   :show-inheritance:

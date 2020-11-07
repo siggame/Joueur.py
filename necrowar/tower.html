@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tower &#8212; Python 3 Joueur Client Docs</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TowerJob" href="tower_job.html" />
+    <link rel="prev" title="Tile" href="tile.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="../_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+    
+
+  </head><body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="responsive-menu"><a href="#sidebar-anchor" title="Navigation">&#9776;</a></li>
+        <li><a href="../index.html">Python 3 Joueur Client Docs</a> &#187;</li>
+          <li><a href="index.html" accesskey="U">Necrowar</a> &#187;</li> 
+      </ul>
+    </div>
+    
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-games.necrowar.tower">
+<span id="tower"></span><h1>Tower<a class="headerlink" href="#module-games.necrowar.tower" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="games.necrowar.tower.Tower">
+<em class="property">class </em><code class="sig-prename descclassname">games.necrowar.tower.</code><code class="sig-name descname">Tower</code><a class="headerlink" href="#games.necrowar.tower.Tower" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="game_object.html#games.necrowar.game_object.GameObject" title="games.necrowar.game_object.GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">games.necrowar.game_object.GameObject</span></code></a></p>
+<p>The class representing the Tower in the Necrowar game.</p>
+<p>A tower in the game. Used to combat enemy waves.</p>
+<dl class="py method">
+<dt id="games.necrowar.tower.Tower.attack">
+<code class="sig-name descname">attack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tile</span><span class="p">:</span> <span class="n"><a class="reference internal" href="tile.html#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile">games.necrowar.tile.Tile</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#games.necrowar.tower.Tower.attack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attacks an enemy unit on an tile within it’s range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tile</strong> (<a class="reference internal" href="tile.html#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile"><em>games.necrowar.tile.Tile</em></a>) – The Tile to attack.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successfully attacked, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tower.Tower.attacked">
+<em class="property">property </em><code class="sig-name descname">attacked</code><a class="headerlink" href="#games.necrowar.tower.Tower.attacked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether this tower has attacked this turn or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tower.Tower.cooldown">
+<em class="property">property </em><code class="sig-name descname">cooldown</code><a class="headerlink" href="#games.necrowar.tower.Tower.cooldown" title="Permalink to this definition">¶</a></dt>
+<dd><p>How many turns are left before it can fire again.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tower.Tower.game_object_name">
+<em class="property">property </em><code class="sig-name descname">game_object_name</code><a class="headerlink" href="#games.necrowar.tower.Tower.game_object_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representing the top level Class that this game object is an instance of. Used for reflection to create new instances on clients, but exposed for convenience should AIs want this data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tower.Tower.health">
+<em class="property">property </em><code class="sig-name descname">health</code><a class="headerlink" href="#games.necrowar.tower.Tower.health" title="Permalink to this definition">¶</a></dt>
+<dd><p>How much remaining health this tower has.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tower.Tower.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#games.necrowar.tower.Tower.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A unique id for each instance of a GameObject or a sub class. Used for client and server communication. Should never change value after being set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tower.Tower.job">
+<em class="property">property </em><code class="sig-name descname">job</code><a class="headerlink" href="#games.necrowar.tower.Tower.job" title="Permalink to this definition">¶</a></dt>
+<dd><p>What type of tower this is (it’s job).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="tower_job.html#games.necrowar.tower_job.TowerJob" title="games.necrowar.tower_job.TowerJob">games.necrowar.tower_job.TowerJob</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tower.Tower.log">
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#games.necrowar.tower.Tower.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a message to this GameObject’s logs. Intended for your own debugging purposes, as strings stored here are saved in the gamelog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – A string to add to this GameObject’s log. Intended for debugging.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tower.Tower.logs">
+<em class="property">property </em><code class="sig-name descname">logs</code><a class="headerlink" href="#games.necrowar.tower.Tower.logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any strings logged will be stored here. Intended for debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tower.Tower.owner">
+<em class="property">property </em><code class="sig-name descname">owner</code><a class="headerlink" href="#games.necrowar.tower.Tower.owner" title="Permalink to this definition">¶</a></dt>
+<dd><p>The player that built / owns this tower.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="player.html#games.necrowar.player.Player" title="games.necrowar.player.Player">games.necrowar.player.Player</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="games.necrowar.tower.Tower.tile">
+<em class="property">property </em><code class="sig-name descname">tile</code><a class="headerlink" href="#games.necrowar.tower.Tower.tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Tile this Tower is on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="tile.html#games.necrowar.tile.Tile" title="games.necrowar.tile.Tile">games.necrowar.tile.Tile</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../anarchy/index.html">Anarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catastrophe/index.html">Catastrophe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../checkers/index.html">Checkers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chess/index.html">Chess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coreminer/index.html">Coreminer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Necrowar</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#rules">Rules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#classes">Classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ai.html">AI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game_object.html">GameObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tile.html">Tile</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tower</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tower_job.html">TowerJob</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit.html">Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_job.html">UnitJob</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-notes">Other Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../newtonian/index.html">Newtonian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pirates/index.html">Pirates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saloon/index.html">Saloon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spiders/index.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stardash/index.html">Stardash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stumped/index.html">Stumped</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tile.html"
+                        title="previous chapter">Tile</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tower_job.html"
+                        title="next chapter">TowerJob</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/necrowar/tower.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tower_job.html" title="TowerJob"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tile.html" title="Tile"
+             accesskey="P">previous</a> |</li>
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, SIG-GAME.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.0.
+    </div>
+  </body>
+</html>

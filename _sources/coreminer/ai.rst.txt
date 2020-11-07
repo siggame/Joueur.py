@@ -1,0 +1,9 @@
+AI
+==
+
+.. currentmodule:: games.coreminer.ai
+
+.. automodule:: games.coreminer.ai
+   :members:
+   :inherited-members:
+   :show-inheritance:

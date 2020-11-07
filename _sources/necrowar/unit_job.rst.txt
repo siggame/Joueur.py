@@ -1,0 +1,9 @@
+UnitJob
+=======
+
+.. currentmodule:: games.necrowar.unit_job
+
+.. automodule:: games.necrowar.unit_job
+   :members:
+   :inherited-members:
+   :show-inheritance:

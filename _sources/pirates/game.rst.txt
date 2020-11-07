@@ -1,0 +1,9 @@
+Game
+====
+
+.. currentmodule:: games.pirates.game
+
+.. automodule:: games.pirates.game
+   :members:
+   :inherited-members:
+   :show-inheritance:

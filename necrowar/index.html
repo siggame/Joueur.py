@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Necrowar &#8212; Python 3 Joueur Client Docs</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AI" href="ai.html" />
+    <link rel="prev" title="Upgrade" href="../coreminer/upgrade.html" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/png" href="../_static/favicon.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+    
+    
+
+  </head><body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="responsive-menu"><a href="#sidebar-anchor" title="Navigation">&#9776;</a></li>
+        <li><a href="../index.html">Python 3 Joueur Client Docs</a> &#187;</li> 
+      </ul>
+    </div>
+    
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="necrowar">
+<h1>Necrowar<a class="headerlink" href="#necrowar" title="Permalink to this headline">¶</a></h1>
+<p><em>Send hordes of the undead at your opponent while defending yourself against theirs to win.</em></p>
+<div class="section" id="rules">
+<h2>Rules<a class="headerlink" href="#rules" title="Permalink to this headline">¶</a></h2>
+<p>The full game rules for necrowar can be found on <a class="reference external" href="https://github.com/siggame/Cadre/blob/master/Games/Necrowar/rules.md">GitHub</a>.</p>
+<p>Additional materials, such as the <a class="reference external" href="https://github.com/siggame/Cadre/blob/master/Games/Necrowar/story.md">story</a> and <a class="reference external" href="https://github.com/siggame/Cadre/blob/master/Games/Necrowar/creer.yaml">game template</a> can be found on <a class="reference external" href="https://github.com/siggame/Cadre/blob/master/Games/Necrowar/">GitHub as well</a>.</p>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound" id="id1">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ai.html">AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="game_object.html">GameObject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tile.html">Tile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tower.html">Tower</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tower_job.html">TowerJob</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit.html">Unit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit_job.html">UnitJob</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="other-notes">
+<h2>Other Notes<a class="headerlink" href="#other-notes" title="Permalink to this headline">¶</a></h2>
+<p>Modifying non AI files</p>
+<p>Each class fle inside of <code class="docutils literal notranslate"><span class="pre">games/GAME_NAME/</span></code>, except for your <code class="docutils literal notranslate"><span class="pre">ai.py</span></code> should ideally not be modified. They are intended
+to be read only constructs that hold the state of that object at the point in time you are reading its properties.
+That being is said, if you really wish to add functionality, such as helper functions, ensure they do not directly modify game state information.</p>
+<p>Game Logic</p>
+<p>If you are attempting to figure out how the logic is executed for a game, that code is <strong>not</strong> here.
+All <a class="reference external" href="https://github.com/siggame/Cadre">Cadre</a> game clients are dumb state tracking programs that facilitate IO between a game server and your AI in whatever language you choose.
+If you wish to get the actual code for a game check in the <a class="reference external" href="https://github.com/siggame/Cerveau">game server</a>.
+Its directory structure is similar to most clients (such as this one).</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+    <a id="sidebar-anchor"></a>
+    
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../anarchy/index.html">Anarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../catastrophe/index.html">Catastrophe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../checkers/index.html">Checkers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chess/index.html">Chess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coreminer/index.html">Coreminer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Necrowar</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rules">Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ai.html">AI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game.html">Game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="game_object.html">GameObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="player.html">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tile.html">Tile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tower.html">Tower</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tower_job.html">TowerJob</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit.html">Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_job.html">UnitJob</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-notes">Other Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../newtonian/index.html">Newtonian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pirates/index.html">Pirates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saloon/index.html">Saloon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spiders/index.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stardash/index.html">Stardash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stumped/index.html">Stumped</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../coreminer/upgrade.html"
+                        title="previous chapter">Upgrade</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ai.html"
+                        title="next chapter">AI</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/necrowar/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ai.html" title="AI"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../coreminer/upgrade.html" title="Upgrade"
+             accesskey="P">previous</a> |</li>
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, SIG-GAME.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.0.
+    </div>
+  </body>
+</html>

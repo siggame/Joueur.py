@@ -1,0 +1,9 @@
+Cowboy
+======
+
+.. currentmodule:: games.saloon.cowboy
+
+.. automodule:: games.saloon.cowboy
+   :members:
+   :inherited-members:
+   :show-inheritance:

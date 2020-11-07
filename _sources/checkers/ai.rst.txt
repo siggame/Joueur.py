@@ -1,0 +1,9 @@
+AI
+==
+
+.. currentmodule:: games.checkers.ai
+
+.. automodule:: games.checkers.ai
+   :members:
+   :inherited-members:
+   :show-inheritance:

@@ -1,0 +1,9 @@
+Bottle
+======
+
+.. currentmodule:: games.saloon.bottle
+
+.. automodule:: games.saloon.bottle
+   :members:
+   :inherited-members:
+   :show-inheritance:

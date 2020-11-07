@@ -1,0 +1,9 @@
+GameObject
+==========
+
+.. currentmodule:: games.necrowar.game_object
+
+.. automodule:: games.necrowar.game_object
+   :members:
+   :inherited-members:
+   :show-inheritance:

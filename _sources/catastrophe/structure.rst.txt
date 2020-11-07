@@ -1,0 +1,9 @@
+Structure
+=========
+
+.. currentmodule:: games.catastrophe.structure
+
+.. automodule:: games.catastrophe.structure
+   :members:
+   :inherited-members:
+   :show-inheritance:
