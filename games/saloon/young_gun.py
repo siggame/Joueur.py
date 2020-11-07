@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Optional
 from games.saloon.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class YoungGun(GameObject):
     """
 
     def __init__(self):
-        """Initializes a YoungGun with basic logic as provided by the Creer code generator."""
+        """Initializes a YoungGun with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -27,48 +29,41 @@ class YoungGun(GameObject):
         self._tile = None
 
     @property
-    def call_in_tile(self):
-        """The Tile that a Cowboy will be called in on if this YoungGun calls in a Cowboy.
-
-        :rtype: games.saloon.tile.Tile
+    def call_in_tile(self) -> 'games.saloon.tile.Tile':
+        """games.saloon.tile.Tile: The Tile that a Cowboy will be called in on if this YoungGun calls in a Cowboy.
         """
         return self._call_in_tile
 
     @property
-    def can_call_in(self):
-        """True if the YoungGun can call in a Cowboy, False otherwise.
-
-        :rtype: bool
+    def can_call_in(self) -> bool:
+        """bool: True if the YoungGun can call in a Cowboy, False otherwise.
         """
         return self._can_call_in
 
     @property
-    def owner(self):
-        """The Player that owns and can control this YoungGun.
-
-        :rtype: games.saloon.player.Player
+    def owner(self) -> 'games.saloon.player.Player':
+        """games.saloon.player.Player: The Player that owns and can control this YoungGun.
         """
         return self._owner
 
     @property
-    def tile(self):
-        """The Tile this YoungGun is currently on.
-
-        :rtype: games.saloon.tile.Tile
+    def tile(self) -> 'games.saloon.tile.Tile':
+        """games.saloon.tile.Tile: The Tile this YoungGun is currently on.
         """
         return self._tile
 
-    def call_in(self, job):
-        """ Tells the YoungGun to call in a new Cowboy of the given job to the open Tile nearest to them.
+    def call_in(self, job: str) -> Optional['games.saloon.cowboy.Cowboy']:
+        """Tells the YoungGun to call in a new Cowboy of the given job to the open Tile nearest to them.
 
         Args:
-            job (str): The job you want the Cowboy being brought to have.
+            job ('Bartender', 'Brawler', or 'Sharpshooter'): The job you want the Cowboy being brought to have.
 
         Returns:
-            games.saloon.cowboy.Cowboy: The new Cowboy that was called in if valid. They will not be added to any `cowboys` lists until the turn ends. None otherwise.
+            games.saloon.cowboy.Cowboy or None: The new Cowboy that was called in if valid. They will not be added to any `cowboys` lists until the turn ends. None otherwise.
         """
-        return self._run_on_server('callIn', job=job)
-
+        return self._run_on_server('callIn', {
+            'job': job
+        })
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

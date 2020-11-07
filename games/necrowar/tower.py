@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Optional
 from games.necrowar.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Tower(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Tower with basic logic as provided by the Creer code generator."""
+        """Initializes a Tower with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -29,55 +31,43 @@ class Tower(GameObject):
         self._tile = None
 
     @property
-    def attacked(self):
-        """Whether this tower has attacked this turn or not.
-
-        :rtype: bool
+    def attacked(self) -> bool:
+        """bool: Whether this tower has attacked this turn or not.
         """
         return self._attacked
 
     @property
-    def cooldown(self):
-        """How many turns are left before it can fire again.
-
-        :rtype: int
+    def cooldown(self) -> int:
+        """int: How many turns are left before it can fire again.
         """
         return self._cooldown
 
     @property
-    def health(self):
-        """How much remaining health this tower has.
-
-        :rtype: int
+    def health(self) -> int:
+        """int: How much remaining health this tower has.
         """
         return self._health
 
     @property
-    def job(self):
-        """What type of tower this is (it's job).
-
-        :rtype: games.necrowar.tower_job.TowerJob
+    def job(self) -> 'games.necrowar.tower_job.TowerJob':
+        """games.necrowar.tower_job.TowerJob: What type of tower this is (it's job).
         """
         return self._job
 
     @property
-    def owner(self):
-        """The player that built / owns this tower.
-
-        :rtype: games.necrowar.player.Player
+    def owner(self) -> Optional['games.necrowar.player.Player']:
+        """games.necrowar.player.Player or None: The player that built / owns this tower.
         """
         return self._owner
 
     @property
-    def tile(self):
-        """The Tile this Tower is on.
-
-        :rtype: games.necrowar.tile.Tile
+    def tile(self) -> 'games.necrowar.tile.Tile':
+        """games.necrowar.tile.Tile: The Tile this Tower is on.
         """
         return self._tile
 
-    def attack(self, tile):
-        """ Attacks an enemy unit on an tile within it's range.
+    def attack(self, tile: 'games.necrowar.tile.Tile') -> bool:
+        """Attacks an enemy unit on an tile within it's range.
 
         Args:
             tile (games.necrowar.tile.Tile): The Tile to attack.
@@ -85,8 +75,9 @@ class Tower(GameObject):
         Returns:
             bool: True if successfully attacked, False otherwise.
         """
-        return self._run_on_server('attack', tile=tile)
-
+        return self._run_on_server('attack', {
+            'tile': tile
+        })
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

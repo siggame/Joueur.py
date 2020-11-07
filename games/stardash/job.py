@@ -17,7 +17,8 @@ class Job(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Job with basic logic as provided by the Creer code generator."""
+        """Initializes a Job with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -31,66 +32,50 @@ class Job(GameObject):
         self._unit_cost = 0
 
     @property
-    def carry_limit(self):
-        """How many combined resources a unit with this Job can hold at once.
-
-        :rtype: int
+    def carry_limit(self) -> int:
+        """int: How many combined resources a unit with this Job can hold at once.
         """
         return self._carry_limit
 
     @property
-    def damage(self):
-        """The amount of damage this Job does per attack.
-
-        :rtype: int
+    def damage(self) -> int:
+        """int: The amount of damage this Job does per attack.
         """
         return self._damage
 
     @property
-    def energy(self):
-        """The amount of starting health this Job has.
-
-        :rtype: int
+    def energy(self) -> int:
+        """int: The amount of starting health this Job has.
         """
         return self._energy
 
     @property
-    def moves(self):
-        """The distance this job can move per turn.
-
-        :rtype: int
+    def moves(self) -> int:
+        """int: The distance this job can move per turn.
         """
         return self._moves
 
     @property
-    def range(self):
-        """The distance at which this job can effect things.
-
-        :rtype: int
+    def range(self) -> int:
+        """int: The distance at which this job can effect things.
         """
         return self._range
 
     @property
-    def shield(self):
-        """The reserve the martyr use to protect allies.
-
-        :rtype: int
+    def shield(self) -> int:
+        """int: The reserve the martyr use to protect allies.
         """
         return self._shield
 
     @property
-    def title(self):
-        """The Job title. 'corvette', 'missileboat', 'martyr', 'transport', or 'miner'. (in this order from 0-4).
-
-        :rtype: str
+    def title(self) -> str:
+        """'corvette', 'missileboat', 'martyr', 'transport', or 'miner': The Job title. 'corvette', 'missileboat', 'martyr', 'transport', or 'miner'. (in this order from 0-4).
         """
         return self._title
 
     @property
-    def unit_cost(self):
-        """How much money it costs to spawn a unit.
-
-        :rtype: int
+    def unit_cost(self) -> int:
+        """int: How much money it costs to spawn a unit.
         """
         return self._unit_cost
 

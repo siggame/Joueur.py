@@ -17,7 +17,8 @@ class Job(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Job with basic logic as provided by the Creer code generator."""
+        """Initializes a Job with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -28,45 +29,34 @@ class Job(GameObject):
         self._title = ""
 
     @property
-    def carry_limit(self):
-        """How many combined resources a unit with this Job can hold at once.
-
-        :rtype: int
+    def carry_limit(self) -> int:
+        """int: How many combined resources a unit with this Job can hold at once.
         """
         return self._carry_limit
 
     @property
-    def damage(self):
-        """The amount of damage this Job does per attack.
-
-        :rtype: int
+    def damage(self) -> int:
+        """int: The amount of damage this Job does per attack.
         """
         return self._damage
 
     @property
-    def health(self):
-        """The amount of starting health this Job has.
-
-        :rtype: int
+    def health(self) -> int:
+        """int: The amount of starting health this Job has.
         """
         return self._health
 
     @property
-    def moves(self):
-        """The number of moves this Job can make per turn.
-
-        :rtype: int
+    def moves(self) -> int:
+        """int: The number of moves this Job can make per turn.
         """
         return self._moves
 
     @property
-    def title(self):
-        """The Job title. 'intern', 'manager', or 'physicist'.
-
-        :rtype: str
+    def title(self) -> str:
+        """'intern', 'manager', or 'physicist': The Job title. 'intern', 'manager', or 'physicist'.
         """
         return self._title
-
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

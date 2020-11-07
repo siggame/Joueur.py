@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import List
 from games.newtonian.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Player(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Player with basic logic as provided by the Creer code generator."""
+        """Initializes a Player with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -39,133 +41,100 @@ class Player(GameObject):
         self._won = False
 
     @property
-    def client_type(self):
-        """What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
-
-        :rtype: str
+    def client_type(self) -> str:
+        """str: What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
         """
         return self._client_type
 
     @property
-    def generator_tiles(self):
-        """Every generator Tile owned by this Player. (listed from the outer edges inward, from top to bottom).
-
-        :rtype: list[games.newtonian.tile.Tile]
+    def generator_tiles(self) -> List['games.newtonian.tile.Tile']:
+        """list[games.newtonian.tile.Tile]: Every generator Tile owned by this Player. (listed from the outer edges inward, from top to bottom).
         """
         return self._generator_tiles
 
     @property
-    def heat(self):
-        """The amount of heat this Player has.
-
-        :rtype: int
+    def heat(self) -> int:
+        """int: The amount of heat this Player has.
         """
         return self._heat
 
     @property
-    def intern_spawn(self):
-        """The time left till a intern spawns. (0 to spawnTime).
-
-        :rtype: int
+    def intern_spawn(self) -> int:
+        """int: The time left till a intern spawns. (0 to spawnTime).
         """
         return self._intern_spawn
 
     @property
-    def lost(self):
-        """If the player lost the game or not.
-
-        :rtype: bool
+    def lost(self) -> bool:
+        """bool: If the player lost the game or not.
         """
         return self._lost
 
     @property
-    def manager_spawn(self):
-        """The time left till a manager spawns. (0 to spawnTime).
-
-        :rtype: int
+    def manager_spawn(self) -> int:
+        """int: The time left till a manager spawns. (0 to spawnTime).
         """
         return self._manager_spawn
 
     @property
-    def name(self):
-        """The name of the player.
-
-        :rtype: str
+    def name(self) -> str:
+        """str: The name of the player.
         """
         return self._name
 
     @property
-    def opponent(self):
-        """This player's opponent in the game.
-
-        :rtype: games.newtonian.player.Player
+    def opponent(self) -> 'games.newtonian.player.Player':
+        """games.newtonian.player.Player: This player's opponent in the game.
         """
         return self._opponent
 
     @property
-    def physicist_spawn(self):
-        """The time left till a physicist spawns. (0 to spawnTime).
-
-        :rtype: int
+    def physicist_spawn(self) -> int:
+        """int: The time left till a physicist spawns. (0 to spawnTime).
         """
         return self._physicist_spawn
 
     @property
-    def pressure(self):
-        """The amount of pressure this Player has.
-
-        :rtype: int
+    def pressure(self) -> int:
+        """int: The amount of pressure this Player has.
         """
         return self._pressure
 
     @property
-    def reason_lost(self):
-        """The reason why the player lost the game.
-
-        :rtype: str
+    def reason_lost(self) -> str:
+        """str: The reason why the player lost the game.
         """
         return self._reason_lost
 
     @property
-    def reason_won(self):
-        """The reason why the player won the game.
-
-        :rtype: str
+    def reason_won(self) -> str:
+        """str: The reason why the player won the game.
         """
         return self._reason_won
 
     @property
-    def spawn_tiles(self):
-        """All the tiles this Player's units can spawn on. (listed from the outer edges inward, from top to bottom).
-
-        :rtype: list[games.newtonian.tile.Tile]
+    def spawn_tiles(self) -> List['games.newtonian.tile.Tile']:
+        """list[games.newtonian.tile.Tile]: All the tiles this Player's units can spawn on. (listed from the outer edges inward, from top to bottom).
         """
         return self._spawn_tiles
 
     @property
-    def time_remaining(self):
-        """The amount of time (in ns) remaining for this AI to send commands.
-
-        :rtype: float
+    def time_remaining(self) -> float:
+        """float: The amount of time (in ns) remaining for this AI to send commands.
         """
         return self._time_remaining
 
     @property
-    def units(self):
-        """Every Unit owned by this Player.
-
-        :rtype: list[games.newtonian.unit.Unit]
+    def units(self) -> List['games.newtonian.unit.Unit']:
+        """list[games.newtonian.unit.Unit]: Every Unit owned by this Player.
         """
         return self._units
 
     @property
-    def won(self):
-        """If the player won the game or not.
-
-        :rtype: bool
+    def won(self) -> bool:
+        """bool: If the player won the game or not.
         """
         return self._won
-
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

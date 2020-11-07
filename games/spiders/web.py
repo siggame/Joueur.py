@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import List, Optional
 from games.spiders.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Web(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Web with basic logic as provided by the Creer code generator."""
+        """Initializes a Web with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -29,50 +31,38 @@ class Web(GameObject):
         self._strength = 0
 
     @property
-    def length(self):
-        """How long this Web is, i.e., the distance between its nestA and nestB.
-
-        :rtype: float
+    def length(self) -> float:
+        """float: How long this Web is, i.e., the distance between its nestA and nestB.
         """
         return self._length
 
     @property
-    def load(self):
-        """How much weight this Web currently has on it, which is the sum of all its Spiderlings weight.
-
-        :rtype: int
+    def load(self) -> int:
+        """int: How much weight this Web currently has on it, which is the sum of all its Spiderlings weight.
         """
         return self._load
 
     @property
-    def nest_a(self):
-        """The first Nest this Web is connected to.
-
-        :rtype: games.spiders.nest.Nest
+    def nest_a(self) -> Optional['games.spiders.nest.Nest']:
+        """games.spiders.nest.Nest or None: The first Nest this Web is connected to.
         """
         return self._nest_a
 
     @property
-    def nest_b(self):
-        """The second Nest this Web is connected to.
-
-        :rtype: games.spiders.nest.Nest
+    def nest_b(self) -> Optional['games.spiders.nest.Nest']:
+        """games.spiders.nest.Nest or None: The second Nest this Web is connected to.
         """
         return self._nest_b
 
     @property
-    def spiderlings(self):
-        """All the Spiderlings currently moving along this Web.
-
-        :rtype: list[games.spiders.spiderling.Spiderling]
+    def spiderlings(self) -> List['games.spiders.spiderling.Spiderling']:
+        """list[games.spiders.spiderling.Spiderling]: All the Spiderlings currently moving along this Web.
         """
         return self._spiderlings
 
     @property
-    def strength(self):
-        """How much weight this Web can take before snapping and destroying itself and all the Spiders on it.
-
-        :rtype: int
+    def strength(self) -> int:
+        """int: How much weight this Web can take before snapping and destroying itself and all the Spiders on it.
         """
         return self._strength
 

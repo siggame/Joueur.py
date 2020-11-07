@@ -17,7 +17,8 @@ class TowerJob(GameObject):
     """
 
     def __init__(self):
-        """Initializes a TowerJob with basic logic as provided by the Creer code generator."""
+        """Initializes a TowerJob with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -31,69 +32,52 @@ class TowerJob(GameObject):
         self._turns_between_attacks = 0
 
     @property
-    def all_units(self):
-        """Whether this tower type hits all of the units on a tile (True) or one at a time (False).
-
-        :rtype: bool
+    def all_units(self) -> bool:
+        """bool: Whether this tower type hits all of the units on a tile (True) or one at a time (False).
         """
         return self._all_units
 
     @property
-    def damage(self):
-        """The amount of damage this type does per attack.
-
-        :rtype: int
+    def damage(self) -> int:
+        """int: The amount of damage this type does per attack.
         """
         return self._damage
 
     @property
-    def gold_cost(self):
-        """How much does this type cost in gold.
-
-        :rtype: int
+    def gold_cost(self) -> int:
+        """int: How much does this type cost in gold.
         """
         return self._gold_cost
 
     @property
-    def health(self):
-        """The amount of starting health this type has.
-
-        :rtype: int
+    def health(self) -> int:
+        """int: The amount of starting health this type has.
         """
         return self._health
 
     @property
-    def mana_cost(self):
-        """How much does this type cost in mana.
-
-        :rtype: int
+    def mana_cost(self) -> int:
+        """int: How much does this type cost in mana.
         """
         return self._mana_cost
 
     @property
-    def range(self):
-        """The number of tiles this type can attack from.
-
-        :rtype: int
+    def range(self) -> int:
+        """int: The number of tiles this type can attack from.
         """
         return self._range
 
     @property
-    def title(self):
-        """The type title. 'arrow', 'aoe', 'ballista', 'cleansing', or 'castle'.
-
-        :rtype: str
+    def title(self) -> str:
+        """'arrow', 'aoe', 'ballista', 'cleansing', or 'castle': The type title. 'arrow', 'aoe', 'ballista', 'cleansing', or 'castle'.
         """
         return self._title
 
     @property
-    def turns_between_attacks(self):
-        """How many turns have to take place between this type's attacks.
-
-        :rtype: int
+    def turns_between_attacks(self) -> int:
+        """int: How many turns have to take place between this type's attacks.
         """
         return self._turns_between_attacks
-
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

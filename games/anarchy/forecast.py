@@ -17,7 +17,8 @@ class Forecast(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Forecast with basic logic as provided by the Creer code generator."""
+        """Initializes a Forecast with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -26,26 +27,20 @@ class Forecast(GameObject):
         self._intensity = 0
 
     @property
-    def controlling_player(self):
-        """The Player that can use WeatherStations to control this Forecast when its the nextForecast.
-
-        :rtype: games.anarchy.player.Player
+    def controlling_player(self) -> 'games.anarchy.player.Player':
+        """games.anarchy.player.Player: The Player that can use WeatherStations to control this Forecast when its the nextForecast.
         """
         return self._controlling_player
 
     @property
-    def direction(self):
-        """The direction the wind will blow fires in. Can be 'north', 'east', 'south', or 'west'.
-
-        :rtype: str
+    def direction(self) -> str:
+        """'North', 'East', 'South', or 'West': The direction the wind will blow fires in. Can be 'north', 'east', 'south', or 'west'.
         """
         return self._direction
 
     @property
-    def intensity(self):
-        """How much of a Building's fire that can be blown in the direction of this Forecast. Fire is duplicated (copied), not moved (transfered).
-
-        :rtype: int
+    def intensity(self) -> int:
+        """int: How much of a Building's fire that can be blown in the direction of this Forecast. Fire is duplicated (copied), not moved (transferred).
         """
         return self._intensity
 

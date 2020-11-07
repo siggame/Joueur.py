@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import List, Optional
 from games.saloon.game_object import GameObject
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class Tile(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Tile with basic logic as provided by the Creer code generator."""
+        """Initializes a Tile with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -35,110 +37,86 @@ class Tile(GameObject):
         self._young_gun = None
 
     @property
-    def bottle(self):
-        """The beer Bottle currently flying over this Tile, None otherwise.
-
-        :rtype: games.saloon.bottle.Bottle
+    def bottle(self) -> Optional['games.saloon.bottle.Bottle']:
+        """games.saloon.bottle.Bottle or None: The beer Bottle currently flying over this Tile, None otherwise.
         """
         return self._bottle
 
     @property
-    def cowboy(self):
-        """The Cowboy that is on this Tile, None otherwise.
-
-        :rtype: games.saloon.cowboy.Cowboy
+    def cowboy(self) -> Optional['games.saloon.cowboy.Cowboy']:
+        """games.saloon.cowboy.Cowboy or None: The Cowboy that is on this Tile, None otherwise.
         """
         return self._cowboy
 
     @property
-    def furnishing(self):
-        """The furnishing that is on this Tile, None otherwise.
-
-        :rtype: games.saloon.furnishing.Furnishing
+    def furnishing(self) -> Optional['games.saloon.furnishing.Furnishing']:
+        """games.saloon.furnishing.Furnishing or None: The furnishing that is on this Tile, None otherwise.
         """
         return self._furnishing
 
     @property
-    def has_hazard(self):
-        """If this Tile is pathable, but has a hazard that damages Cowboys that path through it.
-
-        :rtype: bool
+    def has_hazard(self) -> bool:
+        """bool: If this Tile is pathable, but has a hazard that damages Cowboys that path through it.
         """
         return self._has_hazard
 
     @property
-    def is_balcony(self):
-        """If this Tile is a balcony of the Saloon that YoungGuns walk around on, and can never be pathed through by Cowboys.
-
-        :rtype: bool
+    def is_balcony(self) -> bool:
+        """bool: If this Tile is a balcony of the Saloon that YoungGuns walk around on, and can never be pathed through by Cowboys.
         """
         return self._is_balcony
 
     @property
-    def tile_east(self):
-        """The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
-
-        :rtype: games.saloon.tile.Tile
+    def tile_east(self) -> Optional['games.saloon.tile.Tile']:
+        """games.saloon.tile.Tile or None: The Tile to the 'East' of this one (x+1, y). None if out of bounds of the map.
         """
         return self._tile_east
 
     @property
-    def tile_north(self):
-        """The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
-
-        :rtype: games.saloon.tile.Tile
+    def tile_north(self) -> Optional['games.saloon.tile.Tile']:
+        """games.saloon.tile.Tile or None: The Tile to the 'North' of this one (x, y-1). None if out of bounds of the map.
         """
         return self._tile_north
 
     @property
-    def tile_south(self):
-        """The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
-
-        :rtype: games.saloon.tile.Tile
+    def tile_south(self) -> Optional['games.saloon.tile.Tile']:
+        """games.saloon.tile.Tile or None: The Tile to the 'South' of this one (x, y+1). None if out of bounds of the map.
         """
         return self._tile_south
 
     @property
-    def tile_west(self):
-        """The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
-
-        :rtype: games.saloon.tile.Tile
+    def tile_west(self) -> Optional['games.saloon.tile.Tile']:
+        """games.saloon.tile.Tile or None: The Tile to the 'West' of this one (x-1, y). None if out of bounds of the map.
         """
         return self._tile_west
 
     @property
-    def x(self):
-        """The x (horizontal) position of this Tile.
-
-        :rtype: int
+    def x(self) -> int:
+        """int: The x (horizontal) position of this Tile.
         """
         return self._x
 
     @property
-    def y(self):
-        """The y (vertical) position of this Tile.
-
-        :rtype: int
+    def y(self) -> int:
+        """int: The y (vertical) position of this Tile.
         """
         return self._y
 
     @property
-    def young_gun(self):
-        """The YoungGun on this tile, None otherwise.
-
-        :rtype: games.saloon.young_gun.YoungGun
+    def young_gun(self) -> Optional['games.saloon.young_gun.YoungGun']:
+        """games.saloon.young_gun.YoungGun or None: The YoungGun on this tile, None otherwise.
         """
         return self._young_gun
-
 
     directions = ["North", "East", "South", "West"]
     """int: The valid directions that tiles can be in, "North", "East", "South", or "West"
     """
 
-    def get_neighbors(self):
+    def get_neighbors(self) -> List['games.saloon.tile.Tile']:
         """Gets the neighbors of this Tile
 
-        :rtype list[games.saloon.tile.Tile]
+        Returns:
+            list[games.saloon.tile.Tile]: The list of neighboring Tiles of this Tile.
         """
         neighbors = []
 
@@ -149,20 +127,22 @@ class Tile(GameObject):
 
         return neighbors
 
-    def is_pathable(self):
+    def is_pathable(self) -> bool:
         """Checks if a Tile is pathable to units
 
         Returns:
-            bool: True if pathable, False otherwise
+            bool: True if pathable, False otherwise.
         """
         # <<-- Creer-Merge: is_pathable_builtin -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        return false  # DEVELOPER ADD LOGIC HERE
+        return False # DEVELOPER ADD LOGIC HERE
         # <<-- /Creer-Merge: is_pathable_builtin -->>
 
-    def has_neighbor(self, tile):
-        """Checks if this Tile has a specific neighboring Tile
+    def has_neighbor(self, tile: 'games.saloon.tile.Tile') -> bool:
+        """Checks if this Tile has a specific neighboring Tile.
+
         Args:
-            tile (games.saloon.tile.Tile): tile to check against
+            tile (games.saloon.tile.Tile): The Tile to check against.
+
         Returns:
             bool: True if the tile is a neighbor of this Tile, False otherwise
         """

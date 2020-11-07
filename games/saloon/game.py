@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Dict, List, Optional
 from joueur.base_game import BaseGame
 
 # import game objects
@@ -26,7 +27,8 @@ class Game(BaseGame):
     """
 
     def __init__(self):
-        """Initializes a Game with basic logic as provided by the Creer code generator."""
+        """Initializes a Game with basic logic as provided by the Creer code generator.
+        """
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -65,181 +67,140 @@ class Game(BaseGame):
         }
 
     @property
-    def bartender_cooldown(self):
-        """How many turns a Bartender will be busy for after throwing a Bottle.
-
-        :rtype: int
+    def bartender_cooldown(self) -> int:
+        """int: How many turns a Bartender will be busy for after throwing a Bottle.
         """
         return self._bartender_cooldown
 
     @property
-    def bottles(self):
-        """All the beer Bottles currently flying across the saloon in the game.
-
-        :rtype: list[games.saloon.bottle.Bottle]
+    def bottles(self) -> List['games.saloon.bottle.Bottle']:
+        """list[games.saloon.bottle.Bottle]: All the beer Bottles currently flying across the saloon in the game.
         """
         return self._bottles
 
     @property
-    def brawler_damage(self):
-        """How much damage is applied to neighboring things bit by the Sharpshooter between turns.
-
-        :rtype: int
+    def brawler_damage(self) -> int:
+        """int: How much damage is applied to neighboring things bit by the Sharpshooter between turns.
         """
         return self._brawler_damage
 
     @property
-    def cowboys(self):
-        """Every Cowboy in the game.
-
-        :rtype: list[games.saloon.cowboy.Cowboy]
+    def cowboys(self) -> List['games.saloon.cowboy.Cowboy']:
+        """list[games.saloon.cowboy.Cowboy]: Every Cowboy in the game.
         """
         return self._cowboys
 
     @property
-    def current_player(self):
-        """The player whose turn it is currently. That player can send commands. Other players cannot.
-
-        :rtype: games.saloon.player.Player
+    def current_player(self) -> 'games.saloon.player.Player':
+        """games.saloon.player.Player: The player whose turn it is currently. That player can send commands. Other players cannot.
         """
         return self._current_player
 
     @property
-    def current_turn(self):
-        """The current turn number, starting at 0 for the first player's turn.
-
-        :rtype: int
+    def current_turn(self) -> int:
+        """int: The current turn number, starting at 0 for the first player's turn.
         """
         return self._current_turn
 
     @property
-    def furnishings(self):
-        """Every furnishing in the game.
-
-        :rtype: list[games.saloon.furnishing.Furnishing]
+    def furnishings(self) -> List['games.saloon.furnishing.Furnishing']:
+        """list[games.saloon.furnishing.Furnishing]: Every furnishing in the game.
         """
         return self._furnishings
 
     @property
-    def game_objects(self):
-        """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
-
-        :rtype: dict[str, games.saloon.game_object.GameObject]
+    def game_objects(self) -> Dict[str, 'games.saloon.game_object.GameObject']:
+        """dict[str, games.saloon.game_object.GameObject]: A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
         """
         return self._game_objects
 
     @property
-    def jobs(self):
-        """All the jobs that Cowboys can be called in with.
-
-        :rtype: list[str]
+    def jobs(self) -> List[str]:
+        """list[str]: All the jobs that Cowboys can be called in with.
         """
         return self._jobs
 
     @property
-    def map_height(self):
-        """The number of Tiles in the map along the y (vertical) axis.
-
-        :rtype: int
+    def map_height(self) -> int:
+        """int: The number of Tiles in the map along the y (vertical) axis.
         """
         return self._map_height
 
     @property
-    def map_width(self):
-        """The number of Tiles in the map along the x (horizontal) axis.
-
-        :rtype: int
+    def map_width(self) -> int:
+        """int: The number of Tiles in the map along the x (horizontal) axis.
         """
         return self._map_width
 
     @property
-    def max_cowboys_per_job(self):
-        """The maximum number of Cowboys a Player can bring into the saloon of each specific job.
-
-        :rtype: int
+    def max_cowboys_per_job(self) -> int:
+        """int: The maximum number of Cowboys a Player can bring into the saloon of each specific job.
         """
         return self._max_cowboys_per_job
 
     @property
-    def max_turns(self):
-        """The maximum number of turns before the game will automatically end.
-
-        :rtype: int
+    def max_turns(self) -> int:
+        """int: The maximum number of turns before the game will automatically end.
         """
         return self._max_turns
 
     @property
-    def players(self):
-        """List of all the players in the game.
-
-        :rtype: list[games.saloon.player.Player]
+    def players(self) -> List['games.saloon.player.Player']:
+        """list[games.saloon.player.Player]: List of all the players in the game.
         """
         return self._players
 
     @property
-    def rowdiness_to_siesta(self):
-        """When a player's rowdiness reaches or exceeds this number their Cowboys take a collective siesta.
-
-        :rtype: int
+    def rowdiness_to_siesta(self) -> int:
+        """int: When a player's rowdiness reaches or exceeds this number their Cowboys take a collective siesta.
         """
         return self._rowdiness_to_siesta
 
     @property
-    def session(self):
-        """A unique identifier for the game instance that is being played.
-
-        :rtype: str
+    def session(self) -> str:
+        """str: A unique identifier for the game instance that is being played.
         """
         return self._session
 
     @property
-    def sharpshooter_damage(self):
-        """How much damage is applied to things hit by Sharpshooters when they act.
-
-        :rtype: int
+    def sharpshooter_damage(self) -> int:
+        """int: How much damage is applied to things hit by Sharpshooters when they act.
         """
         return self._sharpshooter_damage
 
     @property
-    def siesta_length(self):
-        """How long siestas are for a player's team.
-
-        :rtype: int
+    def siesta_length(self) -> int:
+        """int: How long siestas are for a player's team.
         """
         return self._siesta_length
 
     @property
-    def tiles(self):
-        """All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
-
-        :rtype: list[games.saloon.tile.Tile]
+    def tiles(self) -> List['games.saloon.tile.Tile']:
+        """list[games.saloon.tile.Tile]: All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
         """
         return self._tiles
 
     @property
-    def time_added_per_turn(self):
-        """The amount of time (in nano-seconds) added after each player performs a turn.
-
-        :rtype: int
+    def time_added_per_turn(self) -> int:
+        """int: The amount of time (in nano-seconds) added after each player performs a turn.
         """
         return self._time_added_per_turn
 
     @property
-    def turns_drunk(self):
-        """How many turns a Cowboy will be drunk for if a bottle breaks on it.
-
-        :rtype: int
+    def turns_drunk(self) -> int:
+        """int: How many turns a Cowboy will be drunk for if a bottle breaks on it.
         """
         return self._turns_drunk
 
+    def get_tile_at(self, x: int, y: int) -> Optional['games.saloon.tile.Tile']:
+        """Gets the Tile at a specified (x, y) position.
 
-    def get_tile_at(self, x, y):
-        """Gets the Tile at a specified (x, y) position
         Args:
-            x (int): integer between 0 and the map_width
-            y (int): integer between 0 and the map_height
+            x (int): An integer between 0 and the map_width.
+            y (int): An integer between 0 and the map_height.
+
         Returns:
-            games.saloon.tile.Tile: the Tile at (x, y) or None if out of bounds
+            games.saloon.tile.Tile or None: The Tile at (x, y) or None if out of bounds.
         """
         if x < 0 or y < 0 or x >= self.map_width or y >= self.map_height:
             # out of bounds

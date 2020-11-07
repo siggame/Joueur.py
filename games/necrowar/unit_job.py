@@ -17,7 +17,8 @@ class UnitJob(GameObject):
     """
 
     def __init__(self):
-        """Initializes a UnitJob with basic logic as provided by the Creer code generator."""
+        """Initializes a UnitJob with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -31,69 +32,52 @@ class UnitJob(GameObject):
         self._title = ""
 
     @property
-    def damage(self):
-        """The amount of damage this type does per attack.
-
-        :rtype: int
+    def damage(self) -> int:
+        """int: The amount of damage this type does per attack.
         """
         return self._damage
 
     @property
-    def gold_cost(self):
-        """How much does this type cost in gold.
-
-        :rtype: int
+    def gold_cost(self) -> int:
+        """int: How much does this type cost in gold.
         """
         return self._gold_cost
 
     @property
-    def health(self):
-        """The amount of starting health this type has.
-
-        :rtype: int
+    def health(self) -> int:
+        """int: The amount of starting health this type has.
         """
         return self._health
 
     @property
-    def mana_cost(self):
-        """How much does this type cost in mana.
-
-        :rtype: int
+    def mana_cost(self) -> int:
+        """int: How much does this type cost in mana.
         """
         return self._mana_cost
 
     @property
-    def moves(self):
-        """The number of moves this type can make per turn.
-
-        :rtype: int
+    def moves(self) -> int:
+        """int: The number of moves this type can make per turn.
         """
         return self._moves
 
     @property
-    def per_tile(self):
-        """How many of this type of unit can take up one tile.
-
-        :rtype: int
+    def per_tile(self) -> int:
+        """int: How many of this type of unit can take up one tile.
         """
         return self._per_tile
 
     @property
-    def range(self):
-        """Amount of tiles away this type has to be in order to be effective.
-
-        :rtype: int
+    def range(self) -> int:
+        """int: Amount of tiles away this type has to be in order to be effective.
         """
         return self._range
 
     @property
-    def title(self):
-        """The type title. 'worker', 'zombie', 'ghoul', 'hound', 'abomination', 'wraith' or 'horseman'.
-
-        :rtype: str
+    def title(self) -> str:
+        """'worker', 'zombie', 'ghoul', 'hound', 'abomination', 'wraith', or 'horseman': The type title. 'worker', 'zombie', 'ghoul', 'hound', 'abomination', 'wraith' or 'horseman'.
         """
         return self._title
-
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

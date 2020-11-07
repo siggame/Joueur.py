@@ -1,9 +1,10 @@
-# Game: There's an infestation of enemy spiders challenging your queen broodmother spider! Protect her and attack the other broodmother in this turn based, node based, game.
+# Game: There's an infestation of enemy spiders challenging your queen BroodMother spider! Protect her and attack the other BroodMother in this turn based, node based, game.
 
 # DO NOT MODIFY THIS FILE
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Dict, List
 from joueur.base_game import BaseGame
 
 # import game objects
@@ -25,11 +26,12 @@ from games.spiders.web import Web
 class Game(BaseGame):
     """The class representing the Game in the Spiders game.
 
-    There's an infestation of enemy spiders challenging your queen broodmother spider! Protect her and attack the other broodmother in this turn based, node based, game.
+    There's an infestation of enemy spiders challenging your queen BroodMother spider! Protect her and attack the other BroodMother in this turn based, node based, game.
     """
 
     def __init__(self):
-        """Initializes a Game with basic logic as provided by the Creer code generator."""
+        """Initializes a Game with basic logic as provided by the Creer code generator.
+        """
         BaseGame.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -67,138 +69,104 @@ class Game(BaseGame):
         }
 
     @property
-    def current_player(self):
-        """The player whose turn it is currently. That player can send commands. Other players cannot.
-
-        :rtype: games.spiders.player.Player
+    def current_player(self) -> 'games.spiders.player.Player':
+        """games.spiders.player.Player: The player whose turn it is currently. That player can send commands. Other players cannot.
         """
         return self._current_player
 
     @property
-    def current_turn(self):
-        """The current turn number, starting at 0 for the first player's turn.
-
-        :rtype: int
+    def current_turn(self) -> int:
+        """int: The current turn number, starting at 0 for the first player's turn.
         """
         return self._current_turn
 
     @property
-    def cut_speed(self):
-        """The speed at which Cutters work to do cut Webs.
-
-        :rtype: int
+    def cut_speed(self) -> int:
+        """int: The speed at which Cutters work to do cut Webs.
         """
         return self._cut_speed
 
     @property
-    def eggs_scalar(self):
-        """Constant used to calculate how many eggs BroodMothers get on their owner's turns.
-
-        :rtype: float
+    def eggs_scalar(self) -> float:
+        """float: Constant used to calculate how many eggs BroodMothers get on their owner's turns.
         """
         return self._eggs_scalar
 
     @property
-    def game_objects(self):
-        """A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
-
-        :rtype: dict[str, games.spiders.game_object.GameObject]
+    def game_objects(self) -> Dict[str, 'games.spiders.game_object.GameObject']:
+        """dict[str, games.spiders.game_object.GameObject]: A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
         """
         return self._game_objects
 
     @property
-    def initial_web_strength(self):
-        """The starting strength for Webs.
-
-        :rtype: int
+    def initial_web_strength(self) -> int:
+        """int: The starting strength for Webs.
         """
         return self._initial_web_strength
 
     @property
-    def max_turns(self):
-        """The maximum number of turns before the game will automatically end.
-
-        :rtype: int
+    def max_turns(self) -> int:
+        """int: The maximum number of turns before the game will automatically end.
         """
         return self._max_turns
 
     @property
-    def max_web_strength(self):
-        """The maximum strength a web can be strengthened to.
-
-        :rtype: int
+    def max_web_strength(self) -> int:
+        """int: The maximum strength a web can be strengthened to.
         """
         return self._max_web_strength
 
     @property
-    def movement_speed(self):
-        """The speed at which Spiderlings move on Webs.
-
-        :rtype: int
+    def movement_speed(self) -> int:
+        """int: The speed at which Spiderlings move on Webs.
         """
         return self._movement_speed
 
     @property
-    def nests(self):
-        """Every Nest in the game.
-
-        :rtype: list[games.spiders.nest.Nest]
+    def nests(self) -> List['games.spiders.nest.Nest']:
+        """list[games.spiders.nest.Nest]: Every Nest in the game.
         """
         return self._nests
 
     @property
-    def players(self):
-        """List of all the players in the game.
-
-        :rtype: list[games.spiders.player.Player]
+    def players(self) -> List['games.spiders.player.Player']:
+        """list[games.spiders.player.Player]: List of all the players in the game.
         """
         return self._players
 
     @property
-    def session(self):
-        """A unique identifier for the game instance that is being played.
-
-        :rtype: str
+    def session(self) -> str:
+        """str: A unique identifier for the game instance that is being played.
         """
         return self._session
 
     @property
-    def spit_speed(self):
-        """The speed at which Spitters work to spit new Webs.
-
-        :rtype: int
+    def spit_speed(self) -> int:
+        """int: The speed at which Spitters work to spit new Webs.
         """
         return self._spit_speed
 
     @property
-    def time_added_per_turn(self):
-        """The amount of time (in nano-seconds) added after each player performs a turn.
-
-        :rtype: int
+    def time_added_per_turn(self) -> int:
+        """int: The amount of time (in nano-seconds) added after each player performs a turn.
         """
         return self._time_added_per_turn
 
     @property
-    def weave_power(self):
-        """How much web strength is added or removed from Webs when they are weaved.
-
-        :rtype: int
+    def weave_power(self) -> int:
+        """int: How much web strength is added or removed from Webs when they are weaved.
         """
         return self._weave_power
 
     @property
-    def weave_speed(self):
-        """The speed at which Weavers work to do strengthens and weakens on Webs.
-
-        :rtype: int
+    def weave_speed(self) -> int:
+        """int: The speed at which Weavers work to do strengthens and weakens on Webs.
         """
         return self._weave_speed
 
     @property
-    def webs(self):
-        """Every Web in the game.
-
-        :rtype: list[games.spiders.web.Web]
+    def webs(self) -> List['games.spiders.web.Web']:
+        """list[games.spiders.web.Web]: Every Web in the game.
         """
         return self._webs
 

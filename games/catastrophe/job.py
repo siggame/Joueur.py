@@ -17,7 +17,8 @@ class Job(GameObject):
     """
 
     def __init__(self):
-        """Initializes a Job with basic logic as provided by the Creer code generator."""
+        """Initializes a Job with basic logic as provided by the Creer code generator.
+        """
         GameObject.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -29,53 +30,40 @@ class Job(GameObject):
         self._upkeep = 0
 
     @property
-    def action_cost(self):
-        """The amount of energy this Job normally uses to perform its actions.
-
-        :rtype: float
+    def action_cost(self) -> float:
+        """float: The amount of energy this Job normally uses to perform its actions.
         """
         return self._action_cost
 
     @property
-    def carry_limit(self):
-        """How many combined resources a Unit with this Job can hold at once.
-
-        :rtype: int
+    def carry_limit(self) -> int:
+        """int: How many combined resources a Unit with this Job can hold at once.
         """
         return self._carry_limit
 
     @property
-    def moves(self):
-        """The number of moves this Job can make per turn.
-
-        :rtype: int
+    def moves(self) -> int:
+        """int: The number of moves this Job can make per turn.
         """
         return self._moves
 
     @property
-    def regen_rate(self):
-        """The amount of energy normally regenerated when resting at a shelter.
-
-        :rtype: float
+    def regen_rate(self) -> float:
+        """float: The amount of energy normally regenerated when resting at a shelter.
         """
         return self._regen_rate
 
     @property
-    def title(self):
-        """The Job title.
-
-        :rtype: str
+    def title(self) -> str:
+        """'fresh human', 'cat overlord', 'soldier', 'gatherer', 'builder', or 'missionary': The Job title.
         """
         return self._title
 
     @property
-    def upkeep(self):
-        """The amount of food per turn this Unit consumes. If there isn't enough food for every Unit, all Units become starved and do not consume food.
-
-        :rtype: int
+    def upkeep(self) -> int:
+        """int: The amount of food per turn this Unit consumes. If there isn't enough food for every Unit, all Units become starved and do not consume food.
         """
         return self._upkeep
-
 
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

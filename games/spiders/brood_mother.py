@@ -4,6 +4,7 @@
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
 
+from typing import Optional
 from games.spiders.spider import Spider
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -17,7 +18,8 @@ class BroodMother(Spider):
     """
 
     def __init__(self):
-        """Initializes a BroodMother with basic logic as provided by the Creer code generator."""
+        """Initializes a BroodMother with basic logic as provided by the Creer code generator.
+        """
         Spider.__init__(self)
 
         # private attributes to hold the properties so they appear read only
@@ -25,23 +27,19 @@ class BroodMother(Spider):
         self._health = 0
 
     @property
-    def eggs(self):
-        """How many eggs the BroodMother has to spawn Spiderlings this turn.
-
-        :rtype: int
+    def eggs(self) -> int:
+        """int: How many eggs the BroodMother has to spawn Spiderlings this turn.
         """
         return self._eggs
 
     @property
-    def health(self):
-        """How much health this BroodMother has left. When it reaches 0, she dies and her owner loses.
-
-        :rtype: int
+    def health(self) -> int:
+        """int: How much health this BroodMother has left. When it reaches 0, she dies and her owner loses.
         """
         return self._health
 
-    def consume(self, spiderling):
-        """ Consumes a Spiderling of the same owner to regain some eggs to spawn more Spiderlings.
+    def consume(self, spiderling: 'games.spiders.spiderling.Spiderling') -> bool:
+        """Consumes a Spiderling of the same owner to regain some eggs to spawn more Spiderlings.
 
         Args:
             spiderling (games.spiders.spiderling.Spiderling): The Spiderling to consume. It must be on the same Nest as this BroodMother.
@@ -49,18 +47,22 @@ class BroodMother(Spider):
         Returns:
             bool: True if the Spiderling was consumed. False otherwise.
         """
-        return self._run_on_server('consume', spiderling=spiderling)
+        return self._run_on_server('consume', {
+            'spiderling': spiderling
+        })
 
-    def spawn(self, spiderlingType):
-        """ Spawns a new Spiderling on the same Nest as this BroodMother, consuming an egg.
+    def spawn(self, spiderling_type: str) -> Optional['games.spiders.spiderling.Spiderling']:
+        """Spawns a new Spiderling on the same Nest as this BroodMother, consuming an egg.
 
         Args:
-            spiderling_type (str): The string name of the Spiderling class you want to Spawn. Must be 'Spitter', 'Weaver', or 'Cutter'.
+            spiderling_type ('Spitter', 'Weaver', or 'Cutter'): The string name of the Spiderling class you want to Spawn. Must be 'Spitter', 'Weaver', or 'Cutter'.
 
         Returns:
-            games.spiders.spiderling.Spiderling: The newly spwaned Spiderling if successful. None otherwise.
+            games.spiders.spiderling.Spiderling or None: The newly spawned Spiderling if successful. None otherwise.
         """
-        return self._run_on_server('spawn', spiderlingType=spiderlingType)
+        return self._run_on_server('spawn', {
+            'spiderlingType': spiderling_type
+        })
 
     # <<-- Creer-Merge: functions -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
     # if you want to add any client side logic (such as state checking functions) this is where you can add them

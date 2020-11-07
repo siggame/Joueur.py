@@ -1,9 +1,24 @@
 <%include file="functions.noCreer" /># ${obj_key}: ${shared['py']['format_description'](obj['description'])}
+<%
+parent_classes = obj['parentClasses']
+builtin_typing_imports = set()
+if 'TiledGame' in game['serverParentClasses']:
+    if obj_key == 'Game':
+        builtin_typing_imports.add('Optional')
+    elif obj_key == 'Tile':
+        builtin_typing_imports.add('List')
 
+typing_import = shared['py']['get_imports'](
+    obj,
+    builtin_typing_imports
+)
+if typing_import:
+    typing_import = '\n' + typing_import
+%>
 # DO NOT MODIFY THIS FILE
 # Never try to directly create an instance of this class, or modify its member variables.
 # Instead, you should only be reading its variables and calling its functions.
-<% parent_classes = obj['parentClasses'] %>
+${typing_import}
 % if len(parent_classes) > 0:
 % for parent_class in parent_classes:
 from games.${underscore(game_name)}.${underscore(parent_class)} import ${parent_class}
@@ -31,8 +46,9 @@ class ${obj_key}(${", ".join(parent_classes)}):
     ${shared['py']['format_description'](obj['description'])}
     """
 
-    def __init__(self):
-        """Initializes a ${obj_key} with basic logic as provided by the Creer code generator."""
+${shared['py']['function_top']('__init__', {
+    'description': 'Initializes a ' + obj_key + ' with basic logic as provided by the Creer code generator.'
+})}
 % for parent_class in reversed(parent_classes):
         ${parent_class}.__init__(self)
 % endfor
@@ -56,47 +72,47 @@ class ${obj_key}(${", ".join(parent_classes)}):
 % endif
 % for attr_name in obj['attribute_names']:
 <% attr_parms = obj['attributes'][attr_name]
-%>    @property
-    def ${underscore(attr_name)}(self):
-        """${shared['py']['format_description'](attr_parms['description'])}
-
-        :rtype: ${shared['py']['type'](attr_parms['type'])}
-        """
+%>${shared['py']['function_top'](attr_name, attr_parms, is_property=True)}
         return self._${underscore(attr_name)}
 
 % endfor
 % for function_name in obj['function_names']:
 <% function_parms = obj['functions'][function_name]
-%>    def ${underscore(function_name)}(self${shared['py']['args'](function_parms['arguments'])}):
-        """ ${shared['py']['format_description'](function_parms['description'])}
-% if len(function_parms['arguments']) > 0:
-
-        Args:
-% for arg_parms in function_parms['arguments']:
-            ${underscore(arg_parms['name'])} (${"Optional[" if arg_parms['optional'] else ""}${shared['py']['type'](arg_parms['type'])}${"]" if arg_parms['optional'] else ""}): ${shared['py']['format_description'](arg_parms['description'])}
-% endfor
-% endif
-% if function_parms['returns']:
-
-        Returns:
-            ${shared['py']['type'](function_parms['returns']['type'])}: ${shared['py']['format_description'](function_parms['returns']['description'])}
-% endif
-        """
-        return self._run_on_server('${function_name}'${shared['py']['kwargs'](function_parms['argument_names'])})
+%>${shared['py']['function_top'](function_name, function_parms)}
+        return self._run_on_server('${function_name}', {
+${',\n'.join(map(
+    lambda arg_name: "            '{}': {}".format(arg_name, underscore(arg_name)),
+    function_parms['argument_names']
+))}
+        })
 
 % endfor
 % if 'Tile' in game_objs:
 % if 'TiledGame' in game['serverParentClasses']: #// then we need to add some client side utility functions
-
 % if obj_key == 'Game':
-    def get_tile_at(self, x, y):
-        """Gets the Tile at a specified (x, y) position
-        Args:
-            x (int): integer between 0 and the map_width
-            y (int): integer between 0 and the map_height
-        Returns:
-            games.${underscore(game_name)}.tile.Tile: the Tile at (x, y) or None if out of bounds
-        """
+${shared['py']['function_top']('get_tile_at', {
+    'description': 'Gets the Tile at a specified (x, y) position.',
+    'arguments': [
+        {
+            'name': 'x',
+            'description': 'An integer between 0 and the map_width.',
+            'type': { 'name': 'int' }
+        },
+        {
+            'name': 'y',
+            'description': 'An integer between 0 and the map_height.',
+            'type': { 'name': 'int' }
+        }
+    ],
+    'returns': {
+        'description': 'The Tile at (x, y) or None if out of bounds.',
+        'type': {
+            'name': 'Tile',
+            'is_game_object': True,
+            'nullable': True
+        }
+    }
+})}
         if x < 0 or y < 0 or x >= self.map_width or y >= self.map_height:
             # out of bounds
             return None
@@ -107,11 +123,19 @@ class ${obj_key}(${", ".join(parent_classes)}):
     """int: The valid directions that tiles can be in, "North", "East", "South", or "West"
     """
 
-    def get_neighbors(self):
-        """Gets the neighbors of this Tile
-
-        :rtype list[games.${underscore(game_name)}.tile.Tile]
-        """
+${shared['py']['function_top']('get_neighbors', {
+    'description': 'Gets the neighbors of this Tile',
+    'returns': {
+        'description': 'The list of neighboring Tiles of this Tile.',
+        'type': {
+            'name': 'list',
+            'valueType': {
+                'name': 'Tile',
+                'is_game_object': True,
+            },
+        }
+    }
+})}
         neighbors = []
 
         for direction in Tile.directions:
@@ -121,21 +145,32 @@ class ${obj_key}(${", ".join(parent_classes)}):
 
         return neighbors
 
-    def is_pathable(self):
-        """Checks if a Tile is pathable to units
+${shared['py']['function_top']('is_pathable', {
+    'description': 'Checks if a Tile is pathable to units',
+    'returns': {
+        'description': 'True if pathable, False otherwise.',
+        'type': { 'name': 'boolean' }
+    }
+})}
+${merge("        # ", "is_pathable_builtin", "        return False # DEVELOPER ADD LOGIC HERE")}
 
-        Returns:
-            bool: True if pathable, False otherwise
-        """
-${merge("        # ", "is_pathable_builtin", "        return false  # DEVELOPER ADD LOGIC HERE")}
-
-    def has_neighbor(self, tile):
-        """Checks if this Tile has a specific neighboring Tile
-        Args:
-            tile (games.${underscore(game_name)}.tile.Tile): tile to check against
-        Returns:
-            bool: True if the tile is a neighbor of this Tile, False otherwise
-        """
+${shared['py']['function_top']('has_neighbor', {
+    'description': 'Checks if this Tile has a specific neighboring Tile.',
+    'arguments': [
+        {
+            'name': 'tile',
+            'description': 'The Tile to check against.',
+            'type': {
+                'name': 'Tile',
+                'is_game_object': True
+            }
+        }
+    ],
+    'returns': {
+        'description': 'True if the tile is a neighbor of this Tile, False otherwise',
+        'type': { 'name': 'boolean' }
+    }
+})}
         return bool(tile and tile in self.get_neighbors())
 % endif
 % endif
