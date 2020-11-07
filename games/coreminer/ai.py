@@ -37,6 +37,7 @@ class AI(BaseAI):
         """
         # <<-- Creer-Merge: start -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # replace with your start logic
+        
         # <<-- /Creer-Merge: start -->>
 
     def game_updated(self) -> None:
@@ -64,6 +65,50 @@ class AI(BaseAI):
         """
         # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # Put your game logic here for runTurn
+
+        # If we have no miners and can afford one, spawn one
+        if len(self.player.miners) < 1 and self.player.money >= self.game.spawn_price:
+            self.player.spawn_miner()
+
+        # For each miner
+        for miner in self.player.miners:
+            if not miner or not miner.tile:
+                continue
+
+            # Move to tile next to base
+            if miner.tile.is_base:
+                if miner.tile.tile_east:
+                    miner.move(miner.tile.tile_east)
+                else:
+                    miner.move(miner.tile.tile_west)
+            
+            # Sell all materials
+            sellTile = self.game.get_tile_at(self.player.base_tile.x, miner.tile.y)
+            if sellTile and sellTile.owner == self.player:
+                miner.dump(sellTile, "dirt", -1)
+                miner.dump(sellTile, "ore", -1)
+
+            eastTile = miner.tile.tile_east
+            westTile = miner.tile.tile_west
+
+            # Mine east and west tiles, hopper side first
+            if eastTile.x == self.player.base_tile.x:
+                if eastTile:
+                    miner.mine(eastTile, -1)
+                if westTile:
+                    miner.mine(westTile, -1)
+            else:
+                if westTile:
+                    miner.mine(westTile, -1)
+                if eastTile:
+                    miner.mine(eastTile, -1)
+
+            # Check to make sure east and west tiles are mined
+            if (eastTile and eastTile.ore + eastTile.dirt == 0) and (westTile and westTile.ore + westTile.dirt == 0):
+                # Dig down
+                if miner.tile.tile_south:
+                    miner.mine(miner.tile.tile_south, -1)
+            
         return True
         # <<-- /Creer-Merge: runTurn -->>
 
