@@ -134,7 +134,7 @@ class Tile(GameObject):
             bool: True if pathable, False otherwise.
         """
         # <<-- Creer-Merge: is_pathable_builtin -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        return False # DEVELOPER ADD LOGIC HERE
+        return not self.is_balcony and not self.cowboy and not self.furnishing
         # <<-- /Creer-Merge: is_pathable_builtin -->>
 
     def has_neighbor(self, tile: 'games.saloon.tile.Tile') -> bool:

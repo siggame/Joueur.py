@@ -4,7 +4,7 @@ from typing import List
 from joueur.base_ai import BaseAI
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-# you can add additional import(s) here
+import random
 # <<-- /Creer-Merge: imports -->>
 
 class AI(BaseAI):
@@ -29,7 +29,7 @@ class AI(BaseAI):
             str: The name of your Player.
         """
         # <<-- Creer-Merge: get-name -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        return "Saloon Python Player" # REPLACE THIS WITH YOUR TEAM NAME
+        return "Saloon Python ShellAI" # REPLACE THIS WITH YOUR TEAM NAME
         # <<-- /Creer-Merge: get-name -->>
 
     def start(self) -> None:
@@ -62,9 +62,112 @@ class AI(BaseAI):
         Returns:
             bool: Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.
         """
-        # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        # Put your game logic here for runTurn
-        return True
+
+        # This is "ShellAI", some basic code we've provided that does
+        # everything in the game for demo purposed, but poorly so you
+        # can get to optimizing or overwriting it ASAP
+        #
+        # ShellAI does a few things:
+        # 1. Tries to spawn a new Cowboy
+        # 2. Tries to move to a Piano
+        # 3. Tries to play a Piano
+        # 4. Tries to act
+
+        print("Start of my turn: " + str(self.game.current_turn))
+
+        # Find the active cowboy to try to do things with
+        active_cowboy = None
+        for cowboy in self.player.cowboys:
+            if not cowboy.is_dead:
+                active_cowboy = cowboy
+                break
+
+        # 1. Try to spawn a cowboy.
+
+        # Randomly select a job.
+        new_job = random.choice(self.game.jobs)
+
+        # Count cowboys with selected job
+        job_count = 0
+        for cowboy in self.player.cowboys:
+            if not cowboy.is_dead and cowboy.job == new_job:
+                job_count += 1
+
+        # Call in the new cowboy with that job if there aren't too many
+        #   cowboys with that job already.
+        if self.player.young_gun.can_call_in and job_count < self.game.max_cowboys_per_job:
+            print("1. Calling in: " + new_job)
+            self.player.young_gun.call_in(new_job)
+
+
+        # Now lets use him
+        if active_cowboy:
+            # 2. Try to move to a piano.
+
+            # Find a piano.
+            piano = None
+            for furnishing in self.game.furnishings:
+                if furnishing.is_piano and not furnishing.is_destroyed:
+                    piano = furnishing
+                    break
+
+            # There will always be pianos or the game will end. No need to check for existence.
+            # Attempt to move toward the piano by finding a path.
+            if active_cowboy.can_move and not active_cowboy.is_dead:
+                print("Trying to use Cowboy #" + active_cowboy.id)
+
+                # find a path from the Tile this cowboy is on to the tile the piano is on
+                path = self.find_path(active_cowboy.tile, piano.tile)
+
+                # if there is a path, move to it
+                #      length 0 means no path could be found to the tile
+                #      length 1 means the piano is adjacent, and we can't move onto the same tile as the piano
+                if len(path) > 1:
+                    print("2. Moving to Tile #" + path[0].id)
+                    active_cowboy.move(path[0])
+
+
+            # 3. Try to play a nearby piano.
+
+            # make sure the cowboy is alive and is not busy
+            if not active_cowboy.is_dead and active_cowboy.turns_busy == 0:
+                # look at all the neighboring (adjacent) tiles, and if they have a piano, play it
+                neighbors = active_cowboy.tile.get_neighbors()
+                for tile in neighbors:
+                    # if the neighboring tile has a piano
+                    if tile.furnishing and tile.furnishing.is_piano:
+                        # then play it
+                        print("3. Playing piano (Furnishing) #" + tile.furnishing.id)
+                        active_cowboy.play(tile.furnishing)
+                        break
+
+
+            # 4. Try to act with active cowboy
+            if not active_cowboy.is_dead and active_cowboy.turns_busy == 0:
+                # Get a random neighboring tile.
+                neighbor = random.choice(active_cowboy.tile.get_neighbors())
+
+                # Based on job, act accordingly.
+                if active_cowboy.job == "Bartender":
+                    # Bartenders dispense brews freely, but they still manage to get their due.
+                    direction = random.choice(Tile.directions)
+                    print("4. Bartender acting on Tile #" + neighbor.id + " with drunkDirection: " + direction)
+                    active_cowboy.act(neighbor, direction)
+                elif active_cowboy.job == "Brawler":
+                    # Brawlers' brains are so pickled, they hardly know friend from foe.
+                    # Probably don't ask them act on your behalf.
+                    print("4. Brawlers cannot act")
+                elif active_cowboy.job == "Sharpshooter":
+                    # Sharpshooters aren't as quick as they used to be, and all that ruckus around them
+                    # requires them to focus when taking aim.
+                    if active_cowboy.focus > 0:
+                        print("4. Sharpshooter acting on Tile #" + neighbor.id)
+                        active_cowboy.act(neighbor)
+                    else:
+                        print("4. Sharpshooter doesn't have enough focus. (focus == " + str(active_cowboy.focus) + ")")
+
+        print("Ending my turn.")
+        return True # signifies we are done with our turn
         # <<-- /Creer-Merge: runTurn -->>
 
     def find_path(self, start: 'games.saloon.tile.Tile', goal: 'games.saloon.tile.Tile') -> List['games.saloon.tile.Tile']:
