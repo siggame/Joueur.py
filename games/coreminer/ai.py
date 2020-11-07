@@ -67,11 +67,14 @@ class AI(BaseAI):
         # Put your game logic here for runTurn
 
         # If we have no miners and can afford one, spawn one
-        while len(self.player.miners) < 1 and self.player.money >= self.game.spawn_price:
+        if len(self.player.miners) < 1 and self.player.money >= self.game.spawn_price:
             self.player.spawn_miner()
 
         # For each miner
         for miner in self.player.miners:
+            if not miner or not miner.tile:
+                continue
+
             # Move to tile next to base
             if miner.tile.is_base:
                 if miner.tile.tile_east:
@@ -90,16 +93,21 @@ class AI(BaseAI):
 
             # Mine east and west tiles, hopper side first
             if eastTile.x == self.player.base_tile.x:
-                miner.mine(eastTile, -1)
-                miner.mine(westTile, -1)
+                if eastTile:
+                    miner.mine(eastTile, -1)
+                if westTile:
+                    miner.mine(westTile, -1)
             else:
-                miner.mine(westTile, -1)
-                miner.mine(eastTile, -1)
+                if westTile:
+                    miner.mine(westTile, -1)
+                if eastTile:
+                    miner.mine(eastTile, -1)
 
             # Check to make sure east and west tiles are mined
             if (eastTile and eastTile.ore + eastTile.dirt == 0) and (westTile and westTile.ore + westTile.dirt == 0):
                 # Dig down
-                miner.mine(miner.tile.tile_south, -1)
+                if miner.tile.tile_south:
+                    miner.mine(miner.tile.tile_south, -1)
             
         return True
         # <<-- /Creer-Merge: runTurn -->>
